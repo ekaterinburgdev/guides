@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
+//import "../styles/globals.css";
 
 const superagent = require("superagent");
 
@@ -124,7 +125,7 @@ const GetPage = () => {
           transform: "matrix(1, -0.08, 0, 1, 0, 0)",
           marginBottom: "70px",
           fontSize: "48px",
-          fontFamily: "IsetSans",
+          fontFamily: "Iset Sans",
           fontStyle: "normal",
           fontWeight: "normal"
         }}
@@ -137,7 +138,7 @@ const GetPage = () => {
           paddingLeft: "60px",
           paddingRight: "60px",
           paddingTop: "30px",
-          fontFamily: "IsetSans"
+          fontFamily: "Iset Sans"
         }}
       >
         <link

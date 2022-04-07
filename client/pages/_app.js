@@ -1,28 +1,5 @@
-import { createGlobalStyle } from "styled-components";
+import "../styles/globals.css";
 
-const GlobalStyles = createGlobalStyle`
-/*Обычный*/
-@font-face {
-  font-family: "IsetSans";
-  font-style: normal;
-  font-weight: normal;
-  src: url(../client/public/public/fonts/IsetSans-Medium.woff2);
-}
+const MyApp = ({ Component, pageProps }) => <Component {...pageProps} />;
 
-/*Полужирный*/
-@font-face {
-  font-family: "IsetSans";
-  font-style: normal;
-  font-weight: bold;
-  src: url(../client/public/fonts/IsetSans-SemiBold.woff2);
-}
-`;
-
-export default function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <GlobalStyles />
-      <Component {...pageProps}></Component>
-    </>
-  );
-}
+export default MyApp;

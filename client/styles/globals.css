@@ -1,0 +1,52 @@
+@import 'normalize.css';
+@import './font.css';
+
+html,
+body {
+  background-color: black;
+  /*mix-blend-mode: soft-light;*/
+  padding: 0;
+  margin: 0;
+  font-family: Iset Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input {
+  font-style: normal;
+  font-size: 3.125rem;
+  line-height: 1.4;
+  border: none;
+  display: inline;
+  width: auto;
+  height: auto;
+  background: black;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 60%;
+  min-width: 768px;
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  html {
+    font-size: 100%;
+  }
+}
