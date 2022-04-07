@@ -1,1 +1,5 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+# Руководства
+
+## Для разработки
+
+`npm run dev`
