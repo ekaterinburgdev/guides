@@ -68,6 +68,9 @@ function GetPage() {
             ))}
           </p>
         );
+
+      default:
+        return <p>Что я такое...</p>;
     }
   };
 
