@@ -1,4 +1,6 @@
+/* eslint-disable consistent-return */
 import React from 'react';
+import map from 'lodash/map';
 import styles from '../styles/Template.module.css';
 
 const superagent = require('superagent');
@@ -11,10 +13,17 @@ function GetPage() {
       const resp = await superagent.get(
         'http://localhost:48655/api/content?id=b90d7274-8dd8-4eea-85de-9609b532b78a',
       );
-      setList(resp.body.content);
+      setList(resp.body['b90d7274-8dd8-4eea-85de-9609b532b78a'].children);
     };
     req();
   }, []);
+
+  const wrapper = (obj, func) => {
+    const item = obj[Object.keys(obj)[0]];
+    return func(item);
+  };
+
+  const getItem = (obj) => obj[Object.keys(obj)[0]];
 
   const makeText = (richTextEl) => (
     <p
@@ -28,7 +37,7 @@ function GetPage() {
 
   const makeContentBlock = (block) => {
     if (block.type === 'file') {
-      return <img src={block.file.url} />;
+      return <img src={block.file.url} alt="фотка" />;
     }
 
     if (block.type === 'paragraph') {
@@ -37,37 +46,91 @@ function GetPage() {
   };
 
   const getLine = (columnList) => {
-    if (!columnList.columns.length) {
+    if (!columnList.children.length) {
       return;
     }
 
     return (
       <div className="row gx-5">
-        {columnList.columns.map((cols, idx) => (
+        {columnList.children.map((cols, idx) => (
           <div className="col" key={idx}>
-            {cols.columnsItems.map((col) => getColumnItem(col))}
+            {getItem(cols).children.map((col) => wrapper(col, getColumnItem))}
           </div>
         ))}
       </div>
     );
   };
 
+  const getImage = (imageObj) => {
+    console.log(imageObj);
+
+    if (imageObj.content.image_data.caption.length === 0) {
+      return (
+        <img
+          className={styles.template__image}
+          src={`http://localhost:48655/static/${imageObj.content.image_name}`} // TODO: хост вынести в переменную
+          alt="фотка"
+        />
+      );
+    }
+    return (
+      <div>
+        <img
+          className={styles.template__image}
+          src={`http://localhost:48655/static/${imageObj.content.image_name}`} // TODO: хост вынести в переменную
+          alt="фотка"
+        />
+        <span>{imageObj.content.image_data.caption[0].plain_text}</span>
+      </div>
+    );
+  };
+
   const getColumnItem = (columnItem) => {
     switch (columnItem.type) {
+      case 'column_list':
+        return <>{getLine(columnItem)}</>;
+
       case 'image':
+        return getImage(columnItem);
+
+      case 'heading_1':
         return (
-          <img className={styles.template__image} src={columnItem.image} />
+          <h1>
+            {columnItem.content.text.map((par, i) => (
+              <span key={i}>{par && par.text && par.text.content}</span>
+            ))}
+          </h1>
+        );
+
+      case 'heading_2':
+        return (
+          <h2>
+            {columnItem.content.text.map((par, i) => (
+              <span key={i}>{par && par.text && par.text.content}</span>
+            ))}
+          </h2>
+        );
+
+      case 'heading_3':
+        return (
+          <h3>
+            {columnItem.content.text.map((par, i) => (
+              <span key={i}>{par && par.text && par.text.content}</span>
+            ))}
+          </h3>
         );
 
       case 'paragraph':
         return (
           <p>
-            {console.log(columnItem.paragraph)}
-            {columnItem.paragraph.map((par) => (
-              <span>{par.text.content}</span>
+            {columnItem.content.text.map((par, i) => (
+              <span key={i}>{par && par.text && par.text.content}</span>
             ))}
           </p>
         );
+
+        case 'table':
+          return ()
 
       default:
         return <p>Что я такое...</p>;
@@ -76,8 +139,9 @@ function GetPage() {
 
   const parseParagraph = (paragraph) => (
     <p>
-      {paragraph.map((par) => (
+      {paragraph.map((par, i) => (
         <span
+          key={i}
           style={{
             fontWeight: par.annotations.bold ? 'bold' : 'normal',
           }}
@@ -88,7 +152,8 @@ function GetPage() {
 
   return (
     <div className={styles.template__column}>
-      {list.map((cl) => getLine(cl))}
+      {map(list, (cl) => wrapper(cl, getColumnItem))}
+      {/* {list.map((cl) => getLine(cl))} */}
     </div>
   );
 }
