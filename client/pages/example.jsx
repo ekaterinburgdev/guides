@@ -129,8 +129,8 @@ function GetPage() {
           </p>
         );
 
-        case 'table':
-          return ()
+        // case 'table':
+        //   return ()
 
       default:
         return <p>Что я такое...</p>;
