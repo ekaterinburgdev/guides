@@ -1,21 +1,17 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import map from 'lodash/map';
-import styles from '../styles/Template.module.css';
+import styles from './Template.module.css';
+import { getPage } from '../../../api/apiPage';
+import { api } from '../../../next.config';
 
-const superagent = require('superagent');
-
-function GetPage() {
+function ManualPage({ pageId = 'сука' }) {
   const [list, setList] = React.useState([]);
 
   React.useEffect(() => {
-    const req = async () => {
-      const resp = await superagent.get(
-        'http://localhost:48655/api/content?id=b90d7274-8dd8-4eea-85de-9609b532b78a',
-      );
-      setList(resp.body['b90d7274-8dd8-4eea-85de-9609b532b78a'].children);
-    };
-    req();
+    getPage(pageId)
+      .then((page) => setList(page[pageId].children))
+      .catch((err) => console.error('Ошибка при получениистраницы', err));
   }, []);
 
   const wrapper = (obj, func) => {
@@ -62,13 +58,11 @@ function GetPage() {
   };
 
   const getImage = (imageObj) => {
-    console.log(imageObj);
-
     if (imageObj.content.image_data.caption.length === 0) {
       return (
         <img
           className={styles.template__image}
-          src={`http://localhost:48655/static/${imageObj.content.image_name}`} // TODO: хост вынести в переменную
+          src={`${api.HOST}/static/${imageObj.content.image_name}`}
           alt="фотка"
         />
       );
@@ -77,8 +71,8 @@ function GetPage() {
       <div>
         <img
           className={styles.template__image}
-          src={`http://localhost:48655/static/${imageObj.content.image_name}`} // TODO: хост вынести в переменную
-          alt="фотка"
+          src={`${api.HOST}/static/${imageObj.content.image_name}`}
+          alt={imageObj.content.image_data.caption[0].plain_text}
         />
         <span>{imageObj.content.image_data.caption[0].plain_text}</span>
       </div>
@@ -158,4 +152,4 @@ function GetPage() {
   );
 }
 
-export default GetPage;
+export default ManualPage;
