@@ -12,7 +12,7 @@ function ManualPage({ pageId = 'сука' }) {
     getPage(pageId)
       .then((page) => setList(page[pageId].children))
       .catch((err) => console.error('Ошибка при получениистраницы', err));
-  }, []);
+  }, [pageId]);
 
   const wrapper = (obj, func) => {
     const item = obj[Object.keys(obj)[0]];
