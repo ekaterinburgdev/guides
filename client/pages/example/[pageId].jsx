@@ -8,8 +8,6 @@ function GetPage() {
 
   const { pageId } = router.query;
 
-  console.log('ид пэйдж', pageId);
-
   return <ManualPage pageId={pageId} />;
 }
 

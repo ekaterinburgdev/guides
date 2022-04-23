@@ -2,9 +2,21 @@
   padding-left: 60px;
   padding-right: 60px;
   padding-top: 30px;
-  font-family: Iset Sans;
 }
 
 .template__image {
   width: 100%;
+}
+
+.columnList,
+.pageName {
+  margin-bottom: 64px;
+}
+
+.heading2 {
+  margin-bottom: 32px;
+}
+
+.heading3 {
+  margin-bottom: 16px;
 }

@@ -1,0 +1,7 @@
+.tableOfContents {
+    display: flex;
+    position: fixed;
+    width: 352px;
+    height: 100vh;
+    background-color: #222222;
+}

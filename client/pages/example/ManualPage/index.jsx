@@ -7,10 +7,14 @@ import { api } from '../../../next.config';
 
 function ManualPage({ pageId = 'сука' }) {
   const [list, setList] = React.useState([]);
+  const [pageName, setPageName] = React.useState('');
 
   React.useEffect(() => {
     getPage(pageId)
-      .then((page) => setList(page[pageId].children))
+      .then((page) => {
+        setList(page[pageId].children);
+        setPageName(page[pageId].content.title);
+      })
       .catch((err) => console.error('Ошибка при получениистраницы', err));
   }, [pageId]);
 
@@ -18,8 +22,6 @@ function ManualPage({ pageId = 'сука' }) {
     const item = obj[Object.keys(obj)[0]];
     return func(item);
   };
-
-  const getItem = (obj) => obj[Object.keys(obj)[0]];
 
   const makeText = (richTextEl) => (
     <p
@@ -50,7 +52,7 @@ function ManualPage({ pageId = 'сука' }) {
       <div className="row gx-5">
         {columnList.children.map((cols, idx) => (
           <div className="col" key={idx}>
-            {getItem(cols).children.map((col) => wrapper(col, getColumnItem))}
+            {cols.children.map((col) => getColumnItem(col))}
           </div>
         ))}
       </div>
@@ -82,7 +84,7 @@ function ManualPage({ pageId = 'сука' }) {
   const getColumnItem = (columnItem) => {
     switch (columnItem.type) {
       case 'column_list':
-        return <>{getLine(columnItem)}</>;
+        return <div className={styles.columnList}>{getLine(columnItem)}</div>;
 
       case 'image':
         return getImage(columnItem);
@@ -98,7 +100,7 @@ function ManualPage({ pageId = 'сука' }) {
 
       case 'heading_2':
         return (
-          <h2>
+          <h2 className={styles.heading2}>
             {columnItem.content.text.map((par, i) => (
               <span key={i}>{par && par.text && par.text.content}</span>
             ))}
@@ -107,7 +109,7 @@ function ManualPage({ pageId = 'сука' }) {
 
       case 'heading_3':
         return (
-          <h3>
+          <h3 className={styles.heading3}>
             {columnItem.content.text.map((par, i) => (
               <span key={i}>{par && par.text && par.text.content}</span>
             ))}
@@ -121,6 +123,30 @@ function ManualPage({ pageId = 'сука' }) {
               <span key={i}>{par && par.text && par.text.content}</span>
             ))}
           </p>
+        );
+      case 'bulleted_list':
+        return (
+          <ul>
+            {columnItem.children.map((li, i) => (
+              <li key={i}>
+                {li.content.text.map((par, i) => (
+                  <span key={i}>{par && par.text && par.text.content}</span>
+                ))}
+              </li>
+            ))}
+          </ul>
+        );
+      case 'numbered_list':
+        return (
+          <ol>
+            {columnItem.children.map((li, i) => (
+              <li key={i}>
+                {li.content.text.map((par, i) => (
+                  <span key={i}>{par && par.text && par.text.content}</span>
+                ))}
+              </li>
+            ))}
+          </ol>
         );
 
         // case 'table':
@@ -146,8 +172,8 @@ function ManualPage({ pageId = 'сука' }) {
 
   return (
     <div className={styles.template__column}>
-      {map(list, (cl) => wrapper(cl, getColumnItem))}
-      {/* {list.map((cl) => getLine(cl))} */}
+      <h1 className={styles.pageName}>{pageName}</h1>
+      {map(list, (cl) => getColumnItem(cl))}
     </div>
   );
 }
