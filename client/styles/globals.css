@@ -13,8 +13,17 @@ body {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  display: inline;
+  color: white !important;
+  text-decoration: none !important;
+  border: none !important;
+  transition: all;
+  transition-duration: .2s;
+  box-shadow: 0 3px 0 0 hsl(0deg 0% 100% / 30%);
+}
+
+a:hover {
+  color: rgb(153, 153, 153) !important;
 }
 
 ul {

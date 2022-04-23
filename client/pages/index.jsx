@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getAllPage } from '../api/apiPage';
-import TableOfContents from '../components/TableOfContents'
+import TableOfContents from '../components/TableOfContents';
 
 export default function Home() {
   const [sections, setSections] = useState([]);
@@ -20,37 +20,12 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Городские руководства</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        {
-          generalProvisions.map((page) => (
-            <Link
-              key={page.id}
-              href={{
-                pathname: '/example/[pageId]',
-                query: { pageId: page.id },
-              }}
-            >
-              {page.name_ru}
-            </Link>
-          ))
-            }
-        {sections.map((page) => (
-          <Link
-            key={page.id}
-            href={{
-              pathname: '/example/[pageId]',
-              query: { pageId: page.id },
-            }}
-          >
-            {page.name_ru}
-          </Link>
-        ))}
-
-        <TableOfContents/>
+        <TableOfContents />
 
         {/* <Link
           href={{

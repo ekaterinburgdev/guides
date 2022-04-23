@@ -1,7 +1,20 @@
 .tableOfContents {
-    display: flex;
-    position: fixed;
-    width: 352px;
-    height: 100vh;
-    background-color: #222222;
+  display: flex;
+  position: fixed;
+  padding-top: 20px;
+  width: 352px;
+  height: 100vh;
+  background-color: #222222;
+}
+
+.tableOfContents > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: none;
+}
+
+.tableOfContents > ul > .tableOfContentsLink {
+  box-shadow: none !important;
+  padding-left: 15px;
 }

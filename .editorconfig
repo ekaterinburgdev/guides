@@ -12,15 +12,15 @@ insert_final_newline = true
 # Set default charset
 [*.js]
 charset = utf-8
-indent_style = space
-indent_size = 4
+indent_style = tab
+indent_size = 2
 
 # Indentation override for all JS under lib directory
 [lib/**.js]
-indent_style = space
+indent_style = tab
 indent_size = 2
 
 # Matches the exact files either package.json
 [package.json]
-indent_style = space
+indent_style = tab
 indent_size = 2
