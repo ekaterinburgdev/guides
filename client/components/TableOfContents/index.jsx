@@ -22,7 +22,7 @@ function TableOfContents() {
         query: { pageId: page.id },
       }}
     >
-      <a className={styles.tableOfContentsLink}>{page.name_ru}</a>
+      <a className={styles.tableOfContentsLink} href={page.id}>{page.name_ru}</a>
     </Link>
   );
 

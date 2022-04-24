@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable consistent-return */
 import React from 'react';
 import map from 'lodash/map';
@@ -5,7 +6,7 @@ import styles from './Template.module.css';
 import { getPage } from '../../../api/apiPage';
 import { api } from '../../../next.config';
 
-function ManualPage({ pageId = 'сука' }) {
+function ManualPage({ pageId = '' }) {
   const [list, setList] = React.useState([]);
   const [pageName, setPageName] = React.useState('');
 
@@ -18,11 +19,14 @@ function ManualPage({ pageId = 'сука' }) {
       .catch((err) => console.error('Ошибка при получении страницы', err));
   }, [pageId]);
 
+  /*
   const wrapper = (obj, func) => {
     const item = obj[Object.keys(obj)[0]];
     return func(item);
   };
+  */
 
+  /*
   const makeText = (richTextEl) => (
     <p
       style={{
@@ -32,7 +36,9 @@ function ManualPage({ pageId = 'сука' }) {
       {richTextEl.plain_text}
     </p>
   );
+  */
 
+  /*
   const makeContentBlock = (block) => {
     if (block.type === 'file') {
       return <img src={block.file.url} alt="фотка" />;
@@ -42,22 +48,7 @@ function ManualPage({ pageId = 'сука' }) {
       return <div>{block.rich_text.map((rt) => makeText(rt))}</div>;
     }
   };
-
-  const getLine = (columnList) => {
-    if (!columnList.children.length) {
-      return;
-    }
-
-    return (
-      <div className="row gx-5">
-        {columnList.children.map((cols, idx) => (
-          <div className="col" key={idx}>
-            {cols.children.map((col) => getColumnItem(col))}
-          </div>
-        ))}
-      </div>
-    );
-  };
+  */
 
   const getImage = (imageObj) => {
     if (imageObj.content.image_data.caption.length === 0) {
@@ -81,10 +72,9 @@ function ManualPage({ pageId = 'сука' }) {
     );
   };
 
-  const getTextContent = (columnItem) =>
-    columnItem.content.text.map((par, i) => (
-      <span key={i}>{par && par.text && par.text.content}</span>
-    ));
+  const getTextContent = (columnItem) => columnItem.content.text.map((par, i) => (
+    <span key={i}>{par && par.text && par.text.content}</span>
+  ));
 
   const getColumnItem = (columnItem) => {
     switch (columnItem.type) {
@@ -111,7 +101,9 @@ function ManualPage({ pageId = 'сука' }) {
         return <p>{getTextContent(columnItem)}</p>;
 
       case 'bookmark':
-        return <a href={`${columnItem.content.url}`}>{columnItem.content.url}</a>;
+        return (
+          <a href={`${columnItem.content.url}`}>{columnItem.content.url}</a>
+        );
 
       case 'bulleted_list':
         return (
@@ -144,6 +136,23 @@ function ManualPage({ pageId = 'сука' }) {
     }
   };
 
+  const getLine = (columnList) => {
+    if (!columnList.children.length) {
+      return;
+    }
+
+    return (
+      <div className="row gx-5">
+        {columnList.children.map((cols, idx) => (
+          <div className="col" key={idx}>
+            {cols.children.map((col) => getColumnItem(col))}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  /*
   const parseParagraph = (paragraph) => (
     <p>
       {paragraph.map((par, i) => (
@@ -156,6 +165,7 @@ function ManualPage({ pageId = 'сука' }) {
       ))}
     </p>
   );
+  */
 
   return (
     <div className={styles.template__column}>
