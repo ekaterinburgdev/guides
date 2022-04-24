@@ -5,13 +5,11 @@ import styles from './TableOfContents.module.css';
 
 function TableOfContents() {
   const [sections, setSections] = useState([]);
-  const [generalProvisions, setGeneralProvisions] = useState([]);
 
   useEffect(() => {
     getAllPage()
       .then((res) => {
-        setGeneralProvisions([res.general_provisions]);
-        setSections(res.sections);
+        setSections(res.options);
       })
       .catch((err) => console.error('Ошибка при получении всех страниц', err));
   }, []);
@@ -36,7 +34,6 @@ function TableOfContents() {
         <a className={styles.tableOfContentsLink} href="https://ekaterinburg.design/">
           Дизайн код Екатеринбурга
         </a>
-        {generalProvisions.map(tableOfContentsLink)}
         {sections.map(tableOfContentsLink)}
       </ul>
     </nav>

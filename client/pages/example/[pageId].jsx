@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import { useRouter } from 'next/router';
+import TableOfContents from '../../components/TableOfContents';
 import ManualPage from './ManualPage';
 
 function GetPage() {
@@ -8,7 +9,12 @@ function GetPage() {
 
   const { pageId } = router.query;
 
-  return <ManualPage pageId={pageId} />;
+  return (
+    <>
+      <TableOfContents />
+      <ManualPage pageId={pageId} />
+    </>
+  );
 }
 
 export default GetPage;
