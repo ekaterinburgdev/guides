@@ -4,7 +4,7 @@
   padding-top: 20px;
   width: 352px;
   height: 100vh;
-  background-color: #222222;
+  background-color: #f2f2f2;
 }
 
 .tableOfContents > ul {
@@ -17,4 +17,9 @@
 .tableOfContents > ul > .tableOfContentsLink {
   box-shadow: none !important;
   padding-left: 15px;
+}
+
+.tableOfContents > ul > .designCodeLink {
+  padding-left: 15px;
+  font-size: 24px;
 }

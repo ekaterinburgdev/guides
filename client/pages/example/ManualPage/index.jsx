@@ -15,7 +15,7 @@ function ManualPage({ pageId = 'сука' }) {
         setList(page[pageId].children);
         setPageName(page[pageId].content.title);
       })
-      .catch((err) => console.error('Ошибка при получениистраницы', err));
+      .catch((err) => console.error('Ошибка при получении страницы', err));
   }, [pageId]);
 
   const wrapper = (obj, func) => {
@@ -81,6 +81,11 @@ function ManualPage({ pageId = 'сука' }) {
     );
   };
 
+  const getTextContent = (columnItem) =>
+    columnItem.content.text.map((par, i) => (
+      <span key={i}>{par && par.text && par.text.content}</span>
+    ));
+
   const getColumnItem = (columnItem) => {
     switch (columnItem.type) {
       case 'column_list':
@@ -90,67 +95,49 @@ function ManualPage({ pageId = 'сука' }) {
         return getImage(columnItem);
 
       case 'heading_1':
-        return (
-          <h1>
-            {columnItem.content.text.map((par, i) => (
-              <span key={i}>{par && par.text && par.text.content}</span>
-            ))}
-          </h1>
-        );
+        return <h1>{getTextContent(columnItem)}</h1>;
 
       case 'heading_2':
         return (
-          <h2 className={styles.heading2}>
-            {columnItem.content.text.map((par, i) => (
-              <span key={i}>{par && par.text && par.text.content}</span>
-            ))}
-          </h2>
+          <h2 className={styles.heading2}>{getTextContent(columnItem)}</h2>
         );
 
       case 'heading_3':
         return (
-          <h3 className={styles.heading3}>
-            {columnItem.content.text.map((par, i) => (
-              <span key={i}>{par && par.text && par.text.content}</span>
-            ))}
-          </h3>
+          <h3 className={styles.heading3}>{getTextContent(columnItem)}</h3>
         );
 
       case 'paragraph':
-        return (
-          <p>
-            {columnItem.content.text.map((par, i) => (
-              <span key={i}>{par && par.text && par.text.content}</span>
-            ))}
-          </p>
-        );
+        return <p>{getTextContent(columnItem)}</p>;
+
+      case 'bookmark':
+        return <a href={`${columnItem.content.url}`}>{columnItem.content.url}</a>;
+
       case 'bulleted_list':
         return (
           <ul>
             {columnItem.children.map((li, i) => (
               <li key={i}>
-                {li.content.text.map((par, i) => (
+                {li.content.text.map((par) => (
                   <span key={i}>{par && par.text && par.text.content}</span>
                 ))}
               </li>
             ))}
           </ul>
         );
+
       case 'numbered_list':
         return (
           <ol>
             {columnItem.children.map((li, i) => (
               <li key={i}>
-                {li.content.text.map((par, i) => (
+                {li.content.text.map((par) => (
                   <span key={i}>{par && par.text && par.text.content}</span>
                 ))}
               </li>
             ))}
           </ol>
         );
-
-        // case 'table':
-        //   return ()
 
       default:
         return <p>Что я такое...</p>;

@@ -22,18 +22,16 @@ function TableOfContents() {
         query: { pageId: page.id },
       }}
     >
-      <a className={styles.tableOfContentsLink}>
-        {page.name_ru}
-      </a>
+      <a className={styles.tableOfContentsLink}>{page.name_ru}</a>
     </Link>
   );
 
   return (
     <nav className={styles.tableOfContents}>
       <ul>
-        <a className={styles.tableOfContentsLink} href="https://ekaterinburg.design/">
-          Дизайн код Екатеринбурга
-        </a>
+        <div className={styles.designCodeLink}>
+          <a href="https://ekaterinburg.design/">Дизайн код Екатеринбурга</a>
+        </div>
         {sections.map(tableOfContentsLink)}
       </ul>
     </nav>

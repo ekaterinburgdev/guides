@@ -3,8 +3,8 @@
 
 html,
 body {
-  background-color: black !important;
-  color: #FFFFFF !important;
+  background-color: rgb(255, 255, 255) !important;
+  color: #000000 !important;
   padding: 0;
   margin: 0;
   font-family: Iset Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
@@ -14,16 +14,16 @@ body {
 
 a {
   display: inline;
-  color: white !important;
+  color: rgb(0, 0, 0) !important;
   text-decoration: none !important;
   border: none !important;
   transition: all;
   transition-duration: .2s;
-  box-shadow: 0 3px 0 0 hsl(0deg 0% 100% / 30%);
+  box-shadow: 0 3px 0 0 #c2c2c2;
 }
 
 a:hover {
-  color: rgb(153, 153, 153) !important;
+  color: rgb(89, 89, 89) !important;
 }
 
 ul {
@@ -47,7 +47,7 @@ input {
   width: auto;
   height: auto;
   background: black;
-  color: #ffffff;
+  color: #000000;
   cursor: pointer;
 }
 
