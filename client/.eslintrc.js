@@ -6,4 +6,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:@next/next/recommended',
   ],
+  rules: {
+    'react/prop-types': 'off',
+  },
 };

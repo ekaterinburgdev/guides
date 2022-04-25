@@ -1,0 +1,5 @@
+.footNav {
+    display: flex;
+    margin-left: 350px;
+    justify-content: space-evenly;
+}
