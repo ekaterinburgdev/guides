@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable react/prop-types */
 /* eslint-disable consistent-return */
 import React from 'react';
@@ -20,13 +21,6 @@ function ManualPage({ pageId = '' }) {
   }, [pageId]);
 
   /*
-  const wrapper = (obj, func) => {
-    const item = obj[Object.keys(obj)[0]];
-    return func(item);
-  };
-  */
-
-  /*
   const makeText = (richTextEl) => (
     <p
       style={{
@@ -38,17 +32,21 @@ function ManualPage({ pageId = '' }) {
   );
   */
 
-  /*
-  const makeContentBlock = (block) => {
-    if (block.type === 'file') {
-      return <img src={block.file.url} alt="фотка" />;
+  const getLine = (columnList) => {
+    if (!columnList.children.length) {
+      return;
     }
 
-    if (block.type === 'paragraph') {
-      return <div>{block.rich_text.map((rt) => makeText(rt))}</div>;
-    }
+    return (
+      <div className="row gx-5">
+        {columnList.children.map((cols) => (
+          <div className="col" key={cols.id}>
+            {cols.children.map((col) => getColumnItem(col))}
+          </div>
+        ))}
+      </div>
+    );
   };
-  */
 
   const getImage = (imageObj) => {
     if (imageObj.content.image_data.caption.length === 0) {
@@ -72,8 +70,19 @@ function ManualPage({ pageId = '' }) {
     );
   };
 
-  const getTextContent = (columnItem) => columnItem.content.text.map((par, i) => (
-    <span key={i}>{par && par.text && par.text.content}</span>
+  const getTextContent = (item) => item.content.text.map((par) => {
+    const textContent = par && par.text && par.text.content;
+    if (!textContent) {
+      return;
+    }
+
+    return (<span key={textContent}>{textContent}</span>);
+  });
+
+  const getListItem = (columnItem) => columnItem.children.map((li) => (
+    <li key={li.id}>
+      {getTextContent(li)}
+    </li>
   ));
 
   const getColumnItem = (columnItem) => {
@@ -108,48 +117,20 @@ function ManualPage({ pageId = '' }) {
       case 'bulleted_list':
         return (
           <ul>
-            {columnItem.children.map((li, i) => (
-              <li key={i}>
-                {li.content.text.map((par) => (
-                  <span key={i}>{par && par.text && par.text.content}</span>
-                ))}
-              </li>
-            ))}
+            {getListItem(columnItem)}
           </ul>
         );
 
       case 'numbered_list':
         return (
           <ol>
-            {columnItem.children.map((li, i) => (
-              <li key={i}>
-                {li.content.text.map((par) => (
-                  <span key={i}>{par && par.text && par.text.content}</span>
-                ))}
-              </li>
-            ))}
+            {getListItem(columnItem)}
           </ol>
         );
 
       default:
         return <p>Что я такое...</p>;
     }
-  };
-
-  const getLine = (columnList) => {
-    if (!columnList.children.length) {
-      return;
-    }
-
-    return (
-      <div className="row gx-5">
-        {columnList.children.map((cols, idx) => (
-          <div className="col" key={idx}>
-            {cols.children.map((col) => getColumnItem(col))}
-          </div>
-        ))}
-      </div>
-    );
   };
 
   /*
