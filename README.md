@@ -1,5 +1,10 @@
 # Руководства
 
+
+## Документация
+
+[Ссылка](https://vladatkishkin.gitbook.io/dokumentaciya-po-rukovodstvu/)
+
 ## Для разработки
 
 - `/client` — Next.js приложение
@@ -14,8 +19,3 @@ npm i
 ```sh
 npm run dev
 ```
-
-
-## Документация к backend-у
-
-[Ссылка](https://vladatkishkin.gitbook.io/dokumentaciya-po-rukovodstvu/)
