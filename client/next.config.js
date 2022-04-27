@@ -3,6 +3,6 @@ module.exports = {
     domains: ['s3.us-west-2.amazonaws.com'],
   },
   api: {
-    HOST: 'http://guides-api-test.ekaterinburg.design:48700',
+    HOST: 'https://guides-api-test.ekaterinburg.design',
   },
 };
