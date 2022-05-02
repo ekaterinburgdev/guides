@@ -62,11 +62,15 @@ function ManualPage({ pageId = '4abb0781-ddb9-41d1-b45f-9bb16483ef1b' }) {
 
   const getTextContent = (item) => item.content.text.map((par) => {
     const textContent = par && par.text && par.text.content;
+    const stylePar = {
+      fontWeight: par?.annotations?.bold ? '500' : '300',
+    };
+
     if (!textContent) {
       return;
     }
 
-    return <span key={textContent}>{textContent}</span>;
+    return <span style={{ ...stylePar }} key={textContent}>{textContent}</span>;
   });
 
   const getListItem = (columnItem) => columnItem.children.map((li) => (
@@ -74,12 +78,6 @@ function ManualPage({ pageId = '4abb0781-ddb9-41d1-b45f-9bb16483ef1b' }) {
   ));
 
   const getColumnItem = (columnItem) => {
-    const p = {
-      fontWeight: columnItem?.content?.text[0]?.annotations?.bold
-        ? '500'
-        : '300',
-    };
-
     switch (columnItem.type) {
       case 'column_list':
         return (
@@ -92,7 +90,11 @@ function ManualPage({ pageId = '4abb0781-ddb9-41d1-b45f-9bb16483ef1b' }) {
         return getImage(columnItem);
 
       case 'heading_1':
-        return <h1>{getTextContent(columnItem)}</h1>;
+        return (
+          <h1 className={styles.heading1}>
+            {getTextContent(columnItem)}
+          </h1>
+        );
 
       case 'heading_2':
         return (
@@ -110,7 +112,7 @@ function ManualPage({ pageId = '4abb0781-ddb9-41d1-b45f-9bb16483ef1b' }) {
 
       case 'paragraph':
         return (
-          <p style={{ ...p }}>
+          <p>
             {getTextContent(columnItem)}
           </p>
         );
@@ -124,22 +126,14 @@ function ManualPage({ pageId = '4abb0781-ddb9-41d1-b45f-9bb16483ef1b' }) {
 
       case 'bulleted_list':
         return (
-          <ul
-            styles={columnItem?.content?.text[0]?.annotations?.bold
-              ? { fontWeight: '400 !important' }
-              : { fontWeight: '300 !important' }}
-          >
+          <ul>
             {getListItem(columnItem)}
           </ul>
         );
 
       case 'numbered_list':
         return (
-          <ol
-            styles={columnItem?.content?.text[0]?.annotations?.bold
-              ? { fontWeight: '400 !important' }
-              : { fontWeight: '300 !important' }}
-          >
+          <ol>
             {getListItem(columnItem)}
           </ol>
         );

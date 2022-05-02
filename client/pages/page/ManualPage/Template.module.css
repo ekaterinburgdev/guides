@@ -14,10 +14,16 @@
   margin-bottom: 64px;
 }
 
-.heading2 {
-  margin-bottom: 32px;
+.heading1 > span {
+  font-weight: 700 !important;
 }
 
-.heading3 {
+.heading2 > span {
+  margin-bottom: 32px;
+  font-weight: 700 !important;
+}
+
+.heading3 > span {
   margin-bottom: 16px;
+  font-weight: 700 !important;
 }
