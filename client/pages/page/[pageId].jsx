@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -7,7 +6,7 @@ import TableOfContents from '../../components/TableOfContents';
 import ManualPage from './ManualPage';
 import { getAllPage } from '../../api/apiPage';
 
-import styles from './example.module.css';
+import styles from './page.module.css';
 
 function GetPage() {
   const router = useRouter();
@@ -17,20 +16,16 @@ function GetPage() {
   const [nexPage, setNextPage] = useState();
 
   useEffect(() => {
-    if (!pageId) {
-      return;
-    }
-
     getAllPage()
       .then((res) => {
         const pages = res.options;
-        console.log(pages, 'страницы');
         const pageIndex = findIndex(pages, (page) => page.id === pageId);
-        console.log('индекс', pageIndex);
         setPrevPage(pages[pageIndex - 1]);
         setNextPage(pages[pageIndex + 1]);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        throw new Error(err);
+      });
   }, [pageId]);
 
   return (
@@ -41,11 +36,11 @@ function GetPage() {
         {prevPage && prevPage.name_ru && (
           <Link
             href={{
-              pathname: '/example/[pageId]',
+              pathname: '/page/[pageId]',
               query: { pageId: prevPage.id },
             }}
           >
-            <a href={prevPage.id}>
+            <a href={prevPage?.id}>
               ←
               {' '}
               {prevPage && prevPage.name_ru}
@@ -55,11 +50,11 @@ function GetPage() {
         {nexPage && nexPage.name_ru && (
           <Link
             href={{
-              pathname: '/example/[pageId]',
+              pathname: '/page/[pageId]',
               query: { pageId: nexPage.id },
             }}
           >
-            <a href={prevPage.id}>
+            <a href={prevPage?.id}>
               {nexPage && nexPage.name_ru}
               {' '}
               →

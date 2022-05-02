@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Iset Sans";
-  font-style: normal;
+  font-style: regular;
   font-weight: 400;
   src: url("../public/fonts/IsetSans-Regular.woff2") format("woff2");
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Iset Sans";
-  font-style: normal;
+  font-style: medium;
   font-weight: 500;
   src: url("../public/fonts/IsetSans-Medium.woff2") format("woff2");
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: "Iset Sans";
-  font-style: normal;
+  font-style: semibold;
   font-weight: 700;
   src: url("../public/fonts/IsetSans-SemiBold.woff2") format("woff2");
   font-display: swap;

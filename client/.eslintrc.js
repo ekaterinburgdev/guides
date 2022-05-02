@@ -8,5 +8,9 @@ module.exports = {
   ],
   rules: {
     'react/prop-types': 'off',
+    'eslint/consistent-return': 'off',
+  },
+  parserOptions: {
+    ecmaVersion: 2020,
   },
 };

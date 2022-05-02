@@ -11,14 +11,16 @@ function TableOfContents() {
       .then((res) => {
         setSections(res.options);
       })
-      .catch((err) => console.error('Ошибка при получении всех страниц', err));
+      .catch((err) => {
+        throw new Error('Ошибка при получении всех страниц', err);
+      });
   }, []);
 
   const tableOfContentsLink = (page) => (
     <Link
       key={page.id}
       href={{
-        pathname: '/example/[pageId]',
+        pathname: '/page/[pageId]',
         query: { pageId: page.id },
       }}
     >

@@ -7,7 +7,7 @@ import styles from './Template.module.css';
 import { getPage } from '../../../api/apiPage';
 import { api } from '../../../next.config';
 
-function ManualPage({ pageId = '' }) {
+function ManualPage({ pageId = '4abb0781-ddb9-41d1-b45f-9bb16483ef1b' }) {
   const [list, setList] = React.useState([]);
   const [pageName, setPageName] = React.useState('');
 
@@ -17,20 +17,10 @@ function ManualPage({ pageId = '' }) {
         setList(page[pageId].children);
         setPageName(page[pageId].content.title);
       })
-      .catch((err) => console.error('Ошибка при получении страницы', err));
+      .catch((err) => {
+        throw new Error('Page is not exist', err);
+      });
   }, [pageId]);
-
-  /*
-  const makeText = (richTextEl) => (
-    <p
-      style={{
-        fontWeight: richTextEl.annotations.bold ? 'bold' : 'normal',
-      }}
-    >
-      {richTextEl.plain_text}
-    </p>
-  );
-  */
 
   const getLine = (columnList) => {
     if (!columnList.children.length) {
@@ -76,19 +66,27 @@ function ManualPage({ pageId = '' }) {
       return;
     }
 
-    return (<span key={textContent}>{textContent}</span>);
+    return <span key={textContent}>{textContent}</span>;
   });
 
   const getListItem = (columnItem) => columnItem.children.map((li) => (
-    <li key={li.id}>
-      {getTextContent(li)}
-    </li>
+    <li key={li.id}>{getTextContent(li)}</li>
   ));
 
   const getColumnItem = (columnItem) => {
+    const p = {
+      fontWeight: columnItem?.content?.text[0]?.annotations?.bold
+        ? '500'
+        : '300',
+    };
+
     switch (columnItem.type) {
       case 'column_list':
-        return <div className={styles.columnList}>{getLine(columnItem)}</div>;
+        return (
+          <div className={styles.columnList}>
+            {getLine(columnItem)}
+          </div>
+        );
 
       case 'image':
         return getImage(columnItem);
@@ -98,32 +96,50 @@ function ManualPage({ pageId = '' }) {
 
       case 'heading_2':
         return (
-          <h2 className={styles.heading2}>{getTextContent(columnItem)}</h2>
+          <h2 className={styles.heading2}>
+            {getTextContent(columnItem)}
+          </h2>
         );
 
       case 'heading_3':
         return (
-          <h3 className={styles.heading3}>{getTextContent(columnItem)}</h3>
+          <h3 className={styles.heading3}>
+            {getTextContent(columnItem)}
+          </h3>
         );
 
       case 'paragraph':
-        return <p>{getTextContent(columnItem)}</p>;
+        return (
+          <p style={{ ...p }}>
+            {getTextContent(columnItem)}
+          </p>
+        );
 
       case 'bookmark':
         return (
-          <a href={`${columnItem.content.url}`}>{columnItem.content.url}</a>
+          <a href={`${columnItem.content.url}`}>
+            {columnItem.content.url}
+          </a>
         );
 
       case 'bulleted_list':
         return (
-          <ul>
+          <ul
+            styles={columnItem?.content?.text[0]?.annotations?.bold
+              ? { fontWeight: '400 !important' }
+              : { fontWeight: '300 !important' }}
+          >
             {getListItem(columnItem)}
           </ul>
         );
 
       case 'numbered_list':
         return (
-          <ol>
+          <ol
+            styles={columnItem?.content?.text[0]?.annotations?.bold
+              ? { fontWeight: '400 !important' }
+              : { fontWeight: '300 !important' }}
+          >
             {getListItem(columnItem)}
           </ol>
         );
@@ -132,21 +148,6 @@ function ManualPage({ pageId = '' }) {
         return <p>Что я такое...</p>;
     }
   };
-
-  /*
-  const parseParagraph = (paragraph) => (
-    <p>
-      {paragraph.map((par, i) => (
-        <span
-          key={i}
-          style={{
-            fontWeight: par.annotations.bold ? 'bold' : 'normal',
-          }}
-        />
-      ))}
-    </p>
-  );
-  */
 
   return (
     <div className={styles.template__column}>

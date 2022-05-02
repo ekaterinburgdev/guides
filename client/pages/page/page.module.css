@@ -1,0 +1,18 @@
+.footNav {
+    display: flex;
+    margin-left: 350px;
+    justify-content: space-evenly;
+}
+
+.footNav > a {
+    box-shadow: none !important;
+    color: #343434 !important;
+    margin: 20px;
+    padding: 8px;
+    transition: .2s ease-in-out;
+}
+
+.footNav > a:hover {
+    background-color: #dadada;
+    border-radius: 5px;
+}
