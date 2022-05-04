@@ -70,73 +70,43 @@ function ManualPage({ pageId = '4abb0781-ddb9-41d1-b45f-9bb16483ef1b' }) {
       return;
     }
 
-    return <span style={{ ...stylePar }} key={textContent}>{textContent}</span>;
+    return (
+      <span style={{ ...stylePar }} key={textContent}>
+        {textContent}
+      </span>
+    );
   });
 
-  const getListItem = (columnItem) => columnItem.children.map((li) => (
-    <li key={li.id}>{getTextContent(li)}</li>
-  ));
+  const getListItem = (columnItem) => columnItem.children.map((li) => <li key={li.id}>{getTextContent(li)}</li>);
 
   const getColumnItem = (columnItem) => {
     switch (columnItem.type) {
       case 'column_list':
-        return (
-          <div className={styles.columnList}>
-            {getLine(columnItem)}
-          </div>
-        );
+        return <div className={styles.columnList}>{getLine(columnItem)}</div>;
 
       case 'image':
         return getImage(columnItem);
 
       case 'heading_1':
-        return (
-          <h1 className={styles.heading1}>
-            {getTextContent(columnItem)}
-          </h1>
-        );
+        return <h1 className={styles.heading1}>{getTextContent(columnItem)}</h1>;
 
       case 'heading_2':
-        return (
-          <h2 className={styles.heading2}>
-            {getTextContent(columnItem)}
-          </h2>
-        );
+        return <h2 className={styles.heading2}>{getTextContent(columnItem)}</h2>;
 
       case 'heading_3':
-        return (
-          <h3 className={styles.heading3}>
-            {getTextContent(columnItem)}
-          </h3>
-        );
+        return <h3 className={styles.heading3}>{getTextContent(columnItem)}</h3>;
 
       case 'paragraph':
-        return (
-          <p>
-            {getTextContent(columnItem)}
-          </p>
-        );
+        return <p>{getTextContent(columnItem)}</p>;
 
       case 'bookmark':
-        return (
-          <a href={`${columnItem.content.url}`}>
-            {columnItem.content.url}
-          </a>
-        );
+        return <a href={`${columnItem.content.url}`}>{columnItem.content.url}</a>;
 
       case 'bulleted_list':
-        return (
-          <ul>
-            {getListItem(columnItem)}
-          </ul>
-        );
+        return <ul>{getListItem(columnItem)}</ul>;
 
       case 'numbered_list':
-        return (
-          <ol>
-            {getListItem(columnItem)}
-          </ol>
-        );
+        return <ol>{getListItem(columnItem)}</ol>;
 
       default:
         return <p>Что я такое...</p>;
