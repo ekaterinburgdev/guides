@@ -12,6 +12,8 @@ function GetPage() {
   const router = useRouter();
   const { pageId } = router.query;
 
+  console.log('пагеИд', pageId);
+
   const [prevPage, setPrevPage] = useState();
   const [nexPage, setNextPage] = useState();
 
@@ -31,7 +33,7 @@ function GetPage() {
   return (
     <>
       <TableOfContents />
-      <ManualPage pageId={pageId} />
+      <ManualPage pageId={pageId ? pageId[pageId.length - 1] : undefined} />
       <nav className={styles.footNav}>
         {prevPage && prevPage.name_ru && (
           <Link

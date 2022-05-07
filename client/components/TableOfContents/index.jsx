@@ -16,12 +16,14 @@ function TableOfContents() {
       });
   }, []);
 
+  const testArr = ['lol', 'kek', 'design', 'parent', 'manual'];
+
   const tableOfContentsLink = (page) => (
     <Link
       key={page.id}
       href={{
-        pathname: '/page/[pageId]',
-        query: { pageId: page.id },
+        pathname: '/page/[[...pageId]]',
+        query: { pageId: [...testArr, page.id] },
       }}
     >
       <a className={styles.tableOfContentsLink} href={page.id}>
@@ -34,7 +36,7 @@ function TableOfContents() {
     <nav className={styles.tableOfContents}>
       <ul>
         <div className={styles.designCodeLink}>
-          <a href="https://ekaterinburg.design/">Дизайн код Екатеринбурга</a>
+          <a href="https://ekaterinburg.design/">Элементы благоустройста</a>
         </div>
         {sections.map(tableOfContentsLink)}
       </ul>
