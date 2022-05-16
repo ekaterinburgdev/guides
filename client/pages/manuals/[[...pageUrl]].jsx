@@ -2,39 +2,41 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import findIndex from 'lodash/findIndex';
-import TableOfContents from '../../components/TableOfContents';
-import ManualPage from './ManualPage';
-import { getAllPage } from '../../api/apiPage';
+// import TableOfContents from '../components/TableOfContents';
+import ManualPage from '../../components/ManualPage';
+import { getPageByUrl } from '../../api/apiPage';
 
 import styles from './page.module.css';
 
 function GetPage() {
   const router = useRouter();
-  const { pageId } = router.query;
+  const { pageUrl } = router.query;
 
-  console.log('пагеИд', pageId);
+  // const [prevPage, setPrevPage] = useState();
+  // const [nexPage, setNextPage] = useState();
 
-  const [prevPage, setPrevPage] = useState();
-  const [nexPage, setNextPage] = useState();
+  // useEffect(() => {
+  //   if (!pageUrl) {
+  //     return;
+  //   }
 
-  useEffect(() => {
-    getAllPage()
-      .then((res) => {
-        const pages = res.options;
-        const pageIndex = findIndex(pages, (page) => page.id === pageId);
-        setPrevPage(pages[pageIndex - 1]);
-        setNextPage(pages[pageIndex + 1]);
-      })
-      .catch((err) => {
-        throw new Error(err);
-      });
-  }, [pageId]);
+  //   getPageByUrl(pageUrl)
+  //     .then((res) => {
+  //       const pages = res.options;
+  //       const pageIndex = findIndex(pages, (page) => page.id === pageUrl);
+  //       setPrevPage(pages[pageIndex - 1]);
+  //       setNextPage(pages[pageIndex + 1]);
+  //     })
+  //     .catch((err) => {
+  //       throw new Error(err);
+  //     });
+  // }, [pageUrl]);
 
   return (
     <>
-      <TableOfContents />
-      <ManualPage pageId={pageId ? pageId[pageId.length - 1] : undefined} />
-      <nav className={styles.footNav}>
+      {/* <TableOfContents /> */}
+      <ManualPage pageUrl={pageUrl ? pageUrl[pageUrl.length - 1] : undefined} />
+      {/* <nav className={styles.footNav}>
         {prevPage && prevPage.name_ru && (
           <Link
             href={{
@@ -63,7 +65,7 @@ function GetPage() {
             </a>
           </Link>
         )}
-      </nav>
+      </nav> */}
     </>
   );
 }

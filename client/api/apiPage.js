@@ -12,3 +12,16 @@ export async function getAllPage() {
   const pages = resp.body;
   return pages;
 }
+
+export async function getTree() {
+  const resp = await superagent.get(`${api.HOST}/api/tree`);
+  const tree = resp.body;
+  return tree;
+}
+
+export async function getPageByUrl(url) {
+  const resp = await superagent.get(`${api.HOST}/api/content/${url}`);
+  const page = resp.body;
+  console.log('страница', page);
+  return page;
+}

@@ -4,23 +4,31 @@
 import React from 'react';
 import map from 'lodash/map';
 import styles from './Template.module.css';
-import { getPage } from '../../../api/apiPage';
-import { api } from '../../../next.config';
+import { getPageByUrl } from '../../api/apiPage';
+import { api } from '../../next.config';
 
-function ManualPage({ pageId = '4abb0781-ddb9-41d1-b45f-9bb16483ef1b' }) {
+function ManualPage({ pageUrl }) {
   const [list, setList] = React.useState([]);
   const [pageName, setPageName] = React.useState('');
 
+  console.log('pageUrl', pageUrl);
+
   React.useEffect(() => {
-    getPage(pageId)
+    console.log('pageUrl', pageUrl);
+
+    if (!pageUrl) {
+      return;
+    }
+
+    getPageByUrl(pageUrl)
       .then((page) => {
-        setList(page[pageId].children);
-        setPageName(page[pageId].content.title);
+        setList(page.children);
+        setPageName(page.content.title);
       })
       .catch((err) => {
         throw new Error('Page is not exist', err);
       });
-  }, [pageId]);
+  }, [pageUrl]);
 
   const getLine = (columnList) => {
     if (!columnList.children.length) {

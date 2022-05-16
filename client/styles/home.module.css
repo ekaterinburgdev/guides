@@ -1,0 +1,26 @@
+.manualItem {
+    width: 281px;
+    height: 194px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.manualItem img {
+    width: 281px;
+    height: 155px;
+    object-fit: cover;
+}
+
+.manualTitle {
+    font-size: 16px;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.manualsSection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
