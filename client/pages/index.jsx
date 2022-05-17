@@ -25,7 +25,7 @@ export default function Home() {
 
     return (
       <Link href={{
-        pathname: '/manuals/[pageUrl]',
+        pathname: '/[pageUrl]',
         query: { pageUrl },
       }}
       >

@@ -11,11 +11,7 @@ function ManualPage({ pageUrl }) {
   const [list, setList] = React.useState([]);
   const [pageName, setPageName] = React.useState('');
 
-  console.log('pageUrl', pageUrl);
-
   React.useEffect(() => {
-    console.log('pageUrl', pageUrl);
-
     if (!pageUrl) {
       return;
     }

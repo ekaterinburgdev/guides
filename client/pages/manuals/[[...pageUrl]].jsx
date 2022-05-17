@@ -1,10 +1,11 @@
+/* eslint-disable no-restricted-syntax */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import findIndex from 'lodash/findIndex';
-// import TableOfContents from '../components/TableOfContents';
+import TableOfContents from '../../components/TableOfContents';
 import ManualPage from '../../components/ManualPage';
-import { getPageByUrl } from '../../api/apiPage';
+import { getTree } from '../../api/apiPage';
 
 import styles from './page.module.css';
 
@@ -14,6 +15,46 @@ function GetPage() {
 
   // const [prevPage, setPrevPage] = useState();
   // const [nexPage, setNextPage] = useState();
+  const [children, setChildren] = useState();
+  const [tabelOfContentArr, setTabelOfContentArr] = useState([]);
+
+  useEffect(() => {
+    getTree().then((tree) => {
+      setChildren(tree?.children);
+    }).catch((err) => {
+      throw new Error(err);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!children || !pageUrl) {
+      return;
+    }
+
+    let currentChildren = children;
+    let tabelOfContentArrForSet = [];
+    let currentPageChildren;
+
+    for (const currentPageUrl of pageUrl) {
+      if (currentPageChildren) {
+        currentPageChildren = currentPageChildren.find((obj) => obj.url === currentPageUrl)?.children || [];
+      }
+
+      currentChildren = currentChildren.find((obj) => obj?.properties?.pageUrl?.url === currentPageUrl)?.children;
+      const b = currentChildren.map((obj) => ({ url: obj?.properties?.pageUrl?.url, title: obj?.properties?.Name?.title[0]?.text?.content, children: [] }));
+
+      if (!currentPageChildren) {
+        tabelOfContentArrForSet = b;
+        currentPageChildren = tabelOfContentArrForSet;
+      } else {
+        currentPageChildren = b;
+      }
+    }
+
+    console.log('содержание', tabelOfContentArrForSet);
+
+    setTabelOfContentArr(tabelOfContentArrForSet);
+  }, [children, pageUrl]);
 
   // useEffect(() => {
   //   if (!pageUrl) {
@@ -34,8 +75,8 @@ function GetPage() {
 
   return (
     <>
-      {/* <TableOfContents /> */}
-      <ManualPage pageUrl={pageUrl ? pageUrl[pageUrl.length - 1] : undefined} />
+      <TableOfContents tabelOfContentArr={tabelOfContentArr} currentPageUrl={pageUrl} />
+      <ManualPage pageUrl={pageUrl?.length ? pageUrl.join('/') : undefined} />
       {/* <nav className={styles.footNav}>
         {prevPage && prevPage.name_ru && (
           <Link
