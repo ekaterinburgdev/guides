@@ -25,8 +25,8 @@ export default function Home() {
 
     return (
       <Link href={{
-        pathname: '/[pageUrl]',
-        query: { pageUrl },
+        pathname: '/[[...pageUrl]]',
+        query: { pageUrl: [pageUrl] },
       }}
       >
         <div className={styles.manualItem}>

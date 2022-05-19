@@ -12,12 +12,12 @@ module.exports = {
     'max-len': ['warn', { code: 120 }],
 
     // TODO Вернуть правила
-    "no-unused-vars": "off",
-    "react/jsx-wrap-multilines": "off",
-    "react/jsx-closing-tag-location": "off",
-    "block-spacing": "off",
-    "brace-style": "off",
-    "semi": "off"
+    'no-unused-vars': 'off',
+    'react/jsx-wrap-multilines': 'off',
+    'react/jsx-closing-tag-location': 'off',
+    'block-spacing': 'off',
+    'brace-style': 'off',
+    semi: 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,
