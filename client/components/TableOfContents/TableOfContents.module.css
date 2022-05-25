@@ -7,6 +7,7 @@
   width: 352px;
   height: calc(100vh - 30px);
   background-color: #1231;
+  overflow: auto;
 }
 
 .tableOfContents > ul {

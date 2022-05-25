@@ -18,9 +18,6 @@ function TableOfContents({ tabelOfContentArr, currentPageUrl = [] }) {
   return (
     <nav className={styles.tableOfContents}>
       <ul>
-        <div className={styles.designCodeLink}>
-          <a href="https://ekaterinburg.design/">Элементы благоустройста</a>
-        </div>
         {currentPageUrl && tabelOfContentArr.map((obj) => {
           console.log('срань', obj);
           return tableOfContentsLink(obj)})}

@@ -11,10 +11,14 @@ export default function Home() {
   const [title, setTitle] = useState('');
 
   useEffect(() => {
-    getTree().then((tree) => {
-      setManuals(tree.children);
-      setTitle(tree?.properties?.child_page?.title);
-    }).catch((err) => { throw new Error(err); });
+    getTree()
+      .then((tree) => {
+        setManuals(tree.children);
+        setTitle(tree?.properties?.child_page?.title);
+      })
+      .catch((err) => {
+        throw new Error(err);
+      });
   }, []);
 
   const renderManualItem = (manual) => {
@@ -24,17 +28,14 @@ export default function Home() {
     const pageUrl = manual?.properties?.pageUrl?.url;
 
     return (
-      <Link href={{
-        pathname: '/[[...pageUrl]]',
-        query: { pageUrl: [pageUrl] },
-      }}
+      <Link
+        href={{
+          pathname: '/[[...pageUrl]]',
+          query: { pageUrl: [pageUrl] },
+        }}
       >
         <div className={styles.manualItem}>
-          <img
-            style={{ width: '100%' }}
-            src={`${api.HOST}/static/${imageUrl}`}
-            alt={titleText}
-          />
+          <img style={{ width: '100%' }} src={`${api.HOST}/static/${imageUrl}`} alt={titleText} />
           <h4 className={styles.manualTitle}>{titleText}</h4>
         </div>
       </Link>
@@ -49,8 +50,10 @@ export default function Home() {
       </Head>
 
       <main style={{ padding: '30px' }}>
-        <h1>{title}</h1>
-        <section className={styles.manualsSection}>{ manuals.map((manual) => renderManualItem(manual)) }</section>
+        <h1 style={{ marginTop: '10px', marginBottom: '30px' }}>{title}</h1>
+        <section className={styles.manualsSection}>
+          {manuals.map((manual) => renderManualItem(manual))}
+        </section>
         {/* <TableOfContents /> */}
       </main>
     </div>
