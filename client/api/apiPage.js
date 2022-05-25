@@ -2,7 +2,7 @@ import superagent from 'superagent';
 import { api } from '../next.config';
 
 export async function getPage(pageId) {
-  const resp = await superagent.get(`${api.HOST}/api/content`).query({ id: pageId });
+  const resp = await superagent.get(`${api.HOST}/api/content/root`).query({ id: pageId });
   const page = resp.body;
   return page;
 }
@@ -20,7 +20,7 @@ export async function getTree() {
 }
 
 export async function getPageByUrl(url) {
-  const resp = await superagent.get(`${api.HOST}/api/content/${url}`);
+  const resp = await superagent.get(`${api.HOST}/api/content/root/${url}`);
   const page = resp.body;
   console.log('страница', page);
   return page;
