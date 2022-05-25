@@ -1,11 +1,13 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-restricted-syntax */
+/* eslint-disable-next-line consistent-return */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import findIndex from 'lodash/findIndex';
 import TableOfContents from '../../components/TableOfContents';
 import ManualPage from '../../components/ManualPage';
-import { getTree } from '../../api/apiPage';
+import { getTree, getPageByUrl } from '../../api/apiPage';
 
 import styles from './page.module.css';
 
@@ -16,14 +18,35 @@ function GetPage() {
   // const [prevPage, setPrevPage] = useState();
   // const [nexPage, setNextPage] = useState();
   const [children, setChildren] = useState();
-  const [tabelOfContentArr, setTabelOfContentArr] = useState([]);
+  const [tableOfContentArr, setTableOfContentArr] = useState([]);
+  const [anchorLinks, setAnchorLinks] = useState([]);
+
+  const [pageList, setPageList] = React.useState([]);
+  const [pageName, setPageName] = React.useState('');
+
+  React.useEffect(() => {
+    if (!pageUrl) {
+      return;
+    }
+
+    getPageByUrl(pageUrl.join('/'))
+      .then((page) => {
+        setPageList(page.children);
+        setPageName(page.content.title);
+      })
+      .catch((err) => {
+        throw new Error('Page is not exist', err);
+      });
+  }, [pageUrl]);
 
   useEffect(() => {
-    getTree().then((tree) => {
-      setChildren(tree?.children);
-    }).catch((err) => {
-      throw new Error(err);
-    });
+    getTree()
+      .then((tree) => {
+        setChildren(tree?.children);
+      })
+      .catch((err) => {
+        throw new Error(err);
+      });
   }, []);
 
   useEffect(() => {
@@ -32,7 +55,7 @@ function GetPage() {
     }
 
     let currentChildren = children;
-    let tabelOfContentArrForSet = [];
+    let tableOfContentArrForSet = [];
     let currentPageChildren;
 
     for (const currentPageUrl of pageUrl) {
@@ -40,21 +63,79 @@ function GetPage() {
         currentPageChildren = currentPageChildren.find((obj) => obj.url === currentPageUrl)?.children || [];
       }
 
-      currentChildren = currentChildren.find((obj) => obj?.properties?.pageUrl?.url === currentPageUrl)?.children;
-      const b = currentChildren.map((obj) => ({ url: obj?.properties?.pageUrl?.url, title: obj?.properties?.Name?.title[0]?.text?.content, children: [] }));
+      currentChildren = currentChildren.find(
+        (obj) => obj?.properties?.pageUrl?.url === currentPageUrl,
+      )?.children;
+      const b = currentChildren.map((obj) => ({
+        url: obj?.properties?.pageUrl?.url,
+        title: obj?.properties?.Name?.title[0]?.text?.content,
+        children: [],
+      }));
 
       if (!currentPageChildren) {
-        tabelOfContentArrForSet = b;
-        currentPageChildren = tabelOfContentArrForSet;
+        tableOfContentArrForSet = b;
+        currentPageChildren = tableOfContentArrForSet;
       } else {
         currentPageChildren = b;
       }
     }
-
-    console.log('содержание', tabelOfContentArrForSet);
-
-    setTabelOfContentArr(tabelOfContentArrForSet);
+    setTableOfContentArr(tableOfContentArrForSet);
   }, [children, pageUrl]);
+
+  useEffect(() => {
+    if (pageList.length === 0) {
+      return
+    }
+
+    const anchorLinksForSet = pageList.map(getColumnItem);
+
+    console.log('якорные ссылки вухахахах', anchorLinksForSet);
+  }, [pageList])
+
+  const getLine = (columnList) => {
+    if (!columnList.children.length) {
+      return;
+    }
+
+    return columnList.children.map((cols) => (
+      cols.children.map((col) => getColumnItem(col))))
+  };
+
+  const getTextContent = (item) => item.content.text.map((par) => {
+    const textContent = par && par.text && par.text.content;
+    const stylePar = {
+      fontWeight: par?.annotations?.bold ? '500' : '300',
+    };
+    if (!textContent) {
+      return;
+    }
+
+    return textContent;
+    // return (
+    //   <span style={{ ...stylePar }} key={textContent}>
+    //     {textContent}
+    //   </span>
+    // );
+  });
+
+  const getColumnItem = (columnItem) => {
+    switch (columnItem.type) {
+      case 'column_list':
+        return <div className={styles.columnList}>{getLine(columnItem)}</div>;
+
+      case 'heading_1':
+        return { id: columnItem.id, title: getTextContent(columnItem) }
+
+      case 'heading_2':
+        return { id: columnItem.id, title: getTextContent(columnItem) }
+
+      case 'heading_3':
+        return { id: columnItem.id, title: getTextContent(columnItem) }
+
+      default:
+        return null
+    }
+  };
 
   // useEffect(() => {
   //   if (!pageUrl) {
@@ -75,9 +156,9 @@ function GetPage() {
 
   return (
     <>
-      <TableOfContents tabelOfContentArr={tabelOfContentArr} currentPageUrl={pageUrl} />
-      <ManualPage pageUrl={pageUrl?.length ? pageUrl.join('/') : undefined} />
-      {/* <nav className={styles.footNav}>
+      <TableOfContents tableOfContentArr={tableOfContentArr} currentPageUrl={pageUrl} anchorLinks={anchorLinks} />
+      <ManualPage pageList={pageList} pageName={pageName} />
+      {/* <nav className={styles.footNav}></nav>
         {prevPage && prevPage.name_ru && (
           <Link
             href={{

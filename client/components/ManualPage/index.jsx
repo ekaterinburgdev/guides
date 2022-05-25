@@ -7,25 +7,7 @@ import styles from './Template.module.css';
 import { getPageByUrl } from '../../api/apiPage';
 import { api } from '../../next.config';
 
-function ManualPage({ pageUrl }) {
-  const [list, setList] = React.useState([]);
-  const [pageName, setPageName] = React.useState('');
-
-  React.useEffect(() => {
-    if (!pageUrl) {
-      return;
-    }
-
-    getPageByUrl(pageUrl)
-      .then((page) => {
-        setList(page.children);
-        setPageName(page.content.title);
-      })
-      .catch((err) => {
-        throw new Error('Page is not exist', err);
-      });
-  }, [pageUrl]);
-
+function ManualPage({ pageList, pageName }) {
   const getLine = (columnList) => {
     if (!columnList.children.length) {
       return;
@@ -92,13 +74,15 @@ function ManualPage({ pageUrl }) {
         return getImage(columnItem);
 
       case 'heading_1':
-        return <h1 className={styles.heading1}>{getTextContent(columnItem)}</h1>;
+        return (
+          <h1 id={columnItem.id} className={styles.heading1}>{getTextContent(columnItem)}</h1>
+        );
 
       case 'heading_2':
-        return <h2 className={styles.heading2}>{getTextContent(columnItem)}</h2>;
+        return <h2 id={columnItem.id} className={styles.heading2}>{getTextContent(columnItem)}</h2>;
 
       case 'heading_3':
-        return <h3 className={styles.heading3}>{getTextContent(columnItem)}</h3>;
+        return <h3 id={columnItem.id} className={styles.heading3}>{getTextContent(columnItem)}</h3>;
 
       case 'paragraph':
         return <p>{getTextContent(columnItem)}</p>;
@@ -120,7 +104,7 @@ function ManualPage({ pageUrl }) {
   return (
     <div className={styles.template__column}>
       <h1 className={styles.pageName}>{pageName}</h1>
-      {map(list, (cl) => getColumnItem(cl))}
+      {map(pageList, (cl) => getColumnItem(cl))}
     </div>
   );
 }

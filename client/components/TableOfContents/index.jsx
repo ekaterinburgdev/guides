@@ -3,7 +3,15 @@ import Link from 'next/link';
 import { getAllPage } from '../../api/apiPage';
 import styles from './TableOfContents.module.css';
 
-function TableOfContents({ tabelOfContentArr, currentPageUrl = [] }) {
+function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks }) {
+  // useEffect(() => {
+  //   let isMounted = true;
+  //   console.log('якорные ссылки', anchorLinks);
+  //   return () => {
+  //     isMounted = false;
+  //   };
+  // }, [anchorLinks])
+
   const tableOfContentsLink = ({ url, title, children }) => <Link href={{
     pathname: '/[[...pageUrl]]',
     query: { pageUrl: [currentPageUrl[0], url] },
@@ -18,7 +26,7 @@ function TableOfContents({ tabelOfContentArr, currentPageUrl = [] }) {
   return (
     <nav className={styles.tableOfContents}>
       <ul>
-        {currentPageUrl && tabelOfContentArr.map((obj) => {
+        {currentPageUrl && tableOfContentArr.map((obj) => {
           console.log('срань', obj);
           return tableOfContentsLink(obj)})}
       </ul>

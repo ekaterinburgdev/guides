@@ -4,10 +4,22 @@
   display: flex;
   position: fixed;
   padding: 20px 30px;
-  width: 352px;
+  width: 20%;
   height: calc(100vh - 30px);
   background-color: #1231;
   overflow: auto;
+  scrollbar-width: none;
+}
+
+@media screen and (max-width: 768px) {
+  .tableOfContents {
+    text-align: left;
+    padding: 8px;
+  }
+}
+
+.tableOfContents::-webkit-scrollbar {
+    display: none;
 }
 
 .tableOfContents > ul {
