@@ -3,36 +3,32 @@ import Link from 'next/link';
 import { getAllPage } from '../../api/apiPage';
 import styles from './TableOfContents.module.css';
 
-function TableOfContents() {
-  const [sections, setSections] = useState([]);
+function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks }) {
+  // useEffect(() => {
+  //   let isMounted = true;
+  //   console.log('якорные ссылки', anchorLinks);
+  //   return () => {
+  //     isMounted = false;
+  //   };
+  // }, [anchorLinks])
 
-  useEffect(() => {
-    getAllPage()
-      .then((res) => {
-        setSections(res.options);
-      })
-      .catch((err) => console.error('Ошибка при получении всех страниц', err));
-  }, []);
-
-  const tableOfContentsLink = (page) => (
-    <Link
-      key={page.id}
-      href={{
-        pathname: '/example/[pageId]',
-        query: { pageId: page.id },
-      }}
-    >
-      <a className={styles.tableOfContentsLink} href={page.id}>{page.name_ru}</a>
-    </Link>
-  );
+  const tableOfContentsLink = ({ url, title, children }) => <Link href={{
+    pathname: '/[[...pageUrl]]',
+    query: { pageUrl: [currentPageUrl[0], url] },
+    as: `${currentPageUrl.join('/')}/${url}`,
+  }}
+  >
+    <a className={styles.tableOfContentsLink} href={url}>
+      {title}
+    </a>
+  </Link>
 
   return (
     <nav className={styles.tableOfContents}>
       <ul>
-        <div className={styles.designCodeLink}>
-          <a href="https://ekaterinburg.design/">Дизайн код Екатеринбурга</a>
-        </div>
-        {sections.map(tableOfContentsLink)}
+        {currentPageUrl && tableOfContentArr.map((obj) => {
+          console.log('срань', obj);
+          return tableOfContentsLink(obj)})}
       </ul>
     </nav>
   );

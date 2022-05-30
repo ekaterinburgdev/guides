@@ -1,8 +1,14 @@
 module.exports = {
-  images: {
-    domains: ['s3.us-west-2.amazonaws.com'],
-  },
   api: {
-    HOST: 'http://localhost:48655',
+    HOST: 'https://guides-api-test.ekaterinburg.design',
+  },
+  async rewrites() {
+    console.log('реврайтс');
+    return [
+      {
+        source: '/:pageUrl*',
+        destination: '/manuals/:pageUrl*',
+      },
+    ];
   },
 };
