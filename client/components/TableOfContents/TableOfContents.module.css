@@ -11,10 +11,33 @@
   scrollbar-width: none;
 }
 
+.openButton {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .tableOfContents {
     text-align: left;
     padding: 8px;
+    display: none;
+    width: 40%;
+    margin-top: 80px;
+    background-color: #eff0f1;
+  }
+
+  .openButton {
+    display: block;
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3C!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='24.75px' height='24.75px' viewBox='0 0 24.75 24.75' style='enable-background:new 0 0 24.75 24.75;' xml:space='preserve' %3E%3Cg%3E%3Cpath d='M0,3.875c0-1.104,0.896-2,2-2h20.75c1.104,0,2,0.896,2,2s-0.896,2-2,2H2C0.896,5.875,0,4.979,0,3.875z M22.75,10.375H2 c-1.104,0-2,0.896-2,2c0,1.104,0.896,2,2,2h20.75c1.104,0,2-0.896,2-2C24.75,11.271,23.855,10.375,22.75,10.375z M22.75,18.875H2 c-1.104,0-2,0.896-2,2s0.896,2,2,2h20.75c1.104,0,2-0.896,2-2S23.855,18.875,22.75,18.875z'/%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E%0A");
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background-repeat: no-repeat;
+    mix-blend-mode: multiply;
+    position: fixed;
+    background-color: transparent;
+    top: 40px;
+    left: 15px;
+    z-index: 1;
   }
 }
 
@@ -25,12 +48,20 @@
 .tableOfContents > ul {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   box-shadow: none;
 }
 
 .tableOfContents > ul > .tableOfContentsLink {
   box-shadow: none !important;
+  padding: 10px;
+  /* padding-left: 15px; */
+}
+
+.tableOfContents > ul > .tableOfContentsLink:hover {
+  box-shadow: none !important;
+  background-color: #ffffff;
+  color: #112233;
+  border-radius: 10px;
   /* padding-left: 15px; */
 }
 

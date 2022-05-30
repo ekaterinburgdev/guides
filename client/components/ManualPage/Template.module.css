@@ -10,7 +10,8 @@
   .template__column {
     padding-left: 0px;
     padding-top: 0px;
-    max-width: 70vw;
+    max-width: 90vw;
+    margin-left: 8%;
   }
 
   .columnList,

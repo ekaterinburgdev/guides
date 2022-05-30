@@ -24,6 +24,50 @@ function GetPage() {
   const [pageList, setPageList] = React.useState([]);
   const [pageName, setPageName] = React.useState('');
 
+  const getColumnItem = (columnItem) => {
+    const getLine = (columnList) => {
+      if (!columnList.children.length) {
+        return;
+      }
+
+      return columnList.children.map((cols) => cols.children.map((col) => getColumnItem(col)));
+    };
+
+    const getTextContent = (item) => item.content.text.map((par) => {
+      const textContent = par && par.text && par.text.content;
+      const stylePar = {
+        fontWeight: par?.annotations?.bold ? '500' : '300',
+      };
+      if (!textContent) {
+        return;
+      }
+
+      return textContent;
+      // return (
+      //   <span style={{ ...stylePar }} key={textContent}>
+      //     {textContent}
+      //   </span>
+      // );
+    });
+
+    switch (columnItem.type) {
+      case 'column_list':
+        return <div className={styles.columnList}>{getLine(columnItem)}</div>;
+
+      case 'heading_1':
+        return { id: columnItem.id, title: getTextContent(columnItem) };
+
+      case 'heading_2':
+        return { id: columnItem.id, title: getTextContent(columnItem) };
+
+      case 'heading_3':
+        return { id: columnItem.id, title: getTextContent(columnItem) };
+
+      default:
+        return null;
+    }
+  };
+
   React.useEffect(() => {
     if (!pageUrl) {
       return;
@@ -84,58 +128,13 @@ function GetPage() {
 
   useEffect(() => {
     if (pageList.length === 0) {
-      return
+      return;
     }
 
     const anchorLinksForSet = pageList.map(getColumnItem);
 
     console.log('якорные ссылки вухахахах', anchorLinksForSet);
-  }, [pageList])
-
-  const getLine = (columnList) => {
-    if (!columnList.children.length) {
-      return;
-    }
-
-    return columnList.children.map((cols) => (
-      cols.children.map((col) => getColumnItem(col))))
-  };
-
-  const getTextContent = (item) => item.content.text.map((par) => {
-    const textContent = par && par.text && par.text.content;
-    const stylePar = {
-      fontWeight: par?.annotations?.bold ? '500' : '300',
-    };
-    if (!textContent) {
-      return;
-    }
-
-    return textContent;
-    // return (
-    //   <span style={{ ...stylePar }} key={textContent}>
-    //     {textContent}
-    //   </span>
-    // );
-  });
-
-  const getColumnItem = (columnItem) => {
-    switch (columnItem.type) {
-      case 'column_list':
-        return <div className={styles.columnList}>{getLine(columnItem)}</div>;
-
-      case 'heading_1':
-        return { id: columnItem.id, title: getTextContent(columnItem) }
-
-      case 'heading_2':
-        return { id: columnItem.id, title: getTextContent(columnItem) }
-
-      case 'heading_3':
-        return { id: columnItem.id, title: getTextContent(columnItem) }
-
-      default:
-        return null
-    }
-  };
+  }, [pageList]);
 
   // useEffect(() => {
   //   if (!pageUrl) {
@@ -156,7 +155,11 @@ function GetPage() {
 
   return (
     <>
-      <TableOfContents tableOfContentArr={tableOfContentArr} currentPageUrl={pageUrl} anchorLinks={anchorLinks} />
+      <TableOfContents
+        tableOfContentArr={tableOfContentArr}
+        currentPageUrl={pageUrl}
+        anchorLinks={anchorLinks}
+      />
       <ManualPage pageList={pageList} pageName={pageName} />
       {/* <nav className={styles.footNav}></nav>
         {prevPage && prevPage.name_ru && (
