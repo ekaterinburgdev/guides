@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Link from 'next/link';
 import useMatchMedia from 'use-match-media-hook';
-import { getAllPage } from '../../api/apiPage';
+import {getAllPage} from '../../api/apiPage';
 import styles from './TableOfContents.module.css';
+import DesignCodeLogo from '../DesignCodeLogo';
 
 const queries = ['(max-width: 400px)', '(min-width: 800px)'];
 
-function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks }) {
+function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) {
   // useEffect(() => {
   //   let isMounted = true;
   //   console.log('якорные ссылки', anchorLinks);
@@ -25,11 +26,11 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks }
 
   const [isOpen, setIsOpen] = useState(baseState);
 
-  const tableOfContentsLink = ({ url, title, children }) => (
+  const tableOfContentsLink = ({url, title, children}) => (
     <Link
       href={{
         pathname: '/[[...pageUrl]]',
-        query: { pageUrl: [currentPageUrl[0], url] },
+        query: {pageUrl: [currentPageUrl[0], url]},
         as: `${currentPageUrl.join('/')}/${url}`,
       }}
     >
@@ -42,7 +43,10 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks }
   return (
     <>
       <button type="button" className={styles.openButton} onClick={() => setIsOpen(!isOpen)} />
-      <nav style={{ display: mobile || !isOpen ? 'none' : 'block' }} className={styles.tableOfContents}>
+      <nav
+        style={{display: mobile || !isOpen ? 'none' : 'block'}}
+        className={styles.tableOfContents}
+      >
         <ul>
           {currentPageUrl
             && tableOfContentArr.map((obj) => {
@@ -50,6 +54,8 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks }
               return tableOfContentsLink(obj);
             })}
         </ul>
+
+        <DesignCodeLogo />
       </nav>
     </>
   );

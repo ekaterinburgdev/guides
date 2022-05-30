@@ -18,6 +18,7 @@ module.exports = {
     'block-spacing': 'off',
     'brace-style': 'off',
     semi: 'off',
+    'object-curly-spacing': 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,

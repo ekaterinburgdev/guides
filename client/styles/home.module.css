@@ -37,6 +37,12 @@
   }
 
   .manualItem {
-    width: 50%;
+    width: 80vw;
+  }
+
+  .manualTitle {
+    font-size: 2rem;
+    padding: 15px;
+    text-align: center;
   }
 }
