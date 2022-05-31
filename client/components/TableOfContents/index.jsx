@@ -28,7 +28,7 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) 
 
   const [isOpen, setIsOpen] = useState(baseState);
 
-// TODO: Сделать для большой вложенности...
+  // TODO: Сделать для большой вложенности...
   const tableOfContentsLink = ({url, title, children}) => (
     <>
       <Link
@@ -43,8 +43,7 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) 
         </a>
       </Link>
       {currentPageUrl[1] && currentPageUrl[1] === url
-    && anchorLinks.map((anchor) => <a href={`#${anchor.id}`}>{anchor.title}</a>)
-  }
+    && anchorLinks.map((anchor) => <a href={`#${anchor.id}`}>{anchor.title}</a>)}
     </>
   );
 

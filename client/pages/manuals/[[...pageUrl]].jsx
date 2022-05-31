@@ -15,8 +15,8 @@ function GetPage() {
   const router = useRouter();
   const { pageUrl } = router.query;
 
-  // const [prevPage, setPrevPage] = useState();
-  // const [nexPage, setNextPage] = useState();
+  const [prevPageIndex, setPrevPageIndex] = useState(-1);
+  const [nexPageIndex, setNexPageIndex] = useState(9e13);
   const [children, setChildren] = useState();
   const [tableOfContentArr, setTableOfContentArr] = useState([]);
   const [anchorLinks, setAnchorLinks] = useState([]);
@@ -127,6 +127,21 @@ function GetPage() {
   }, [children, pageUrl]);
 
   useEffect(() => {
+    if (tableOfContentArr.length === 0 || !pageUrl) {
+      return;
+    }
+
+    const curPageUrl = pageUrl[pageUrl.length - 1]
+
+    const curPageIndex = tableOfContentArr.findIndex((el) => el.url === curPageUrl);
+    setPrevPageIndex(curPageIndex - 1);
+    setNexPageIndex(curPageIndex + 1);
+    console.log('Текущая страница массив', pageUrl);
+    console.log('текущий индекс', curPageIndex);
+    console.log('массив для навигации', tableOfContentArr);
+  }, [tableOfContentArr, pageUrl])
+
+  useEffect(() => {
     if (pageList.length === 0) {
       return;
     }
@@ -136,23 +151,6 @@ function GetPage() {
     setAnchorLinks(anchorLinksForSet.filter((l) => l && l.id));
   }, [pageList]);
 
-  // useEffect(() => {
-  //   if (!pageUrl) {
-  //     return;
-  //   }
-
-  //   getPageByUrl(pageUrl)
-  //     .then((res) => {
-  //       const pages = res.options;
-  //       const pageIndex = findIndex(pages, (page) => page.id === pageUrl);
-  //       setPrevPage(pages[pageIndex - 1]);
-  //       setNextPage(pages[pageIndex + 1]);
-  //     })
-  //     .catch((err) => {
-  //       throw new Error(err);
-  //     });
-  // }, [pageUrl]);
-
   return (
     <>
       <TableOfContents
@@ -161,36 +159,36 @@ function GetPage() {
         anchorLinks={anchorLinks}
       />
       <ManualPage pageList={pageList} pageName={pageName} />
-      {/* <nav className={styles.footNav}></nav>
-        {prevPage && prevPage.name_ru && (
+      {tableOfContentArr.length !== 0 && <nav className={styles.footNav}>
+        {prevPageIndex >= 0 && (
           <Link
             href={{
-              pathname: '/page/[pageId]',
-              query: { pageId: prevPage.id },
+              pathname: '/[[...pageUrl]]',
+              query: {pageUrl: [pageUrl[0], tableOfContentArr[prevPageIndex].url]},
             }}
           >
-            <a href={prevPage?.id}>
+            <a>
               ←
               {' '}
-              {prevPage && prevPage.name_ru}
+              {tableOfContentArr[prevPageIndex].title}
             </a>
           </Link>
         )}
-        {nexPage && nexPage.name_ru && (
-          <Link
-            href={{
-              pathname: '/page/[pageId]',
-              query: { pageId: nexPage.id },
-            }}
-          >
-            <a href={prevPage?.id}>
-              {nexPage && nexPage.name_ru}
-              {' '}
-              →
-            </a>
-          </Link>
+        {nexPageIndex < tableOfContentArr.length && (
+        <Link
+          href={{
+            pathname: '/[[...pageUrl]]',
+            query: {pageUrl: [pageUrl[0], tableOfContentArr[nexPageIndex].url]},
+          }}
+        >
+          <a>
+            {tableOfContentArr[nexPageIndex].title}
+            {' '}
+            →
+          </a>
+        </Link>
         )}
-      </nav> */}
+      </nav>}
     </>
   );
 }
