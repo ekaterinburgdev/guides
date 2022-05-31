@@ -43,7 +43,7 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) 
         </a>
       </Link>
       {currentPageUrl[1] && currentPageUrl[1] === url
-    && anchorLinks.map((anchor) => <a href={`#${anchor.id}`}>{anchor.title}</a>)}
+    && anchorLinks.map((anchor) => <a key={anchor.title} href={`#${anchor.id}`}>{anchor.title}</a>)}
     </>
   );
 
