@@ -3,7 +3,6 @@ import Link from 'next/link';
 import useMatchMedia from 'use-match-media-hook';
 import {getAllPage} from '../../api/apiPage';
 import styles from './TableOfContents.module.css';
-import DesignCodeLogo from '../DesignCodeLogo';
 
 const queries = ['(max-width: 400px)', '(min-width: 800px)'];
 
@@ -54,8 +53,6 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) 
               return tableOfContentsLink(obj);
             })}
         </ul>
-
-        <DesignCodeLogo />
       </nav>
     </>
   );

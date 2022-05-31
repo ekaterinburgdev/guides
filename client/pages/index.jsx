@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { api } from '../next.config';
+import {api} from '../next.config';
 import styles from '../styles/home.module.css';
 import TableOfContents from '../components/TableOfContents';
-import { getTree } from '../api/apiPage';
+import {getTree} from '../api/apiPage';
 
 export default function Home() {
   const [manuals, setManuals] = useState([]);
@@ -12,16 +12,16 @@ export default function Home() {
 
   useEffect(() => {
     getTree()
-      .then((tree) => {
+      .then(tree => {
         setManuals(tree.children);
         setTitle(tree?.properties?.child_page?.title);
       })
-      .catch((err) => {
+      .catch(err => {
         throw new Error(err);
       });
   }, []);
 
-  const renderManualItem = (manual) => {
+  const renderManualItem = manual => {
     const imageUrl = manual.cover;
     const titleArr = manual?.properties?.Name?.title;
     const titleText = titleArr.length > 0 ? titleArr[0]?.text?.content : '';
@@ -31,13 +31,14 @@ export default function Home() {
       <Link
         href={{
           pathname: '/[[...pageUrl]]',
-          query: { pageUrl: [pageUrl] },
+          query: {pageUrl: [pageUrl]},
         }}
+        passHref
       >
-        <div className={styles.manualItem}>
-          <img style={{ width: '100%' }} src={`${api.HOST}/static/${imageUrl}`} alt={titleText} />
+        <article className={styles.manualItem}>
+          <img style={{width: '100%'}} src={`${api.HOST}/static/${imageUrl}`} alt={titleText} />
           <h4 className={styles.manualTitle}>{titleText}</h4>
-        </div>
+        </article>
       </Link>
     );
   };
@@ -49,10 +50,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main style={{ padding: '30px' }}>
-        <h1 style={{ marginTop: '10px', marginBottom: '30px' }}>{title}</h1>
+      <main style={{padding: '30px'}}>
+        <h1 style={{marginTop: '10px', marginBottom: '30px'}}>{title}</h1>
         <section className={styles.manualsSection}>
-          {manuals.map((manual) => renderManualItem(manual))}
+          {manuals.map(manual => renderManualItem(manual))}
         </section>
         {/* <TableOfContents /> */}
       </main>
