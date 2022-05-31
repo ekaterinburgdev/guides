@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable consistent-return */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable-next-line consistent-return */
@@ -15,14 +16,58 @@ function GetPage() {
   const router = useRouter();
   const { pageUrl } = router.query;
 
-  // const [prevPage, setPrevPage] = useState();
-  // const [nexPage, setNextPage] = useState();
+  const [prevPageIndex, setPrevPageIndex] = useState(-1);
+  const [nexPageIndex, setNexPageIndex] = useState(9e13);
   const [children, setChildren] = useState();
   const [tableOfContentArr, setTableOfContentArr] = useState([]);
   const [anchorLinks, setAnchorLinks] = useState([]);
 
   const [pageList, setPageList] = React.useState([]);
   const [pageName, setPageName] = React.useState('');
+
+  const getColumnItem = (columnItem) => {
+    const getLine = (columnList) => {
+      if (!columnList.children.length) {
+        return;
+      }
+
+      return columnList.children.map((cols) => cols.children.map((col) => getColumnItem(col)));
+    };
+
+    const getTextContent = (item) => item.content.text.map((par) => {
+      const textContent = par && par.text && par.text.content;
+      const stylePar = {
+        fontWeight: par?.annotations?.bold ? '500' : '300',
+      };
+      if (!textContent) {
+        return;
+      }
+
+      return textContent;
+      // return (
+      //   <span style={{ ...stylePar }} key={textContent}>
+      //     {textContent}
+      //   </span>
+      // );
+    });
+
+    switch (columnItem.type) {
+      case 'column_list':
+        return <div className={styles.columnList}>{getLine(columnItem)}</div>;
+
+      case 'heading_1':
+        return { id: columnItem.id, title: getTextContent(columnItem) };
+
+      case 'heading_2':
+        return { id: columnItem.id, title: getTextContent(columnItem) };
+
+      case 'heading_3':
+        return { id: columnItem.id, title: getTextContent(columnItem) };
+
+      default:
+        return null;
+    }
+  };
 
   React.useEffect(() => {
     if (!pageUrl) {
@@ -83,111 +128,68 @@ function GetPage() {
   }, [children, pageUrl]);
 
   useEffect(() => {
+    if (tableOfContentArr.length === 0 || !pageUrl) {
+      return;
+    }
+
+    const curPageUrl = pageUrl[pageUrl.length - 1]
+
+    const curPageIndex = tableOfContentArr.findIndex((el) => el.url === curPageUrl);
+    setPrevPageIndex(curPageIndex - 1);
+    setNexPageIndex(curPageIndex + 1);
+    console.log('Текущая страница массив', pageUrl);
+    console.log('текущий индекс', curPageIndex);
+    console.log('массив для навигации', tableOfContentArr);
+  }, [tableOfContentArr, pageUrl])
+
+  useEffect(() => {
     if (pageList.length === 0) {
-      return
+      return;
     }
 
     const anchorLinksForSet = pageList.map(getColumnItem);
 
-    console.log('якорные ссылки вухахахах', anchorLinksForSet);
-  }, [pageList])
-
-  const getLine = (columnList) => {
-    if (!columnList.children.length) {
-      return;
-    }
-
-    return columnList.children.map((cols) => (
-      cols.children.map((col) => getColumnItem(col))))
-  };
-
-  const getTextContent = (item) => item.content.text.map((par) => {
-    const textContent = par && par.text && par.text.content;
-    const stylePar = {
-      fontWeight: par?.annotations?.bold ? '500' : '300',
-    };
-    if (!textContent) {
-      return;
-    }
-
-    return textContent;
-    // return (
-    //   <span style={{ ...stylePar }} key={textContent}>
-    //     {textContent}
-    //   </span>
-    // );
-  });
-
-  const getColumnItem = (columnItem) => {
-    switch (columnItem.type) {
-      case 'column_list':
-        return <div className={styles.columnList}>{getLine(columnItem)}</div>;
-
-      case 'heading_1':
-        return { id: columnItem.id, title: getTextContent(columnItem) }
-
-      case 'heading_2':
-        return { id: columnItem.id, title: getTextContent(columnItem) }
-
-      case 'heading_3':
-        return { id: columnItem.id, title: getTextContent(columnItem) }
-
-      default:
-        return null
-    }
-  };
-
-  // useEffect(() => {
-  //   if (!pageUrl) {
-  //     return;
-  //   }
-
-  //   getPageByUrl(pageUrl)
-  //     .then((res) => {
-  //       const pages = res.options;
-  //       const pageIndex = findIndex(pages, (page) => page.id === pageUrl);
-  //       setPrevPage(pages[pageIndex - 1]);
-  //       setNextPage(pages[pageIndex + 1]);
-  //     })
-  //     .catch((err) => {
-  //       throw new Error(err);
-  //     });
-  // }, [pageUrl]);
+    setAnchorLinks(anchorLinksForSet.filter((l) => l && l.id));
+  }, [pageList]);
 
   return (
     <>
-      <TableOfContents tableOfContentArr={tableOfContentArr} currentPageUrl={pageUrl} anchorLinks={anchorLinks} />
+      <TableOfContents
+        tableOfContentArr={tableOfContentArr}
+        currentPageUrl={pageUrl}
+        anchorLinks={anchorLinks}
+      />
       <ManualPage pageList={pageList} pageName={pageName} />
-      {/* <nav className={styles.footNav}></nav>
-        {prevPage && prevPage.name_ru && (
+      {tableOfContentArr.length !== 0 && <nav className={styles.footNav}>
+        {prevPageIndex >= 0 && (
           <Link
             href={{
-              pathname: '/page/[pageId]',
-              query: { pageId: prevPage.id },
+              pathname: '/[[...pageUrl]]',
+              query: {pageUrl: [pageUrl[0], tableOfContentArr[prevPageIndex].url]},
             }}
           >
-            <a href={prevPage?.id}>
+            <a>
               ←
               {' '}
-              {prevPage && prevPage.name_ru}
+              {tableOfContentArr[prevPageIndex].title}
             </a>
           </Link>
         )}
-        {nexPage && nexPage.name_ru && (
-          <Link
-            href={{
-              pathname: '/page/[pageId]',
-              query: { pageId: nexPage.id },
-            }}
-          >
-            <a href={prevPage?.id}>
-              {nexPage && nexPage.name_ru}
-              {' '}
-              →
-            </a>
-          </Link>
+        {nexPageIndex < tableOfContentArr.length && (
+        <Link
+          href={{
+            pathname: '/[[...pageUrl]]',
+            query: {pageUrl: [pageUrl[0], tableOfContentArr[nexPageIndex].url]},
+          }}
+        >
+          <a>
+            {tableOfContentArr[nexPageIndex].title}
+            {' '}
+            →
+          </a>
+        </Link>
         )}
-      </nav> */}
+      </nav>}
     </>
   );
 }
