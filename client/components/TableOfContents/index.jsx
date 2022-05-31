@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useRouter } from 'next/router'
 import Link from 'next/link';
 import useMatchMedia from 'use-match-media-hook';
 import {getAllPage} from '../../api/apiPage';
@@ -7,13 +8,15 @@ import styles from './TableOfContents.module.css';
 const queries = ['(max-width: 400px)', '(min-width: 800px)'];
 
 function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) {
-  // useEffect(() => {
-  //   let isMounted = true;
-  //   console.log('якорные ссылки', anchorLinks);
-  //   return () => {
-  //     isMounted = false;
-  //   };
-  // }, [anchorLinks])
+  const router = useRouter()
+
+  useEffect(() => {
+    console.log('якорные ссылки', anchorLinks);
+  }, [anchorLinks])
+  useEffect(() => {
+    console.log('текущий урл', currentPageUrl);
+  }, [currentPageUrl])
+
   const [mobile, desktop] = useMatchMedia(queries);
   let baseState;
 
@@ -25,18 +28,24 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) 
 
   const [isOpen, setIsOpen] = useState(baseState);
 
+// TODO: Сделать для большой вложенности...
   const tableOfContentsLink = ({url, title, children}) => (
-    <Link
-      href={{
-        pathname: '/[[...pageUrl]]',
-        query: {pageUrl: [currentPageUrl[0], url]},
-        as: `${currentPageUrl.join('/')}/${url}`,
-      }}
-    >
-      <a className={styles.tableOfContentsLink} href={url}>
-        {title}
-      </a>
-    </Link>
+    <>
+      <Link
+        href={{
+          pathname: '/[[...pageUrl]]',
+          query: {pageUrl: [currentPageUrl[0], url]},
+          as: `${currentPageUrl.join('/')}/${url}`,
+        }}
+      >
+        <a className={styles.tableOfContentsLink} href={url}>
+          {title}
+        </a>
+      </Link>
+      {currentPageUrl[1] && currentPageUrl[1] === url
+    && anchorLinks.map((anchor) => <a href={`#${anchor.id}`}>{anchor.title}</a>)
+  }
+    </>
   );
 
   return (
@@ -48,10 +57,7 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) 
       >
         <ul>
           {currentPageUrl
-            && tableOfContentArr.map((obj) => {
-              console.log('срань', obj);
-              return tableOfContentsLink(obj);
-            })}
+            && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}
         </ul>
       </nav>
     </>

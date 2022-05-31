@@ -12,16 +12,16 @@ export default function Home() {
 
   useEffect(() => {
     getTree()
-      .then(tree => {
+      .then((tree) => {
         setManuals(tree.children);
         setTitle(tree?.properties?.child_page?.title);
       })
-      .catch(err => {
+      .catch((err) => {
         throw new Error(err);
       });
   }, []);
 
-  const renderManualItem = manual => {
+  const renderManualItem = (manual) => {
     const imageUrl = manual.cover;
     const titleArr = manual?.properties?.Name?.title;
     const titleText = titleArr.length > 0 ? titleArr[0]?.text?.content : '';
@@ -53,7 +53,7 @@ export default function Home() {
       <main style={{padding: '30px'}}>
         <h1 style={{marginTop: '10px', marginBottom: '30px'}}>{title}</h1>
         <section className={styles.manualsSection}>
-          {manuals.map(manual => renderManualItem(manual))}
+          {manuals.map((manual) => renderManualItem(manual))}
         </section>
         {/* <TableOfContents /> */}
       </main>

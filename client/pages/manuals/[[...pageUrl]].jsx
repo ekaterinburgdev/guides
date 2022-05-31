@@ -133,7 +133,7 @@ function GetPage() {
 
     const anchorLinksForSet = pageList.map(getColumnItem);
 
-    console.log('якорные ссылки вухахахах', anchorLinksForSet);
+    setAnchorLinks(anchorLinksForSet.filter((l) => l && l.id));
   }, [pageList]);
 
   // useEffect(() => {
