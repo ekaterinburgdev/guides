@@ -51,7 +51,9 @@ export default function Home() {
       </Head>
 
       <main style={{padding: '30px'}}>
-        <h1 style={{marginTop: '10px', marginBottom: '30px'}}>{title}</h1>
+        <h1 className={styles.mainTitle}>
+          {title}
+        </h1>
         <section className={styles.manualsSection}>
           {manuals.map((manual) => renderManualItem(manual))}
         </section>

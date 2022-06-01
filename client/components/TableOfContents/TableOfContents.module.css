@@ -20,7 +20,8 @@
     text-align: left;
     padding: 8px;
     display: none;
-    width: 40%;
+    width: 80%;
+    height: 80%;
     margin-top: 80px;
     background-color: #eff0f1;
   }
@@ -51,21 +52,32 @@
   box-shadow: none;
 }
 
+.innerTableOfContentsLink {
+  padding-left: 30px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  box-shadow: none !important;
+}
+
+.innerTableOfContentsLink:hover {
+  box-shadow: none !important;
+  background-color: #ffffff;
+  color: #112233 !important;
+  border-radius: 10px;
+}
+
 .tableOfContents > ul > .tableOfContentsLink {
   box-shadow: none !important;
   padding: 10px;
-  /* padding-left: 15px; */
 }
 
 .tableOfContents > ul > .tableOfContentsLink:hover {
   box-shadow: none !important;
   background-color: #ffffff;
-  color: #112233;
+  color: #112233 !important;
   border-radius: 10px;
-  /* padding-left: 15px; */
 }
 
 .tableOfContents > ul > .designCodeLink {
-  /* padding-left: 15px; */
   font-size: 24px;
 }
