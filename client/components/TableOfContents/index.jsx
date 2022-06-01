@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
-// import useMatchMedia from 'use-match-media-hook';
 import {getAllPage} from '../../api/apiPage';
 import styles from './TableOfContents.module.css';
 
@@ -42,8 +41,11 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) 
           {title}
         </a>
       </Link>
-      {currentPageUrl[1] && currentPageUrl[1] === url
-    && anchorLinks.map((anchor) => <a key={anchor.title} href={`#${anchor.id}`}>{anchor.title}</a>)}
+      {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.map((anchor) => (
+        <a className={styles.innerTableOfContentsLink} key={anchor.title} href={`#${anchor.id}`}>
+          {anchor.title}
+        </a>
+      ))}
     </>
   );
 

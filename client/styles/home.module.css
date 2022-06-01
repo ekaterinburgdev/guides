@@ -1,11 +1,23 @@
+.mainTitle {
+  font-size: 10vw;
+  line-height: 1;
+  margin-top: 0.15em !important;
+  margin-bottom: 0.4em !important;
+  color: #123;
+  font-weight: 500;
+}
+
 .manualItem {
-  width: 20%;
-  height: fit-content;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-  overflow: hidden;
+  background: white !important;
+  overflow: visible;
+  width: calc(100% / 3 - 2vw);
+  display: block;
   cursor: pointer;
   transition: all 0.15s ease-in;
+  margin: 0;
+  box-shadow: rgb(17 12 46 / 10%) 0px 15px 25px -5px;
+  border-radius: 0.5em;
+  aspect-ratio: 16 / 10;
 }
 
 .manualItem:hover {
@@ -13,36 +25,52 @@
 }
 
 .manualItem img {
-  width: 20vw;
-  height: 15vh;
+  height: 100%;
+  -o-object-fit: cover;
   object-fit: cover;
+  object-position: center;
+  aspect-ratio: 16 / 10;
+}
+
+.manualItem:hover img {
+  transform: matrix(1, -0.08, 0, 1, 0, 0) scaleX(0.95);
 }
 
 .manualTitle {
-  font-size: 1rem;
-  padding: 15px;
-  text-align: center;
+  font-size: 0;
+  padding: 0;
+  margin-top: 0.8em;
+  font-weight: 400;
+  display: none;
 }
 
 .manualsSection {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 2.486vw;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 768px) {
   .manualsSection {
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    gap: 8vw;
   }
 
   .manualItem {
-    width: 80vw;
+    width: 100vw;
+    height: 100vh;
   }
 
-  .manualTitle {
-    font-size: 2rem;
-    padding: 15px;
+  .mainTitle {
     text-align: center;
+    margin-bottom: .8em !important;
   }
+}
+
+.manualsSection img {
+  border-radius: inherit;
+  transform-origin: 0% 0%;
+  transition: 0.1s ease transform;
 }

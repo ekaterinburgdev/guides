@@ -1,18 +1,33 @@
 .footNav {
-    display: flex;
-    margin-left: 350px;
-    justify-content: space-evenly;
+  display: flex;
+  margin-left: 22.6vw;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 769px) {
+    .footNav {
+        margin-left: 25vw;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .footNav {
+        margin-left: 9vw;
+    }
 }
 
 .footNav > a {
-    box-shadow: none !important;
-    color: #343434 !important;
-    margin: 20px;
-    padding: 8px;
-    transition: .2s ease-in-out;
+  box-shadow: none !important;
+  color: rgba(17, 34, 51, 1) !important;
+  padding: 16px 24px;
+  background-color: rgba(17, 34, 51, 0.07);
+  border-radius: 64px;
+  font-weight: 700;
+  gap: 8px;
+  margin: 20px;
+  transition: 0.2s ease-in-out;
 }
 
 .footNav > a:hover {
-    background-color: #dadada;
-    border-radius: 5px;
+  background-color: #dadada;
 }
