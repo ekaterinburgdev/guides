@@ -11,6 +11,19 @@
   scrollbar-width: none;
 }
 
+.logoContainer {
+  background-color: rgb(221, 222, 224);
+  padding: 1.5em;
+  border-radius: 1.5em;
+  box-shadow: none !important;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.logoContainerText {
+  margin-bottom: 0px;
+}
+
 .openButton {
   display: none;
 }
