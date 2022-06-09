@@ -1,13 +1,22 @@
 import React, {useState, useEffect} from 'react';
 import {useRouter} from 'next/router';
 import Link from 'next/link';
+import cn from 'classnames';
 import {getAllPage} from '../../api/apiPage';
 import styles from './TableOfContents.module.css';
 
 // const queries = ['(max-width: 400px)', '(min-width: 800px)'];
 
-function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) {
+function TableOfContents({
+  tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle,
+}) {
+  const [isOpen, setIsOpen] = useState(true);
+
   const router = useRouter();
+
+  useEffect(() => {
+    console.log('каталог тайтл', catalogTitle);
+  }, [catalogTitle])
 
   useEffect(() => {
     console.log('якорные ссылки', anchorLinks);
@@ -15,17 +24,6 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) 
   useEffect(() => {
     console.log('текущий урл', currentPageUrl);
   }, [currentPageUrl]);
-
-  // const [mobile, desktop] = useMatchMedia(queries);
-  // let baseState;
-
-  // if (desktop) {
-  //   baseState = false;
-  // } else {
-  //   baseState = true;
-  // }
-
-  const [isOpen, setIsOpen] = useState(true);
 
   // TODO: Сделать для большой вложенности...
   const tableOfContentsLink = ({url, title, children}) => (
@@ -37,7 +35,7 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) 
           as: `${currentPageUrl.join('/')}/${url}`,
         }}
       >
-        <a className={styles.tableOfContentsLink} href={url}>
+        <a className={cn(styles.tableOfContentsLink, { [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url })} href={url}>
           {title}
         </a>
       </Link>
@@ -62,6 +60,16 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) 
         >
           <a className={styles.linkToAllManuals} href="/">
             Все руководства
+          </a>
+        </Link>
+        <Link
+          href={{
+            pathname: '/[[...pageUrl]]',
+            query: {pageUrl: [currentPageUrl[0]]},
+          }}
+        >
+          <a className={styles.catalogTitle} href="/">
+            {catalogTitle}
           </a>
         </Link>
         <ul>{currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}</ul>
