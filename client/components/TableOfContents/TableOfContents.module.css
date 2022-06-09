@@ -11,6 +11,43 @@
   scrollbar-width: none;
 }
 
+.linkToAllManuals {
+  background-color: rgb(255, 212, 0);
+  box-shadow: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.linkToAllManuals:hover {
+  background-color: rgba(255, 212, 0, 0.8);
+  box-shadow: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.catalogTitle {
+  margin-bottom: 16px;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+}
+
+.logoContainer {
+  background-color: rgb(221, 222, 224);
+  padding: 1.5em;
+  border-radius: 1.5em;
+  box-shadow: none !important;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.logoContainerText {
+  margin-bottom: 0px;
+}
+
 .openButton {
   display: none;
 }
@@ -66,12 +103,20 @@
   border-radius: 10px;
 }
 
+
 .tableOfContents > ul > .tableOfContentsLink {
   box-shadow: none !important;
   padding: 10px;
 }
 
 .tableOfContents > ul > .tableOfContentsLink:hover {
+  box-shadow: none !important;
+  background-color: #ffffff;
+  color: #112233 !important;
+  border-radius: 10px;
+}
+
+.active {
   box-shadow: none !important;
   background-color: #ffffff;
   color: #112233 !important;

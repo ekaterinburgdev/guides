@@ -1,9 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState, useEffect} from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import {api} from '../next.config';
 import styles from '../styles/home.module.css';
-import TableOfContents from '../components/TableOfContents';
 import {getTree} from '../api/apiPage';
 
 export default function Home() {
@@ -35,10 +35,10 @@ export default function Home() {
         }}
         passHref
       >
-        <article className={styles.manualItem}>
+        <a className={styles.manualItem}>
           <img style={{width: '100%'}} src={`${api.HOST}/static/${imageUrl}`} alt={titleText} />
           <h4 className={styles.manualTitle}>{titleText}</h4>
-        </article>
+        </a>
       </Link>
     );
   };
@@ -47,17 +47,20 @@ export default function Home() {
     <div>
       <Head>
         <title>Городские руководства</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="../public/assets/favicon.ico" />
+        <html lang="ru" />
+        <meta charSet="utf-8" />
+        <meta name="description" content="Городские руководства Екатеринбурга" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <main style={{padding: '30px'}}>
+      <main style={{padding: '2vmax'}}>
         <h1 className={styles.mainTitle}>
           {title}
         </h1>
         <section className={styles.manualsSection}>
           {manuals.map((manual) => renderManualItem(manual))}
         </section>
-        {/* <TableOfContents /> */}
       </main>
     </div>
   );
