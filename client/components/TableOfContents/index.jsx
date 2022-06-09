@@ -55,12 +55,19 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks}) 
     <>
       <button type="button" className={styles.openButton} onClick={() => setIsOpen(!isOpen)} />
       <nav style={{display: !isOpen ? 'none' : 'block'}} className={styles.tableOfContents}>
+        <Link
+          href={{
+            pathname: '/',
+          }}
+        >
+          <a className={styles.linkToAllManuals} href="/">
+            Все руководства
+          </a>
+        </Link>
         <ul>{currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}</ul>
         <a className={styles.logoContainer} href="https://ekaterinburg.design/">
           {/* <img src="../../public/assets/avatar.png" alt="Дизайн код логотип" /> */}
-          <p className={styles.logoContainerText}>
-            Дизайн-код Екатеринбурга
-          </p>
+          <p className={styles.logoContainerText}>Дизайн-код Екатеринбурга</p>
         </a>
       </nav>
     </>

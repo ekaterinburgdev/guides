@@ -11,6 +11,24 @@
   scrollbar-width: none;
 }
 
+.linkToAllManuals {
+  background-color: rgb(255, 212, 0);
+  box-shadow: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.linkToAllManuals:hover {
+  background-color: rgba(255, 212, 0, 0.8);
+  box-shadow: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
 .logoContainer {
   background-color: rgb(221, 222, 224);
   padding: 1.5em;
