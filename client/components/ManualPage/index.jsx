@@ -96,6 +96,11 @@ function ManualPage({ pageList, pageName }) {
       case 'numbered_list':
         return <ol>{getListItem(columnItem)}</ol>;
 
+      case 'code':
+        return <code>
+          {getTextContent(columnItem)}
+        </code>
+
       default:
         return <p>Что я такое...</p>;
     }
