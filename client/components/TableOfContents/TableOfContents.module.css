@@ -14,33 +14,35 @@
   border-radius: 10px;
   display: inline-block;
   margin-bottom: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .catalogTitle {
   display: block;
   line-height: 1;
   font-size: 1.3em;
-  margin-bottom: .5em;
-  padding: calc(0.65em + 7.5px) !important;
+  padding: calc(0.65em + 7.5px);
   font-weight: 500;
   box-shadow: none;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 .catalogTitle:hover,
 .catalogTitle:focus-visible {
-  box-shadow: none !important;
+  box-shadow: none;
   background-color: #ffffff;
-  color: #112233 !important;
+  color: #112233;
   border-radius: 10px;
   margin-left: -15px;
   margin-right: -15px;
 }
 
 .logoContainer {
-  background-color: rgb(221, 222, 224);
+  background-color: transparent;
   padding: 1.5em;
   border-radius: 1.5em;
-  box-shadow: none !important;
+  box-shadow: none;
   display: flex;
   flex-wrap: wrap;
 }
@@ -109,52 +111,55 @@
   display: flex;
   flex-direction: column;
   box-shadow: none;
-  row-gap: 10px;
+  gap: 1.5em;
 }
 
 .innerTableOfContentsLink {
-  padding-left: 30px !important;
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-  box-shadow: none !important;
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left: calc(2.5em + 7.5px);
+  font-weight: 400;
+  box-shadow: none;
 }
 
 .innerTableOfContentsLink:hover,
 .innerTableOfContentsLink:focus-visible {
-  box-shadow: none !important;
+  box-shadow: none;
   background-color: #ffffff;
-  color: #112233 !important;
+  color: #112233;
   border-radius: 10px;
   margin-left: -15px;
   margin-right: -15px;
-  padding-left: calc(0.65em + 7.5px) !important;
+  padding-left: calc(2.5em + 7.5px);
 }
 
 .tableOfContents > ul > .tableOfContentsLink {
-  padding: 0.65em 0;
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left: calc(0.65em + 7.5px);
   font-weight: 400;
   box-shadow: none;
 }
 
 .tableOfContents > ul > .tableOfContentsLink:hover,
 .tableOfContents > ul > .tableOfContentsLink:focus-visible {
-  box-shadow: none !important;
+  box-shadow: none;
   background-color: #ffffff;
-  color: #112233 !important;
+  color: #112233;
   border-radius: 10px;
   margin-left: -15px;
   margin-right: -15px;
-  padding-left: calc(0.65em + 7.5px) !important;
+  padding-left: calc(0.65em + 7.5px);
 }
 
 .active {
-  box-shadow: none !important;
+  box-shadow: none;
   background-color: #ffffff;
-  color: #112233 !important;
+  color: #112233;
   border-radius: 10px;
   margin-left: -15px;
   margin-right: -15px;
-  padding-left: calc(0.65em + 7.5px) !important;
+  padding-left: calc(0.65em + 7.5px);
 }
 
 .tableOfContents > ul > .designCodeLink {

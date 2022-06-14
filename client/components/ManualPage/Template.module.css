@@ -7,8 +7,9 @@
 
 .columnList,
 .pageName {
-  margin-top: 48px;
-  margin-bottom: 30px;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  margin-right: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -24,12 +25,13 @@
   }
 
   .pageName {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 }
 
 .template__image {
   width: 100%;
+  position: relative;
   border-radius: 4px;
   margin-bottom: 1rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -37,6 +39,20 @@
 
 .heading1 > span {
   font-weight: 700 !important;
+}
+
+.heading1 {
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.heading2 {
+  margin-top: 1em;
+}
+
+.heading3 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .heading2 > span {
@@ -50,5 +66,5 @@
 }
 
 .heading3 {
-  margin-top: 2rem;
+  margin-top: 1em;
 }

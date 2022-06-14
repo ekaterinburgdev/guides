@@ -3,28 +3,29 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import map from 'lodash/map';
+import Image from 'next/image';
 import styles from './Template.module.css';
-import { getPageByUrl } from '../../api/apiPage';
-import { api } from '../../next.config';
+import {api} from '../../next.config';
+import tp from '../../utils/typograf/typograf.config';
 
-function ManualPage({ pageList, pageName }) {
-  const getLine = (columnList) => {
+function ManualPage({pageList, pageName}) {
+  const getLine = columnList => {
     if (!columnList.children.length) {
       return;
     }
 
     return (
       <div className="row gx-5">
-        {columnList.children.map((cols) => (
+        {columnList.children.map(cols => (
           <div className="col" key={cols.id}>
-            {cols.children.map((col) => getColumnItem(col))}
+            {cols.children.map(col => getColumnItem(col))}
           </div>
         ))}
       </div>
     );
   };
 
-  const getImage = (imageObj) => {
+  const getImage = imageObj => {
     if (imageObj.content.image_data.caption.length === 0) {
       return (
         <img
@@ -46,26 +47,28 @@ function ManualPage({ pageList, pageName }) {
     );
   };
 
-  const getTextContent = (item) => item.content.text.map((par) => {
-    const textContent = par && par.text && par.text.content;
-    const stylePar = {
-      fontWeight: par?.annotations?.bold ? '500' : '300',
-    };
+  const getTextContent = item =>
+    item.content.text.map(par => {
+      const textContent = tp.execute(par?.text?.content);
+      const stylePar = {
+        fontWeight: par?.annotations?.bold ? '500' : '300',
+      };
 
-    if (!textContent) {
-      return;
-    }
+      if (!textContent) {
+        return;
+      }
 
-    return (
-      <span style={{ ...stylePar }} key={textContent}>
-        {textContent}
-      </span>
-    );
-  });
+      return (
+        <span style={{...stylePar}} key={textContent}>
+          {textContent}
+        </span>
+      );
+    });
 
-  const getListItem = (columnItem) => columnItem.children.map((li) => <li key={li.id}>{getTextContent(li)}</li>);
+  const getListItem = columnItem =>
+    columnItem.children.map(li => <li key={li.id}>{getTextContent(li)}</li>);
 
-  const getColumnItem = (columnItem) => {
+  const getColumnItem = columnItem => {
     switch (columnItem.type) {
       case 'column_list':
         return <div className={styles.columnList}>{getLine(columnItem)}</div>;
@@ -75,14 +78,24 @@ function ManualPage({ pageList, pageName }) {
 
       case 'heading_1':
         return (
-          <h1 id={columnItem.id} className={styles.heading1}>{getTextContent(columnItem)}</h1>
+          <h1 id={columnItem.id} className={styles.heading1}>
+            {getTextContent(columnItem)}
+          </h1>
         );
 
       case 'heading_2':
-        return <h2 id={columnItem.id} className={styles.heading2}>{getTextContent(columnItem)}</h2>;
+        return (
+          <h2 id={columnItem.id} className={styles.heading2}>
+            {getTextContent(columnItem)}
+          </h2>
+        );
 
       case 'heading_3':
-        return <h3 id={columnItem.id} className={styles.heading3}>{getTextContent(columnItem)}</h3>;
+        return (
+          <h3 id={columnItem.id} className={styles.heading3}>
+            {getTextContent(columnItem)}
+          </h3>
+        );
 
       case 'paragraph':
         return <p>{getTextContent(columnItem)}</p>;
@@ -97,19 +110,17 @@ function ManualPage({ pageList, pageName }) {
         return <ol>{getListItem(columnItem)}</ol>;
 
       case 'code':
-        return <code>
-          {getTextContent(columnItem)}
-        </code>
+        return <code>{getTextContent(columnItem)}</code>;
 
       default:
-        return <p>Что я такое...</p>;
+        return <p>Unknown type</p>;
     }
   };
 
   return (
     <div className={styles.template__column}>
       <h1 className={styles.pageName}>{pageName}</h1>
-      {map(pageList, (cl) => getColumnItem(cl))}
+      {map(pageList, cl => getColumnItem(cl))}
     </div>
   );
 }
