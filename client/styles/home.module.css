@@ -1,43 +1,17 @@
+.manualsSection img {
+  border-radius: inherit;
+  transform-origin: 0% 0%;
+  transition: 0.1s ease transform;
+}
+
 .mainTitle {
   font-size: 10vw;
   line-height: 1;
-  margin-top: 0.15em !important;
-  margin-bottom: 0.4em !important;
+  margin-top: 0.15em;
   color: #123;
   font-weight: 500;
-}
-
-.manualItem {
-  background: white !important;
-  overflow: hidden;
-  width: calc(100% / 3 - 2vw);
-  display: block;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.15s ease-in;
-  margin: 0;
-  box-shadow: rgb(17 12 46 / 10%) 0px 15px 25px -5px;
-  border-radius: 0.5em;
-  aspect-ratio: 16 / 10;
-}
-
-.manualItem:hover,
-.manualItem:focus-visible {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  outline: none;
-}
-
-.manualItem img {
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  object-position: center;
-  aspect-ratio: 16 / 10;
-}
-
-.manualItem:hover img,
-.manualItem:focus-visible img {
-  transform: matrix(1, -0.08, 0, 1, 0, 0) scaleX(0.95);
+  text-align: center;
+  margin-bottom: 0.8em;
 }
 
 .manualTitle {
@@ -51,29 +25,22 @@
 .manualsSection {
   display: flex;
   flex-wrap: wrap;
-  gap: 2.486vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8vw;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .manualsSection {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8vw;
-  }
-
-  .manualItem {
-    width: 130vw;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2.486vw;
   }
 
   .mainTitle {
-    text-align: center;
-    margin-bottom: 0.8em !important;
+    text-align: left;
+    margin-bottom: 0.4em;
   }
-}
-
-.manualsSection img {
-  border-radius: inherit;
-  transform-origin: 0% 0%;
-  transition: 0.1s ease transform;
 }
