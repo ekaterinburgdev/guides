@@ -55,24 +55,11 @@ export default function Home() {
     <div>
       <Head>
         <title>Городские руководства</title>
-        <link rel="icon" href="../public/assets/favicon.ico" />
+        <link rel="icon" href="assets/favicon.ico" />
         <html lang="ru" />
         <meta charSet="utf-8" />
         <meta name="description" content="Городские руководства Екатеринбурга" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#fff" />
-
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ekaterinburg.design/" />
-        <meta property="og:title" content="Городские руководства" />
-        <meta property="og:description" content="Городские руководства города Екатеринбург" />
-        <meta property="og:image" content="https://ekaterinburg.design/og-preview.jpg" />
-
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="dns-prefetch" href="https://mc.yandex.ru/" />
       </Head>
 
       <main style={{padding: '2vmax'}}>
