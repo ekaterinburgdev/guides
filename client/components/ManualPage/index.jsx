@@ -3,11 +3,12 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import map from 'lodash/map';
+import Image from 'next/image';
 import styles from './Template.module.css';
-import { getPageByUrl } from '../../api/apiPage';
-import { api } from '../../next.config';
+import {api} from '../../next.config';
+import tp from '../../utils/typograf/typograf.config';
 
-function ManualPage({ pageList, pageName }) {
+function ManualPage({pageList, pageName}) {
   const getLine = (columnList) => {
     if (!columnList.children.length) {
       return;
@@ -47,7 +48,7 @@ function ManualPage({ pageList, pageName }) {
   };
 
   const getTextContent = (item) => item.content.text.map((par) => {
-    const textContent = par && par.text && par.text.content;
+    const textContent = tp.execute(par?.text?.content);
     const stylePar = {
       fontWeight: par?.annotations?.bold ? '500' : '300',
     };
@@ -57,7 +58,7 @@ function ManualPage({ pageList, pageName }) {
     }
 
     return (
-      <span style={{ ...stylePar }} key={textContent}>
+      <span style={{...stylePar}} key={textContent}>
         {textContent}
       </span>
     );
@@ -75,14 +76,24 @@ function ManualPage({ pageList, pageName }) {
 
       case 'heading_1':
         return (
-          <h1 id={columnItem.id} className={styles.heading1}>{getTextContent(columnItem)}</h1>
+          <h1 id={columnItem.id} className={styles.heading1}>
+            {getTextContent(columnItem)}
+          </h1>
         );
 
       case 'heading_2':
-        return <h2 id={columnItem.id} className={styles.heading2}>{getTextContent(columnItem)}</h2>;
+        return (
+          <h2 id={columnItem.id} className={styles.heading2}>
+            {getTextContent(columnItem)}
+          </h2>
+        );
 
       case 'heading_3':
-        return <h3 id={columnItem.id} className={styles.heading3}>{getTextContent(columnItem)}</h3>;
+        return (
+          <h3 id={columnItem.id} className={styles.heading3}>
+            {getTextContent(columnItem)}
+          </h3>
+        );
 
       case 'paragraph':
         return <p>{getTextContent(columnItem)}</p>;
@@ -96,8 +107,11 @@ function ManualPage({ pageList, pageName }) {
       case 'numbered_list':
         return <ol>{getListItem(columnItem)}</ol>;
 
+      case 'code':
+        return <code>{getTextContent(columnItem)}</code>;
+
       default:
-        return <p>Что я такое...</p>;
+        return <p>Unknown type</p>;
     }
   };
 

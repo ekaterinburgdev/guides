@@ -2,19 +2,20 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable-next-line consistent-return */
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React, {useEffect, useState} from 'react';
+import {useRouter} from 'next/router';
 import Link from 'next/link';
 import findIndex from 'lodash/findIndex';
 import TableOfContents from '../../components/TableOfContents';
 import ManualPage from '../../components/ManualPage';
-import { getTree, getPageByUrl } from '../../api/apiPage';
+import {getTree, getPageByUrl} from '../../api/apiPage';
+import tp from '../../utils/typograf/typograf.config';
 
 import styles from './page.module.css';
 
 function GetPage() {
   const router = useRouter();
-  const { pageUrl } = router.query;
+  const {pageUrl} = router.query;
 
   const [prevPageIndex, setPrevPageIndex] = useState(-1);
   const [nextPageIndex, setNexPageIndex] = useState(9e13);
@@ -38,10 +39,7 @@ function GetPage() {
     };
 
     const getTextContent = (item) => item.content.text.map((par) => {
-      const textContent = par && par.text && par.text.content;
-      const stylePar = {
-        fontWeight: par?.annotations?.bold ? '500' : '300',
-      };
+      const textContent = tp.execute(par?.text?.content);
       if (!textContent) {
         return;
       }
@@ -54,13 +52,13 @@ function GetPage() {
         return <div className={styles.columnList}>{getLine(columnItem)}</div>;
 
       case 'heading_1':
-        return { id: columnItem.id, title: getTextContent(columnItem) };
+        return {id: columnItem.id, title: getTextContent(columnItem)};
 
       case 'heading_2':
-        return { id: columnItem.id, title: getTextContent(columnItem) };
+        return {id: columnItem.id, title: getTextContent(columnItem)};
 
       case 'heading_3':
-        return { id: columnItem.id, title: getTextContent(columnItem) };
+        return {id: columnItem.id, title: getTextContent(columnItem)};
 
       default:
         return null;
@@ -82,16 +80,21 @@ function GetPage() {
       });
 
     // eslint-disable-next-line no-undef
-    const catalogUrl = sessionStorage.getItem('catalogUrl')
+    const catalogUrl = sessionStorage.getItem('catalogUrl');
     // eslint-disable-next-line no-undef
-    const catalogTitleFromStorage = sessionStorage.getItem('catalogTitle')
+    const catalogTitleFromStorage = sessionStorage.getItem('catalogTitle');
     // eslint-disable-next-line no-undef
-    const catalogIdFromStorage = sessionStorage.getItem('catalogId')
-    if (!catalogUrl || !catalogTitleFromStorage || !catalogIdFromStorage || pageUrl[0] !== catalogUrl) {
+    const catalogIdFromStorage = sessionStorage.getItem('catalogId');
+    if (
+      !catalogUrl
+      || !catalogTitleFromStorage
+      || !catalogIdFromStorage
+      || pageUrl[0] !== catalogUrl
+    ) {
       getPageByUrl(pageUrl[0])
         .then((page) => {
           const catalogTitleForSet = page.content.title;
-          const catalogIdForSet = page.id
+          const catalogIdForSet = page.id;
           setCatalogTitle(catalogTitleForSet);
           setCatalogId(catalogIdForSet);
           // eslint-disable-next-line no-undef
@@ -108,7 +111,7 @@ function GetPage() {
       // eslint-disable-next-line no-undef
       const catalogTitleForSet = sessionStorage.getItem('catalogTitle');
       // eslint-disable-next-line no-undef
-      const catalogIdForSet = sessionStorage.getItem('catalogId')
+      const catalogIdForSet = sessionStorage.getItem('catalogId');
       setCatalogTitle(catalogTitleForSet);
       setCatalogId(catalogIdForSet);
     }
@@ -131,8 +134,8 @@ function GetPage() {
     }
 
     const catalogIndexForSet = children.findIndex((catalog) => catalog.id === catalogId);
-    setCatalogIndex(catalogIndexForSet)
-  }, [children, catalogId])
+    setCatalogIndex(catalogIndexForSet);
+  }, [children, catalogId]);
 
   useEffect(() => {
     if (!children || !pageUrl) {
@@ -172,12 +175,12 @@ function GetPage() {
       return;
     }
 
-    const curPageUrl = pageUrl.length > 1 ? pageUrl[pageUrl.length - 1] : undefined
+    const curPageUrl = pageUrl.length > 1 ? pageUrl[pageUrl.length - 1] : undefined;
 
     const curPageIndex = tableOfContentArr.findIndex((el) => el.url === curPageUrl);
     setPrevPageIndex(curPageIndex - 1);
     setNexPageIndex(curPageIndex + 1);
-  }, [tableOfContentArr, pageUrl])
+  }, [tableOfContentArr, pageUrl]);
 
   useEffect(() => {
     if (pageList.length === 0) {
@@ -192,26 +195,26 @@ function GetPage() {
   const getCatalogOptions = (catalog) => ({
     url: catalog.properties.pageUrl.url,
     title: catalog.properties.Name.title[0].plain_text,
-  })
+  });
 
   const renderPrevPage = () => {
     let href = {
       pathname: '/[[...pageUrl]]',
       query: {pageUrl: []},
-    }
+    };
     let title = '';
 
     if (prevPageIndex >= 0) {
-      href.query.pageUrl = [pageUrl[0], tableOfContentArr[prevPageIndex].url]
-      title = tableOfContentArr[prevPageIndex].title
+      href.query.pageUrl = [pageUrl[0], tableOfContentArr[prevPageIndex].url];
+      title = tableOfContentArr[prevPageIndex].title;
     } else {
       const prevCatalogIndex = catalogIndex - 1;
       if (Number.isNaN(prevCatalogIndex)) {
         return;
       }
       if (prevCatalogIndex <= -1) {
-        title = 'Назад к руководствам'
-        href = { pathname: '/'}
+        title = 'Назад к руководствам';
+        href = {pathname: '/'};
       } else {
         const prevCatalog = getCatalogOptions(children[prevCatalogIndex]);
         title = prevCatalog.title;
@@ -219,34 +222,34 @@ function GetPage() {
       }
     }
 
-    return <Link
-      href={href}
-    >
-      <a>
-        ←
-        &nbsp;
-        {title}
-      </a>
-    </Link>}
+    return (
+      <Link href={href}>
+        <a>
+          ← &nbsp;
+          {title}
+        </a>
+      </Link>
+    );
+  };
 
   const renderNextPage = () => {
     let href = {
       pathname: '/[[...pageUrl]]',
       query: {pageUrl: []},
-    }
+    };
     let title = '';
 
     if (nextPageIndex < tableOfContentArr.length) {
-      href.query.pageUrl = [pageUrl[0], tableOfContentArr[nextPageIndex].url]
-      title = tableOfContentArr[nextPageIndex].title
+      href.query.pageUrl = [pageUrl[0], tableOfContentArr[nextPageIndex].url];
+      title = tableOfContentArr[nextPageIndex].title;
     } else {
       const nextCatalogIndex = catalogIndex + 1;
       if (Number.isNaN(nextCatalogIndex)) {
         return;
       }
       if (nextCatalogIndex >= children.length) {
-        title = 'Назад к руководствам'
-        href = { pathname: '/' }
+        title = 'Назад к руководствам';
+        href = {pathname: '/'};
       } else {
         const nextCatalog = getCatalogOptions(children[nextCatalogIndex]);
         title = nextCatalog.title;
@@ -254,15 +257,15 @@ function GetPage() {
       }
     }
 
-    return <Link
-      href={href}
-    >
-      <a>
-        {title}
-        &nbsp;
-        →
-      </a>
-    </Link>}
+    return (
+      <Link href={href}>
+        <a>
+          {title}
+          &nbsp; →
+        </a>
+      </Link>
+    );
+  };
 
   return (
     <>
@@ -273,10 +276,12 @@ function GetPage() {
         catalogTitle={catalogTitle}
       />
       <ManualPage pageList={pageList} pageName={pageName} />
-      {tableOfContentArr.length !== 0 && <nav className={styles.footNav}>
-        {(Number.isInteger(prevPageIndex) || Number.isInteger(catalogIndex)) && renderPrevPage()}
-        {(Number.isInteger(nextPageIndex) || Number.isInteger(catalogIndex)) && renderNextPage()}
-      </nav>}
+      {tableOfContentArr.length !== 0 && (
+        <nav className={styles.footNav}>
+          {(Number.isInteger(prevPageIndex) || Number.isInteger(catalogIndex)) && renderPrevPage()}
+          {(Number.isInteger(nextPageIndex) || Number.isInteger(catalogIndex)) && renderNextPage()}
+        </nav>
+      )}
     </>
   );
 }

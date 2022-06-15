@@ -1,24 +1,12 @@
 .footNav {
   display: flex;
-  margin-left: 22.6vw;
-  justify-content: flex-start;
-}
-
-@media screen and (max-width: 769px) {
-    .footNav {
-        margin-left: 25vw;
-    }
-}
-
-@media screen and (max-width: 426px) {
-    .footNav {
-        margin-left: 9vw;
-    }
+  margin-left: 25vw;
+  justify-content: space-between;
 }
 
 .footNav > a {
-  box-shadow: none !important;
-  color: rgba(17, 34, 51, 1) !important;
+  box-shadow: none;
+  color: rgba(17, 34, 51, 1);
   padding: 16px 24px;
   background-color: rgba(17, 34, 51, 0.07);
   border-radius: 64px;

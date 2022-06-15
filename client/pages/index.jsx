@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import {api} from '../next.config';
 import styles from '../styles/home.module.css';
 import {getTree} from '../api/apiPage';
@@ -36,8 +37,15 @@ export default function Home() {
         passHref
       >
         <a className={styles.manualItem}>
-          <img style={{width: '100%'}} src={`${api.HOST}/static/${imageUrl}`} alt={titleText} />
-          <h4 className={styles.manualTitle}>{titleText}</h4>
+          <Image
+            src={`${api.HOST}/static/${imageUrl}`}
+            alt={titleText}
+            layout="fill"
+            placeholder="blur"
+            loading="lazy"
+            blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs="
+            aria-label={titleText}
+          />
         </a>
       </Link>
     );
@@ -52,12 +60,23 @@ export default function Home() {
         <meta charSet="utf-8" />
         <meta name="description" content="Городские руководства Екатеринбурга" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#fff" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ekaterinburg.design/" />
+        <meta property="og:title" content="Городские руководства" />
+        <meta property="og:description" content="Городские руководства города Екатеринбург" />
+        <meta property="og:image" content="https://ekaterinburg.design/og-preview.jpg" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="dns-prefetch" href="https://mc.yandex.ru/" />
       </Head>
 
       <main style={{padding: '2vmax'}}>
-        <h1 className={styles.mainTitle}>
-          {title}
-        </h1>
+        <h1 className={styles.mainTitle}>{title}</h1>
         <section className={styles.manualsSection}>
           {manuals.map((manual) => renderManualItem(manual))}
         </section>

@@ -1,29 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import {useRouter} from 'next/router';
+import React, {useState } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
-import {getAllPage} from '../../api/apiPage';
+import Logo from '../Logo/Logo';
 import styles from './TableOfContents.module.css';
-
-// const queries = ['(max-width: 400px)', '(min-width: 800px)'];
+import tp from '../../utils/typograf/typograf.config';
+import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 
 function TableOfContents({
   tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle,
 }) {
   const [isOpen, setIsOpen] = useState(true);
-
-  const router = useRouter();
-
-  useEffect(() => {
-    console.log('каталог тайтл', catalogTitle);
-  }, [catalogTitle])
-
-  useEffect(() => {
-    console.log('якорные ссылки', anchorLinks);
-  }, [anchorLinks]);
-  useEffect(() => {
-    console.log('текущий урл', currentPageUrl);
-  }, [currentPageUrl]);
 
   // TODO: Сделать для большой вложенности...
   const tableOfContentsLink = ({url, title, children}) => (
@@ -35,7 +21,12 @@ function TableOfContents({
           as: `${currentPageUrl.join('/')}/${url}`,
         }}
       >
-        <a className={cn(styles.tableOfContentsLink, { [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url })} href={url}>
+        <a
+          className={cn(styles.tableOfContentsLink, {
+            [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
+          })}
+          href={url}
+        >
           {title}
         </a>
       </Link>
@@ -43,7 +34,7 @@ function TableOfContents({
         && currentPageUrl[1] === url
         && anchorLinks.map((anchor) => (
           <a className={styles.innerTableOfContentsLink} key={anchor.title} href={`#${anchor.id}`}>
-            {anchor.title}
+            {tp.execute(anchor.title)}
           </a>
         ))}
     </>
@@ -51,7 +42,7 @@ function TableOfContents({
 
   return (
     <>
-      <button type="button" className={styles.openButton} onClick={() => setIsOpen(!isOpen)} />
+      <HamburgerMenu baseState={isOpen} changeState={() => setIsOpen(!isOpen)} />
       <nav style={{display: !isOpen ? 'none' : 'block'}} className={styles.tableOfContents}>
         <Link
           href={{
@@ -69,14 +60,11 @@ function TableOfContents({
           }}
         >
           <a className={styles.catalogTitle} href="/">
-            {catalogTitle}
+            {tp.execute(catalogTitle)}
           </a>
         </Link>
         <ul>{currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}</ul>
-        <a className={styles.logoContainer} href="https://ekaterinburg.design/">
-          {/* <img src="../../public/assets/avatar.png" alt="Дизайн код логотип" /> */}
-          <p className={styles.logoContainerText}>Дизайн-код Екатеринбурга</p>
-        </a>
+        <Logo logoSrc="/Avatar.svg" linkTo="https://ekaterinburg.design/" />
       </nav>
     </>
   );

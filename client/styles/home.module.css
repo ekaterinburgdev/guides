@@ -9,9 +9,10 @@
 
 .manualItem {
   background: white !important;
-  overflow: visible;
+  overflow: hidden;
   width: calc(100% / 3 - 2vw);
   display: block;
+  position: relative;
   cursor: pointer;
   transition: all 0.15s ease-in;
   margin: 0;
