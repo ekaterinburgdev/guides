@@ -12,8 +12,8 @@ export const getHeaderContent = (item) => item.content.text.map((par) => {
   return textContent;
 });
 
-export const getTextContent = (item) => item.content.text.map((par) => {
-  const textContent = tp.execute(par?.text?.content);
+export const getTextContent = (item, useTypograf = false) => item.content.text.map((par) => {
+  const textContent = useTypograf ? tp.execute(par?.text?.content) : par?.text?.content;
   const stylePar = {
     fontWeight: par?.annotations?.bold ? '500' : '300',
     color: par?.annotations?.color ? par?.annotations?.color : 'black',

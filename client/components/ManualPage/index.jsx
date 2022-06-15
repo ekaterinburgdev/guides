@@ -5,6 +5,7 @@ import React from 'react';
 import map from 'lodash/map';
 import styles from './Template.module.css';
 import { getHeaderContent, getTextContent, getListItem } from '../../utils/notionTypeParser/textParser';
+import getTableContent from '../../utils/notionTypeParser/tableParser';
 import getImage from '../../utils/notionTypeParser/imageParser';
 
 function ManualPage({pageList, pageName}) {
@@ -67,6 +68,17 @@ function ManualPage({pageList, pageName}) {
 
       case 'code':
         return <code>{getTextContent(columnItem)}</code>;
+
+      case 'table':
+        return <div className={styles.tableContainer}>
+          <table className={styles.table1}>
+            {columnItem.children.map((child) => <tr key={child.id}>
+              {child?.content?.cells?.map((cell) => <td key={cell[0]?.plain_text}>
+                {cell[0]?.plain_text}
+              </td>)}
+            </tr>)}
+          </table>
+        </div>
 
       default:
         return <p>Unknown type</p>;

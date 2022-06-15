@@ -34,7 +34,7 @@ function TableOfContents({
         && currentPageUrl[1] === url
         && anchorLinks.map((anchor) => (
           <a className={styles.innerTableOfContentsLink} key={anchor.title} href={`#${anchor.id}`}>
-            {tp.execute(anchor.title)}
+            {anchor.title}
           </a>
         ))}
     </>
