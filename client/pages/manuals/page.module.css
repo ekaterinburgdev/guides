@@ -1,19 +1,7 @@
 .footNav {
   display: flex;
   margin-left: 25vw;
-  justify-content: flex-start;
-}
-
-@media screen and (max-width: 769px) {
-    .footNav {
-        margin-left: 25vw;
-    }
-}
-
-@media screen and (max-width: 426px) {
-    .footNav {
-        margin-left: 9vw;
-    }
+  justify-content: space-between;
 }
 
 .footNav > a {
