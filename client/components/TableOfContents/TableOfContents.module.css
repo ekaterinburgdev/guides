@@ -35,34 +35,6 @@
   outline: 0;
 }
 
-.logoContainer {
-  background-color: transparent;
-  box-shadow: none;
-  position: relative;
-  display: flex;
-  column-gap: 0.5em;
-  margin-left: -15px;
-  margin-right: -15px;
-  margin-top: 15px;
-  padding-left: calc(0.65em + 7.5px);
-}
-
-.logoContainer:hover,
-.logoContainer:focus-visible {
-  box-shadow: none;
-  background-color: #ffffff;
-  color: #112233;
-  border-radius: 10px;
-  outline: 0;
-}
-
-.logoContainerText {
-  font-weight: 500;
-  margin-bottom: 0px;
-  padding-top: 6px;
-  padding-left: 10px;
-}
-
 .tableOfContents {
   text-align: left;
   padding: 8px;
@@ -94,7 +66,7 @@
 .innerTableOfContentsLink {
   margin-left: -15px;
   margin-right: -15px;
-  padding-left: calc(2.5em + 7.5px);
+  padding: 15px 0px 15px calc(2.5em + 7.5px);
   font-weight: 400;
   box-shadow: none;
 }
@@ -107,14 +79,13 @@
   border-radius: 10px;
   margin-left: -15px;
   margin-right: -15px;
-  padding-left: calc(2.5em + 7.5px);
   outline: 0;
 }
 
 .tableOfContents > ul > .tableOfContentsLink {
   margin-left: -15px;
   margin-right: -15px;
-  padding-left: calc(0.65em + 7.5px);
+  padding: 15px 0px 15px calc(0.65em + 7.5px);
   font-weight: 400;
   box-shadow: none;
 }
@@ -135,7 +106,7 @@
   border-radius: 10px;
   margin-left: -15px;
   margin-right: -15px;
-  padding-left: calc(0.65em + 7.5px);
+  padding: 15px 0px 15px calc(0.65em + 7.5px);
 }
 
 .tableOfContents > ul > .designCodeLink {

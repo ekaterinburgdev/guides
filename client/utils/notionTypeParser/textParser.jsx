@@ -16,6 +16,14 @@ export const getTextContent = (item) => item.content.text.map((par) => {
   const textContent = tp.execute(par?.text?.content);
   const stylePar = {
     fontWeight: par?.annotations?.bold ? '500' : '300',
+    color: par?.annotations?.color ? par?.annotations?.color : 'black',
+    fontStyle: par?.annotations?.italic ? 'italic' : 'normal',
+    // eslint-disable-next-line no-nested-ternary
+    textDecoration: par?.annotations?.underline
+      ? par?.annotations?.strikethrough
+        ? 'line-through'
+        : 'underline'
+      : 'none',
   };
 
   if (!textContent) {
