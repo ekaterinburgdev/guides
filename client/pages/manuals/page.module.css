@@ -1,7 +1,9 @@
 .footNav {
   display: flex;
-  margin-left: 25vw;
+  margin-left: max(20%, 376px);
   justify-content: space-between;
+  padding-left: 6vw;
+  padding-right: 6vw;
 }
 
 .footNav > a {

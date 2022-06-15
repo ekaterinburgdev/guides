@@ -5,12 +5,10 @@
 import React, {useEffect, useState} from 'react';
 import {useRouter} from 'next/router';
 import Link from 'next/link';
-import findIndex from 'lodash/findIndex';
 import TableOfContents from '../../components/TableOfContents';
 import ManualPage from '../../components/ManualPage';
 import {getTree, getPageByUrl} from '../../api/apiPage';
 import tp from '../../utils/typograf/typograf.config';
-
 import styles from './page.module.css';
 
 function GetPage() {

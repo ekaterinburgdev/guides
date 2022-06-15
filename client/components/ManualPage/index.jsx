@@ -3,10 +3,10 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import map from 'lodash/map';
-import Image from 'next/image';
 import styles from './Template.module.css';
-import {api} from '../../next.config';
-import tp from '../../utils/typograf/typograf.config';
+import { getHeaderContent, getTextContent, getListItem } from '../../utils/notionTypeParser/textParser';
+import getTableContent from '../../utils/notionTypeParser/tableParser';
+import getImage from '../../utils/notionTypeParser/imageParser';
 
 function ManualPage({pageList, pageName}) {
   const getLine = (columnList) => {
@@ -25,47 +25,6 @@ function ManualPage({pageList, pageName}) {
     );
   };
 
-  const getImage = (imageObj) => {
-    if (imageObj.content.image_data.caption.length === 0) {
-      return (
-        <img
-          className={styles.template__image}
-          src={`${api.HOST}/static/${imageObj.content.image_name}`}
-          alt="фотка"
-        />
-      );
-    }
-    return (
-      <div>
-        <img
-          className={styles.template__image}
-          src={`${api.HOST}/static/${imageObj.content.image_name}`}
-          alt={imageObj.content.image_data.caption[0].plain_text}
-        />
-        <span>{imageObj.content.image_data.caption[0].plain_text}</span>
-      </div>
-    );
-  };
-
-  const getTextContent = (item) => item.content.text.map((par) => {
-    const textContent = tp.execute(par?.text?.content);
-    const stylePar = {
-      fontWeight: par?.annotations?.bold ? '500' : '300',
-    };
-
-    if (!textContent) {
-      return;
-    }
-
-    return (
-      <span style={{...stylePar}} key={textContent}>
-        {textContent}
-      </span>
-    );
-  });
-
-  const getListItem = (columnItem) => columnItem.children.map((li) => <li key={li.id}>{getTextContent(li)}</li>);
-
   const getColumnItem = (columnItem) => {
     switch (columnItem.type) {
       case 'column_list':
@@ -77,21 +36,21 @@ function ManualPage({pageList, pageName}) {
       case 'heading_1':
         return (
           <h1 id={columnItem.id} className={styles.heading1}>
-            {getTextContent(columnItem)}
+            {getHeaderContent(columnItem)}
           </h1>
         );
 
       case 'heading_2':
         return (
           <h2 id={columnItem.id} className={styles.heading2}>
-            {getTextContent(columnItem)}
+            {getHeaderContent(columnItem)}
           </h2>
         );
 
       case 'heading_3':
         return (
           <h3 id={columnItem.id} className={styles.heading3}>
-            {getTextContent(columnItem)}
+            {getHeaderContent(columnItem)}
           </h3>
         );
 
@@ -109,6 +68,17 @@ function ManualPage({pageList, pageName}) {
 
       case 'code':
         return <code>{getTextContent(columnItem)}</code>;
+
+      case 'table':
+        return <div className={styles.tableContainer}>
+          <table className={styles.table1}>
+            {columnItem.children.map((child) => <tr key={child.id}>
+              {child?.content?.cells?.map((cell) => <td key={cell[0]?.plain_text}>
+                {cell[0]?.plain_text}
+              </td>)}
+            </tr>)}
+          </table>
+        </div>
 
       default:
         return <p>Unknown type</p>;
