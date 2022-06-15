@@ -1,18 +1,19 @@
-@import "normalize.css";
-@import "./font.css";
+@import 'normalize.css';
+@import './font.css';
 
 html,
 body {
-  background-color: rgb(255, 255, 255) !important;
-  color: #000000 !important;
+  background-color: rgb(255, 255, 255);
+  color: #000000;
   padding: 0;
   margin: 0;
-  font-family: Iset Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+  font-family: Iset Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
   scroll-behavior: smooth;
-  font-weight: 300 !important;
+  font-weight: 300;
   max-width: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 code {
@@ -20,7 +21,7 @@ code {
   padding: 2rem;
   display: inline-block;
   border-radius: 4px;
-  color: black !important;
+  color: black;
 }
 
 a {
@@ -29,7 +30,7 @@ a {
   text-decoration: none !important;
   border: none !important;
   transition: all;
-  transition-duration: .2s;
+  transition-duration: 0.2s;
   box-shadow: 0 3px 0 0 #c2c2c2;
 }
 
@@ -46,7 +47,7 @@ ul li {
 }
 
 ul li:before {
-  content: "— ";
+  content: '— ';
 }
 
 input {

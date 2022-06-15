@@ -9,23 +9,23 @@ import {api} from '../../next.config';
 import tp from '../../utils/typograf/typograf.config';
 
 function ManualPage({pageList, pageName}) {
-  const getLine = columnList => {
+  const getLine = (columnList) => {
     if (!columnList.children.length) {
       return;
     }
 
     return (
       <div className="row gx-5">
-        {columnList.children.map(cols => (
+        {columnList.children.map((cols) => (
           <div className="col" key={cols.id}>
-            {cols.children.map(col => getColumnItem(col))}
+            {cols.children.map((col) => getColumnItem(col))}
           </div>
         ))}
       </div>
     );
   };
 
-  const getImage = imageObj => {
+  const getImage = (imageObj) => {
     if (imageObj.content.image_data.caption.length === 0) {
       return (
         <img
@@ -47,28 +47,26 @@ function ManualPage({pageList, pageName}) {
     );
   };
 
-  const getTextContent = item =>
-    item.content.text.map(par => {
-      const textContent = tp.execute(par?.text?.content);
-      const stylePar = {
-        fontWeight: par?.annotations?.bold ? '500' : '300',
-      };
+  const getTextContent = (item) => item.content.text.map((par) => {
+    const textContent = tp.execute(par?.text?.content);
+    const stylePar = {
+      fontWeight: par?.annotations?.bold ? '500' : '300',
+    };
 
-      if (!textContent) {
-        return;
-      }
+    if (!textContent) {
+      return;
+    }
 
-      return (
-        <span style={{...stylePar}} key={textContent}>
-          {textContent}
-        </span>
-      );
-    });
+    return (
+      <span style={{...stylePar}} key={textContent}>
+        {textContent}
+      </span>
+    );
+  });
 
-  const getListItem = columnItem =>
-    columnItem.children.map(li => <li key={li.id}>{getTextContent(li)}</li>);
+  const getListItem = (columnItem) => columnItem.children.map((li) => <li key={li.id}>{getTextContent(li)}</li>);
 
-  const getColumnItem = columnItem => {
+  const getColumnItem = (columnItem) => {
     switch (columnItem.type) {
       case 'column_list':
         return <div className={styles.columnList}>{getLine(columnItem)}</div>;
@@ -120,7 +118,7 @@ function ManualPage({pageList, pageName}) {
   return (
     <div className={styles.template__column}>
       <h1 className={styles.pageName}>{pageName}</h1>
-      {map(pageList, cl => getColumnItem(cl))}
+      {map(pageList, (cl) => getColumnItem(cl))}
     </div>
   );
 }

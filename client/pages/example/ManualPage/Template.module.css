@@ -32,15 +32,15 @@
 }
 
 .heading1 > span {
-  font-weight: 700 !important;
+  font-weight: 700;
 }
 
 .heading2 > span {
   margin-bottom: 32px;
-  font-weight: 700 !important;
+  font-weight: 700;
 }
 
 .heading3 > span {
   margin-bottom: 16px;
-  font-weight: 700 !important;
+  font-weight: 700;
 }

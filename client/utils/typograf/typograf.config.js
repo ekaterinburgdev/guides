@@ -5,8 +5,6 @@ const tp = new Typograf({
 });
 
 tp.disableRule([
-  'common/space/afterPunctuation',
-  'common/nbsp/replaceNbsp',
   'common/space/trimLeft',
   'common/space/trimRight',
 ]);

@@ -10,11 +10,8 @@
 .linkToAllManuals:hover {
   background-color: rgba(255, 212, 0, 0.8);
   box-shadow: none;
-  padding: 10px 20px 10px 20px;
-  border-radius: 10px;
-  display: inline-block;
-  margin-bottom: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  outline: 0;
 }
 
 .catalogTitle {
@@ -26,6 +23,7 @@
   box-shadow: none;
   margin-left: -15px;
   margin-right: -15px;
+  margin-bottom: 10px;
 }
 
 .catalogTitle:hover,
@@ -34,21 +32,35 @@
   background-color: #ffffff;
   color: #112233;
   border-radius: 10px;
-  margin-left: -15px;
-  margin-right: -15px;
+  outline: 0;
 }
 
 .logoContainer {
   background-color: transparent;
-  padding: 1.5em;
-  border-radius: 1.5em;
   box-shadow: none;
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
+  column-gap: 0.5em;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 15px;
+  padding-left: calc(0.65em + 7.5px);
+}
+
+.logoContainer:hover,
+.logoContainer:focus-visible {
+  box-shadow: none;
+  background-color: #ffffff;
+  color: #112233;
+  border-radius: 10px;
+  outline: 0;
 }
 
 .logoContainerText {
+  font-weight: 500;
   margin-bottom: 0px;
+  padding-top: 6px;
+  padding-left: 10px;
 }
 
 .tableOfContents {
@@ -65,42 +77,7 @@
   padding: 20px 30px;
   overflow: auto;
   scrollbar-width: none;
-}
-
-.openButton {
-  display: block;
-  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3C!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='24.75px' height='24.75px' viewBox='0 0 24.75 24.75' style='enable-background:new 0 0 24.75 24.75;' xml:space='preserve' %3E%3Cg%3E%3Cpath d='M0,3.875c0-1.104,0.896-2,2-2h20.75c1.104,0,2,0.896,2,2s-0.896,2-2,2H2C0.896,5.875,0,4.979,0,3.875z M22.75,10.375H2 c-1.104,0-2,0.896-2,2c0,1.104,0.896,2,2,2h20.75c1.104,0,2-0.896,2-2C24.75,11.271,23.855,10.375,22.75,10.375z M22.75,18.875H2 c-1.104,0-2,0.896-2,2s0.896,2,2,2h20.75c1.104,0,2-0.896,2-2S23.855,18.875,22.75,18.875z'/%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E%0A");
-  width: 40px;
-  height: 40px;
-  border: 0;
-  background-repeat: no-repeat;
-  mix-blend-mode: multiply;
-  position: fixed;
-  transform: scale(1.5);
-  background-color: transparent;
-  top: 40px;
-  left: 20px;
   z-index: 1;
-}
-
-@media screen and (min-width: 768px) {
-  .tableOfContents {
-    margin: 15px;
-    border-radius: 10px;
-    display: flex;
-    position: fixed;
-    padding: 20px 30px;
-    min-width: 376px;
-    width: 20%;
-    height: calc(100vh - 30px);
-    background-color: #1231;
-    overflow: auto;
-    scrollbar-width: none;
-  }
-
-  .openButton {
-    display: none;
-  }
 }
 
 .tableOfContents::-webkit-scrollbar {
@@ -111,7 +88,7 @@
   display: flex;
   flex-direction: column;
   box-shadow: none;
-  gap: 1.5em;
+  gap: 1em;
 }
 
 .innerTableOfContentsLink {
@@ -131,6 +108,7 @@
   margin-left: -15px;
   margin-right: -15px;
   padding-left: calc(2.5em + 7.5px);
+  outline: 0;
 }
 
 .tableOfContents > ul > .tableOfContentsLink {
@@ -147,9 +125,7 @@
   background-color: #ffffff;
   color: #112233;
   border-radius: 10px;
-  margin-left: -15px;
-  margin-right: -15px;
-  padding-left: calc(0.65em + 7.5px);
+  outline: 0;
 }
 
 .active {
@@ -164,4 +140,24 @@
 
 .tableOfContents > ul > .designCodeLink {
   font-size: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .tableOfContents {
+    margin: 15px;
+    border-radius: 10px;
+    display: flex;
+    position: fixed;
+    padding: 20px 30px;
+    min-width: 376px;
+    width: 20%;
+    height: calc(100vh - 30px);
+    background-color: #1231;
+    overflow: auto;
+    scrollbar-width: none;
+  }
+
+  .menu {
+    display: none;
+  }
 }
