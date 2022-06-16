@@ -20,17 +20,20 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <>
       <Head>
         <title>Городские руководства</title>
+        <meta
+          name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=320, height=device-height, target-densitydpi=medium-dpi"
+        />
         <link rel="icon" href="/favicon.ico" />
         <html lang="ru" />
         <meta charSet="utf-8" />
         <meta name="description" content="Городские руководства Екатеринбурга" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <main style={{padding: '2vmax'}}>
+      <main className={styles.homeContainer}>
         <h1 className={styles.mainTitle}>{title}</h1>
         <section className={styles.manualsSection}>
           {manuals.map((manual) => (
@@ -38,6 +41,6 @@ export default function Home() {
           ))}
         </section>
       </main>
-    </div>
+    </>
   );
 }

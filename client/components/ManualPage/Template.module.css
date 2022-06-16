@@ -46,8 +46,7 @@
   border-radius: 8px;
   border: 1px solid #ddd;
   margin-bottom: 20px;
-  /* box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px; */
-  /* box-sizing: border-box; */
+  width: fit-content;
 }
 
 .table1 {
@@ -62,6 +61,7 @@
 	padding: 10px 15px;
 	font-size: 14px;
 	vertical-align: top;
+  font-size: 1.1em;
 }
 .table1 tr:nth-child(odd){
 	background: #f3f3f3;

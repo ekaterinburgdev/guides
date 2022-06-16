@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useState} from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
 import Logo from '../Logo/Logo';
@@ -43,29 +43,31 @@ function TableOfContents({
   return (
     <>
       <HamburgerMenu baseState={isOpen} changeState={() => setIsOpen(!isOpen)} />
-      <nav style={{display: !isOpen ? 'none' : 'block'}} className={styles.tableOfContents}>
-        <Link
-          href={{
-            pathname: '/',
-          }}
-        >
-          <a className={styles.linkToAllManuals} href="/">
-            Все руководства
-          </a>
-        </Link>
-        <Link
-          href={{
-            pathname: '/[[...pageUrl]]',
-            query: {pageUrl: [currentPageUrl[0]]},
-          }}
-        >
-          <a className={styles.catalogTitle} href="/">
-            {tp.execute(catalogTitle)}
-          </a>
-        </Link>
-        <ul>{currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}</ul>
-        <Logo logoSrc="/Avatar.svg" linkTo="https://ekaterinburg.design/" />
-      </nav>
+      <aside>
+        <nav style={{display: !isOpen ? 'none' : 'block'}} className={styles.tableOfContents}>
+          <Link
+            href={{
+              pathname: '/',
+            }}
+          >
+            <a className={styles.linkToAllManuals} href="/">
+              Все руководства
+            </a>
+          </Link>
+          <Link
+            href={{
+              pathname: '/[[...pageUrl]]',
+              query: {pageUrl: [currentPageUrl[0]]},
+            }}
+          >
+            <a className={styles.catalogTitle} href="/">
+              {tp.execute(catalogTitle)}
+            </a>
+          </Link>
+          <ul>{currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}</ul>
+          <Logo logoSrc="/Avatar.svg" linkTo="https://ekaterinburg.design/" />
+        </nav>
+      </aside>
     </>
   );
 }
