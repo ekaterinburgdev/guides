@@ -66,32 +66,3 @@ input {
 * {
   box-sizing: border-box;
 }
-
-html {
-  font-size: 120%;
-  min-width: 768px;
-}
-
-@media screen and (min-width: 768px) {
-  html {
-    font-size: 75%;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  html {
-    font-size: 100%;
-  }
-}
-
-@media screen and (min-width: 2560px) {
-  html {
-    font-size: 140%;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  html {
-    font-size: 160%;
-  }
-}

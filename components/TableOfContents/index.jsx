@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import cn from 'classnames';
 import Logo from '../Logo/Logo';
 import styles from './TableOfContents.module.css';
@@ -42,7 +43,12 @@ function TableOfContents({
 
   return (
     <>
-      <HamburgerMenu baseState={isOpen} changeState={() => setIsOpen(!isOpen)} />
+      <Head>
+        <title>{catalogTitle}</title>
+      </Head>
+      <div style={styles.menuContainer}>
+        <HamburgerMenu baseState={isOpen} changeState={() => setIsOpen(!isOpen)} />
+      </div>
       <aside>
         <nav style={{display: !isOpen ? 'none' : 'block'}} className={styles.tableOfContents}>
           <Link

@@ -3,10 +3,10 @@
   border: none;
   cursor: pointer;
   display: flex;
-  transform: scale(0.7);
+  transform: scale(0.3);
   position: fixed;
-  margin-left: -25px;
-  margin-top: -40px;
+  margin-left: -11vw;
+  margin-top: -5vh;
 }
 
 .line {

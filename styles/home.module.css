@@ -28,33 +28,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8vw;
+  gap: 4vw;
 }
 
 .homeContainer {
   padding: 2vmax;
-  height: 100vh;
-}
-
-/* Саня, спаси ... (почему-то не получается никак подружить домашнюю страницу и телефоны без этого хака с трансформами)  */
-
-@media screen and (min-width: 320px) {
-  .homeContainer {
-    transform: translate(-26.5%, -20%) scale(0.6);
-  }
-}
-
-
-@media screen and (min-width: 375px) {
-  .homeContainer {
-    transform: translate(-25.5%, -15%) scale(0.7);
-  }
-}
-
-@media screen and (min-width: 425px) {
-  .homeContainer {
-    transform: translate(-22%, -14%) scale(0.7);
-  }
 }
 
 @media screen and (min-width: 768px) {
