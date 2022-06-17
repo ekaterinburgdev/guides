@@ -2,11 +2,8 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  display: flex;
-  transform: scale(0.3);
-  position: fixed;
-  margin-left: -11vw;
-  margin-top: -5vh;
+  transform: scale(0.5);
+  margin-left: -10px;
 }
 
 .line {

@@ -7,14 +7,12 @@ import styles from './TableOfContents.module.css';
 import tp from '../../utils/typograf/typograf.config';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 
-function TableOfContents({
-  tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle,
-}) {
+function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle}) {
   const [isOpen, setIsOpen] = useState(true);
 
   // TODO: Сделать для большой вложенности...
-  const tableOfContentsLink = ({url, title, children}) => (
-    <>
+  const tableOfContentsLink = ({url, title}) => (
+    <li className={styles.link}>
       <Link
         href={{
           pathname: '/[[...pageUrl]]',
@@ -31,14 +29,14 @@ function TableOfContents({
           {title}
         </a>
       </Link>
-      {currentPageUrl[1]
-        && currentPageUrl[1] === url
-        && anchorLinks.map((anchor) => (
+      {currentPageUrl[1] &&
+        currentPageUrl[1] === url &&
+        anchorLinks.map(anchor => (
           <a className={styles.innerTableOfContentsLink} key={anchor.title} href={`#${anchor.id}`}>
             {anchor.title}
           </a>
         ))}
-    </>
+    </li>
   );
 
   return (
@@ -46,7 +44,7 @@ function TableOfContents({
       <Head>
         <title>{catalogTitle}</title>
       </Head>
-      <div style={styles.menuContainer}>
+      <div className={styles.menuContainer}>
         <HamburgerMenu baseState={isOpen} changeState={() => setIsOpen(!isOpen)} />
       </div>
       <aside>
@@ -70,7 +68,7 @@ function TableOfContents({
               {tp.execute(catalogTitle)}
             </a>
           </Link>
-          <ul>{currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}</ul>
+          <ul className={styles.linkContainer}>{currentPageUrl && tableOfContentArr.map(obj => tableOfContentsLink(obj))}</ul>
           <Logo logoSrc="/Avatar.svg" linkTo="https://ekaterinburg.design/" />
         </nav>
       </aside>

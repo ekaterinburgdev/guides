@@ -16,53 +16,6 @@ body {
   scroll-behavior: smooth;
 }
 
-code {
-  background-color: #f7f6f3;
-  padding: 2rem;
-  display: inline-block;
-  border-radius: 4px;
-  color: black;
-}
-
-a {
-  display: inline;
-  color: rgb(0, 0, 0) !important;
-  text-decoration: none !important;
-  border: none !important;
-  transition: all;
-  transition-duration: 0.2s;
-  box-shadow: 0 3px 0 0 #c2c2c2;
-}
-
-a:hover {
-  color: rgb(89, 89, 89) !important;
-}
-
-ul {
-  padding-left: 0 !important;
-}
-
-ul li {
-  list-style-type: none;
-}
-
-ul li:before {
-  content: '— ';
-}
-
-input {
-  font-style: normal;
-  font-size: 3.125rem;
-  line-height: 1.4;
-  border: none;
-  display: inline;
-  width: auto;
-  height: auto;
-  background: black;
-  color: #000000;
-  cursor: pointer;
-}
-
 * {
   box-sizing: border-box;
 }

@@ -5,6 +5,27 @@
   border-radius: 10px;
   display: inline-block;
   margin-bottom: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.menuContainer {
+  width: 100%;
+  height: 8vh;
+  background-color: #eff0f1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.link {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.linkContainer {
+  list-style: none;
 }
 
 .linkToAllManuals:hover {
@@ -12,6 +33,8 @@
   box-shadow: none;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   outline: 0;
+  color: black;
+  text-decoration: none;
 }
 
 .catalogTitle {
@@ -24,6 +47,8 @@
   margin-left: -15px;
   margin-right: -15px;
   margin-bottom: 10px;
+  color: black;
+  text-decoration: none;
 }
 
 .catalogTitle:hover,
@@ -69,6 +94,8 @@
   padding: 15px 0px 15px calc(2.5em + 7.5px);
   font-weight: 400;
   box-shadow: none;
+  color: black;
+  text-decoration: none;
 }
 
 .innerTableOfContentsLink:hover,
@@ -80,23 +107,29 @@
   margin-left: -15px;
   margin-right: -15px;
   outline: 0;
+  color: black;
+  text-decoration: none;
 }
 
-.tableOfContents > ul > .tableOfContentsLink {
+.tableOfContentsLink {
   margin-left: -15px;
   margin-right: -15px;
   padding: 15px 0px 15px calc(0.65em + 7.5px);
   font-weight: 400;
   box-shadow: none;
+  color: black;
+  text-decoration: none;
 }
 
-.tableOfContents > ul > .tableOfContentsLink:hover,
-.tableOfContents > ul > .tableOfContentsLink:focus-visible {
+.tableOfContentsLink:hover,
+.tableOfContentsLink:focus-visible {
   box-shadow: none;
   background-color: #ffffff;
   color: #112233;
   border-radius: 10px;
   outline: 0;
+  color: black;
+  text-decoration: none;
 }
 
 .active {
@@ -107,10 +140,14 @@
   margin-left: -15px;
   margin-right: -15px;
   padding: 15px 0px 15px calc(0.65em + 7.5px);
+  color: black;
+  text-decoration: none;
 }
 
 .tableOfContents > ul > .designCodeLink {
   font-size: 24px;
+  color: black;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 768px) {
