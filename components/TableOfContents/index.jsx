@@ -3,11 +3,11 @@ import Link from 'next/link';
 import Head from 'next/head';
 import cn from 'classnames';
 import {createMedia} from '@artsy/fresnel';
+import {useMediaQuery} from 'react-responsive';
 import Logo from '../Logo/Logo';
 import styles from './TableOfContents.module.css';
 import tp from '../../utils/typograf/typograf.config';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
-import {useMediaQuery} from 'react-responsive';
 
 const {MediaContextProvider, Media} = createMedia({
   // breakpoints values can be either strings or integers
@@ -42,7 +42,9 @@ function InnerLink({anchor, baseState, setState}) {
   );
 }
 
-function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle}) {
+function TableOfContents({
+  tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle,
+}) {
   const [isOpen, setIsOpen] = useState(true);
 
   // TODO: Сделать для большой вложенности...
@@ -67,17 +69,17 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks, c
       </Link>
       {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
         <div className={styles.innerLinkContainer}>
-          {anchorLinks.map(anchor => (
-              // <a
-              //   className={styles.innerTableOfContentsLink}
-              //   key={anchor.title}
-              //   href={`#${anchor.id}`}
-              //   onClick={() => setIsOpen(!isOpen)}
-              // >
-              //   {anchor.title}
-              // </a>
-              <InnerLink key={anchor.id} anchor={anchor} baseState={isOpen} setState={setIsOpen} />
-            ))}
+          {anchorLinks.map((anchor) => (
+            // <a
+            //   className={styles.innerTableOfContentsLink}
+            //   key={anchor.title}
+            //   href={`#${anchor.id}`}
+            //   onClick={() => setIsOpen(!isOpen)}
+            // >
+            //   {anchor.title}
+            // </a>
+            <InnerLink key={anchor.id} anchor={anchor} baseState={isOpen} setState={setIsOpen} />
+          ))}
         </div>
       )}
     </li>
@@ -114,7 +116,7 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks, c
               </a>
             </Link>
             <ul className={styles.linkContainer}>
-              {currentPageUrl && tableOfContentArr.map(obj => tableOfContentsLink(obj))}
+              {currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}
             </ul>
             <Logo logoSrc="/Avatar.svg" linkTo="https://ekaterinburg.design/" />
           </nav>
