@@ -8,6 +8,7 @@
   padding-left: 10px 0px 10px calc(1em + 7.5px);
   color: black;
   text-decoration: none;
+  transition: 0.2s;
 }
 
 .logoContainer:hover,
@@ -21,7 +22,4 @@
 
 .logoContainerText {
   font-weight: 500;
-  margin-bottom: 0px;
-  padding-top: 6px;
-  padding-left: 10px;
 }

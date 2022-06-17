@@ -7,6 +7,7 @@ import Logo from '../Logo/Logo';
 import styles from './TableOfContents.module.css';
 import tp from '../../utils/typograf/typograf.config';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
+import {useMediaQuery} from 'react-responsive';
 
 const {MediaContextProvider, Media} = createMedia({
   // breakpoints values can be either strings or integers
@@ -17,6 +18,29 @@ const {MediaContextProvider, Media} = createMedia({
     xl: 1192,
   },
 });
+
+function InnerLink({anchor, baseState, setState}) {
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
+  if (isDesktop) {
+    return (
+      <a className={styles.innerTableOfContentsLink} key={anchor.title} href={`#${anchor.id}`}>
+        {anchor.title}
+      </a>
+    );
+  }
+  return (
+    <a
+      className={styles.innerTableOfContentsLink}
+      key={anchor.title}
+      href={`#${anchor.id}`}
+      onClick={() => setState(!baseState)}
+    >
+      {anchor.title}
+    </a>
+  );
+}
 
 function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle}) {
   const [isOpen, setIsOpen] = useState(true);
@@ -36,17 +60,26 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks, c
             [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
           })}
           href={url}
+          onClick={() => setIsOpen(!isOpen)}
         >
           {title}
         </a>
       </Link>
-      {currentPageUrl[1] &&
-        currentPageUrl[1] === url &&
-        anchorLinks.map(anchor => (
-          <a className={styles.innerTableOfContentsLink} key={anchor.title} href={`#${anchor.id}`}>
-            {anchor.title}
-          </a>
-        ))}
+      {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
+        <div className={styles.innerLinkContainer}>
+          {anchorLinks.map(anchor => (
+              // <a
+              //   className={styles.innerTableOfContentsLink}
+              //   key={anchor.title}
+              //   href={`#${anchor.id}`}
+              //   onClick={() => setIsOpen(!isOpen)}
+              // >
+              //   {anchor.title}
+              // </a>
+              <InnerLink key={anchor.id} anchor={anchor} baseState={isOpen} setState={setIsOpen} />
+            ))}
+        </div>
+      )}
     </li>
   );
 
@@ -57,9 +90,7 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks, c
       </Head>
       <MediaContextProvider>
         <Media lessThan="md">
-          <div className={styles.menuContainer}>
-            <HamburgerMenu baseState={isOpen} changeState={() => setIsOpen(!isOpen)} />
-          </div>
+          <HamburgerMenu baseState={isOpen} changeState={() => setIsOpen(!isOpen)} />
         </Media>
         <aside>
           <nav style={{display: !isOpen ? 'none' : 'block'}} className={styles.tableOfContents}>

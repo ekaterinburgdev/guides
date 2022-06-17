@@ -11,6 +11,7 @@
   border-radius: 0.5em;
   aspect-ratio: 16 / 10;
   margin-bottom: 1em;
+  transition: 0.2s;
 }
 
 .manualItem:hover,

@@ -4,19 +4,21 @@
   justify-content: space-between;
   padding-left: 6vw;
   padding-right: 6vw;
+  gap: 1rem;
 }
 
 .footNav > a {
   box-shadow: none;
   color: rgba(17, 34, 51, 1);
   text-decoration: none;
-  padding: 16px 24px;
+  padding: 1rem;
   background-color: rgba(17, 34, 51, 0.07);
   border-radius: 64px;
-  font-weight: 700;
-  gap: 8px;
-  margin: 20px;
-  transition: 0.2s ease-in-out;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  transition: 0.2s;
 }
 
 .footNav > a:hover {

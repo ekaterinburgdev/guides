@@ -1,4 +1,4 @@
-.template__column {
+.templateColumn {
   padding-left: 0px;
   padding-top: 0px;
   max-width: 70vw;
@@ -10,7 +10,7 @@
   margin-bottom: 30px;
 }
 
-.template__image {
+.templateImage {
   width: 100%;
 }
 
@@ -29,7 +29,7 @@
 }
 
 @media (min-width: 768px) {
-  .template__column {
+  .templateColumn {
     padding-left: 60px;
     padding-right: 60px;
     margin-left: max(20%, 376px);

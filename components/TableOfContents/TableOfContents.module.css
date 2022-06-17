@@ -7,15 +7,7 @@
   margin-bottom: 10px;
   color: black;
   text-decoration: none;
-}
-
-.menuContainer {
-  width: 100%;
-  height: 8vh;
-  background-color: #eff0f1;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  transition: 0.2s;
 }
 
 .link {
@@ -27,6 +19,8 @@
 .linkContainer {
   list-style: none;
   padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .linkToAllManuals:hover {
@@ -41,15 +35,14 @@
 .catalogTitle {
   display: block;
   line-height: 1;
-  font-size: 1.3em;
+  font-size: 1.5rem;
   padding: calc(0.65em + 7.5px);
   font-weight: 500;
   box-shadow: none;
-  margin-left: -15px;
-  margin-right: -15px;
-  margin-bottom: 10px;
   color: black;
   text-decoration: none;
+  border-radius: 10px;
+  transition: 0.2s;
 }
 
 .catalogTitle:hover,
@@ -57,7 +50,6 @@
   box-shadow: none;
   background-color: #ffffff;
   color: #112233;
-  border-radius: 10px;
   outline: 0;
 }
 
@@ -65,14 +57,15 @@
   text-align: left;
   padding: 8px;
   display: none;
+  margin-top: 3rem;
   width: 90%;
   height: 90%;
-  margin: 40px;
+  margin-right: 5%;
+  margin-left: 5%;
   background-color: #eff0f1;
   border-radius: 10px;
   display: flex;
   position: fixed;
-  padding: 20px 30px;
   overflow: auto;
   scrollbar-width: none;
   z-index: 1;
@@ -90,36 +83,40 @@
 }
 
 .innerTableOfContentsLink {
-  margin-left: -15px;
-  margin-right: -15px;
   padding: 15px 0px 15px calc(2.5em + 7.5px);
   font-weight: 400;
   box-shadow: none;
   color: black;
   text-decoration: none;
+  border-radius: 10px;
+  transition: 0.2s;
 }
 
 .innerTableOfContentsLink:hover,
 .innerTableOfContentsLink:focus-visible {
   box-shadow: none;
-  background-color: #ffffff;
-  color: #112233;
-  border-radius: 10px;
-  margin-left: -15px;
-  margin-right: -15px;
+  background-color: #123;
+  color: #ffffff;
   outline: 0;
-  color: black;
   text-decoration: none;
 }
 
+.innerLinkContainer {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
 .tableOfContentsLink {
-  margin-left: -15px;
-  margin-right: -15px;
   padding: 15px 0px 15px calc(0.65em + 7.5px);
   font-weight: 400;
   box-shadow: none;
   color: black;
   text-decoration: none;
+  border-radius: 10px;
+  transition: 0.2s;
 }
 
 .tableOfContentsLink:hover,
@@ -127,7 +124,6 @@
   box-shadow: none;
   background-color: #ffffff;
   color: #112233;
-  border-radius: 10px;
   outline: 0;
   color: black;
   text-decoration: none;
@@ -138,8 +134,6 @@
   background-color: #ffffff;
   margin-bottom: 5px;
   border-radius: 10px;
-  margin-left: -15px;
-  margin-right: -15px;
   padding: 15px 0px 15px calc(0.65em + 7.5px);
   color: black;
   text-decoration: none;

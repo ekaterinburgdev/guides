@@ -6,7 +6,7 @@ function HamburgerMenu({baseState, changeState, ...props}) {
   const burgerMenuClassNames = cn(styles.menu, {[styles.opened]: baseState === true});
 
   return (
-    <button type="button" className={burgerMenuClassNames} onClick={changeState}>
+    <button type="button" className={burgerMenuClassNames} onClick={changeState} aria-label="Меню">
       <svg width="100" height="100" viewBox="0 0 100 100">
         <path
           className={cn(styles.line, styles.line1)}

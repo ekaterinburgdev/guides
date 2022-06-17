@@ -28,7 +28,6 @@ function Manual({manual}) {
           placeholder="blur"
           loading="lazy"
           blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs="
-          aria-label={titleText}
         />
       </a>
     </Link>

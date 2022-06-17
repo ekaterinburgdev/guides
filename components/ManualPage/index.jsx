@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/prop-types */
 /* eslint-disable consistent-return */
@@ -55,7 +56,9 @@ function ManualPage({pageList, pageName}) {
         );
 
       case 'paragraph':
-        return <p>{getTextContent(columnItem)}</p>;
+        const textContent = getTextContent(columnItem);
+        console.log("текст ", textContent);
+        return textContent.length ? <p>{textContent}</p> : <br />;
 
       case 'bookmark':
         return <a href={`${columnItem.content.url}`}>{columnItem.content.url}</a>;
@@ -86,7 +89,7 @@ function ManualPage({pageList, pageName}) {
   };
 
   return (
-    <div className={styles.template__column}>
+    <div className={styles.templateColumn}>
       <h1 className={styles.pageName}>{pageName}</h1>
       {map(pageList, (cl) => getColumnItem(cl))}
     </div>

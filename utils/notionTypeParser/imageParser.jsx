@@ -6,18 +6,18 @@ const getImage = (imageObj) => {
   if (imageObj.content.image_data.caption.length === 0) {
     return (
       <img
-        className={styles.template__image}
+        className={styles.templateImage}
         src={`${api.HOST}/static/${imageObj.content.image_name}`}
-        alt="фотка"
+        alt=""
       />
     );
   }
   return (
     <div>
       <img
-        className={styles.template__image}
+        className={styles.templateImage}
         src={`${api.HOST}/static/${imageObj.content.image_name}`}
-        alt={imageObj.content.image_data.caption[0].plain_text}
+        alt=""
       />
       <span>{imageObj.content.image_data.caption[0].plain_text}</span>
     </div>

@@ -1,9 +1,13 @@
 .menu {
-  background-color: transparent;
+  background-color: rgba(190, 191, 186, 0.5);
+  border-radius: 10px;
   border: none;
   cursor: pointer;
   transform: scale(0.5);
-  margin-left: -10px;
+  position: fixed;
+  top: -20px;
+  right: -15px;
+  z-index: 3;
 }
 
 .line {
@@ -45,10 +49,4 @@
   stroke-dasharray: 90 207;
   stroke-dashoffset: -134;
   stroke-width: 6;
-}
-
-@media screen and (min-width: 768px) {
-  .menu {
-    display: none;
-  }
 }
