@@ -57,7 +57,7 @@ function ManualPage({pageList, pageName}) {
 
       case 'paragraph':
         const textContent = getTextContent(columnItem);
-        console.log("текст ", textContent);
+        console.log('текст ', textContent);
         return textContent.length ? <p>{textContent}</p> : <br />;
 
       case 'bookmark':
