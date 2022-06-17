@@ -1,18 +1,14 @@
 # Руководства
 
-
 ## Документация
 
 [Ссылка](https://vladatkishkin.gitbook.io/dokumentaciya-po-rukovodstvu/)
 
-## Для разработки
-
-- `/client` — Next.js приложение
-- `/server` — временный бэкэнд для тестирования фронта
+## Запуск
 
 Установка зависимостей
 ```sh
-npm i 
+npm i
 ```
 
 Разработка
