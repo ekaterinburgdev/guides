@@ -26,6 +26,7 @@
 
 .linkContainer {
   list-style: none;
+  padding-left: 0;
 }
 
 .linkToAllManuals:hover {
@@ -135,7 +136,7 @@
 .active {
   box-shadow: none;
   background-color: #ffffff;
-  color: #112233;
+  margin-bottom: 5px;
   border-radius: 10px;
   margin-left: -15px;
   margin-right: -15px;

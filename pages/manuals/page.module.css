@@ -9,6 +9,7 @@
 .footNav > a {
   box-shadow: none;
   color: rgba(17, 34, 51, 1);
+  text-decoration: none;
   padding: 16px 24px;
   background-color: rgba(17, 34, 51, 0.07);
   border-radius: 64px;
@@ -20,6 +21,7 @@
 
 .footNav > a:hover {
   background-color: #dadada;
+  color: rgba(17, 34, 51, 1);
 }
 
 @media screen and (min-width: 768px) {

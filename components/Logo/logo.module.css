@@ -6,6 +6,8 @@
   column-gap: 1em;
   margin-top: 10px;
   padding-left: 10px 0px 10px calc(1em + 7.5px);
+  color: black;
+  text-decoration: none;
 }
 
 .logoContainer:hover,

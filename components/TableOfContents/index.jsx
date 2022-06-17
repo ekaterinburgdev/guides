@@ -2,10 +2,21 @@ import React, {useState} from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import cn from 'classnames';
+import {createMedia} from '@artsy/fresnel';
 import Logo from '../Logo/Logo';
 import styles from './TableOfContents.module.css';
 import tp from '../../utils/typograf/typograf.config';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
+
+const {MediaContextProvider, Media} = createMedia({
+  // breakpoints values can be either strings or integers
+  breakpoints: {
+    sm: 0,
+    md: 768,
+    lg: 1024,
+    xl: 1192,
+  },
+});
 
 function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle}) {
   const [isOpen, setIsOpen] = useState(true);
@@ -44,34 +55,40 @@ function TableOfContents({tableOfContentArr, currentPageUrl = [], anchorLinks, c
       <Head>
         <title>{catalogTitle}</title>
       </Head>
-      <div className={styles.menuContainer}>
-        <HamburgerMenu baseState={isOpen} changeState={() => setIsOpen(!isOpen)} />
-      </div>
-      <aside>
-        <nav style={{display: !isOpen ? 'none' : 'block'}} className={styles.tableOfContents}>
-          <Link
-            href={{
-              pathname: '/',
-            }}
-          >
-            <a className={styles.linkToAllManuals} href="/">
-              Все руководства
-            </a>
-          </Link>
-          <Link
-            href={{
-              pathname: '/[[...pageUrl]]',
-              query: {pageUrl: [currentPageUrl[0]]},
-            }}
-          >
-            <a className={styles.catalogTitle} href="/">
-              {tp.execute(catalogTitle)}
-            </a>
-          </Link>
-          <ul className={styles.linkContainer}>{currentPageUrl && tableOfContentArr.map(obj => tableOfContentsLink(obj))}</ul>
-          <Logo logoSrc="/Avatar.svg" linkTo="https://ekaterinburg.design/" />
-        </nav>
-      </aside>
+      <MediaContextProvider>
+        <Media lessThan="md">
+          <div className={styles.menuContainer}>
+            <HamburgerMenu baseState={isOpen} changeState={() => setIsOpen(!isOpen)} />
+          </div>
+        </Media>
+        <aside>
+          <nav style={{display: !isOpen ? 'none' : 'block'}} className={styles.tableOfContents}>
+            <Link
+              href={{
+                pathname: '/',
+              }}
+            >
+              <a className={styles.linkToAllManuals} href="/">
+                Все руководства
+              </a>
+            </Link>
+            <Link
+              href={{
+                pathname: '/[[...pageUrl]]',
+                query: {pageUrl: [currentPageUrl[0]]},
+              }}
+            >
+              <a className={styles.catalogTitle} href="/">
+                {tp.execute(catalogTitle)}
+              </a>
+            </Link>
+            <ul className={styles.linkContainer}>
+              {currentPageUrl && tableOfContentArr.map(obj => tableOfContentsLink(obj))}
+            </ul>
+            <Logo logoSrc="/Avatar.svg" linkTo="https://ekaterinburg.design/" />
+          </nav>
+        </aside>
+      </MediaContextProvider>
     </>
   );
 }
