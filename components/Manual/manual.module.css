@@ -40,3 +40,9 @@
     width: calc(100% / 3 - 2vw);
   }
 }
+
+@media screen and (prefers-color-scheme: dark) {
+  .manualItem {
+    box-shadow: rgba(213, 213, 223, 0.713) 0px 7px 29px 0px;
+  }
+}

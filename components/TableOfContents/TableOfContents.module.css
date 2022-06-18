@@ -139,12 +139,6 @@
   text-decoration: none;
 }
 
-.tableOfContents > ul > .designCodeLink {
-  font-size: 24px;
-  color: black;
-  text-decoration: none;
-}
-
 @media screen and (min-width: 768px) {
   .tableOfContents {
     margin: 15px;
@@ -162,5 +156,27 @@
 
   .menu {
     display: none;
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .tableOfContents {
+    background-color: #282828;
+  }
+
+  .catalogTitle {
+    color: white;
+  }
+
+  .tableOfContentsLink {
+    color: white;
+  }
+
+  .active {
+    color: black;
+  }
+
+  .designCodeLink {
+    color: white;
   }
 }

@@ -31,3 +31,9 @@
     margin-left: max(20%, 376px);
   }
 }
+
+@media screen and (prefers-color-scheme: dark) {
+  .footNav > a {
+    background-color: white;
+  }
+}

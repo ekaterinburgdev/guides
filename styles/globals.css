@@ -21,3 +21,11 @@ body {
 * {
   box-sizing: border-box;
 }
+
+@media screen and (prefers-color-scheme: dark) {
+  html,
+  body {
+    color: white;
+    background-color: black;
+  }
+}

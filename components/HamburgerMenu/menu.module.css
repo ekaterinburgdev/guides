@@ -1,5 +1,5 @@
 .menu {
-  background-color: rgba(190, 191, 186, 0.5);
+  background-color: rgba(40, 40, 40, 0.8);
   border-radius: 10px;
   border: none;
   cursor: pointer;
@@ -49,4 +49,10 @@
   stroke-dasharray: 90 207;
   stroke-dashoffset: -134;
   stroke-width: 6;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .line {
+    stroke: white;
+  }
 }
