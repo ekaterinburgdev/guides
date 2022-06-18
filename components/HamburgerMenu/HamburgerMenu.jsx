@@ -2,8 +2,8 @@ import React from 'react';
 import cn from 'classnames';
 import styles from './menu.module.css';
 
-function HamburgerMenu({baseState, changeState, ...props}) {
-  const burgerMenuClassNames = cn(styles['hamburger-menu'], {[styles.opened]: baseState === true});
+function HamburgerMenu({state, changeState}) {
+  const burgerMenuClassNames = cn(styles['hamburger-menu'], {[styles.opened]: state === true});
 
   return (
     <button type="button" className={burgerMenuClassNames} onClick={changeState} aria-label="Меню">

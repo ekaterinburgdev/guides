@@ -11,7 +11,7 @@ import ManualPage from '../../components/ManualPage/ManualPage';
 import {getTree, getPageByUrl} from '../../api/apiPage';
 import tp from '../../utils/typograf/typograf.config';
 import styles from './page.module.css';
-import ArrowNavLink from '../../components/ArrowNavLink/ArrrowNavLink';
+import {PrevPage, NextPage} from '../../components/ArrowNavLink/ArrrowNavLink';
 
 function GetPage() {
   const router = useRouter();
@@ -200,22 +200,18 @@ function GetPage() {
       {tableOfContentArr.length !== 0 && (
         <nav className={styles.footNav}>
           {(Number.isInteger(prevPageIndex) || Number.isInteger(catalogIndex)) && (
-            <ArrowNavLink
+            <PrevPage
               children={children}
-              direction="prev"
               prevPageIndex={prevPageIndex}
-              nextPageIndex={nextPageIndex}
               tableOfContentArr={tableOfContentArr}
               catalogIndex={catalogIndex}
               pageUrl={pageUrl}
             />
           )}
           {(Number.isInteger(nextPageIndex) || Number.isInteger(catalogIndex)) && (
-            <ArrowNavLink
-              children={children}
-              direction="next"
-              prevPageIndex={prevPageIndex}
+            <NextPage
               nextPageIndex={nextPageIndex}
+              children={children}
               tableOfContentArr={tableOfContentArr}
               catalogIndex={catalogIndex}
               pageUrl={pageUrl}
