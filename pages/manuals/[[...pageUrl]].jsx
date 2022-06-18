@@ -1,15 +1,17 @@
+/* eslint-disable react/no-children-prop */
+/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable consistent-return */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable-next-line consistent-return */
 import React, {useEffect, useState} from 'react';
 import {useRouter} from 'next/router';
-import Link from 'next/link';
-import TableOfContents from '../../components/TableOfContents';
-import ManualPage from '../../components/ManualPage';
+import TableOfContents from '../../components/TableOfContents/TableOfContents';
+import ManualPage from '../../components/ManualPage/ManualPage';
 import {getTree, getPageByUrl} from '../../api/apiPage';
 import tp from '../../utils/typograf/typograf.config';
 import styles from './page.module.css';
+import ArrowNavLink from '../../components/ArrowNavLink/ArrrowNavLink';
 
 function GetPage() {
   const router = useRouter();
@@ -95,11 +97,8 @@ function GetPage() {
           const catalogIdForSet = page.id;
           setCatalogTitle(catalogTitleForSet);
           setCatalogId(catalogIdForSet);
-          // eslint-disable-next-line no-undef
           sessionStorage.setItem('catalogUrl', pageUrl[0]);
-          // eslint-disable-next-line no-undef
           sessionStorage.setItem('catalogTitle', catalogTitleForSet);
-          // eslint-disable-next-line no-undef
           sessionStorage.setItem('catalogId', catalogIdForSet);
         })
         .catch((err) => {
@@ -119,7 +118,6 @@ function GetPage() {
     getTree()
       .then((tree) => {
         setChildren(tree?.children);
-        console.log('дети', tree?.children);
       })
       .catch((err) => {
         throw new Error(err);
@@ -187,83 +185,8 @@ function GetPage() {
 
     const anchorLinksForSet = pageList.map(getColumnItem);
 
-    setAnchorLinks(anchorLinksForSet.filter((l) => l && l.id));
+    setAnchorLinks(anchorLinksForSet.filter((l) => l?.id));
   }, [pageList]);
-
-  const getCatalogOptions = (catalog) => ({
-    url: catalog.properties.pageUrl.url,
-    title: catalog.properties.Name.title[0].plain_text,
-  });
-
-  const renderPrevPage = () => {
-    let href = {
-      pathname: '/[[...pageUrl]]',
-      query: {pageUrl: []},
-    };
-    let title = '';
-
-    if (prevPageIndex >= 0) {
-      href.query.pageUrl = [pageUrl[0], tableOfContentArr[prevPageIndex].url];
-      title = tableOfContentArr[prevPageIndex].title;
-    } else {
-      const prevCatalogIndex = catalogIndex - 1;
-      if (Number.isNaN(prevCatalogIndex)) {
-        return;
-      }
-      if (prevCatalogIndex <= -1) {
-        title = 'Назад к руководствам';
-        href = {pathname: '/'};
-      } else {
-        const prevCatalog = getCatalogOptions(children[prevCatalogIndex]);
-        title = prevCatalog.title;
-        href.query.pageUrl = [prevCatalog.url];
-      }
-    }
-
-    return (
-      <Link href={href}>
-        <a>
-          ← &nbsp;
-          {title}
-        </a>
-      </Link>
-    );
-  };
-
-  const renderNextPage = () => {
-    let href = {
-      pathname: '/[[...pageUrl]]',
-      query: {pageUrl: []},
-    };
-    let title = '';
-
-    if (nextPageIndex < tableOfContentArr.length) {
-      href.query.pageUrl = [pageUrl[0], tableOfContentArr[nextPageIndex].url];
-      title = tableOfContentArr[nextPageIndex].title;
-    } else {
-      const nextCatalogIndex = catalogIndex + 1;
-      if (Number.isNaN(nextCatalogIndex)) {
-        return;
-      }
-      if (nextCatalogIndex >= children.length) {
-        title = 'Назад к руководствам';
-        href = {pathname: '/'};
-      } else {
-        const nextCatalog = getCatalogOptions(children[nextCatalogIndex]);
-        title = nextCatalog.title;
-        href.query.pageUrl = [nextCatalog.url];
-      }
-    }
-
-    return (
-      <Link href={href}>
-        <a>
-          {title}
-          &nbsp; →
-        </a>
-      </Link>
-    );
-  };
 
   return (
     <>
@@ -276,8 +199,28 @@ function GetPage() {
       <ManualPage pageList={pageList} pageName={pageName} />
       {tableOfContentArr.length !== 0 && (
         <nav className={styles.footNav}>
-          {(Number.isInteger(prevPageIndex) || Number.isInteger(catalogIndex)) && renderPrevPage()}
-          {(Number.isInteger(nextPageIndex) || Number.isInteger(catalogIndex)) && renderNextPage()}
+          {(Number.isInteger(prevPageIndex) || Number.isInteger(catalogIndex)) && (
+            <ArrowNavLink
+              children={children}
+              direction="prev"
+              prevPageIndex={prevPageIndex}
+              nextPageIndex={nextPageIndex}
+              tableOfContentArr={tableOfContentArr}
+              catalogIndex={catalogIndex}
+              pageUrl={pageUrl}
+            />
+          )}
+          {(Number.isInteger(nextPageIndex) || Number.isInteger(catalogIndex)) && (
+            <ArrowNavLink
+              children={children}
+              direction="next"
+              prevPageIndex={prevPageIndex}
+              nextPageIndex={nextPageIndex}
+              tableOfContentArr={tableOfContentArr}
+              catalogIndex={catalogIndex}
+              pageUrl={pageUrl}
+            />
+          )}
         </nav>
       )}
     </>

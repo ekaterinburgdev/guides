@@ -63,7 +63,6 @@
 @media (min-width: 768px) {
   .templateColumn {
     padding-left: 60px;
-    padding-right: 60px;
     margin-left: max(20%, 376px);
     overflow-x: hidden;
   }

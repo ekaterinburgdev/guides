@@ -76,7 +76,7 @@
   display: none;
 }
 
-.tableOfContents > ul {
+.linkContainer {
   display: flex;
   flex-direction: column;
   box-shadow: none;
@@ -84,7 +84,7 @@
 }
 
 .innerTableOfContentsLink {
-  padding: 15px 0px 15px calc(2.5em + 7.5px);
+  padding: 15px 0.5em 15px calc(0.5em + 7.5px);
   font-weight: 400;
   box-shadow: none;
   color: black;
@@ -155,10 +155,6 @@
     background-color: #1231;
     overflow: auto;
     scrollbar-width: none;
-  }
-
-  .menu {
-    display: none;
   }
 }
 

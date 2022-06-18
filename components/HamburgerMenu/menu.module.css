@@ -1,5 +1,5 @@
-.menu {
-  background-color: rgba(40, 40, 40, 0.8);
+.hamburger-menu {
+  background-color: rgba(190, 191, 186, 0.5);
   border-radius: 10px;
   border: none;
   cursor: pointer;
@@ -52,6 +52,10 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
+  .hamburger-menu {
+    background-color: rgba(40, 40, 40, 0.8);
+  }
+
   .line {
     stroke: white;
   }

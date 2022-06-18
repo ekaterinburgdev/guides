@@ -3,7 +3,7 @@ import cn from 'classnames';
 import styles from './menu.module.css';
 
 function HamburgerMenu({baseState, changeState, ...props}) {
-  const burgerMenuClassNames = cn(styles.menu, {[styles.opened]: baseState === true});
+  const burgerMenuClassNames = cn(styles['hamburger-menu'], {[styles.opened]: baseState === true});
 
   return (
     <button type="button" className={burgerMenuClassNames} onClick={changeState} aria-label="Меню">
