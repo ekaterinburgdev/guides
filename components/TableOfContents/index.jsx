@@ -70,14 +70,6 @@ function TableOfContents({
       {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
         <div className={styles.innerLinkContainer}>
           {anchorLinks.map((anchor) => (
-            // <a
-            //   className={styles.innerTableOfContentsLink}
-            //   key={anchor.title}
-            //   href={`#${anchor.id}`}
-            //   onClick={() => setIsOpen(!isOpen)}
-            // >
-            //   {anchor.title}
-            // </a>
             <InnerLink key={anchor.id} anchor={anchor} baseState={isOpen} setState={setIsOpen} />
           ))}
         </div>
@@ -102,7 +94,7 @@ function TableOfContents({
               }}
             >
               <a className={styles.linkToAllManuals} href="/">
-                Все руководства
+                ←&nbsp;Городские руководства
               </a>
             </Link>
             <Link

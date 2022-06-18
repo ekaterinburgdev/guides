@@ -5,7 +5,6 @@
   display: flex;
   column-gap: 1em;
   margin-top: 10px;
-  padding-left: 10px 0px 10px calc(1em + 7.5px);
   color: black;
   text-decoration: none;
   transition: 0.2s;
@@ -18,14 +17,25 @@
   background-color: #ffffff;
   color: #112233;
   outline: 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.logoContainerText {
+.logoText {
   font-weight: 500;
+}
+
+.logoImage {
+  padding-left: calc(0.65em + 7.5px);
 }
 
 @media screen and (prefers-color-scheme: dark) {
   .logoContainer {
+    color: white;
+  }
+
+  .logoContainer:hover,
+  .logoContainer:focus-visible {
+    background-color: #404040;
     color: white;
   }
 }

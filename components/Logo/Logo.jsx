@@ -4,8 +4,8 @@ import styles from './logo.module.css';
 export default function Logo({ linkTo, logoSrc, ...props }) {
   return (
     <a className={styles.logoContainer} href={linkTo}>
-      <img src={logoSrc} alt="Дизайн код логотип" />
-      <p className={styles.logoContainerText}>
+      <img className={styles.logoImage} src={logoSrc} alt="Дизайн код Екатеринбурга" />
+      <p className={styles.logoText} aria-hidden="true">
         Дизайн-код
         <br />
         Екатеринбурга

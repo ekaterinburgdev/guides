@@ -1,10 +1,10 @@
 .linkToAllManuals {
-  background-color: rgb(255, 212, 0);
+  background-color: transparent;
   box-shadow: none;
   padding: 10px 20px 10px 20px;
   border-radius: 10px;
   display: inline-block;
-  margin-bottom: 10px;
+  width: 100%;
   color: black;
   text-decoration: none;
   transition: 0.2s;
@@ -24,11 +24,11 @@
 }
 
 .linkToAllManuals:hover {
-  background-color: rgba(255, 212, 0, 0.8);
   box-shadow: none;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   outline: 0;
   color: black;
+  background-color: #fff;
   text-decoration: none;
 }
 
@@ -51,6 +51,7 @@
   background-color: #ffffff;
   color: #112233;
   outline: 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .tableOfContents {
@@ -99,6 +100,7 @@
   color: #ffffff;
   outline: 0;
   text-decoration: none;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .innerLinkContainer {
@@ -127,6 +129,7 @@
   outline: 0;
   color: black;
   text-decoration: none;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .active {
@@ -168,15 +171,46 @@
     color: white;
   }
 
+  .catalogTitle:hover,
+  .catalogTitle:focus-visible {
+    color: white;
+    background-color: #404040;
+  }
+
   .tableOfContentsLink {
     color: white;
   }
 
+  .tableOfContentsLink:hover,
+  .tableOfContentsLink:focus-visible {
+    background-color: #404040;
+    color: white;
+  }
+
+  .innerLinkContainer {
+    background-color: #404040;
+  }
+
+  .innerTableOfContentsLink {
+    color: white;
+  }
+
   .active {
-    color: black;
+    background-color: #404040;
+    color: white;
   }
 
   .designCodeLink {
     color: white;
+  }
+
+  .linkToAllManuals {
+    color: white;
+  }
+
+  .linkToAllManuals:hover,
+  .linkToAllManuals:focus-visible {
+    color: white;
+    background-color: #404040;
   }
 }
