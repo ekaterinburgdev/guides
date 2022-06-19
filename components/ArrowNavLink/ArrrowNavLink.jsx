@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable consistent-return */
 import React from 'react';
 import Link from 'next/link';
 import styles from './arrow.module.css';
@@ -9,6 +8,7 @@ const getCatalogOptions = (catalog) => ({
   title: catalog.properties.Name.title[0].plain_text,
 });
 
+// TODO: выделить общую логику у этих двух компонент
 export function PrevPage({
   prevPageIndex, tableOfContentArr, pageUrl, catalogIndex, children,
 }) {
@@ -24,7 +24,7 @@ export function PrevPage({
   } else {
     const prevCatalogIndex = catalogIndex - 1;
     if (Number.isNaN(prevCatalogIndex)) {
-      return;
+      return prevCatalogIndex + 1;
     }
     if (prevCatalogIndex <= -1) {
       title = 'Назад к руководствам';
@@ -61,7 +61,7 @@ export function NextPage({
   } else {
     const nextCatalogIndex = catalogIndex + 1;
     if (Number.isNaN(nextCatalogIndex)) {
-      return;
+      return nextCatalogIndex - 1;
     }
     if (nextCatalogIndex >= children.length) {
       title = 'Назад к руководствам';
