@@ -75,9 +75,10 @@ function ManualPage({ pageList, pageName }) {
                 )
 
             case 'video':
-                return (<video>
-                    <source src={columnItem?.content?.file?.url} />
-                </video>
+                return (
+                    <video>
+                        <source src={columnItem?.content?.file?.url} />
+                    </video>
                 )
 
             default:
