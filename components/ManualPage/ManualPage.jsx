@@ -1,7 +1,6 @@
 import React from 'react'
 import map from 'lodash/map'
 import styles from './Template.module.css'
-import { getTextContent } from '../../utils/notionTypeParser/textParser'
 import getImage from '../../utils/notionTypeParser/imageParser'
 import { H1, H2, H3 } from '../NotionTypes/Headers/Headers'
 import Bookmark from '../NotionTypes/Bookmark/Bookmark'
@@ -74,12 +73,12 @@ function ManualPage({ pageList, pageName }) {
                     </div>
                 )
 
-            case 'video':
-                return (
-                    <video>
-                        <source src={columnItem?.content?.file?.url} />
-                    </video>
-                )
+            // case 'video':
+            //     return (
+            //         <video>
+            //             <source src={columnItem?.content?.file?.url} />
+            //         </video>
+            //     )
 
             default:
                 return <p>Unknown type</p>
