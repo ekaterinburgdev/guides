@@ -1,26 +1,26 @@
 .arrowNavLink {
-  box-shadow: none;
-  color: rgba(17, 34, 51, 1);
-  text-decoration: none;
-  padding: 1rem;
-  background-color: rgba(17, 34, 51, 0.07);
-  border-radius: 2rem;
-  font-weight: 500;
-  margin-bottom: 2rem;
-  margin-top: 1rem;
-  font-size: 1rem;
-  transition: 0.3s;
+    box-shadow: none;
+    color: rgba(17, 34, 51, 1);
+    text-decoration: none;
+    padding: 1rem;
+    background-color: rgba(17, 34, 51, 0.07);
+    border-radius: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    transition: 0.3s;
 }
 
 .arrowNavLink:hover,
 .arrowNavLink:focus-visible {
-  background-color: #dadada;
-  color: rgba(17, 34, 51, 1);
-  transform: scale(1.1);
+    background-color: #dadada;
+    color: rgba(17, 34, 51, 1);
+    transform: scale(1.1);
 }
 
 @media screen and (prefers-color-scheme: dark) {
-  .arrowNavLink {
-    background-color: white;
-  }
+    .arrowNavLink {
+        background-color: white;
+    }
 }

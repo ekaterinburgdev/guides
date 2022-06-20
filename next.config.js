@@ -1,16 +1,16 @@
 module.exports = {
-  api: {
-    HOST: 'https://guides-api-test.ekaterinburg.design',
-  },
-  images: {
-    domains: ['guides-api-test.ekaterinburg.design'],
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/:pageUrl*',
-        destination: '/manuals/:pageUrl*',
-      },
-    ];
-  },
-};
+    api: {
+        HOST: process.env.NEXT_PUBLIC_HOST,
+    },
+    images: {
+        domains: [process.env.NEXT_PUBLIC_IMAGE_DOMAIN],
+    },
+    async rewrites() {
+        return [
+            {
+                source: '/:pageUrl*',
+                destination: '/manuals/:pageUrl*',
+            },
+        ]
+    },
+}

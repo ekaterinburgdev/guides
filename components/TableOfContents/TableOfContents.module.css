@@ -1,219 +1,216 @@
 .linkToAllManuals {
-  background-color: transparent;
-  box-shadow: none;
-  padding: 10px 20px 10px 20px;
-  border-radius: 10px;
-  display: inline-block;
-  width: 100%;
-  color: black;
-  text-decoration: none;
-  transition: 0.2s;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 100%;
+    color: black;
+    text-decoration: none;
+    transition: 0.2s;
 }
 
 .link {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .linkContainer {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-.linkToAllManuals:hover {
-  box-shadow: none;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  outline: 0;
-  color: black;
-  background-color: #fff;
-  text-decoration: none;
+.linkToAllManuals:hover,
+.linkToAllManuals:focus-visible {
+    box-shadow: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    color: black;
+    background-color: #fff;
+    text-decoration: none;
 }
 
 .catalogTitle {
-  display: block;
-  line-height: 1;
-  font-size: 1.5rem;
-  padding: calc(0.65em + 7.5px);
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  box-shadow: none;
-  color: black;
-  text-decoration: none;
-  border-radius: 10px;
-  transition: 0.2s;
+    display: block;
+    line-height: 1;
+    font-size: 1.5rem;
+    padding: calc(0.65em + 7.5px);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    box-shadow: none;
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.2s;
 }
 
 .catalogTitle:hover,
 .catalogTitle:focus-visible {
-  box-shadow: none;
-  background-color: #ffffff;
-  color: #112233;
-  outline: 0;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: none;
+    background-color: #ffffff;
+    color: #112233;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .tableOfContents {
-  text-align: left;
-  padding: 8px;
-  display: none;
-  margin-top: 3rem;
-  width: 90%;
-  height: 90%;
-  margin-right: 5%;
-  margin-left: 5%;
-  background-color: #eff0f1;
-  border-radius: 10px;
-  position: fixed;
-  overflow: auto;
-  scrollbar-width: none;
-  z-index: 1;
+    text-align: left;
+    padding: 8px;
+    display: none;
+    margin-top: 3rem;
+    width: 90%;
+    height: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+    background-color: #eff0f1;
+    border-radius: 10px;
+    position: fixed;
+    overflow: auto;
+    scrollbar-width: none;
+    z-index: 1;
 }
 
 .open {
-  display: flex !important;
-  flex-direction: column !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 .tableOfContents::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .linkContainer {
-  display: flex;
-  flex-direction: column;
-  box-shadow: none;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: none;
+    gap: 1rem;
 }
 
 .innerTableOfContentsLink {
-  padding: 15px 0.5rem 15px calc(0.5rem + 7.5px);
-  font-weight: 400;
-  box-shadow: none;
-  color: black;
-  text-decoration: none;
-  border-radius: 10px;
-  transition: 0.2s;
+    padding: 15px 0.5rem 15px calc(0.5rem + 7.5px);
+    font-weight: 400;
+    box-shadow: none;
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.2s;
 }
 
 .innerTableOfContentsLink:hover,
 .innerTableOfContentsLink:focus-visible {
-  box-shadow: none;
-  background-color: #123;
-  color: #ffffff;
-  outline: 0;
-  text-decoration: none;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: none;
+    background-color: #123;
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .innerLinkContainer {
-  background-color: #ffffff;
-  padding: 1rem;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .tableOfContentsLink {
-  padding: 15px 5px 15px calc(0.65em + 7.5px);
-  font-weight: 400;
-  box-shadow: none;
-  color: black;
-  text-decoration: none;
-  border-radius: 10px;
-  transition: 0.2s;
+    padding: 15px 5px 15px calc(0.65em + 7.5px);
+    font-weight: 400;
+    box-shadow: none;
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.2s;
 }
 
 .tableOfContentsLink:hover,
 .tableOfContentsLink:focus-visible {
-  box-shadow: none;
-  background-color: #ffffff;
-  color: #112233;
-  outline: 0;
-  color: black;
-  text-decoration: none;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: none;
+    background-color: #ffffff;
+    color: #112233;
+    color: black;
+    text-decoration: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .active {
-  box-shadow: none;
-  background-color: #ffffff;
-  margin-bottom: 5px;
-  border-radius: 10px;
-  padding: 15px 0px 15px calc(0.65em + 7.5px);
-  color: black;
-  text-decoration: none;
+    box-shadow: none;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    padding: 15px 0px 15px calc(0.65em + 7.5px);
+    color: black;
+    text-decoration: none;
 }
 
 @media screen and (min-width: 768px) {
-  .tableOfContents {
-    margin: 15px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    padding: 20px 30px;
-    min-width: 376px;
-    width: 20%;
-    height: calc(100vh - 30px);
-    background-color: #1231;
-    overflow: auto;
-    scrollbar-width: none;
-  }
+    .tableOfContents {
+        margin: 15px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        padding: 20px 30px;
+        min-width: 376px;
+        width: 20%;
+        height: calc(100vh - 30px);
+        background-color: #1231;
+        overflow: auto;
+        scrollbar-width: none;
+    }
 }
 
 @media screen and (prefers-color-scheme: dark) {
-  .tableOfContents {
-    background-color: #282828;
-  }
+    .tableOfContents {
+        background-color: #282828;
+    }
 
-  .catalogTitle {
-    color: white;
-  }
+    .catalogTitle {
+        color: white;
+    }
 
-  .catalogTitle:hover,
-  .catalogTitle:focus-visible {
-    color: white;
-    background-color: #404040;
-  }
+    .catalogTitle:hover,
+    .catalogTitle:focus-visible {
+        color: white;
+        background-color: #404040;
+    }
 
-  .tableOfContentsLink {
-    color: white;
-  }
+    .tableOfContentsLink {
+        color: white;
+    }
 
-  .tableOfContentsLink:hover,
-  .tableOfContentsLink:focus-visible {
-    background-color: #404040;
-    color: white;
-  }
+    .tableOfContentsLink:hover,
+    .tableOfContentsLink:focus-visible {
+        background-color: #404040;
+        color: white;
+    }
 
-  .innerLinkContainer {
-    background-color: #404040;
-  }
+    .innerLinkContainer {
+        background-color: #404040;
+    }
 
-  .innerTableOfContentsLink {
-    color: white;
-  }
+    .innerTableOfContentsLink {
+        color: white;
+    }
 
-  .active {
-    background-color: #404040;
-    color: white;
-  }
+    .active {
+        background-color: #404040;
+        color: white;
+    }
 
-  .designCodeLink {
-    color: white;
-  }
+    .designCodeLink {
+        color: white;
+    }
 
-  .linkToAllManuals {
-    color: white;
-  }
+    .linkToAllManuals {
+        color: white;
+    }
 
-  .linkToAllManuals:hover,
-  .linkToAllManuals:focus-visible {
-    color: white;
-    background-color: #404040;
-  }
+    .linkToAllManuals:hover,
+    .linkToAllManuals:focus-visible {
+        color: white;
+        background-color: #404040;
+    }
 }

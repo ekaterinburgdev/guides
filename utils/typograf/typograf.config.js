@@ -1,12 +1,9 @@
-const Typograf = require('typograf');
+const Typograf = require('typograf')
 
 const tp = new Typograf({
-  locale: ['ru', 'en-US'],
-});
+    locale: ['ru', 'en-US'],
+})
 
-tp.disableRule([
-  'common/space/trimLeft',
-  'common/space/trimRight',
-]);
+tp.disableRule(['common/nbsp/replaceNbsp'])
 
-export default tp;
+export default tp
