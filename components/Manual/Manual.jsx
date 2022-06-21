@@ -24,9 +24,7 @@ function Manual({ manual }) {
                     alt={titleText}
                     layout="fill"
                     overflow="visible"
-                    placeholder="blur"
                     loading="lazy"
-                    blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs="
                 />
             </a>
         </Link>
