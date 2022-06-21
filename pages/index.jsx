@@ -3,20 +3,18 @@ import styles from '../styles/home.module.css'
 import { getTree } from '../api/apiPage'
 import Manual from '../components/Manual/Manual'
 
-export default function Home() {
+export default function Home({ tree }) {
     const [manuals, setManuals] = useState([])
     const [title, setTitle] = useState('')
 
     useEffect(() => {
-        getTree()
-            .then((tree) => {
-                setManuals(tree.children)
-                setTitle(tree?.properties?.child_page?.title)
-            })
-            .catch((err) => {
-                throw new Error(err)
-            })
-    }, [])
+        if (!tree) {
+            return
+        }
+
+        setManuals(tree.children)
+        setTitle(tree?.properties?.child_page?.title)
+    }, [tree])
 
     return (
         <main className={styles.homeContainer}>
@@ -28,4 +26,14 @@ export default function Home() {
             </section>
         </main>
     )
+}
+
+export async function getStaticProps() {
+    const tree = await getTree()
+    return {
+        props: {
+            tree,
+        },
+        revalidate: 15,
+    }
 }

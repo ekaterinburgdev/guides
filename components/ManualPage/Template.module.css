@@ -73,7 +73,6 @@
     .templateColumn {
         padding-left: 40px;
         margin-left: max(20%, 376px);
-        width: 75%;
         overflow-x: hidden;
         overflow-y: hidden;
     }

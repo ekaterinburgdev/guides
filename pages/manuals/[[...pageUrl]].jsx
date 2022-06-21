@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
+import getAllUrls from '../../utils/getAllUrls'
 import { getTree, getPageByUrl } from '../../api/apiPage'
 import tp from '../../utils/typograf/typograf.config'
 import styles from './page.module.css'
 
-function GetPage() {
+function GetPage({ page, tree, catalogPage }) {
     const router = useRouter()
     const { pageUrl } = router.query
 
@@ -61,61 +62,30 @@ function GetPage() {
     }
 
     React.useEffect(() => {
-        if (!pageUrl) {
+        if (!page) {
             return
         }
 
-        getPageByUrl(pageUrl.join('/'))
-            .then((page) => {
-                setPageList(page.children)
-                setPageName(page.content.title)
-            })
-            .catch((err) => {
-                throw new Error('Page is not exist', err)
-            })
+        setPageList(page.children)
+        setPageName(page.content.title)
+    }, [page])
 
-        const catalogUrl = sessionStorage.getItem('catalogUrl')
-        const catalogTitleFromStorage = sessionStorage.getItem('catalogTitle')
-        const catalogIdFromStorage = sessionStorage.getItem('catalogId')
-
-        if (
-            !catalogUrl ||
-            !catalogTitleFromStorage ||
-            !catalogIdFromStorage ||
-            pageUrl[0] !== catalogUrl
-        ) {
-            getPageByUrl(pageUrl[0])
-                .then((page) => {
-                    const catalogTitleForSet = page.content.title
-                    const catalogIdForSet = page.id
-                    setCatalogTitle(catalogTitleForSet)
-                    setCatalogId(catalogIdForSet)
-                    sessionStorage.setItem('catalogUrl', pageUrl[0])
-                    sessionStorage.setItem('catalogTitle', catalogTitleForSet)
-                    sessionStorage.setItem('catalogId', catalogIdForSet)
-                })
-                .catch((err) => {
-                    throw new Error('Page is not exist', err)
-                })
-        } else {
-            // eslint-disable-next-line no-undef
-            const catalogTitleForSet = sessionStorage.getItem('catalogTitle')
-            // eslint-disable-next-line no-undef
-            const catalogIdForSet = sessionStorage.getItem('catalogId')
-            setCatalogTitle(catalogTitleForSet)
-            setCatalogId(catalogIdForSet)
+    React.useEffect(() => {
+        if (!catalogPage) {
+            return
         }
-    }, [pageUrl])
+
+        setCatalogTitle(catalogPage.content.title)
+        setCatalogId(catalogPage.id)
+    }, [catalogPage])
 
     useEffect(() => {
-        getTree()
-            .then((tree) => {
-                setChildren(tree?.children)
-            })
-            .catch((err) => {
-                throw new Error(err)
-            })
-    }, [])
+        if (!tree) {
+            return
+        }
+
+        setChildren(tree?.children)
+    }, [tree])
 
     useEffect(() => {
         if (!children || !catalogId || catalogId === '') {
@@ -202,6 +172,29 @@ function GetPage() {
             />
         </>
     )
+}
+
+export async function getStaticPaths() {
+    const tree = await getTree()
+    const pageUrls = getAllUrls(tree.children)
+
+    const paths = pageUrls.map((url) => {
+        return { params: { pageUrl: url } }
+    })
+
+    return { paths, fallback: true }
+}
+
+export async function getStaticProps({ params }) {
+    const { pageUrl } = params
+    return {
+        props: {
+            tree: await getTree(),
+            page: await getPageByUrl(pageUrl.join('/')),
+            catalogPage: await getPageByUrl(pageUrl[0]),
+        },
+        revalidate: 15,
+    }
 }
 
 export default GetPage
