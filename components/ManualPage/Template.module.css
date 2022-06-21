@@ -9,7 +9,7 @@
 .footNav {
     display: flex;
     margin-left: 0;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     gap: 2rem;
     align-items: center;
     text-align: center;
@@ -71,8 +71,9 @@
 
 @media (min-width: 768px) {
     .templateColumn {
-        padding-left: 60px;
+        padding-left: 40px;
         margin-left: max(20%, 376px);
+        width: 75%;
         overflow-x: hidden;
         overflow-y: hidden;
     }
