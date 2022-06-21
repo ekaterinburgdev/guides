@@ -36,7 +36,7 @@
     display: block;
     line-height: 1;
     font-size: 1.5rem;
-    padding: calc(0.65em + 7.5px);
+    padding: calc(0.65em + 7.5px) 0px calc(0.65em + 7.5px) 16px;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     font-weight: 500;
@@ -86,10 +86,11 @@
     flex-direction: column;
     box-shadow: none;
     gap: 1rem;
+    flex-grow: 1;
 }
 
 .innerTableOfContentsLink {
-    padding: 15px 0.5rem 15px calc(0.5rem + 7.5px);
+    padding: 15px 5px 15px calc(0.5rem);
     font-weight: 400;
     box-shadow: none;
     color: black;
@@ -109,10 +110,14 @@
 
 .innerLinkContainer {
     background-color: #ffffff;
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    margin-top: -15px;
 }
 
 .tableOfContentsLink {
@@ -139,10 +144,18 @@
     box-shadow: none;
     background-color: #ffffff;
     margin-bottom: 5px;
-    border-radius: 10px;
-    padding: 15px 0px 15px calc(0.65em + 7.5px);
+    padding: 15px 5px 15px calc(0.65em + 7.5px);
     color: black;
     text-decoration: none;
+}
+
+.separator {
+    border-bottom: 1px solid #112233;
+    z-index: 1;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 @media screen and (min-width: 768px) {
@@ -152,7 +165,7 @@
         display: flex;
         flex-direction: column;
         position: fixed;
-        padding: 20px 30px;
+        padding: 16px 20px;
         min-width: 376px;
         width: 20%;
         height: calc(100vh - 30px);
@@ -165,6 +178,10 @@
 @media screen and (prefers-color-scheme: dark) {
     .tableOfContents {
         background-color: #282828;
+    }
+
+    .separator {
+        border-color: rgba(255, 255, 255, 0.8);
     }
 
     .catalogTitle {

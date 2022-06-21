@@ -54,6 +54,8 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                 <a
                     className={cn(styles.tableOfContentsLink, {
                         [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
+                        [styles.separator]:
+                            currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length,
                     })}
                     href={url}
                     onClick={() => setIsOpen(!isOpen)}

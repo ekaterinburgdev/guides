@@ -8,8 +8,18 @@ import UnorderedList from '../NotionTypes/Lists/Unordered/Unordered'
 import OrderedList from '../NotionTypes/Lists/Ordered/Ordered'
 import Code from '../NotionTypes/Text/Code/Code'
 import Paragraph from '../NotionTypes/Text/Paragraph/Paragraph'
+import { PrevPage, NextPage } from '../ArrowNavLink/ArrowNavLink'
 
-function ManualPage({ pageList, pageName }) {
+function ManualPage({
+    pageList,
+    pageName,
+    tableOfContentArr,
+    pageUrl,
+    prevPageIndex,
+    nextPageIndex,
+    catalogIndex,
+    children,
+}) {
     const getLine = (columnList) => {
         if (!columnList.children.length) {
             return
@@ -89,6 +99,28 @@ function ManualPage({ pageList, pageName }) {
         <div className={styles.templateColumn}>
             <h1 className={styles.pageName}>{pageName}</h1>
             {map(pageList, (cl) => getColumnItem(cl))}
+            {tableOfContentArr.length !== 0 && (
+                <nav className={styles.footNav}>
+                    {(Number.isInteger(prevPageIndex) || Number.isInteger(catalogIndex)) && (
+                        <PrevPage
+                            children={children}
+                            prevPageIndex={prevPageIndex}
+                            tableOfContentArr={tableOfContentArr}
+                            catalogIndex={catalogIndex}
+                            pageUrl={pageUrl}
+                        />
+                    )}
+                    {(Number.isInteger(nextPageIndex) || Number.isInteger(catalogIndex)) && (
+                        <NextPage
+                            nextPageIndex={nextPageIndex}
+                            children={children}
+                            tableOfContentArr={tableOfContentArr}
+                            catalogIndex={catalogIndex}
+                            pageUrl={pageUrl}
+                        />
+                    )}
+                </nav>
+            )}
         </div>
     )
 }

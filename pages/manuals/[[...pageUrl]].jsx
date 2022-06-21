@@ -6,7 +6,6 @@ import ManualPage from '../../components/ManualPage/ManualPage'
 import { getTree, getPageByUrl } from '../../api/apiPage'
 import tp from '../../utils/typograf/typograf.config'
 import styles from './page.module.css'
-import { PrevPage, NextPage } from '../../components/ArrowNavLink/ArrrowNavLink'
 
 function GetPage() {
     const router = useRouter()
@@ -191,29 +190,16 @@ function GetPage() {
                 anchorLinks={anchorLinks}
                 catalogTitle={catalogTitle}
             />
-            <ManualPage pageList={pageList} pageName={pageName} />
-            {tableOfContentArr.length !== 0 && (
-                <nav className={styles.footNav}>
-                    {(Number.isInteger(prevPageIndex) || Number.isInteger(catalogIndex)) && (
-                        <PrevPage
-                            children={children}
-                            prevPageIndex={prevPageIndex}
-                            tableOfContentArr={tableOfContentArr}
-                            catalogIndex={catalogIndex}
-                            pageUrl={pageUrl}
-                        />
-                    )}
-                    {(Number.isInteger(nextPageIndex) || Number.isInteger(catalogIndex)) && (
-                        <NextPage
-                            nextPageIndex={nextPageIndex}
-                            children={children}
-                            tableOfContentArr={tableOfContentArr}
-                            catalogIndex={catalogIndex}
-                            pageUrl={pageUrl}
-                        />
-                    )}
-                </nav>
-            )}
+            <ManualPage
+                pageList={pageList}
+                pageName={pageName}
+                children={children}
+                tableOfContentArr={tableOfContentArr}
+                prevPageIndex={prevPageIndex}
+                nextPageIndex={nextPageIndex}
+                catalogIndex={catalogIndex}
+                pageUrl={pageUrl}
+            />
         </>
     )
 }
