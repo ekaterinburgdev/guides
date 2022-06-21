@@ -33,6 +33,7 @@
         "consistent-return": "warn",
         "react/no-children-prop": "warn",
         "no-restricted-syntax": "warn",
-        "react/no-array-index-key": "warn"
+        "react/no-array-index-key": "warn",
+        "react/jsx-props-no-spreading": "warn",
     }
 }

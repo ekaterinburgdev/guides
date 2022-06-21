@@ -9,7 +9,7 @@
 .footNav {
     display: flex;
     margin-left: 0;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     gap: 2rem;
     align-items: center;
     text-align: center;
