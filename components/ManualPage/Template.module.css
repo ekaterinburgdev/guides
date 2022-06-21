@@ -14,7 +14,6 @@
     width: 100%;
     position: relative;
     border-radius: 4px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .heading1 {
@@ -84,9 +83,5 @@
 @media screen and (prefers-color-scheme: dark) {
     .table1 tr:nth-child(odd) {
         background: #404040;
-    }
-
-    .templateImage {
-        box-shadow: rgba(100, 100, 111, 0.7) 0px 7px 29px 0px;
     }
 }

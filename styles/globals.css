@@ -28,7 +28,8 @@ body {
     }
 
     ::selection {
-        background: rgba(255, 255, 51, 0.8);
+        background: #ffc800;
+        color: black;
     }
 }
 
@@ -40,6 +41,7 @@ body {
     }
 
     ::selection {
-        background: rgba(243, 243, 19, 0.8);
+        background: #ffc800;
+        color: black;
     }
 }
