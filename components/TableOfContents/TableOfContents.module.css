@@ -86,6 +86,7 @@
     flex-direction: column;
     box-shadow: none;
     gap: 1rem;
+    flex-grow: 1;
 }
 
 .innerTableOfContentsLink {
