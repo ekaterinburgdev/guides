@@ -93,7 +93,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                         }}
                     >
                         <a className={styles.linkToAllManuals} href="/">
-                            ←&nbsp;Городские руководства
+                            ←&nbsp;Все руководства
                         </a>
                     </Link>
                     <Link
