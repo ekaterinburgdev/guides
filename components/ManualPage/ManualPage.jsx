@@ -26,7 +26,7 @@ function ManualPage({
         }
 
         return (
-            <div className="row gx-5">
+            <div className="row gx-4">
                 {columnList.children.map((cols) => (
                     <div className="col" key={cols.id}>
                         {cols.children.map((col) => getColumnItem(col))}
