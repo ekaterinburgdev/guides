@@ -30,7 +30,7 @@ function InnerLink({ anchor, baseState, setState }) {
             href={`#${anchor.id}`}
             onClick={() => setState(!baseState)}
         >
-            {anchor.title}
+            {tp.execute(anchor.title)}
         </a>
     )
 }
@@ -60,7 +60,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     href={url}
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    {title}
+                    {tp.execute(title)}
                 </a>
             </Link>
             {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
