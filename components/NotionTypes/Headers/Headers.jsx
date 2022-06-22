@@ -20,7 +20,7 @@ export function H2({ columnItem }) {
 
 export function H3({ columnItem }) {
     return (
-        <h3 id={columnItem.id} className={styles.heading2}>
+        <h3 id={columnItem.id} className={styles.heading3}>
             {getHeaderContent(columnItem)}
         </h3>
     )
