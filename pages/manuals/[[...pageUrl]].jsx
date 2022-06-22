@@ -48,13 +48,13 @@ function GetPage({ page, tree, catalogPage }) {
                 return <div className={styles.columnList}>{getLine(columnItem)}</div>
 
             case 'heading_1':
-                return { id: columnItem.id, title: getTextContent(columnItem) }
+                return { id: columnItem.id, title: getTextContent(columnItem, true) }
 
             case 'heading_2':
-                return { id: columnItem.id, title: getTextContent(columnItem) }
+                return { id: columnItem.id, title: getTextContent(columnItem, true) }
 
             case 'heading_3':
-                return { id: columnItem.id, title: getTextContent(columnItem) }
+                return { id: columnItem.id, title: getTextContent(columnItem, true) }
 
             default:
                 return null

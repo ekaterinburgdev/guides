@@ -7,7 +7,7 @@ function OrderedList({ columnItem }) {
         <ol className={styles.ul}>
             {columnItem.children.map((li) => (
                 <li className={styles.li} key={li.id}>
-                    {getTextContent(li)}
+                    {getTextContent(li, true)}
                 </li>
             ))}
         </ol>

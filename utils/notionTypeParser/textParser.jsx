@@ -40,5 +40,5 @@ export const getTextContent = (item, useTypograf = false) =>
     })
 
 export const getListItem = (columnItem) => {
-    columnItem.children.map((li) => <li key={li.id}>{getTextContent(li)}</li>)
+    columnItem.children.map((li) => <li key={li.id}>{getTextContent(li, true)}</li>)
 }
