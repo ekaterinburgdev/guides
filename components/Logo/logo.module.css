@@ -4,7 +4,8 @@
     position: relative;
     display: flex;
     column-gap: 1em;
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     color: black;
     text-decoration: none;
     transition: 0.2s;

@@ -71,10 +71,10 @@
 
 @media (min-width: 768px) {
     .templateColumn {
-        padding-left: 40px;
+        padding-left: 60px;
+        max-width: 1400px;
         margin-left: max(20%, 376px);
-        overflow-x: hidden;
-        overflow-y: hidden;
+        overflow: hidden;
     }
 
     .pageName {

@@ -35,10 +35,7 @@ export function PrevPage({ prevPageIndex, tableOfContentArr, pageUrl, catalogInd
 
     return (
         <Link href={href} passHref>
-            <a className={styles.arrowNavLink}>
-                ← &nbsp;
-                {title}
-            </a>
+            <a className={styles.arrowNavLink}>←&nbsp;{title}</a>
         </Link>
     )
 }
@@ -70,10 +67,7 @@ export function NextPage({ nextPageIndex, tableOfContentArr, pageUrl, catalogInd
 
     return (
         <Link href={href} passHref>
-            <a className={styles.arrowNavLink}>
-                {title}
-                &nbsp; →
-            </a>
+            <a className={styles.arrowNavLink}>{title}&nbsp;→</a>
         </Link>
     )
 }

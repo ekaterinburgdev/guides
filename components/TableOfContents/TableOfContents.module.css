@@ -16,7 +16,7 @@
     flex-direction: column;
 }
 
-.linkContainer {
+.linkContainerList {
     list-style: none;
     padding-left: 0;
     margin-top: 0;
@@ -81,7 +81,7 @@
     display: none;
 }
 
-.linkContainer {
+.linkContainerList {
     display: flex;
     flex-direction: column;
     box-shadow: none;
@@ -90,27 +90,25 @@
 }
 
 .innerTableOfContentsLink {
-    padding: 15px 5px 15px calc(0.5rem);
+    display: inline-block;
+    width: 100%;
     font-weight: 400;
     box-shadow: none;
     color: black;
     text-decoration: none;
     border-radius: 10px;
     transition: 0.2s;
+    padding: 10px 5px 10px 0.5rem;
 }
 
 .innerTableOfContentsLink:hover,
 .innerTableOfContentsLink:focus-visible {
     box-shadow: none;
-    background-color: #123;
-    color: #ffffff;
-    text-decoration: none;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    color: #00b4ff;
 }
 
-.innerLinkContainer {
+.innerlinkContainerList {
     background-color: #ffffff;
-    padding-top: 1rem;
     padding-bottom: 0.5rem;
     padding-left: 0.6rem;
     padding-right: 0.6rem;
@@ -118,16 +116,25 @@
     display: flex;
     flex-direction: column;
     margin-top: -15px;
+    list-style: none;
+}
+
+.innerlinkContainerList::before {
+    content: '';
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #eff0f1;
 }
 
 .tableOfContentsLink {
-    padding: 15px 5px 15px calc(0.65em + 7.5px);
     font-weight: 400;
     box-shadow: none;
     color: black;
     text-decoration: none;
     border-radius: 10px;
     transition: 0.2s;
+    padding: 15px 5px 15px 20px;
+    font-size: 1.1rem;
 }
 
 .tableOfContentsLink:hover,
@@ -144,18 +151,14 @@
     box-shadow: none;
     background-color: #ffffff;
     margin-bottom: 5px;
-    padding: 15px 5px 15px calc(0.65em + 7.5px);
     color: black;
     text-decoration: none;
 }
 
 .separator {
-    border-bottom: 1px solid #112233;
-    z-index: 1;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 16px 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -195,6 +198,7 @@
     }
 
     .tableOfContentsLink {
+        display: inline-block;
         color: white;
     }
 
@@ -204,7 +208,7 @@
         color: white;
     }
 
-    .innerLinkContainer {
+    .innerlinkContainerList {
         background-color: #404040;
     }
 

@@ -64,16 +64,13 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                 </a>
             </Link>
             {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
-                <div className={styles.innerLinkContainer}>
+                <ul className={styles.innerlinkContainerList}>
                     {anchorLinks.map((anchor) => (
-                        <InnerLink
-                            key={anchor.id}
-                            anchor={anchor}
-                            baseState={isOpen}
-                            setState={setIsOpen}
-                        />
+                        <li className={styles.innerlinkContainerListItem} key={anchor.id}>
+                            <InnerLink anchor={anchor} baseState={isOpen} setState={setIsOpen} />
+                        </li>
                     ))}
-                </div>
+                </ul>
             )}
         </li>
     )
@@ -109,7 +106,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                             {tp.execute(catalogTitle)}
                         </a>
                     </Link>
-                    <ul className={styles.linkContainer}>
+                    <ul className={styles.linkContainerList}>
                         {currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}
                     </ul>
                     <Logo logoSrc="/Avatar.svg" linkTo="https://ekaterinburg.design/" />
