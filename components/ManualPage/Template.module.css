@@ -1,7 +1,6 @@
 .templateColumn {
     padding-left: 0px;
     padding-top: 0px;
-    max-width: 220vw;
     margin-left: 4%;
     margin-right: 4%;
 }
@@ -23,6 +22,7 @@
     width: 100%;
     position: relative;
     border-radius: 4px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .heading1 {

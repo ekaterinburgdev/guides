@@ -57,7 +57,7 @@
 
 @media screen and (prefers-color-scheme: light) {
     .hamburger-menu {
-        background-color: rgba(190, 191, 186, 0.5);
+        background-color: rgba(239, 240, 241, 0.8);
     }
 
     .line {
