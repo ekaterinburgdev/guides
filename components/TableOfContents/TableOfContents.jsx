@@ -10,7 +10,7 @@ import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 
 function InnerLink({ anchor, baseState, setState }) {
     const isDesktop = useMediaQuery({
-        query: '(min-width: 768px)',
+        query: '(min-width: 991px)',
     })
     if (isDesktop) {
         return (
@@ -37,7 +37,7 @@ function InnerLink({ anchor, baseState, setState }) {
 
 function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle }) {
     const isDesktop = useMediaQuery({
-        query: '(min-width: 768px)',
+        query: '(min-width: 991px)',
     })
     const [isOpen, setIsOpen] = useState(isDesktop)
 

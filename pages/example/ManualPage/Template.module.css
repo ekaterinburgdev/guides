@@ -28,7 +28,7 @@
     font-weight: 700;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 991px) {
     .templateColumn {
         min-height: 100vh;
         padding-left: 60px;

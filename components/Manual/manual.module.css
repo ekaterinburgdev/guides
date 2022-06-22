@@ -34,7 +34,7 @@
     transform: matrix(1, -0.08, 0, 1, 0, 0) scaleX(0.95);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 991px) {
     .manualItem {
         width: calc(100% / 3 - 2vw);
     }

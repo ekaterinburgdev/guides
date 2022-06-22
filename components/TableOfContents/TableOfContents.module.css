@@ -159,7 +159,7 @@
     padding: 16px 20px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 991px) {
     .tableOfContents {
         margin: 15px;
         border-radius: 10px;
