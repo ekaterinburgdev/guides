@@ -12,6 +12,7 @@ export default function Document() {
                 <meta name="og:description" content={ogDescription} />
                 <meta property="og:title" content={ogTitle} />
                 <meta name="theme-color" content="#123" />
+                <meta name="yandex-verification" content="94c725a9e4228358" />
             </Head>
             <body>
                 <Main />
