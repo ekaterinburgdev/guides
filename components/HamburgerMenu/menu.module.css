@@ -49,6 +49,12 @@
     stroke-width: 6;
 }
 
+@media print {
+    .hamburger-menu {
+        display: none;
+    }
+}
+
 @media screen and (min-width: 991px) {
     .hamburger-menu {
         display: none;
