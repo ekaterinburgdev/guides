@@ -1,5 +1,6 @@
 import React from 'react'
 import map from 'lodash/map'
+
 import styles from './Template.module.css'
 import getImage from '../../utils/notionTypeParser/imageParser'
 import { H1, H2, H3 } from '../NotionTypes/Headers/Headers'
@@ -8,6 +9,7 @@ import UnorderedList from '../NotionTypes/Lists/Unordered/Unordered'
 import OrderedList from '../NotionTypes/Lists/Ordered/Ordered'
 import Paragraph from '../NotionTypes/Text/Paragraph/Paragraph'
 import { PrevPage, NextPage } from '../ArrowNavLink/ArrowNavLink'
+import { SearchInput } from "../Search/SearchInput/SearchInput";
 
 function ManualPage({
     pageList,
@@ -19,6 +21,8 @@ function ManualPage({
     catalogIndex,
     children,
 }) {
+    const [showSearchInput, setShowSearchInput] = React.useState(false);
+
     const getLine = (columnList) => {
         if (!columnList.children.length) {
             return
@@ -86,6 +90,8 @@ function ManualPage({
 
     return (
         <div className={styles.templateColumn}>
+            <button onClick={() => setShowSearchInput(!showSearchInput)}/>
+            <SearchInput isVisible={showSearchInput} />
             <h1 className={styles.pageName}>{pageName}</h1>
             {map(pageList, (cl) => getColumnItem(cl))}
             {tableOfContentArr.length !== 0 && (

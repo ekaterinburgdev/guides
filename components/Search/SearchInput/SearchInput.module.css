@@ -1,0 +1,7 @@
+.search-input__container {
+    display: flex;
+}
+
+.hidden {
+    display: none;
+}
