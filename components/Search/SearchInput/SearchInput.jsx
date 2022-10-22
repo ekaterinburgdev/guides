@@ -25,7 +25,7 @@ export const SearchInput = ({ isVisible }) => {
       <input onChange={async (e) => {
           const response = await fetch(`http://localhost:8088/${e.target.value}`);
           const arrayWithSuggestions = await response.json();
-          setSuggestions(arrayWithSuggestions.items);
+          setSuggestions(arrayWithSuggestions);
       }} />
       <SearchSuggestionBlock suggestions={suggestions} />
     </section>

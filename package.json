@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
+        "dev": "next dev & json-server ./mock/search-data.mock.json --port 8088",
 		"build": "next build",
 		"start": "next start",
 		"lint": "eslint .",
