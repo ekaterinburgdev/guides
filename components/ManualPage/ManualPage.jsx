@@ -9,7 +9,7 @@ import UnorderedList from '../NotionTypes/Lists/Unordered/Unordered'
 import OrderedList from '../NotionTypes/Lists/Ordered/Ordered'
 import Paragraph from '../NotionTypes/Text/Paragraph/Paragraph'
 import { PrevPage, NextPage } from '../ArrowNavLink/ArrowNavLink'
-import { SearchInput } from "../Search/SearchInput/SearchInput";
+import { FeatureButtons } from "../FeatureButtons/FeatureButtons";
 
 function ManualPage({
     pageList,
@@ -90,8 +90,7 @@ function ManualPage({
 
     return (
         <div className={styles.templateColumn}>
-            <button onClick={() => setShowSearchInput(!showSearchInput)}/>
-            <SearchInput isVisible={showSearchInput} />
+            <FeatureButtons />
             <h1 className={styles.pageName}>{pageName}</h1>
             {map(pageList, (cl) => getColumnItem(cl))}
             {tableOfContentArr.length !== 0 && (

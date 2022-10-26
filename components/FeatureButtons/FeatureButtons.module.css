@@ -1,0 +1,15 @@
+.buttons__container {
+    display: flex;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    border-radius: 30px;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.action_button {
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}

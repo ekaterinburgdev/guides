@@ -1,7 +1,15 @@
-.search-input__container {
-    display: flex;
+.input__container {
+    position: fixed;
+    bottom: 2vh;
+    right: 50vw;
+    left: 50vw;
 }
 
-.hidden {
-    display: none;
+.input {
+    border: 6px solid #EEEFF1;
+    border-top: 6px solid #EEEFF1;
+    border-radius: 32px;
+    min-width: 20vw;
+    height: 5vh;
+    background: white url(../../../public/search.svg) 0 no-repeat;
 }
