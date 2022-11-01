@@ -65,9 +65,6 @@ function ManualPage({
             case 'numbered_list':
                 return <OrderedList columnItem={columnItem} />
 
-            case 'code':
-                return <Code columnItem={columnItem} />
-
             case 'table':
                 return (
                     <div className={styles.tableContainer}>
@@ -82,13 +79,6 @@ function ManualPage({
                         </table>
                     </div>
                 )
-
-            // case 'video':
-            //     return (
-            //         <video>
-            //             <source src={columnItem?.content?.file?.url} />
-            //         </video>
-            //     )
 
             default:
                 return <p>Unknown type</p>
