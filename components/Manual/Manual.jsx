@@ -16,17 +16,15 @@ function Manual({ manual }) {
                 pathname: '/[[...pageUrl]]',
                 query: { pageUrl: [pageUrl] },
             }}
-            passHref
+            className={styles.manualItem}
         >
-            <a className={styles.manualItem}>
-                <Image
-                    src={`${api.HOST}/static/${imageUrl}`}
-                    alt={titleText}
-                    layout="fill"
-                    overflow="visible"
-                    loading="lazy"
-                />
-            </a>
+            <Image
+                src={`${api.HOST}/static/${imageUrl}`}
+                alt={titleText}
+                layout="fill"
+                overflow="visible"
+                loading="lazy"
+            />
         </Link>
     )
 }

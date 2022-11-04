@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
+
 import Logo from '../Logo/Logo'
 import styles from './TableOfContents.module.css'
 import tp from '../../utils/typograf/typograf.config'
@@ -50,18 +51,14 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     query: { pageUrl: [currentPageUrl[0], url] },
                     as: `${currentPageUrl.join('/')}/${url}`,
                 }}
+                className={cn(styles.tableOfContentsLink, {
+                    [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
+                    [styles.separator]:
+                        currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length,
+                })}
+                onClick={() => setIsOpen(!isOpen)}
             >
-                <a
-                    className={cn(styles.tableOfContentsLink, {
-                        [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
-                        [styles.separator]:
-                            currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length,
-                    })}
-                    href={url}
-                    onClick={() => setIsOpen(!isOpen)}
-                >
-                    {tp.execute(title)}
-                </a>
+                {tp.execute(title)}
             </Link>
             {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
                 <ul className={styles.innerlinkContainerList}>
@@ -91,20 +88,18 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                         href={{
                             pathname: '/',
                         }}
+                        className={styles.linkToAllManuals}
                     >
-                        <a className={styles.linkToAllManuals} href="/">
-                            ←&nbsp;Все руководства
-                        </a>
+                        ←&nbsp;Все руководства
                     </Link>
                     <Link
                         href={{
                             pathname: '/[[...pageUrl]]',
                             query: { pageUrl: [currentPageUrl[0]] },
                         }}
+                        className={styles.catalogTitle}
                     >
-                        <a className={styles.catalogTitle} href="/">
-                            {tp.execute(catalogTitle)}
-                        </a>
+                        {tp.execute(catalogTitle)}
                     </Link>
                     <ul className={styles.linkContainerList}>
                         {currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}
