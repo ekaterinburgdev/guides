@@ -15,10 +15,10 @@ const debounce = (func, timeout = 300) => {
 
 export function SearchInput({ isVisible }) {
     const [suggestions, setSuggestions] = React.useState([])
-
     return (
         <section className={style.input__container} hidden={!isVisible}>
             <input
+                ref={(input) => input?.focus()}
                 className={style.input}
                 onChange={async (e) => {
                     const response = await fetch(`http://localhost:8088/${e.target.value}`)

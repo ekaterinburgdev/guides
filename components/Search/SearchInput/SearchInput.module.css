@@ -12,4 +12,5 @@
     min-width: 20vw;
     height: 5vh;
     background: white url(../../../public/search.svg) 0 no-repeat;
+    padding-left: 48px;
 }
