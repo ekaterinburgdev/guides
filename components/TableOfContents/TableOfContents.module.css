@@ -132,7 +132,7 @@
     text-decoration: none;
     border-radius: 10px;
     transition: 0.2s;
-    padding: 15px 5px 15px 20px;
+    padding: 15px;
     font-size: 1.1rem;
 }
 
@@ -157,6 +157,10 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     padding: 16px 20px;
+}
+
+.TableOfContents__aside {
+    display: flex;
 }
 
 @media screen and (min-width: 991px) {

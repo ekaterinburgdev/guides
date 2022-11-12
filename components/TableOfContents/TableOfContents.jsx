@@ -4,10 +4,10 @@ import Head from 'next/head'
 import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
 
-import Logo from '../Logo/Logo'
 import styles from './TableOfContents.module.css'
 import tp from '../../utils/typograf/typograf.config'
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
+import { CommonLinks } from '../CommonLinks/CommonLinks'
 
 function InnerLink({ anchor, baseState, setState }) {
     const isDesktop = useMediaQuery({
@@ -82,16 +82,8 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                 <title>{catalogTitle}</title>
             </Head>
             <HamburgerMenu state={isOpen} changeState={() => setIsOpen(!isOpen)} />
-            <aside>
+            <aside className={styles.TableOfContents__aside}>
                 <nav className={navClassName}>
-                    <Link
-                        href={{
-                            pathname: '/',
-                        }}
-                        className={styles.linkToAllManuals}
-                    >
-                        ←&nbsp;Все руководства
-                    </Link>
                     <Link
                         href={{
                             pathname: '/[[...pageUrl]]',
@@ -104,8 +96,8 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     <ul className={styles.linkContainerList}>
                         {currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}
                     </ul>
-                    <Logo logoSrc="/Avatar.svg" linkTo="https://ekaterinburg.design/" />
                 </nav>
+                <CommonLinks />
             </aside>
         </>
     )

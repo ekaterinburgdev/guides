@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styles from './link.module.css'
 
 function Bookmark({ columnItem }) {

@@ -1,5 +1,6 @@
 import React from 'react'
 import map from 'lodash/map'
+
 import styles from './Template.module.css'
 import getImage from '../../utils/notionTypeParser/imageParser'
 import { H1, H2, H3 } from '../NotionTypes/Headers/Headers'
@@ -25,13 +26,13 @@ function ManualPage({
         }
 
         return (
-            <div className="row gx-4">
+            <article className={`row gx-4 ${styles.Template__item}`}>
                 {columnList.children.map((cols) => (
                     <div className="col" key={cols.id}>
                         {cols.children.map((col) => getColumnItem(col))}
                     </div>
                 ))}
-            </div>
+            </article>
         )
     }
 

@@ -1,24 +1,38 @@
 import React from 'react'
+import Image from 'next/image'
+import classNames from 'classnames'
+
 import styles from '../../components/ManualPage/Template.module.css'
-import { API_HOST } from '../../consts/endpoints'
 
 const getImage = (imageObj) => {
-    const image = (
-        <img
-            className={styles.templateImage}
-            src={`${API_HOST}/static/${imageObj.content.image_name}`}
-            alt=""
-        />
-    )
+    const cn = classNames(styles.Manual__image, {
+        [styles.Manual__image_svg]: String(imageObj.content.image_name).includes('svg'),
+    })
 
     if (imageObj.content.image_data.caption.length === 0) {
-        return image
+        return (
+            <div className={styles.Manual__image__container}>
+                <Image
+                    className={cn}
+                    src={`${process.env.HOST}/static/${imageObj.content.image_name}`}
+                    alt=""
+                    fill
+                />
+            </div>
+        )
     }
     
     return (
-        <div>
-            {image}
-            <span>{imageObj.content.image_data.caption[0].plain_text}</span>
+        <div className={styles.Manual__image__container}>
+            <Image
+                className={styles.Manual__image}
+                src={`${process.env.HOST}/static/${imageObj.content.image_name}`}
+                alt={imageObj.content.image_data.caption[0].plain_text}
+                fill
+            />
+            <span className={styles.Manual__image_description}>
+                {imageObj.content.image_data.caption[0].plain_text}
+            </span>
         </div>
     )
 }
