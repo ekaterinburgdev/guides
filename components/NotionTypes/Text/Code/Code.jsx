@@ -1,4 +1,5 @@
 import React from 'react'
+
 import getTextContent from '../../../../utils/notionTypeParser/textParser'
 import styles from './code.module.css'
 
