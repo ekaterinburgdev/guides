@@ -1,4 +1,5 @@
 import React from 'react'
+
 import tp from '../typograf/typograf.config'
 
 export const getHeaderContent = (item) =>

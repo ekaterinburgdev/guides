@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import classNames from 'classnames'
 
-import styles from '../../components/ManualPage/Template.module.css'
+import styles from '../../components/ManualPage/ManualPage.module.css'
 
 const getImage = (imageObj) => {
     const cn = classNames(styles.Manual__image, {
@@ -30,7 +30,7 @@ const getImage = (imageObj) => {
                 alt={imageObj.content.image_data.caption[0].plain_text}
                 fill
             />
-            <span className={styles.Manual__image_description}>
+            <span className={styles.Manual__image_description} aria-hidden="true">
                 {imageObj.content.image_data.caption[0].plain_text}
             </span>
         </div>

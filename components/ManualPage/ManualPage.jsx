@@ -1,7 +1,7 @@
 import React from 'react'
 import map from 'lodash/map'
 
-import styles from './Template.module.css'
+import styles from './ManualPage.module.css'
 import getImage from '../../utils/notionTypeParser/imageParser'
 import { H1, H2, H3 } from '../NotionTypes/Headers/Headers'
 import Bookmark from '../NotionTypes/Bookmark/Bookmark'
@@ -9,6 +9,7 @@ import UnorderedList from '../NotionTypes/Lists/Unordered/Unordered'
 import OrderedList from '../NotionTypes/Lists/Ordered/Ordered'
 import Paragraph from '../NotionTypes/Text/Paragraph/Paragraph'
 import { PrevPage, NextPage } from '../ArrowNavLink/ArrowNavLink'
+import Table from '../NotionTypes/Table/Table'
 
 function ManualPage({
     pageList,
@@ -66,19 +67,7 @@ function ManualPage({
                 return <OrderedList columnItem={columnItem} />
 
             case 'table':
-                return (
-                    <div className={styles.tableContainer}>
-                        <table className={styles.table1}>
-                            {columnItem.children.map((child) => (
-                                <tr key={child.id}>
-                                    {child?.content?.cells?.map((cell) => (
-                                        <td key={cell[0]?.plain_text}>{cell[0]?.plain_text}</td>
-                                    ))}
-                                </tr>
-                            ))}
-                        </table>
-                    </div>
-                )
+                return <Table columnItem={columnItem} />
 
             default:
                 return <p>Unknown type</p>
