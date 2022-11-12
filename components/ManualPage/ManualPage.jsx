@@ -10,6 +10,7 @@ import OrderedList from '../NotionTypes/Lists/Ordered/Ordered'
 import Paragraph from '../NotionTypes/Text/Paragraph/Paragraph'
 import { PrevPage, NextPage } from '../ArrowNavLink/ArrowNavLink'
 import Table from '../NotionTypes/Table/Table'
+import Divider from '../NotionTypes/Text/Divider/Divider'
 
 function ManualPage({
     pageList,
@@ -68,6 +69,9 @@ function ManualPage({
 
             case 'table':
                 return <Table columnItem={columnItem} />
+
+            case 'divider':
+                return <Divider />
 
             default:
                 return <p>Unknown type</p>
