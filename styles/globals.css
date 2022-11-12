@@ -1,18 +1,15 @@
 @import 'normalize.css';
-@import './font.css';
 @import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 
 html,
 body {
     padding: 0;
     margin: 0;
-    font-family: Iset Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-        Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     scroll-behavior: smooth;
     font-weight: 300;
     max-width: 100%;
     overflow-x: hidden;
-    font-size: 16px;
+    font-size: 1rem;
     scroll-behavior: smooth;
 }
 
@@ -24,12 +21,12 @@ body {
     html,
     body {
         background-color: rgb(255, 255, 255);
-        color: #000000;
+        color: #14283C;
     }
 
     ::selection {
         background: #ffc800;
-        color: black;
+        color: #14283C;
     }
 }
 
@@ -42,6 +39,6 @@ body {
 
     ::selection {
         background: #ffc800;
-        color: black;
+        color: #14283C;
     }
 }

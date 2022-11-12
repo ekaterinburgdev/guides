@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -61,7 +60,7 @@ function GetPage({ tree, page, catalogPage }) {
         }
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (!page) {
             return
         }
@@ -70,7 +69,7 @@ function GetPage({ tree, page, catalogPage }) {
         setPageName(page.content.title)
     }, [page])
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (!catalogPage) {
             return
         }
@@ -114,17 +113,17 @@ function GetPage({ tree, page, catalogPage }) {
             currentChildren = currentChildren.find(
                 (obj) => obj?.properties?.pageUrl?.url === currentPageUrl
             )?.children
-            const b = currentChildren.map((obj) => ({
+            const arrayWithGuideSections = currentChildren.map((obj) => ({
                 url: obj?.properties?.pageUrl?.url,
                 title: obj?.properties?.Name?.title[0]?.text?.content,
                 children: [],
             }))
 
-            if (!currentPageChildren) {
-                tableOfContentArrForSet = b
-                currentPageChildren = tableOfContentArrForSet
+            if (currentPageChildren) {
+                currentPageChildren = arrayWithGuideSections
             } else {
-                currentPageChildren = b
+                tableOfContentArrForSet = arrayWithGuideSections
+                currentPageChildren = tableOfContentArrForSet
             }
         }
         setTableOfContentArr(tableOfContentArrForSet)
@@ -146,9 +145,7 @@ function GetPage({ tree, page, catalogPage }) {
         if (pageList.length === 0) {
             return
         }
-
         const anchorLinksForSet = pageList.map(getColumnItem)
-
         setAnchorLinks(anchorLinksForSet.filter((l) => l?.id))
     }, [pageList])
 
