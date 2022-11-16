@@ -1,7 +1,49 @@
 .CommonLinks__container {
-    padding: 15px;
+    position: fixed;
+    display: flex;
+    gap: 12px;
+    background-color: #282828;
+    border-radius: 10px 10px 0 0;
+    min-width: 376px;
+    margin-left: 15px;
+    bottom: 0;
+}
+
+.CommonLinks__icon {
+    margin: 16px 0 16px 16px;
 }
 
 .CommonLinks__link {
     text-decoration: none;
+    font-weight: 400;
+    box-shadow: none;
+    color: black;
+    vertical-align: middle;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.2s;
+    padding: 15px;
+    font-size: 1rem;
+}
+
+.CommonLinks__link:hover,
+.CommonLinks__link:focus-visible {
+    box-shadow: none;
+    background-color: #ffffff;
+    color: #112233;
+    text-decoration: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    .CommonLinks__link {
+        display: inline-block;
+        color: white;
+    }
+
+    .CommonLinks__link:hover,
+    .CommonLinks__link:focus-visible {
+        background-color: #404040;
+        color: white;
+    }
 }
