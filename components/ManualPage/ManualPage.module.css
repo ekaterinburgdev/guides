@@ -69,7 +69,7 @@
         padding-left: 60px;
         max-width: 1400px;
         margin-left: max(20%, 376px);
-        overflow: hidden;
+        overflow: visible;
     }
 
     .pageName {
