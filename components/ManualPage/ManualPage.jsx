@@ -9,7 +9,7 @@ import UnorderedList from '../NotionTypes/Lists/Unordered/Unordered'
 import OrderedList from '../NotionTypes/Lists/Ordered/Ordered'
 import Paragraph from '../NotionTypes/Text/Paragraph/Paragraph'
 import { PrevPage, NextPage } from '../ArrowNavLink/ArrowNavLink'
-import { FeatureButtons } from "../FeatureButtons/FeatureButtons";
+import { FeatureButtons } from '../FeatureButtons/FeatureButtons'
 
 function ManualPage({
     pageList,
@@ -21,8 +21,6 @@ function ManualPage({
     catalogIndex,
     children,
 }) {
-    const [showSearchInput, setShowSearchInput] = React.useState(false);
-
     const getLine = (columnList) => {
         if (!columnList.children.length) {
             return

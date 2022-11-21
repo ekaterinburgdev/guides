@@ -15,18 +15,26 @@ const debounce = (func, timeout = 300) => {
 
 export function SearchInput({ isVisible }) {
     const [suggestions, setSuggestions] = React.useState([])
+    const hiddenStyle = isVisible ? style.SearchInput__hidden : '';
     return (
-        <section className={style.input__container} hidden={!isVisible}>
+        <section className={`${style.input__container} ${hiddenStyle}`}>
+            <SearchSuggestion suggestions={suggestions} />
             <input
                 ref={(input) => input?.focus()}
                 className={style.input}
-                onChange={async (e) => {
-                    const response = await fetch(`http://localhost:8088/${e.target.value}`)
-                    const arrayWithSuggestions = await response.json()
-                    setSuggestions(arrayWithSuggestions)
-                }}
+                onChange={debounce(async (e) => {
+                    const textInput = e.target.value
+                    if (textInput.length > 2) {
+                        const response = await fetch(`http://localhost:8088/${e.target.value}`)
+                        const arrayWithSuggestions = await response.json()
+                        setSuggestions(
+                            Array.isArray(arrayWithSuggestions) ? arrayWithSuggestions : []
+                        )
+                    } else {
+                        setSuggestions([])
+                    }
+                })}
             />
-            <SearchSuggestion suggestions={suggestions} />
         </section>
     )
 }

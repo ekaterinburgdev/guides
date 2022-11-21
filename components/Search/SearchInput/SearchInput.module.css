@@ -1,16 +1,23 @@
 .input__container {
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    max-width: 38vw;
     bottom: 2vh;
-    right: 50vw;
-    left: 50vw;
+    left: calc(max(384px, 20%) + 15vw);
 }
 
 .input {
     border: 6px solid #EEEFF1;
     border-top: 6px solid #EEEFF1;
     border-radius: 32px;
-    min-width: 20vw;
+    min-width: 486px;
+    min-height: 64px;
     height: 5vh;
     background: white url(../../../public/search.svg) 0 no-repeat;
     padding-left: 48px;
+}
+
+.SearchInput__hidden {
+    display: none;
 }

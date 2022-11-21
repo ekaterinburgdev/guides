@@ -1,0 +1,19 @@
+.SearchSuggestionItem__container {
+    
+}
+
+.SearchSuggestionItem__header {
+    color: #14283C;
+    opacity: .3;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.SearchSuggestionItem__link {
+    color: #14283C;
+    text-decoration: none;
+}
+
+.SearchSuggestionItem__link:hover {
+    opacity: .7;
+}
