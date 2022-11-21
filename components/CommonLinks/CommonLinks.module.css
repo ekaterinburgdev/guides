@@ -2,7 +2,7 @@
     position: fixed;
     display: flex;
     gap: 12px;
-    background-color: #282828;
+    background-color: rgb(239 240 241);
     border-radius: 10px 10px 0 0;
     min-width: 376px;
     margin-left: 15px;

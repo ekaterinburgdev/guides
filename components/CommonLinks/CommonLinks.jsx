@@ -19,12 +19,12 @@ export function CommonLinks() {
                 height={60}
                 className={styles.CommonLinks__icon}
             />
-            <p>
-                <Link className={styles.CommonLinks__link} href="/">
+            <Link className={styles.CommonLinks__link} href="/">
+                <p>
                     Руководства <br />
                     Екатеринбурга
-                </Link>
-            </p>
+                </p>
+            </Link>
         </section>
     )
 }
