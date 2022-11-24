@@ -1,14 +1,14 @@
 /* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
-import getAllUrls from '../../utils/getAllUrls'
 import { getTree, getPageByUrl } from '../../api/apiPage'
 import tp from '../../utils/typograf/typograf.config'
 import styles from './page.module.css'
 
-function GetPage({ page, tree, catalogPage }) {
+function GetPage({ tree, page, catalogPage }) {
     const router = useRouter()
     const { pageUrl } = router.query
 
@@ -174,18 +174,7 @@ function GetPage({ page, tree, catalogPage }) {
     )
 }
 
-export async function getStaticPaths() {
-    const tree = await getTree()
-    const pageUrls = getAllUrls(tree.children)
-
-    const paths = pageUrls.map((url) => {
-        return { params: { pageUrl: url } }
-    })
-
-    return { paths, fallback: true }
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
     const { pageUrl } = params
     return {
         props: {
@@ -193,7 +182,6 @@ export async function getStaticProps({ params }) {
             page: await getPageByUrl(pageUrl.join('/')),
             catalogPage: await getPageByUrl(pageUrl[0]),
         },
-        revalidate: 15,
     }
 }
 

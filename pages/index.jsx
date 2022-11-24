@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+
 import styles from '../styles/home.module.css'
 import { getTree } from '../api/apiPage'
 import Manual from '../components/Manual/Manual'
@@ -28,12 +29,11 @@ export default function Home({ tree }) {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const tree = await getTree()
     return {
         props: {
             tree,
         },
-        revalidate: 15,
     }
 }
