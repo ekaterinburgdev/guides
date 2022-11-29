@@ -4,6 +4,9 @@ import styles from '../styles/home.module.css'
 import { getTree } from '../api/apiPage'
 import Manual from '../components/Manual/Manual'
 
+// TODO Remove hard-code after back-end feature https://github.com/ekaterinburgdev/guides-api/issues/10
+const HIDDEN_MANUALS = ['typical', 'typical-2', 'street-name-plates']
+
 export default function Home({ tree }) {
     const [manuals, setManuals] = useState([])
     const [title, setTitle] = useState('')
@@ -13,7 +16,11 @@ export default function Home({ tree }) {
             return
         }
 
-        setManuals(tree.children)
+        const manualsVisible = tree.children.filter((manual) => {
+            return !HIDDEN_MANUALS.includes(manual?.properties?.pageUrl?.url)
+        })
+
+        setManuals(manualsVisible)
         setTitle(tree?.properties?.child_page?.title)
     }, [tree])
 
