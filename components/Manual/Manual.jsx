@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './manual.module.css'
-import { api } from '../../next.config'
+import { API_HOST } from '../../consts/endpoints'
 
 function Manual({ manual }) {
     const imageUrl = manual.cover
@@ -19,7 +19,7 @@ function Manual({ manual }) {
             className={styles.manualItem}
         >
             <Image
-                src={`${api.HOST}/static/${imageUrl}`}
+                src={`${API_HOST}/static/${imageUrl}`}
                 alt={titleText}
                 layout="fill"
                 overflow="visible"
