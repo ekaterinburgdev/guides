@@ -7,6 +7,8 @@ import styles from './manual.module.css'
 
 import { API_HOST } from '../../consts/endpoints'
 
+import image from './icon-01.svg'
+
 function Manual({ manual }) {
     // TODO remove
     // const imageUrl = manual.cover
@@ -41,11 +43,9 @@ function Manual({ manual }) {
 
                 <div className={styles.manualDate}>12.02.2022</div>
 
-                <Image
-                    src="https://svgshare.com/getbyhash/sha1-EBeV3z7BzWIsTwfZjwWo3FzcOWo="
-                    alt=""
-                    layout="fill"
-                />
+                <div className={styles.manualIcon}>
+                    <Image src={image} alt="" layout="fill" />
+                </div>
             </div>
         </Link>
     )
