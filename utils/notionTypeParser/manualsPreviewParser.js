@@ -10,9 +10,8 @@ function parseManualsPreview(tree) {
 
     return manualsVisible
         .sort((a, b) => {
-            const orderA = a.properties?.order?.number
-            const orderB = b.properties?.order?.number
-            return orderB - orderA
+            const getOrder = ({ properties }) => properties?.order?.number
+            return getOrder(b) - getOrder(a)
         })
         .map(({ properties }) => {
             return {
