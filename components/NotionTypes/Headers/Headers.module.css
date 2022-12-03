@@ -1,12 +1,12 @@
 .heading1 {
-    font-size: 8rem;
+    font-size: clamp(56px, 10vw, 28px);
 }
 
 .heading2 {
-    font-size: 4rem;
+    font-size: clamp(40px, 8vw, 24px);
 }
 
 .heading3 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    font-size: clamp(32px, 6vw, 22px);
+    margin-bottom: clamp(24px, 1.5rem, 16px);
 }
