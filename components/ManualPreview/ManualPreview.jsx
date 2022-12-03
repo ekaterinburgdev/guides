@@ -6,6 +6,8 @@ import Image from 'next/image'
 import styles from './ManualPreview.module.css'
 
 function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate, pattern, image }) {
+    const patternImage = pattern ? `url(${pattern})` : null
+
     return (
         <Link
             href={{
@@ -14,10 +16,7 @@ function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate,
             }}
             className={styles.manual}
         >
-            <div
-                className={styles.manualInner}
-                style={{ color, backgroundImage: pattern ? `url(${pattern})` : null }}
-            >
+            <div className={styles.manualInner} style={{ color, backgroundImage: patternImage }}>
                 {title && <div className={styles.manualTitle}>{title}</div>}
                 {subtitle && <div className={styles.manualSubtitle}>{subtitle}</div>}
 
