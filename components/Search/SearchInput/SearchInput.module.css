@@ -3,8 +3,10 @@
     display: flex;
     flex-direction: column;
     max-width: 38vw;
-    bottom: 2vh;
     left: calc(max(384px, 20%) + 15vw);
+    opacity: 0;
+    bottom: 0;
+    transition: all .4s ease-in-out;
 }
 
 .input {
@@ -18,6 +20,7 @@
     padding-left: 48px;
 }
 
-.SearchInput__hidden {
-    display: none;
+.SearchInput__visible {
+    opacity: 1;
+    transform: translateY(-5vh);
 }

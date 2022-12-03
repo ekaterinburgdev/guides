@@ -9,8 +9,11 @@ export function SearchSuggestionItem({ suggestion }) {
             <h4 className={styles.SearchSuggestionItem__header}>
                 {suggestion.guide_name} / {suggestion.guide_section}
             </h4>
-            <Link href={`https://guides.ekaterinburg.design/${suggestion.page_url}`}>
-                <a className={styles.SearchSuggestionItem__link}>{suggestion.text}</a>
+            <Link
+                className={styles.SearchSuggestionItem__link}
+                href={`https://guides.ekaterinburg.design/${suggestion.page_url}`}
+            >
+                <span dangerouslySetInnerHTML={{ __html: suggestion.text }} />
             </Link>
         </article>
     )

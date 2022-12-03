@@ -1,6 +1,7 @@
+/* eslint-disable react/button-has-type */
 import React from 'react'
-
 import Image from 'next/image'
+
 import { SearchInput } from '../Search/SearchInput/SearchInput'
 import style from './FeatureButtons.module.css'
 

@@ -15,7 +15,8 @@ const debounce = (func, timeout = 300) => {
 
 export function SearchInput({ isVisible }) {
     const [suggestions, setSuggestions] = React.useState([])
-    const hiddenStyle = isVisible ? style.SearchInput__hidden : '';
+    const hiddenStyle = isVisible ? style.SearchInput__visible : ''
+
     return (
         <section className={`${style.input__container} ${hiddenStyle}`}>
             <SearchSuggestion suggestions={suggestions} />
