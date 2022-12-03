@@ -20,7 +20,7 @@
 }
 
 .pageName {
-    font-size: 128px;
+    font-size: clamp(56px, 10vw, 28px);
 }
 
 .Manual__image {
@@ -75,10 +75,6 @@
     .pageName {
         margin-bottom: 4rem;
         margin-top: 4rem;
-    }
-
-    .pageName {
-        font-size: 8rem;
     }
 }
 

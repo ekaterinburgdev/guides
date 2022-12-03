@@ -7,10 +7,12 @@ import { H1, H2, H3 } from '../NotionTypes/Headers/Headers'
 import Bookmark from '../NotionTypes/Bookmark/Bookmark'
 import UnorderedList from '../NotionTypes/Lists/Unordered/Unordered'
 import OrderedList from '../NotionTypes/Lists/Ordered/Ordered'
+import File from '../File/File'
 import Paragraph from '../NotionTypes/Text/Paragraph/Paragraph'
 import { PrevPage, NextPage } from '../ArrowNavLink/ArrowNavLink'
 import Table from '../NotionTypes/Table/Table'
 import Divider from '../NotionTypes/Text/Divider/Divider'
+import VideoPlayer from '../NotionTypes/VideoPlayer/VideoPlayer'
 
 function ManualPage({
     pageList,
@@ -72,6 +74,12 @@ function ManualPage({
 
             case 'divider':
                 return <Divider />
+
+            case 'video':
+                return <VideoPlayer columnItem={columnItem} />
+
+            case 'file':
+                return <File columnItem={columnItem} />
 
             default:
                 return <p>Unknown type</p>

@@ -171,7 +171,7 @@
         position: fixed;
         padding: 16px 20px;
         min-width: 376px;
-        max-height: 85vh;
+        max-height: 80vh;
         width: 20%;
         height: calc(100vh - 30px);
         background-color: #1231;
