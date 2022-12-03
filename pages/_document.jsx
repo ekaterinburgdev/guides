@@ -11,7 +11,7 @@ export default function Document() {
             <Head>
                 <meta name="og:description" content={ogDescription} />
                 <meta property="og:title" content={ogTitle} />
-                <meta name="theme-color" content="#123" />
+                <meta name="theme-color" content="#fff" />
             </Head>
             <body>
                 <Main />
