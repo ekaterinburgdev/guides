@@ -12,7 +12,7 @@
     margin-bottom: 1em;
     text-decoration: none;
     font-weight: 500;
-    font-size: clamp(18px, 5vw, 20px);
+    font-size: clamp(18px, 5vw, 30px);
 }
 
 .manual:focus-visible {
@@ -38,7 +38,6 @@
     background-size: cover;
     background-repeat: none;
     background-position: left bottom;
-    background-image: url(./patterns-01.svg);
 }
 
 .manualInner:before {
@@ -48,8 +47,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: .18;
-    filter: brightness(1.3);
+    opacity: .175;
+    filter: brightness(1.25);
     pointer-events: none;
     border-radius: inherit;
     background: currentColor;

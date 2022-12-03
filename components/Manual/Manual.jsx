@@ -1,28 +1,24 @@
 import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import cn from 'classnames'
+import Image from 'next/image'
+import tp from '../../utils/typograf/typograf.config'
 
 import styles from './manual.module.css'
 
-import { API_HOST } from '../../consts/endpoints'
-
-import image from './icon-01.svg'
-
 function Manual({ manual }) {
-    // TODO remove
-    // const imageUrl = manual.cover
-    const titleArr = manual?.properties?.Name?.title
-    const titleText = titleArr.length > 0 ? titleArr[0]?.text?.content : ''
-    const pageUrl = manual?.properties?.pageUrl?.url
-    // TODO check color
-    const color = manual?.properties?.color || '#44a20d'
-    // TODO Add new fields
-    // const status = manual?.properties?.status
-    // const publishedDate
-    // const previewPattern = manual?.properties?.previewPattern
+    const properties = manual?.properties
+    const title = properties?.Name?.title[0]?.text?.content
+    const pageUrl = properties?.pageUrl?.url
 
-    console.log(API_HOST)
+    const color = properties?.color.rich_text[0].plain_text
+    const status = properties?.status?.select?.name
+    const publishedDate = properties?.publishedDate?.date?.start
+
+    // TODO Add `previewPattern`
+    const pattern = null
+    // TODO Add `previewImage`
+    const image = null
 
     return (
         <Link
@@ -32,20 +28,35 @@ function Manual({ manual }) {
             }}
             className={styles.manual}
         >
-            <div className={styles.manualInner} style={{ color }}>
-                <div className={styles.manualTitle}>{titleText}</div>
+            <div
+                className={styles.manualInner}
+                style={{ color, backgroundImage: pattern ? `url(${pattern})` : null }}
+            >
+                {title && <div className={styles.manualTitle}>{tp.execute(title)}</div>}
 
-                {/* <div className={cn(styles.manualStatus, styles.manualStatusUpdated)}>
-                    Обновилось
-                </div> */}
+                {status && (
+                    <div
+                        className={cn(styles.manualStatus, {
+                            [`${styles.manualStatusNew}`]: status === 'Новое',
+                            [`${styles.manualStatusUpdated}`]: status === 'Обновлено',
+                        })}
+                    >
+                        {status}
+                    </div>
+                )}
 
-                <div className={cn(styles.manualStatus, styles.manualStatusNew)}>Новое!</div>
+                {publishedDate && (
+                    <time className={styles.manualDate}>
+                        {new Date(publishedDate).toLocaleDateString('ru')}
+                    </time>
+                )}
 
-                <div className={styles.manualDate}>12.02.2022</div>
-
-                <div className={styles.manualIcon}>
-                    <Image src={image} alt="" layout="fill" />
-                </div>
+                {/* TODO get `manualIcon` from back-end */}
+                {image && (
+                    <div className={styles.manualIcon}>
+                        <Image src={image} alt="" layout="fill" />
+                    </div>
+                )}
             </div>
         </Link>
     )
