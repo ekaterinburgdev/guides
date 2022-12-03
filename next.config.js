@@ -1,7 +1,5 @@
-module.exports = {
-    api: {
-        HOST: process.env.NEXT_PUBLIC_HOST,
-    },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
     images: {
         domains: [process.env.NEXT_PUBLIC_IMAGE_DOMAIN],
     },
@@ -14,3 +12,5 @@ module.exports = {
         ]
     },
 }
+
+export default nextConfig;

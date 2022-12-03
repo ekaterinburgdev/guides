@@ -1,5 +1,7 @@
 {
-	"private": true,
+	"name": "guides",
+	"homepage": "https://guides.ekaterinburg.design",
+	"type": "module",
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
