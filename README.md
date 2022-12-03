@@ -1,19 +1,32 @@
-# Руководства
+# Design Guides
 
-## Документация
+📗 Ekaterinburg Design Code guides
 
-[Ссылка](https://vladatkishkin.gitbook.io/dokumentaciya-po-rukovodstvu/)
+**[guides.ekaterinburg.design](https://guides.ekaterinburg.design)**
 
-## Запуск
+## Development
 
-Установка зависимостей
-
+1. Add `.env.local` with back-end endpoints
 ```sh
-npm i
+NEXT_PUBLIC_HOST=https://guides-api-test.ekaterinburg.design
+NEXT_PUBLIC_IMAGE_DOMAIN=guides-api-test.ekaterinburg.design
 ```
 
-Разработка
+2. Install [Node.js](https://nodejs.org/en/download/) and [pnpm](https://www.npmjs.com/package/pnpm#user-content-install)
 
-```sh
-npm run dev
+3. Install dependencies
+
 ```
+pnpm i
+```
+
+4. Run local server
+
+```
+pnpm dev
+```
+
+## Tools
+
+- [Next.js](https://nextjs.org/)
+- [Vercel Serverless](https://vercel.com/)
