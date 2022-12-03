@@ -14,13 +14,15 @@ function parseManualsPreview(tree) {
             return getOrder(b) - getOrder(a)
         })
         .map(({ properties }) => {
+            const { Name, subtitle, pageUrl, color, status, publishedDate } = properties
+
             return {
-                title: tp.execute(properties?.Name?.title[0]?.text?.content || ''),
-                subtitle: tp.execute(properties?.subtitle?.rich_text[0]?.plain_text || ''),
-                pageUrl: properties?.pageUrl?.url || null,
-                color: properties?.color?.rich_text[0].plain_text || null,
-                status: properties?.status?.select?.name || null,
-                publishedDate: properties?.publishedDate?.date?.start || null,
+                title: tp.execute(Name?.title[0]?.text?.content || ''),
+                subtitle: tp.execute(subtitle?.rich_text[0]?.plain_text || ''),
+                pageUrl: pageUrl?.url || null,
+                color: color?.rich_text[0].plain_text || null,
+                status: status?.select?.name || null,
+                publishedDate: publishedDate?.date?.start || null,
                 pattern: null, // TODO Add `previewPattern`
                 image: null, // TODO Add `previewImage`
             }
