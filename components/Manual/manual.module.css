@@ -12,7 +12,7 @@
     margin-bottom: 1em;
     text-decoration: none;
     font-weight: 500;
-    font-size: clamp(18px, 5vw, 30px);
+    font-size: clamp(18px, 5vw, 24px);
 }
 
 .manual:focus-visible {
@@ -111,6 +111,12 @@
 @media screen and (min-width: 991px) {
     .manual {
         width: calc(100% / 3 - 2vw);
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .manual {
+        width: calc(100% / 4 - 2vw);
     }
 }
 
