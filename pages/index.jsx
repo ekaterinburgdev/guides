@@ -2,19 +2,19 @@ import React from 'react'
 
 import { getTree } from '../api/apiPage'
 
-import parseManuals from '../utils/notionTypeParser/manualParser'
-import Manual from '../components/Manual/Manual'
+import parseManualsPreview from '../utils/notionTypeParser/manualsPreviewParser'
+import ManualPreview from '../components/ManualPreview/ManualPreview'
 
 import styles from '../styles/home.module.css'
 
-export default function Home({ pageTitle, manuals }) {
+export default function Home({ pageTitle, manualsPreview }) {
     return (
         <main className={styles.homeContainer}>
             <h1 className={styles.mainTitle}>{pageTitle}</h1>
 
             <section className={styles.manualsSection}>
-                {manuals.map((manual) => (
-                    <Manual {...manual} key={manual.title} />
+                {manualsPreview.map((manualPreviewData) => (
+                    <ManualPreview {...manualPreviewData} key={manualPreviewData.title} />
                 ))}
             </section>
         </main>
@@ -27,7 +27,7 @@ export async function getServerSideProps() {
     return {
         props: {
             pageTitle: tree?.properties?.child_page?.title,
-            manuals: parseManuals(tree),
+            manualsPreview: parseManualsPreview(tree),
         },
     }
 }

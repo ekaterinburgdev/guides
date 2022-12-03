@@ -2,11 +2,10 @@ import React from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
 import Image from 'next/image'
-import tp from '../../utils/typograf/typograf.config'
 
-import styles from './manual.module.css'
+import styles from './ManualPreview.module.css'
 
-function Manual({ title, subtitle, pageUrl, color, status, publishedDate, pattern, image }) {
+function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate, pattern, image }) {
     return (
         <Link
             href={{
@@ -19,8 +18,8 @@ function Manual({ title, subtitle, pageUrl, color, status, publishedDate, patter
                 className={styles.manualInner}
                 style={{ color, backgroundImage: pattern ? `url(${pattern})` : null }}
             >
-                {title && <div className={styles.manualTitle}>{tp.execute(title)}</div>}
-                {subtitle && <div className={styles.manualSubtitle}>{tp.execute(subtitle)}</div>}
+                {title && <div className={styles.manualTitle}>{title}</div>}
+                {subtitle && <div className={styles.manualSubtitle}>{subtitle}</div>}
 
                 {status && (
                     <div
@@ -49,4 +48,4 @@ function Manual({ title, subtitle, pageUrl, color, status, publishedDate, patter
     )
 }
 
-export default Manual
+export default ManualPreview
