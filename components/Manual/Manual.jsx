@@ -9,6 +9,7 @@ import styles from './manual.module.css'
 function Manual({ manual }) {
     const properties = manual?.properties
     const title = properties?.Name?.title[0]?.text?.content
+    const subtitle = properties?.subtitle?.rich_text[0]?.plain_text
     const pageUrl = properties?.pageUrl?.url
 
     const color = properties?.color.rich_text[0].plain_text
@@ -33,6 +34,7 @@ function Manual({ manual }) {
                 style={{ color, backgroundImage: pattern ? `url(${pattern})` : null }}
             >
                 {title && <div className={styles.manualTitle}>{tp.execute(title)}</div>}
+                {subtitle && <div className={styles.manualSubtitle}>{tp.execute(subtitle)}</div>}
 
                 {status && (
                     <div

@@ -12,7 +12,7 @@
     margin-bottom: 1em;
     text-decoration: none;
     font-weight: 500;
-    font-size: clamp(18px, 5vw, 24px);
+    font-size: clamp(18px, 5vw, 22px);
 }
 
 .manual:focus-visible {
@@ -38,6 +38,7 @@
     background-size: cover;
     background-repeat: none;
     background-position: left bottom;
+    padding: 1.2em;
 }
 
 .manualInner:before {
@@ -72,7 +73,12 @@
 
 .manualTitle {
     position: relative;
-    padding: 1.2em 2.1em 1.2em 1.2em;
+    font-size: 1em;
+    margin-bottom: .5em;
+}
+
+.manualSubtitle {
+    font-size: .55em;
 }
 
 .manualStatus {
