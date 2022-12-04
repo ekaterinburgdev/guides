@@ -25,7 +25,6 @@
 
 .Manual__image {
     border-radius: 16px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     object-fit: contain;
     width: 100% !important;
     position: relative !important;
