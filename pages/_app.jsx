@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { isetSansFont } from './font'
+import { isetSansFont } from '../utils/font'
 
 import '../styles/globals.css'
 
