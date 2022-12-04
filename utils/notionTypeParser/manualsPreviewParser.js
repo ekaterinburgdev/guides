@@ -1,6 +1,7 @@
 import tp from '../typograf/typograf.config'
 
 import HIDDEN_MANUALS from '../../consts/hidden-manuals'
+import { API_HOST } from '../../consts/endpoints'
 
 function parseManualsPreview(tree) {
     // TODO Remove hard-code after back-end feature https://github.com/ekaterinburgdev/guides-api/issues/10
@@ -13,8 +14,8 @@ function parseManualsPreview(tree) {
             const getOrder = ({ properties }) => properties?.order?.number
             return getOrder(b) - getOrder(a)
         })
-        .map(({ properties }) => {
-            const { Name, subtitle, pageUrl, color, status, publishedDate } = properties
+        .map((manualData) => {
+            const { Name, subtitle, pageUrl, color, status, publishedDate } = manualData.properties
 
             return {
                 title: tp.execute(Name?.title[0]?.text?.content || ''),
@@ -25,6 +26,7 @@ function parseManualsPreview(tree) {
                 publishedDate: publishedDate?.date?.start || null,
                 pattern: null, // TODO Add `previewPattern`
                 image: null, // TODO Add `previewImage`
+                cover: `${API_HOST}/static/${manualData.cover}`,
             }
         })
 }

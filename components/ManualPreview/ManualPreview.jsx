@@ -5,7 +5,17 @@ import Image from 'next/image'
 
 import styles from './ManualPreview.module.css'
 
-function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate, pattern, image }) {
+function ManualPreview({
+    title,
+    subtitle,
+    pageUrl,
+    color,
+    status,
+    publishedDate,
+    pattern,
+    image,
+    cover,
+}) {
     const patternImage = pattern ? `url(${pattern})` : null
 
     return (
@@ -16,7 +26,12 @@ function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate,
             }}
             className={styles.manual}
         >
-            <div className={styles.manualInner} style={{ color, backgroundImage: patternImage }}>
+            <Image src={cover} fill alt="" />
+            <div className={styles.manualInner} style={{ color }}>
+                <div
+                    className={styles.manualBackground}
+                    style={{ backgroundImage: patternImage }}
+                />
                 {title && <div className={styles.manualTitle}>{title}</div>}
                 {subtitle && <div className={styles.manualSubtitle}>{subtitle}</div>}
 
@@ -39,7 +54,7 @@ function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate,
 
                 {image && (
                     <div className={styles.manualIcon}>
-                        <Image src={image} alt="" layout="fill" />
+                        <Image src={image} alt="" fill />
                     </div>
                 )}
             </div>
