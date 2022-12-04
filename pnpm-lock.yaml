@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@next/eslint-plugin-next': 12.3.4
+  '@next/font': ^13.0.6
   bootstrap: 5.2.3
   classnames: 2.3.2
   color: ^4.2.3
@@ -28,6 +29,7 @@ specifiers:
   typograf: 6.15.1
 
 dependencies:
+  '@next/font': 13.0.6
   bootstrap: 5.2.3
   classnames: 2.3.2
   color: 4.2.3
@@ -118,6 +120,10 @@ packages:
     resolution: {integrity: sha512-H9U9B1dFnCDmylDZ6/dYt95Ie1Iu+SLBMcO6rkIGIDcj5UK+DNyMiWm83xWBZ1gREM8cfp5Srv1g6wqf8pM4lw==}
     dependencies:
       glob: 7.1.7
+    dev: false
+
+  /@next/font/13.0.6:
+    resolution: {integrity: sha512-5vxNmvnV0CbYjQGtztD5Axft9C7npKihbQpiFhnDwdb99f9K/QSFfcJqxz0E5QBkf67O2niVGJ5lApJDu78w0w==}
     dev: false
 
   /@next/swc-android-arm-eabi/13.0.5:
