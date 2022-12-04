@@ -20,7 +20,7 @@
 }
 
 .pageName {
-    font-size: clamp(56px, 10vw, 28px);
+    font-size: clamp(48px, 10vw, 28px);
 }
 
 .Manual__image {
@@ -65,10 +65,11 @@
 @media (min-width: 991px) {
     .templateColumn {
         min-height: 100vh;
-        padding-left: 60px;
-        max-width: 1400px;
+        padding-left: 120px;
+        max-width: 850px;
         margin-left: max(20%, 376px);
         overflow: visible;
+        padding-right: 120px;
     }
 
     .pageName {
