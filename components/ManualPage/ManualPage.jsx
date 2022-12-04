@@ -13,6 +13,7 @@ import { PrevPage, NextPage } from '../ArrowNavLink/ArrowNavLink'
 import Table from '../NotionTypes/Table/Table'
 import Divider from '../NotionTypes/Text/Divider/Divider'
 import VideoPlayer from '../NotionTypes/VideoPlayer/VideoPlayer'
+import Code from '../NotionTypes/Text/Code/Code'
 
 function ManualPage({
     pageList,
@@ -40,46 +41,49 @@ function ManualPage({
         )
     }
 
-    const getColumnItem = (columnItem) => {
-        switch (columnItem.type) {
+    const getColumnItem = (notionType) => {
+        switch (notionType.type) {
             case 'column_list':
-                return <div className={styles.columnList}>{getLine(columnItem)}</div>
+                return <div className={styles.columnList}>{getLine(notionType)}</div>
 
             case 'image':
-                return getImage(columnItem)
+                return getImage(notionType)
 
             case 'heading_1':
-                return <H1 columnItem={columnItem} />
+                return <H1 columnItem={notionType} />
 
             case 'heading_2':
-                return <H2 columnItem={columnItem} />
+                return <H2 columnItem={notionType} />
 
             case 'heading_3':
-                return <H3 columnItem={columnItem} />
+                return <H3 columnItem={notionType} />
 
             case 'paragraph':
-                return <Paragraph columnItem={columnItem} />
+                return <Paragraph columnItem={notionType} />
 
             case 'bookmark':
-                return <Bookmark columnItem={columnItem} />
+                return <Bookmark columnItem={notionType} />
 
             case 'bulleted_list':
-                return <UnorderedList columnItem={columnItem} />
+                return <UnorderedList columnItem={notionType} />
 
             case 'numbered_list':
-                return <OrderedList columnItem={columnItem} />
+                return <OrderedList columnItem={notionType} />
 
             case 'table':
-                return <Table columnItem={columnItem} />
+                return <Table columnItem={notionType} />
 
             case 'divider':
                 return <Divider />
 
             case 'video':
-                return <VideoPlayer columnItem={columnItem} />
+                return <VideoPlayer columnItem={notionType} />
 
             case 'file':
-                return <File columnItem={columnItem} />
+                return <File columnItem={notionType} />
+
+            case 'code':
+                return <Code columnItem={notionType} />
 
             default:
                 return <p>Unknown type</p>
