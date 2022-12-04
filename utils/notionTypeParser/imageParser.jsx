@@ -20,7 +20,7 @@ const getImage = (imageObj) => {
     return (
         <div className={styles.Manual__image__container}>
             {image}
-            <span className={styles.Manual__image_description} aria-hidden="true">
+            <span className={styles.Manual__image_description}>
                 {imageObj.content.image_data.caption[0].plain_text}
             </span>
         </div>
