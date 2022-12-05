@@ -15,7 +15,16 @@ function parseManualsPreview(tree) {
             return getOrder(b) - getOrder(a)
         })
         .map((manualData) => {
-            const { Name, subtitle, pageUrl, color, status, publishedDate } = manualData.properties
+            const {
+                Name,
+                subtitle,
+                pageUrl,
+                color,
+                status,
+                publishedDate,
+                previewImage,
+                previewPattern,
+            } = manualData.properties
 
             return {
                 title: tp.execute(Name?.title[0]?.text?.content || ''),
@@ -24,8 +33,8 @@ function parseManualsPreview(tree) {
                 color: color?.rich_text[0].plain_text || null,
                 status: status?.select?.name || null,
                 publishedDate: publishedDate?.date?.start || null,
-                pattern: null, // TODO Add `previewPattern`
-                image: null, // TODO Add `previewImage`
+                pattern: `${API_HOST}/static/${previewPattern}`,
+                image: `${API_HOST}/static/${previewImage}`,
                 cover: `${API_HOST}/static/${manualData.cover}`,
             }
         })
