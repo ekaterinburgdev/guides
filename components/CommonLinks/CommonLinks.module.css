@@ -28,11 +28,9 @@
 
 .CommonLinks__link:hover,
 .CommonLinks__link:focus-visible {
-    box-shadow: none;
-    background-color: #ffffff;
-    color: #112233;
     text-decoration: none;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    color: #E63223;
+    transition: .15s ease-in;
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -47,7 +45,7 @@
 
     .CommonLinks__link:hover,
     .CommonLinks__link:focus-visible {
-        background-color: #404040;
-        color: white;
+        text-decoration: none;
+        color: #E63223;
     }
 }
