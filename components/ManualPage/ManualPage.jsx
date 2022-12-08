@@ -1,5 +1,6 @@
 import React from 'react'
 import map from 'lodash/map'
+import Image from 'next/image'
 
 import styles from './ManualPage.module.css'
 import getImage from '../../utils/notionTypeParser/imageParser'
@@ -14,6 +15,7 @@ import Table from '../NotionTypes/Table/Table'
 import Divider from '../NotionTypes/Text/Divider/Divider'
 import VideoPlayer from '../NotionTypes/VideoPlayer/VideoPlayer'
 import Code from '../NotionTypes/Text/Code/Code'
+import { API_HOST } from '../../consts/endpoints'
 
 function ManualPage({
     pageList,
@@ -24,6 +26,7 @@ function ManualPage({
     nextPageIndex,
     catalogIndex,
     children,
+    pageImage,
 }) {
     const getLine = (columnList) => {
         if (!columnList.children.length) {
@@ -92,6 +95,12 @@ function ManualPage({
 
     return (
         <div className={styles.templateColumn}>
+            <Image
+                className={styles.previewImage}
+                src={`${API_HOST}/static/${pageImage}`}
+                width={750}
+                height={300}
+            />
             <h1 className={styles.pageName}>{pageName}</h1>
             {map(pageList, (cl) => getColumnItem(cl))}
             {tableOfContentArr.length !== 0 && (
