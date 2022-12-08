@@ -5,6 +5,7 @@
     background-color: rgb(239 240 241);
     border-radius: 10px 10px 0 0;
     min-width: 376px;
+    max-height: 12vh;
     margin-left: 15px;
     bottom: 0;
 }
@@ -39,6 +40,10 @@
     .CommonLinks__link {
         display: inline-block;
         color: white;
+    }
+
+    .CommonLinks__container {
+        background-color: #282828;
     }
 
     .CommonLinks__link:hover,
