@@ -6,7 +6,7 @@
     display: block;
     cursor: pointer;
     margin: 0;
-    border-radius: 0.5em;
+    border-radius: .4em;
     aspect-ratio: 16 / 10;
     margin-bottom: 1em;
     text-decoration: none;
@@ -34,10 +34,8 @@
     transform-origin: left bottom;
     transition: transform .15s ease-in;
     border-radius: inherit;
-    background-size: cover;
-    background-repeat: none;
-    background-position: left bottom;
-    padding: 1.2em;
+    padding: .8em 1em;
+    border-radius: .4em;
     background: white;
 }
 
@@ -45,8 +43,8 @@
     position: absolute;
     width: 1.75em;
     height: 1.75em;
-    left: 1.25em;
-    bottom: 1em;
+    left: 1em;
+    bottom: .8em;
 }
 
 .manualBackground {
@@ -83,19 +81,22 @@
 
 .manualTitle {
     position: relative;
-    font-size: 1em;
-    margin-bottom: .5em;
+    font-size: clamp(18px, 5vw, 22px);
+    font-weight: 400;
+    margin-bottom: .25em;
 }
 
 .manualSubtitle {
     font-size: .55em;
+    font-weight: 300;
 }
 
 .manualStatus {
     position: absolute;
-    top: -.8vw;
-    right: -.8vw;
+    top: -.5vw;
+    right: -.3vw;
     font-size: .9em;
+    font-weight: 400;
     padding: .25em .5em .1em;
     line-height: 1;
     color: white;
@@ -113,9 +114,11 @@
 
 .manualDate {
     position: absolute;
-    font-size: .7em;
-    bottom: 1.5em;
-    right: 1.5em;
+    font-size: .55em;
+    font-weight: 300;
+    bottom: 1em;
+    right: 1em;
+    opacity: .6;
 }
 
 @media screen and (min-width: 768px) {
