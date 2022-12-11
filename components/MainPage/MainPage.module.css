@@ -1,0 +1,38 @@
+.mainPageTitle {
+    display: flex;
+    font-size: 10vw;
+    line-height: 1;
+    margin-top: 0.15em;
+    color: #123;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 0.8em;
+}
+
+.mainPageLogo {
+    position: relative;
+}
+
+.mainPageManuals {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4vw;
+}
+
+@media screen and (min-width: 991px) {
+    .mainPageTitle {
+        text-align: left;
+        margin-bottom: 0.4em;
+    }
+
+    .mainPageManuals {
+        gap: 2.486vw;
+    }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    .mainPageTitle {
+        color: white;
+    }
+}
