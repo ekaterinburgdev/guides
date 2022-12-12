@@ -85,18 +85,25 @@
         padding-left: 128px;
         padding-right: 128px;
         max-width: 850px;
-        margin-left: max(20%, 391px);
+        margin-left: max(20%, 376px + 5vw);
         padding-right: 120px;
     }
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1440px) {
     .previewImageContainer {
         width: 138%;
     }
 
     .templateColumn {
         padding-left: 100px;
+    }
+
+    @media (min-width: 1440px) {
+        .templateColumn {
+            max-width: 1000px;
+            margin-left: max(20%, 376px + 8vw);
+        }
     }
 }
 
