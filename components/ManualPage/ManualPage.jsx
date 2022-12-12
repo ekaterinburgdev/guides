@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import map from 'lodash/map'
 import Image from 'next/image'
 
@@ -98,7 +98,11 @@ function ManualPage({
         <div className={styles.templateColumn}>
             {pageImage && (
                 <div className={styles.previewImageContainer}>
-                    <Image className={styles.previewImage} src={src} fill />
+                    <Image
+                        className={styles.previewImage}
+                        src={`${API_HOST}/static/${pageImage}`}
+                        fill
+                    />
                 </div>
             )}
             <h1 className={styles.pageName}>{tp.execute(pageName)}</h1>
