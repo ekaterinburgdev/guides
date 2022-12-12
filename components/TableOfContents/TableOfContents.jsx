@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
@@ -36,11 +36,39 @@ function InnerLink({ anchor, baseState, setState }) {
     )
 }
 
-function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle }) {
+function TableOfContents({
+    tableOfContentArr,
+    currentPageUrl = [],
+    anchorLinks,
+    catalogTitle,
+    color,
+}) {
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
     const [isOpen, setIsOpen] = useState(isDesktop)
+
+    useEffect(() => {
+        const arrayWithAnchorElements = Array.from(
+            document.querySelectorAll('h1[id], h2[id], h3[id]')
+        )
+
+        const scrollHandler = (entries) =>
+            entries.forEach((entry) => {
+                const section = entry.target
+                const sectionId = section.id
+                const sectionLink = document.querySelector(`a[href="#${sectionId}"]`)
+
+                if (entry.intersectionRatio > 0) {
+                    sectionLink?.classList?.add(styles.visible)
+                } else {
+                    sectionLink?.classList?.remove(styles.visible)
+                }
+            })
+
+        const observer = new IntersectionObserver(scrollHandler)
+        arrayWithAnchorElements.forEach((section) => observer.observe(section))
+    }, [anchorLinks])
 
     // TODO: Сделать для большой вложенности...
     const tableOfContentsLink = ({ url, title }) => (
@@ -83,7 +111,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
             </Head>
             <HamburgerMenu state={isOpen} changeState={() => setIsOpen(!isOpen)} />
             <aside className={styles.TableOfContents__aside}>
-                <nav className={navClassName}>
+                <nav className={navClassName} style={{ backgroundColor: color }}>
                     <Link
                         href={{
                             pathname: '/[[...pageUrl]]',

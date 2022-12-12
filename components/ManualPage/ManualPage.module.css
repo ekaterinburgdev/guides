@@ -80,7 +80,6 @@
     }
 
     .templateColumn {
-        width: 138%;
         min-height: 100vh;
         padding-left: 128px;
         padding-right: 128px;
@@ -91,10 +90,6 @@
 }
 
 @media (min-width: 1440px) {
-    .previewImageContainer {
-        width: 138%;
-    }
-
     .templateColumn {
         padding-left: 100px;
     }
