@@ -3,6 +3,7 @@ import map from 'lodash/map'
 import Image from 'next/image'
 
 import styles from './ManualPage.module.css'
+import tp from '../../utils/typograf/typograf.config'
 import getImage from '../../utils/notionTypeParser/imageParser'
 import { H1, H2, H3 } from '../NotionTypes/Headers/Headers'
 import Bookmark from '../NotionTypes/Bookmark/Bookmark'
@@ -34,7 +35,7 @@ function ManualPage({
         }
 
         return (
-            <article className={`row gx-4 ${styles.Template__item}`}>
+            <article className={`row gx-2 ${styles.Template__item}`}>
                 {columnList.children.map((cols) => (
                     <div className="col" key={cols.id}>
                         {cols.children.map((col) => getColumnItem(col))}
@@ -95,13 +96,14 @@ function ManualPage({
 
     return (
         <div className={styles.templateColumn}>
-            <Image
-                className={styles.previewImage}
-                src={`${API_HOST}/static/${pageImage}`}
-                width={750}
-                height={300}
-            />
-            <h1 className={styles.pageName}>{pageName}</h1>
+            <div className={styles.previewImageContainer}>
+                <Image
+                    className={styles.previewImage}
+                    src={`${API_HOST}/static/${pageImage}`}
+                    fill
+                />
+            </div>
+            <h1 className={styles.pageName}>{tp.execute(pageName)}</h1>
             {map(pageList, (cl) => getColumnItem(cl))}
             {tableOfContentArr.length !== 0 && (
                 <nav className={styles.footNav}>
