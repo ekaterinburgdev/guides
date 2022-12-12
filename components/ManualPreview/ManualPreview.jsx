@@ -3,6 +3,8 @@ import Link from 'next/link'
 import cn from 'classnames'
 import Image from 'next/image'
 
+import getBackgroundColor from '../../utils/getBackgroundColor'
+
 import styles from './ManualPreview.module.css'
 
 function ManualPreview({
@@ -16,8 +18,6 @@ function ManualPreview({
     image,
     cover,
 }) {
-    const patternImage = pattern ? `url(${pattern})` : null
-
     return (
         <Link
             href={{
@@ -30,7 +30,10 @@ function ManualPreview({
             <div className={styles.manualInner} style={{ color }}>
                 <div
                     className={styles.manualBackground}
-                    style={{ backgroundImage: patternImage }}
+                    style={{
+                        backgroundColor: getBackgroundColor(color),
+                        backgroundImage: pattern && `url(${pattern})`,
+                    }}
                 />
                 {title && <div className={styles.manualTitle}>{title}</div>}
                 {subtitle && <div className={styles.manualSubtitle}>{subtitle}</div>}
