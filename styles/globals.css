@@ -34,11 +34,11 @@ body {
     html,
     body {
         color: white;
-        background-color: #14283C;
+        background-color: black;
     }
 
     ::selection {
         background: #ffc800;
-        color: #14283C;
+        color: black;
     }
 }
