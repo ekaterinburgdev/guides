@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import map from 'lodash/map'
 import Image from 'next/image'
 
@@ -96,13 +96,11 @@ function ManualPage({
 
     return (
         <div className={styles.templateColumn}>
-            <div className={styles.previewImageContainer}>
-                <Image
-                    className={styles.previewImage}
-                    src={`${API_HOST}/static/${pageImage}`}
-                    fill
-                />
-            </div>
+            {pageImage && (
+                <div className={styles.previewImageContainer}>
+                    <Image className={styles.previewImage} src={src} fill />
+                </div>
+            )}
             <h1 className={styles.pageName}>{tp.execute(pageName)}</h1>
             {map(pageList, (cl) => getColumnItem(cl))}
             {tableOfContentArr.length !== 0 && (

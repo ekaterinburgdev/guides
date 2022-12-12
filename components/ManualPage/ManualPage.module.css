@@ -72,11 +72,11 @@
 
 @media (min-width: 991px) {
     .previewImageContainer {
-        width: 138%;
+        width: calc(100% + 100px);
     }
 
     .previewImage {
-        margin-left: -6.5vw;
+        margin-left: -8%;
     }
 
     .templateColumn {
@@ -85,8 +85,8 @@
         padding-left: 128px;
         padding-right: 128px;
         max-width: 850px;
-        margin-left: max(20%, 376px + 5vw);
         padding-right: 120px;
+        margin-left: max(20%, 376px + 5%);
     }
 }
 
@@ -102,7 +102,6 @@
     @media (min-width: 1440px) {
         .templateColumn {
             max-width: 1000px;
-            margin-left: max(20%, 376px + 8vw);
         }
     }
 }
