@@ -3,11 +3,13 @@ import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
+import Color from 'color'
 
 import styles from './TableOfContents.module.css'
 import tp from '../../utils/typograf/typograf.config'
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 import { CommonLinks } from '../CommonLinks/CommonLinks'
+import getBackgroundColor from '../../utils/getBackgroundColor'
 
 function InnerLink({ anchor, baseState, setState }) {
     const isDesktop = useMediaQuery({
@@ -48,6 +50,10 @@ function TableOfContents({
     })
     const [isOpen, setIsOpen] = useState(isDesktop)
 
+    const textColor = getBackgroundColor(color)
+    const textColorHover = Color(textColor).negate()
+    const [currentTitleColor, setTitleCurrentColor] = useState(textColor)
+
     useEffect(() => {
         const arrayWithAnchorElements = Array.from(
             document.querySelectorAll('h1[id], h2[id], h3[id]')
@@ -74,6 +80,9 @@ function TableOfContents({
     const tableOfContentsLink = ({ url, title }) => (
         <li className={styles.link}>
             <Link
+                // onMouseEnter={() => setCurrentColor(textColorHover)}
+                // onMouseLeave={() => setCurrentColor(textColor)}
+                // style={{ color: currentColor }}
                 href={{
                     pathname: '/[[...pageUrl]]',
                     query: { pageUrl: [currentPageUrl[0], url] },
@@ -111,13 +120,21 @@ function TableOfContents({
             </Head>
             <HamburgerMenu state={isOpen} changeState={() => setIsOpen(!isOpen)} />
             <aside className={styles.TableOfContents__aside}>
-                <nav className={navClassName} style={{ backgroundColor: color }}>
+                <nav
+                    className={navClassName}
+                    style={{
+                        backgroundColor: color,
+                    }}
+                >
                     <Link
                         href={{
                             pathname: '/[[...pageUrl]]',
                             query: { pageUrl: [currentPageUrl[0]] },
                         }}
                         className={styles.catalogTitle}
+                        style={{ color: currentTitleColor }}
+                        onMouseEnter={() => setTitleCurrentColor(textColorHover)}
+                        onMouseLeave={() => setTitleCurrentColor(textColor)}
                     >
                         {tp.execute(catalogTitle)}
                     </Link>

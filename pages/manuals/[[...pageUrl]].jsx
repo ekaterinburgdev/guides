@@ -168,6 +168,7 @@ function GetPage({ tree, page, catalogPage, pageImage, color }) {
                 catalogIndex={catalogIndex}
                 pageUrl={pageUrl}
                 pageImage={pageImage}
+                color={color}
             />
         </>
     )
