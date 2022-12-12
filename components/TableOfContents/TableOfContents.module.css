@@ -157,7 +157,7 @@
     box-shadow: none;
     background-color: #ffffff;
     margin-bottom: 5px;
-    color: #14283C;
+    color: #14283C !important;
     text-decoration: none;
 }
 
@@ -180,9 +180,8 @@
         position: fixed;
         padding: 16px 20px;
         min-width: 376px;
-        max-height: 85vh;
+        height: calc(100vh - 116px);
         width: 20%;
-        height: calc(100vh - 30px);
         background-color: #1231;
         overflow: auto;
         scrollbar-width: none;
