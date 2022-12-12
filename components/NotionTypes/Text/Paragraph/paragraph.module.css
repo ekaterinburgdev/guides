@@ -1,5 +1,8 @@
 .p {
     white-space: pre-wrap;
     line-height: 1.4;
-    font-size: clamp(16px, 1.2rem, 16px);
+    font-size: clamp(16px, 1.2rem, 13px);
+    margin-top: .5em;
+    margin-bottom: .5em;
+    margin-right: 2em;
 }

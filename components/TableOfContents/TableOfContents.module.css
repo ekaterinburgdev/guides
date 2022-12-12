@@ -5,7 +5,7 @@
     border-radius: 10px;
     display: inline-block;
     width: 100%;
-    color: black;
+    color: #14283C;
     text-decoration: none;
     transition: 0.2s;
 }
@@ -27,7 +27,7 @@
 .linkToAllManuals:focus-visible {
     box-shadow: none;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    color: black;
+    color: #14283C;
     background-color: #fff;
     text-decoration: none;
 }
@@ -41,7 +41,7 @@
     margin-bottom: 0.5rem;
     font-weight: 500;
     box-shadow: none;
-    color: black;
+    color: #14283C;
     text-decoration: none;
     border-radius: 10px;
     transition: 0.2s;
@@ -94,7 +94,7 @@
     width: 100%;
     font-weight: 400;
     box-shadow: none;
-    color: black;
+    color: #14283C;
     text-decoration: none;
     border-radius: 10px;
     transition: 0.2s;
@@ -127,7 +127,7 @@
 .tableOfContentsLink {
     font-weight: 400;
     box-shadow: none;
-    color: black;
+    color: #14283C;
     text-decoration: none;
     border-radius: 10px;
     transition: 0.2s;
@@ -148,7 +148,7 @@
     box-shadow: none;
     background-color: #ffffff;
     margin-bottom: 5px;
-    color: black;
+    color: #14283C;
     text-decoration: none;
 }
 

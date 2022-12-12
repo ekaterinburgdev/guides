@@ -1,5 +1,5 @@
 .Template__item {
-    margin-top: 2rem;
+    margin-top: 0;
 }
 
 .templateColumn {
@@ -20,11 +20,14 @@
 }
 
 .pageName {
-    font-size: clamp(48px, 10vw, 28px);
+    font-size: clamp(64px, 11vw, 48px);
+    margin-top: .5em;
+    margin-bottom: .5em;
+    font-weight: 500;
 }
 
 .Manual__image {
-    border-radius: 16px;
+    border-radius: 8px;
     object-fit: contain;
     width: 100% !important;
     position: relative !important;
@@ -38,7 +41,7 @@
     margin-top: 1rem;
 }
 
-.Manual__image__container > div {
+.Manual__image__container {
     position: unset !important;
 }
 
@@ -50,42 +53,48 @@
     box-shadow: none;
 }
 
-.heading1 {
-    font-size: 3.5rem;
+.previewImageContainer {
+    width: 100%;
+    margin-top: 16px;
 }
 
-.heading2 {
-    font-size: 2.5rem;
-}
-
-.heading3 {
-    font-size: 1.5rem;
+.previewImageContainer {
+    position: unset !important;
 }
 
 .previewImage {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
     border-radius: 16px;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    margin-left: -40px;
 }
 
 @media (min-width: 991px) {
-    .templateColumn {
-        min-height: 100vh;
-        padding-left: 120px;
-        max-width: 850px;
-        margin-left: max(20%, 376px);
-        overflow: visible;
-        padding-right: 120px;
+    .previewImageContainer {
+        width: 138%;
     }
 
-    .pageName {
-        margin-bottom: 4rem;
-        margin-top: 4rem;
+    .previewImage {
+        margin-left: -6.5vw;
+    }
+
+    .templateColumn {
+        width: 138%;
+        min-height: 100vh;
+        padding-left: 128px;
+        padding-right: 128px;
+        max-width: 850px;
+        margin-left: max(20%, 391px);
+        padding-right: 120px;
     }
 }
 
 @media (min-width: 1600px) {
+    .previewImageContainer {
+        width: 138%;
+    }
+
     .templateColumn {
         padding-left: 100px;
     }
