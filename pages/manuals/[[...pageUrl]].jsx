@@ -7,7 +7,7 @@ import { getTree, getPageByUrl } from '../../api/apiPage'
 import tp from '../../utils/typograf/typograf.config'
 import styles from './page.module.css'
 
-function GetPage({ tree, page, catalogPage, pageImage, color }) {
+function GetPage({ tree, page, catalogPage, pageImage, color, colorMap }) {
     const router = useRouter()
     const { pageUrl } = router.query
 
@@ -157,6 +157,7 @@ function GetPage({ tree, page, catalogPage, pageImage, color }) {
                 anchorLinks={anchorLinks}
                 catalogTitle={catalogTitle}
                 color={color}
+                colorMap={colorMap}
             />
             <ManualPage
                 pageList={pageList}
@@ -179,6 +180,13 @@ export async function getServerSideProps({ params }) {
     const page = await getPageByUrl(pageUrl.join('/'))
     const tree = await getTree()
     const color = tree.children[0]?.properties?.color?.rich_text[0]?.plain_text
+    const colorMap = tree.children.map((children) => {
+        return {
+            color: children?.properties?.color?.rich_text[0]?.plain_text ?? null,
+            url: children?.properties?.pageUrl?.url ?? null,
+        }
+    })
+    console.log(colorMap)
 
     return {
         props: {
@@ -187,6 +195,7 @@ export async function getServerSideProps({ params }) {
             pageImage: page?.node_properties?.cover,
             catalogPage: await getPageByUrl(pageUrl[0]),
             color,
+            colorMap,
         },
     }
 }

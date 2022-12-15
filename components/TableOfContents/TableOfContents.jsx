@@ -4,6 +4,7 @@ import Head from 'next/head'
 import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
 import Color from 'color'
+import { useRouter } from 'next/router'
 
 import styles from './TableOfContents.module.css'
 import tp from '../../utils/typograf/typograf.config'
@@ -43,16 +44,19 @@ function TableOfContents({
     currentPageUrl = [],
     anchorLinks,
     catalogTitle,
-    color,
+    colorMap,
 }) {
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
     const [isOpen, setIsOpen] = useState(isDesktop)
+    const { asPath } = useRouter()
+    const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
 
     const textColor = getBackgroundColor(color)
     const textColorHover = Color(textColor).negate()
     const [currentTitleColor, setTitleCurrentColor] = useState(textColor)
+    const [currentTitleBgColor, setCurrentTitleBgColor] = useState(color)
 
     useEffect(() => {
         const arrayWithAnchorElements = Array.from(
@@ -63,7 +67,12 @@ function TableOfContents({
             entries.forEach((entry) => {
                 const section = entry.target
                 const sectionId = section.id
+                const sectionTagName = section.tagName
                 const sectionLink = document.querySelector(`a[href="#${sectionId}"]`)
+
+                if (sectionTagName === 'H3') {
+                    sectionLink?.classList?.add(styles.innerH3)
+                }
 
                 if (entry.intersectionRatio > 0) {
                     sectionLink?.classList?.add(styles.visible)
@@ -80,9 +89,6 @@ function TableOfContents({
     const tableOfContentsLink = ({ url, title }) => (
         <li className={styles.link}>
             <Link
-                // onMouseEnter={() => setCurrentColor(textColorHover)}
-                // onMouseLeave={() => setCurrentColor(textColor)}
-                // style={{ color: currentColor }}
                 href={{
                     pathname: '/[[...pageUrl]]',
                     query: { pageUrl: [currentPageUrl[0], url] },
@@ -132,8 +138,10 @@ function TableOfContents({
                             query: { pageUrl: [currentPageUrl[0]] },
                         }}
                         className={styles.catalogTitle}
-                        style={{ color: currentTitleColor }}
-                        onMouseEnter={() => setTitleCurrentColor(textColorHover)}
+                        style={{ color: currentTitleColor, backgroundColor: currentTitleBgColor }}
+                        onMouseEnter={() => {
+                            setTitleCurrentColor(textColorHover)
+                        }}
                         onMouseLeave={() => setTitleCurrentColor(textColor)}
                     >
                         {tp.execute(catalogTitle)}

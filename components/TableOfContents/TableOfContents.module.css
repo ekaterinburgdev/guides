@@ -44,16 +44,22 @@
 .catalogTitle {
     display: block;
     line-height: 1;
-    font-size: 1.5rem;
+    font-size: 32px;
+    position: sticky;
+    top: -20px;
     padding: calc(0.65em + 7.5px) 0px calc(0.65em + 7.5px) 16px;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
     font-weight: 500;
-    box-shadow: none;
+    box-shadow: none !important;
     color: #14283C;
     text-decoration: none;
-    border-radius: 10px;
     transition: 0.2s;
+}
+
+.innerH3 {
+    margin-left: .5em;
+    font-size: 12px;
 }
 
 .catalogTitle:hover,
