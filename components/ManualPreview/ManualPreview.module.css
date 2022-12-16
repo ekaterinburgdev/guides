@@ -51,10 +51,15 @@
 
 .manualIcon {
     position: absolute;
-    width: 1.75em;
+    width: 100%;
     height: 1.75em;
     left: 1em;
     bottom: .8em;
+}
+
+.manualIcon > img {
+    object-fit: contain;
+    object-position: left center;
 }
 
 .manual:hover .manualInner {
