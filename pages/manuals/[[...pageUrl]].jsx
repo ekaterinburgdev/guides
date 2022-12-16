@@ -7,15 +7,15 @@ import ManualPage from '../../components/ManualPage/ManualPage'
 import { getTree, getPageByUrl } from '../../api/apiPage'
 import tp from '../../utils/typograf/typograf.config'
 import styles from './page.module.css'
+import getTocList from '../../utils/getTocList'
 
-function GetPage({ tree, page, catalogPage }) {
+function GetPage({ tree, page, catalogPage, tocList }) {
     const router = useRouter()
     const { pageUrl } = router.query
 
     const [prevPageIndex, setPrevPageIndex] = useState(-1)
     const [nextPageIndex, setNexPageIndex] = useState(9e13)
     const [children, setChildren] = useState()
-    const [tableOfContentArr, setTableOfContentArr] = useState([])
     const [anchorLinks, setAnchorLinks] = useState([])
 
     const [pageList, setPageList] = React.useState([])
@@ -97,50 +97,16 @@ function GetPage({ tree, page, catalogPage }) {
     }, [children, catalogId])
 
     useEffect(() => {
-        if (!children || !pageUrl) {
-            return
-        }
-
-        let currentChildren = children
-        let tableOfContentArrForSet = []
-        let currentPageChildren
-
-        for (const currentPageUrl of pageUrl) {
-            if (currentPageChildren) {
-                currentPageChildren =
-                    currentPageChildren.find((obj) => obj.url === currentPageUrl)?.children || []
-            }
-
-            currentChildren = currentChildren.find(
-                (obj) => obj?.properties?.pageUrl?.url === currentPageUrl
-            )?.children
-            const b = currentChildren.map((obj) => ({
-                url: obj?.properties?.pageUrl?.url,
-                title: obj?.properties?.Name?.title[0]?.text?.content,
-                children: [],
-            }))
-
-            if (!currentPageChildren) {
-                tableOfContentArrForSet = b
-                currentPageChildren = tableOfContentArrForSet
-            } else {
-                currentPageChildren = b
-            }
-        }
-        setTableOfContentArr(tableOfContentArrForSet)
-    }, [children, pageUrl])
-
-    useEffect(() => {
-        if (tableOfContentArr.length === 0 || !pageUrl) {
+        if (tocList.length === 0 || !pageUrl) {
             return
         }
 
         const curPageUrl = pageUrl.length > 1 ? pageUrl[pageUrl.length - 1] : undefined
 
-        const curPageIndex = tableOfContentArr.findIndex((el) => el.url === curPageUrl)
+        const curPageIndex = tocList.findIndex((el) => el.url === curPageUrl)
         setPrevPageIndex(curPageIndex - 1)
         setNexPageIndex(curPageIndex + 1)
-    }, [tableOfContentArr, pageUrl])
+    }, [tocList, pageUrl])
 
     useEffect(() => {
         if (pageList.length === 0) {
@@ -155,7 +121,7 @@ function GetPage({ tree, page, catalogPage }) {
     return (
         <>
             <TableOfContents
-                tableOfContentArr={tableOfContentArr}
+                tableOfContentArr={tocList}
                 currentPageUrl={pageUrl}
                 anchorLinks={anchorLinks}
                 catalogTitle={catalogTitle}
@@ -164,7 +130,7 @@ function GetPage({ tree, page, catalogPage }) {
                 pageList={pageList}
                 pageName={pageName}
                 children={children}
-                tableOfContentArr={tableOfContentArr}
+                tableOfContentArr={tocList}
                 prevPageIndex={prevPageIndex}
                 nextPageIndex={nextPageIndex}
                 catalogIndex={catalogIndex}
@@ -176,9 +142,29 @@ function GetPage({ tree, page, catalogPage }) {
 
 export async function getServerSideProps({ params }) {
     const { pageUrl } = params
+    const tree = await getTree()
+    const tocList = getTocList(tree, pageUrl)
+
+    if (pageUrl?.length === 0 || tocList?.length === 0) {
+        return { notFound: true }
+    }
+
+    const isGuideMainPage = pageUrl.length === 1
+    const hasGuideIndexPage = tocList.some((x) => x.url === '/')
+    if (isGuideMainPage && !hasGuideIndexPage) {
+        const firstPage = tocList[0].url
+        return {
+            redirect: {
+                destination: `/${pageUrl}/${firstPage}`,
+                permanent: false,
+            },
+        }
+    }
+
     return {
         props: {
-            tree: await getTree(),
+            tree,
+            tocList,
             page: await getPageByUrl(pageUrl.join('/')),
             catalogPage: await getPageByUrl(pageUrl[0]),
         },
