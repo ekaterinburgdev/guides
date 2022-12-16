@@ -3,21 +3,12 @@ import Link from 'next/link'
 import cn from 'classnames'
 import Image from 'next/image'
 
-import getBackgroundColor from '../../utils/getBackgroundColor'
+import getManualColorScheme from '../../utils/getManualColorScheme'
 
 import styles from './ManualPreview.module.css'
 
-function ManualPreview({
-    title,
-    subtitle,
-    pageUrl,
-    color,
-    status,
-    publishedDate,
-    pattern,
-    image,
-    cover,
-}) {
+function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate, pattern, image }) {
+    const colorScheme = getManualColorScheme(color)
     return (
         <Link
             href={{
@@ -25,13 +16,13 @@ function ManualPreview({
                 query: { pageUrl: [pageUrl] },
             }}
             className={styles.manual}
+            style={{ background: colorScheme.bgDark }}
         >
-            <Image src={cover} fill alt="" />
             <div className={styles.manualInner} style={{ color }}>
                 <div
                     className={styles.manualBackground}
                     style={{
-                        backgroundColor: getBackgroundColor(color),
+                        backgroundColor: colorScheme.bgLight,
                         backgroundImage: pattern && `url(${pattern})`,
                     }}
                 />
