@@ -1,12 +1,16 @@
 .CommonLinks__container {
     position: fixed;
-    display: flex;
+    display: none;
     background-color: rgb(239 240 241);
     border-radius: 10px 10px 0 0;
-    min-width: 376px;
+    width: max(20%, 376px);
     height: 92px;
     margin-left: 15px;
     bottom: 0;
+}
+
+.open {
+    display: flex !important;
 }
 
 .CommonLinks__icon {
@@ -37,10 +41,6 @@
     .CommonLinks__link {
         display: inline-block;
         color: white;
-    }
-
-    .CommonLinks__container {
-        background-color: #282828;
     }
 
     .CommonLinks__link:hover,

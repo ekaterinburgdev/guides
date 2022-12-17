@@ -186,7 +186,6 @@ export async function getServerSideProps({ params }) {
             url: children?.properties?.pageUrl?.url ?? null,
         }
     })
-    console.log(colorMap)
 
     return {
         props: {

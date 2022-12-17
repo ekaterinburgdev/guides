@@ -1,19 +1,37 @@
 import React from 'react'
 import Image from 'next/image'
 import classNames from 'classnames'
+import Zoom from 'react-medium-image-zoom'
 
 import { API_HOST } from '../../consts/endpoints'
 import styles from '../../components/ManualPage/ManualPage.module.css'
+import 'react-medium-image-zoom/dist/styles.css'
 
-const getImage = (imageObj) => {
+function CustomZoomContent({ buttonUnzoom: buttonUnhook, img }) {
+    return (
+        <>
+            {buttonUnhook}
+            <figure className={styles.Manual__image_zoom}>{img}</figure>
+        </>
+    )
+}
+
+function GuideImage({ notionType }) {
     const cn = classNames(styles.Manual__image, {
-        [styles.Manual__image_svg]: String(imageObj.content.image_name).includes('svg'),
+        [styles.Manual__image_svg]: String(notionType.content.image_name).includes('svg'),
     })
+
     const image = (
-        <Image className={cn} src={`${API_HOST}/static/${imageObj.content.image_name}`} fill />
+        <Zoom ZoomContent={CustomZoomContent}>
+            <Image
+                className={cn}
+                src={`${API_HOST}/static/${notionType.content.image_name}`}
+                fill
+            />
+        </Zoom>
     )
 
-    if (imageObj.content.image_data.caption.length === 0) {
+    if (notionType.content.image_data.caption.length === 0) {
         return <div className={styles.Manual__image__container}>{image}</div>
     }
 
@@ -21,10 +39,10 @@ const getImage = (imageObj) => {
         <div className={styles.Manual__image__container}>
             {image}
             <span className={styles.Manual__image_description}>
-                {imageObj.content.image_data.caption[0].plain_text}
+                {notionType.content.image_data.caption[0].plain_text}
             </span>
         </div>
     )
 }
 
-export default getImage
+export default GuideImage

@@ -2,10 +2,10 @@ lockfileVersion: 5.4
 
 specifiers:
   '@next/eslint-plugin-next': 12.3.4
-  '@next/font': ^13.0.6
+  '@next/font': 13.0.6
   bootstrap: 5.2.3
   classnames: 2.3.2
-  color: ^4.2.3
+  color: 4.2.3
   eslint: 8.28.0
   eslint-config-airbnb: 19.0.4
   eslint-config-airbnb-base: 15.0.0
@@ -24,6 +24,7 @@ specifiers:
   prettier: 2.8.0
   react: 18.2.0
   react-dom: 18.2.0
+  react-medium-image-zoom: ^5.1.2
   react-responsive: 9.0.2
   superagent: 7.1.5
   typograf: 6.15.1
@@ -39,6 +40,7 @@ dependencies:
   normalize.css: 8.0.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-medium-image-zoom: 5.1.2_biqbaboplfbrettd7655fr4n2y
   react-responsive: 9.0.2_react@18.2.0
   superagent: 7.1.5
   typograf: 6.15.1
@@ -2057,6 +2059,16 @@ packages:
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
+  /react-medium-image-zoom/5.1.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-Lk9TDqd+vUpQVP77p45jXgh1LGjClLfyLJnTemCfpI+5Zp3X7MX7iGP5VmSdLGXy9mhdlZiByHOyp4Irf4N8vg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /react-responsive/9.0.2_react@18.2.0:
     resolution: {integrity: sha512-+4CCab7z8G8glgJoRjAwocsgsv6VA2w7JPxFWHRc7kvz8mec1/K5LutNC2MG28Mn8mu6+bu04XZxHv5gyfT7xQ==}

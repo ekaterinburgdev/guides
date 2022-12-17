@@ -4,7 +4,6 @@ import Image from 'next/image'
 
 import styles from './ManualPage.module.css'
 import tp from '../../utils/typograf/typograf.config'
-import getImage from '../../utils/notionTypeParser/imageParser'
 import { H1, H2, H3 } from '../NotionTypes/Headers/Headers'
 import Bookmark from '../NotionTypes/Bookmark/Bookmark'
 import UnorderedList from '../NotionTypes/Lists/Unordered/Unordered'
@@ -17,6 +16,7 @@ import Divider from '../NotionTypes/Text/Divider/Divider'
 import VideoPlayer from '../NotionTypes/VideoPlayer/VideoPlayer'
 import Code from '../NotionTypes/Text/Code/Code'
 import { API_HOST } from '../../consts/endpoints'
+import GuideImage from '../../utils/notionTypeParser/imageParser'
 
 function ManualPage({
     pageList,
@@ -51,7 +51,7 @@ function ManualPage({
                 return <div className={styles.columnList}>{getLine(notionType)}</div>
 
             case 'image':
-                return getImage(notionType)
+                return <GuideImage notionType={notionType} />
 
             case 'heading_1':
                 return <H1 columnItem={notionType} />

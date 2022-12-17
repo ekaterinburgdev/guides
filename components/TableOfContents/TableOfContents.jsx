@@ -150,7 +150,7 @@ function TableOfContents({
                         {currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}
                     </ul>
                 </nav>
-                <CommonLinks />
+                <CommonLinks isOpen={!isDesktop} color={textColor} bgColor={color} />
             </aside>
         </>
     )
