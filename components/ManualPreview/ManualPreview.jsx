@@ -18,7 +18,7 @@ function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate,
             className={styles.manual}
             style={{ background: colorScheme.bgDark }}
         >
-            <div className={styles.manualInner} style={{ color }}>
+            <div className={styles.manualInner} style={{ color: colorScheme.title }}>
                 <div
                     className={styles.manualBackground}
                     style={{
