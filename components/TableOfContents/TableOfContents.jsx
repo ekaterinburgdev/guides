@@ -27,6 +27,7 @@ function InnerLink({ anchor, baseState, setState }) {
             </a>
         )
     }
+
     return (
         <a
             className={styles.innerTableOfContentsLink}
@@ -49,6 +50,7 @@ function TableOfContents({
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
+    console.log({ anchorLinks })
     const [isOpen, setIsOpen] = useState(isDesktop)
     const { asPath } = useRouter()
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
