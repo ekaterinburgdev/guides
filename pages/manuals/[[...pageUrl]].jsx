@@ -7,9 +7,10 @@ import ManualPage from '../../components/ManualPage/ManualPage'
 import { getTree, getPageByUrl } from '../../api/apiPage'
 import tp from '../../utils/typograf/typograf.config'
 import styles from './page.module.css'
-import getTocList from '../../utils/getTocList'
+import getManualToc from '../../utils/getManualToc'
+import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 
-function GetPage({ tree, page, catalogPage, tocList }) {
+function GetPage({ tree, page, catalogPage, manualToc }) {
     const router = useRouter()
     const { pageUrl } = router.query
 
@@ -97,16 +98,16 @@ function GetPage({ tree, page, catalogPage, tocList }) {
     }, [children, catalogId])
 
     useEffect(() => {
-        if (tocList.length === 0 || !pageUrl) {
+        if (manualToc.length === 0 || !pageUrl) {
             return
         }
 
         const curPageUrl = pageUrl.length > 1 ? pageUrl[pageUrl.length - 1] : undefined
 
-        const curPageIndex = tocList.findIndex((el) => el.url === curPageUrl)
+        const curPageIndex = manualToc.findIndex((el) => el.url === curPageUrl)
         setPrevPageIndex(curPageIndex - 1)
         setNexPageIndex(curPageIndex + 1)
-    }, [tocList, pageUrl])
+    }, [manualToc, pageUrl])
 
     useEffect(() => {
         if (pageList.length === 0) {
@@ -121,7 +122,7 @@ function GetPage({ tree, page, catalogPage, tocList }) {
     return (
         <>
             <TableOfContents
-                tableOfContentArr={tocList}
+                tableOfContentArr={manualToc}
                 currentPageUrl={pageUrl}
                 anchorLinks={anchorLinks}
                 catalogTitle={catalogTitle}
@@ -130,7 +131,7 @@ function GetPage({ tree, page, catalogPage, tocList }) {
                 pageList={pageList}
                 pageName={pageName}
                 children={children}
-                tableOfContentArr={tocList}
+                tableOfContentArr={manualToc}
                 prevPageIndex={prevPageIndex}
                 nextPageIndex={nextPageIndex}
                 catalogIndex={catalogIndex}
@@ -140,22 +141,26 @@ function GetPage({ tree, page, catalogPage, tocList }) {
     )
 }
 
-export async function getServerSideProps({ params }) {
-    const { pageUrl } = params
+export async function getServerSideProps({ params: { pageUrl } }) {
+    const manualPath = pageUrl
+    const catalogPathname = pageUrl[0]
     const tree = await getTree()
-    const tocList = getTocList(tree, pageUrl)
+    const manualToc = getManualToc(tree, pageUrl)
 
-    if (pageUrl?.length === 0 || tocList?.length === 0) {
-        return { notFound: true }
+    if (manualPath?.length === 0 || manualToc?.length === 0) {
+        return {
+            notFound: true,
+        }
     }
 
-    const isGuideMainPage = pageUrl.length === 1
-    const hasGuideIndexPage = tocList.some((x) => x.url === '/')
-    if (isGuideMainPage && !hasGuideIndexPage) {
-        const firstPage = tocList[0].url
+    const isCatalogIndexPage = manualPath.includes(MANUAL_INDEX_PAGE)
+    const hasCatalogIndexPage = manualToc.some((x) => x.url === MANUAL_INDEX_PAGE)
+
+    if (isCatalogIndexPage && !hasCatalogIndexPage) {
+        const firstTocPage = manualToc[0].url
         return {
             redirect: {
-                destination: `/${pageUrl}/${firstPage}`,
+                destination: `/${catalogPathname}/${firstTocPage}`,
                 permanent: false,
             },
         }
@@ -164,9 +169,9 @@ export async function getServerSideProps({ params }) {
     return {
         props: {
             tree,
-            tocList,
-            page: await getPageByUrl(pageUrl.join('/')),
-            catalogPage: await getPageByUrl(pageUrl[0]),
+            manualToc,
+            page: await getPageByUrl(manualPath.join('/')),
+            catalogPage: await getPageByUrl(catalogPathname),
         },
     }
 }

@@ -1,4 +1,4 @@
-function getTocList(tree, pageUrl) {
+function getManualToc(tree, pageUrl) {
     if (!tree.children || !pageUrl) {
         return []
     }
@@ -13,7 +13,7 @@ function getTocList(tree, pageUrl) {
                 currentPageChildren.find((obj) => obj.url === currentPageUrl)?.children || []
         }
 
-        currentChildren = currentChildren.find(
+        currentChildren = currentChildren?.find(
             (obj) => obj?.properties?.pageUrl?.url === currentPageUrl
         )?.children
 
@@ -33,4 +33,4 @@ function getTocList(tree, pageUrl) {
     return tableOfContentArrForSet || []
 }
 
-export default getTocList
+export default getManualToc
