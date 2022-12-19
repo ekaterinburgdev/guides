@@ -84,7 +84,34 @@ function TableOfContents({
         arrayWithAnchorElements.forEach((section) => observer.observe(section))
     }, [anchorLinks])
 
-    useEffect(() => {}, [])
+    // useEffect(() => {
+    //     const tableLinksElements = Array.from(
+    //         document.querySelectorAll('[class*=tableOfContentsLink]')
+    //     )
+    //     const allInnerTableOfContentsLinksElements = Array.from(
+    //         document.querySelectorAll('[class*=innerTableOfContentsLink]')
+    //     )
+    //     const allTableOfContentsLinks = [
+    //         ...tableLinksElements,
+    //         ...allInnerTableOfContentsLinksElements,
+    //     ]
+
+    //     const observerHandler = (entries) =>
+    //         entries.forEach((link) => {
+    //             if (link.intersectionRatio > 0) {
+    //                 link.target.classList.add('123')
+    //             } else {
+    //                 link.target.classList.remove('123')
+    //             }
+    //         })
+    //     const options = {
+    //         root: document.querySelector('[class*=titleContainer]'),
+    //         rootMargin: '0px',
+    //         threshold: 0,
+    //     }
+    //     const observer = new IntersectionObserver(observerHandler, options)
+    //     allTableOfContentsLinks.forEach((link) => observer.observe(link))
+    // }, [anchorLinks])
 
     // TODO: Сделать для большой вложенности...
     const tableOfContentsLink = ({ url, title }) => (
