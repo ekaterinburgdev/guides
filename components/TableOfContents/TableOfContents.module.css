@@ -16,6 +16,11 @@
     flex-direction: column;
 }
 
+.titleContainer {
+    position: sticky;
+    top: 0;
+}
+
 .visible::before {
     content: '';
     width: 0;
@@ -42,19 +47,14 @@
 }
 
 .catalogTitle {
-    display: block;
-    line-height: 1;
+    line-height: 1.2;
     font-size: 32px;
-    position: sticky;
-    top: -20px;
-    padding: calc(0.65em + 7.5px) 0px calc(0.65em + 7.5px) 16px;
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
     font-weight: 500;
     box-shadow: none !important;
-    color: #14283C;
+    margin-top: 0.5em;
     text-decoration: none;
     transition: 0.2s;
+    padding-top: 0.5em;
 }
 
 .innerH3 {
@@ -64,10 +64,25 @@
 
 .catalogTitle:hover,
 .catalogTitle:focus-visible {
-    box-shadow: none;
-    background-color: #ffffff;
-    color: #112233;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    filter: contrast(2);
+}
+
+.TableOfContents__divider {
+    border-bottom: 2px solid;
+    width: max(20%, 376px);
+    margin-left: -20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.TableOfContents__icon {
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.TableOfContents__icon > img {
+    object-fit: contain;
+    object-position: left center;
 }
 
 .tableOfContents {
@@ -119,7 +134,7 @@
 
 .innerTableOfContentsLink:hover,
 .innerTableOfContentsLink:focus-visible {
-    color: #e63223;
+    /*Умирает черточка рядом с текущим разделом --> filter: contrast(2);*/
 }
 
 .innerlinkContainerList {
@@ -127,7 +142,10 @@
     padding-bottom: 0.5rem;
     padding-left: 0.6rem;
     padding-right: 0.6rem;
-    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     display: flex;
     flex-direction: column;
     margin-top: -15px;
@@ -136,8 +154,12 @@
 
 .innerlinkContainerList::before {
     content: '';
-    margin: 0.5em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin-left: -12px;
+    margin-right: 0;
     border-bottom: 1px solid #eff0f1;
+    width: calc(max(20%, 376px) - 36px);
 }
 
 .tableOfContentsLink {
@@ -163,9 +185,12 @@
 .active {
     box-shadow: none;
     background-color: #ffffff;
-    margin-bottom: 5px;
-    color: #14283C !important;
+    margin-bottom: 15px;
     text-decoration: none;
+}
+
+.active::hover {
+    box-shadow: none !important;
 }
 
 .separator {
@@ -196,59 +221,11 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-    .tableOfContents {
-        background-color: #282828;
-    }
-
     .separator {
         border-color: rgba(255, 255, 255, 0.8);
     }
 
     .catalogTitle {
         color: white;
-    }
-
-    .catalogTitle:hover,
-    .catalogTitle:focus-visible {
-        color: white;
-        background-color: #404040;
-    }
-
-    .tableOfContentsLink {
-        display: inline-block;
-        color: white;
-    }
-
-    .tableOfContentsLink:hover,
-    .tableOfContentsLink:focus-visible {
-        background-color: #404040;
-        color: white;
-    }
-
-    .innerlinkContainerList {
-        background-color: #404040;
-    }
-
-    .innerTableOfContentsLink {
-        color: white;
-    }
-
-    .active {
-        background-color: #404040;
-        color: white;
-    }
-
-    .designCodeLink {
-        color: white;
-    }
-
-    .linkToAllManuals {
-        color: white;
-    }
-
-    .linkToAllManuals:hover,
-    .linkToAllManuals:focus-visible {
-        color: white;
-        background-color: #404040;
     }
 }

@@ -5,9 +5,10 @@ import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
 import { getTree, getPageByUrl } from '../../api/apiPage'
 import tp from '../../utils/typograf/typograf.config'
+import { API_HOST } from '../../consts/endpoints'
 import styles from './page.module.css'
 
-function GetPage({ tree, page, catalogPage, pageImage, color, colorMap }) {
+function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap }) {
     const router = useRouter()
     const { pageUrl } = router.query
 
@@ -158,6 +159,7 @@ function GetPage({ tree, page, catalogPage, pageImage, color, colorMap }) {
                 catalogTitle={catalogTitle}
                 color={color}
                 colorMap={colorMap}
+                iconMap={iconMap}
             />
             <ManualPage
                 pageList={pageList}
@@ -179,10 +181,15 @@ export async function getServerSideProps({ params }) {
     const { pageUrl } = params
     const page = await getPageByUrl(pageUrl.join('/'))
     const tree = await getTree()
-    const color = tree.children[0]?.properties?.color?.rich_text[0]?.plain_text
     const colorMap = tree.children.map((children) => {
         return {
             color: children?.properties?.color?.rich_text[0]?.plain_text ?? null,
+            url: children?.properties?.pageUrl?.url ?? null,
+        }
+    })
+    const iconMap = tree.children.map((children) => {
+        return {
+            imageUrl: `${API_HOST}/static/${children?.properties?.previewImage[0]}` ?? null,
             url: children?.properties?.pageUrl?.url ?? null,
         }
     })
@@ -193,8 +200,8 @@ export async function getServerSideProps({ params }) {
             page,
             pageImage: page?.node_properties?.cover,
             catalogPage: await getPageByUrl(pageUrl[0]),
-            color,
             colorMap,
+            iconMap,
         },
     }
 }

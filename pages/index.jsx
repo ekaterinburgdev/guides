@@ -11,7 +11,6 @@ export default function Home({ pageTitle, manualsPreview }) {
     return (
         <main className={styles.homeContainer}>
             <h1 className={styles.mainTitle}>{pageTitle}</h1>
-
             <section className={styles.manualsSection}>
                 {manualsPreview.map((manualPreviewData) => (
                     <ManualPreview {...manualPreviewData} key={manualPreviewData.title} />

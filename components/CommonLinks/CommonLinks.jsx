@@ -9,7 +9,7 @@ export function CommonLinks({ color, bgColor, isOpen }) {
     const className = classNames(styles.CommonLinks__container, { [styles.open]: isOpen })
 
     return (
-        <section style={{ color, backgroundColor: bgColor }} className={className}>
+        <section style={{ backgroundColor: bgColor }} className={className}>
             <Image
                 src="/transport.svg"
                 width={60}
@@ -23,7 +23,7 @@ export function CommonLinks({ color, bgColor, isOpen }) {
                 className={styles.CommonLinks__icon}
             />
             <Link className={styles.CommonLinks__link} href="/">
-                <p>
+                <p className={styles.CommonLinks__text} style={{ color }}>
                     Руководства <br />
                     Екатеринбурга
                 </p>
