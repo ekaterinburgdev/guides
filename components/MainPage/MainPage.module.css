@@ -37,4 +37,8 @@
     .mainPageTitle {
         color: white;
     }
+
+    .mainPageLogo {
+        filter: invert(1);
+    }
 }
