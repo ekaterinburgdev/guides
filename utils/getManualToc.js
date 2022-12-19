@@ -3,31 +3,35 @@ function getManualToc(tree, pageUrl) {
         return []
     }
 
-    let currentChildren = tree.children
     let tableOfContentArrForSet = []
     let currentPageChildren
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const currentPageUrl of pageUrl) {
         if (currentPageChildren) {
             currentPageChildren =
                 currentPageChildren.find((obj) => obj.url === currentPageUrl)?.children || []
         }
 
-        currentChildren = currentChildren?.find(
+        const manualSectionsRaw = tree.children?.find(
             (obj) => obj?.properties?.pageUrl?.url === currentPageUrl
         )?.children
 
-        const b = currentChildren?.map((obj) => ({
-            url: obj?.properties?.pageUrl?.url,
-            title: obj?.properties?.Name?.title[0]?.text?.content,
-            children: [],
-        }))
+        const manualSections = manualSectionsRaw
+            ?.map((obj) => ({
+                url: obj?.properties?.pageUrl?.url,
+                order: obj?.properties?.order?.number,
+                title: obj?.properties?.Name?.title[0]?.text?.content,
+                children: [],
+            }))
+            // BUG Remove `order` field and sorting after https://github.com/ekaterinburgdev/guides-cache-service/issues/13
+            ?.sort(({ order: orderA }, { order: orderB }) => orderA - orderB)
 
         if (!currentPageChildren) {
-            tableOfContentArrForSet = b
+            tableOfContentArrForSet = manualSections
             currentPageChildren = tableOfContentArrForSet
         } else {
-            currentPageChildren = b
+            currentPageChildren = manualSections
         }
     }
     return tableOfContentArrForSet || []
