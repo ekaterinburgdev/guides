@@ -6,10 +6,12 @@ import classNames from 'classnames'
 import styles from './CommonLinks.module.css'
 
 export function CommonLinks({ color, bgColor, isOpen }) {
-    const className = classNames(styles.CommonLinks__container, { [styles.open]: isOpen })
+    const commonLinksClassNames = classNames(styles.CommonLinks__container, {
+        [styles.open]: isOpen,
+    })
 
     return (
-        <section style={{ backgroundColor: bgColor }} className={className}>
+        <section style={{ backgroundColor: bgColor }} className={commonLinksClassNames}>
             <Image
                 src="/transport.svg"
                 width={60}

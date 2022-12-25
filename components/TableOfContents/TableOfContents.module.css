@@ -21,6 +21,10 @@
     top: 0;
 }
 
+.hidden {
+    opacity: 0;
+}
+
 .visible::before {
     content: '';
     width: 0;

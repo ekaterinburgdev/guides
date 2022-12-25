@@ -84,34 +84,35 @@ function TableOfContents({
         arrayWithAnchorElements.forEach((section) => observer.observe(section))
     }, [anchorLinks])
 
-    // useEffect(() => {
-    //     const tableLinksElements = Array.from(
-    //         document.querySelectorAll('[class*=tableOfContentsLink]')
-    //     )
-    //     const allInnerTableOfContentsLinksElements = Array.from(
-    //         document.querySelectorAll('[class*=innerTableOfContentsLink]')
-    //     )
-    //     const allTableOfContentsLinks = [
-    //         ...tableLinksElements,
-    //         ...allInnerTableOfContentsLinksElements,
-    //     ]
+    useEffect(() => {
+        const tableLinksElements = Array.from(
+            document.querySelectorAll('[class*=tableOfContentsLink]')
+        )
+        const allInnerTableOfContentsLinksElements = Array.from(
+            document.querySelectorAll('[class*=innerTableOfContentsLink]')
+        )
+        const allTableOfContentsLinks = [
+            ...tableLinksElements,
+            ...allInnerTableOfContentsLinksElements,
+        ]
 
-    //     const observerHandler = (entries) =>
-    //         entries.forEach((link) => {
-    //             if (link.intersectionRatio > 0) {
-    //                 link.target.classList.add('123')
-    //             } else {
-    //                 link.target.classList.remove('123')
-    //             }
-    //         })
-    //     const options = {
-    //         root: document.querySelector('[class*=titleContainer]'),
-    //         rootMargin: '0px',
-    //         threshold: 0,
-    //     }
-    //     const observer = new IntersectionObserver(observerHandler, options)
-    //     allTableOfContentsLinks.forEach((link) => observer.observe(link))
-    // }, [anchorLinks])
+        const observerHandler = (entries) =>
+            entries.forEach((link) => {
+                if (link.intersectionRatio > 0) {
+                    link.target.classList.add(styles.hidden)
+                } else {
+                    link.target.classList.remove(styles.hidden)
+                }
+            })
+        const options = {
+            root: document.querySelector('#menuDivider'),
+            rootMargin: '0px',
+            threshold: 0.1,
+        }
+
+        const observer = new IntersectionObserver(observerHandler, options)
+        allTableOfContentsLinks.forEach((link) => observer.observe(link))
+    }, [anchorLinks])
 
     // TODO: Сделать для большой вложенности...
     const tableOfContentsLink = ({ url, title }) => (
@@ -195,6 +196,7 @@ function TableOfContents({
                         </Link>
                         <div
                             style={{ borderBottomColor: colorScheme.bgLight }}
+                            id="menuDivider"
                             className={styles.TableOfContents__divider}
                         />
                     </div>
@@ -204,7 +206,7 @@ function TableOfContents({
                     </ul>
                 </nav>
                 <CommonLinks
-                    isOpen={!isDesktop}
+                    isOpen={isOpen}
                     color={colorScheme.title}
                     bgColor={colorScheme.bgLight}
                 />
