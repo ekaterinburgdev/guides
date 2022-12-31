@@ -14,7 +14,7 @@ const getImage = (imageObj) => {
     if (imageObj.content.image_data.caption.length === 0) {
         return image
     }
-    
+
     return (
         <div>
             {image}
