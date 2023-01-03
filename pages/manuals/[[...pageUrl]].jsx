@@ -7,15 +7,16 @@ import { getTree, getPageByUrl } from '../../api/apiPage'
 import tp from '../../utils/typograf/typograf.config'
 import { API_HOST } from '../../consts/endpoints'
 import styles from './page.module.css'
+import getManualToc from '../../utils/getManualToc'
+import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 
-function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap }) {
+function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap, manualToc }) {
     const router = useRouter()
     const { pageUrl } = router.query
 
     const [prevPageIndex, setPrevPageIndex] = useState(-1)
     const [nextPageIndex, setNexPageIndex] = useState(9e13)
     const [children, setChildren] = useState()
-    const [tableOfContentArr, setTableOfContentArr] = useState([])
     const [anchorLinks, setAnchorLinks] = useState([])
 
     const [pageList, setPageList] = React.useState([])
@@ -97,50 +98,16 @@ function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap 
     }, [children, catalogId])
 
     useEffect(() => {
-        if (!children || !pageUrl) {
-            return
-        }
-
-        let currentChildren = children
-        let tableOfContentArrForSet = []
-        let currentPageChildren
-
-        for (const currentPageUrl of pageUrl) {
-            if (currentPageChildren) {
-                currentPageChildren =
-                    currentPageChildren.find((obj) => obj.url === currentPageUrl)?.children || []
-            }
-
-            currentChildren = currentChildren.find(
-                (obj) => obj?.properties?.pageUrl?.url === currentPageUrl
-            )?.children
-            const arrayWithGuideSections = currentChildren.map((obj) => ({
-                url: obj?.properties?.pageUrl?.url,
-                title: obj?.properties?.Name?.title[0]?.text?.content,
-                children: [],
-            }))
-
-            if (currentPageChildren) {
-                currentPageChildren = arrayWithGuideSections
-            } else {
-                tableOfContentArrForSet = arrayWithGuideSections
-                currentPageChildren = tableOfContentArrForSet
-            }
-        }
-        setTableOfContentArr(tableOfContentArrForSet)
-    }, [children, pageUrl])
-
-    useEffect(() => {
-        if (tableOfContentArr.length === 0 || !pageUrl) {
+        if (manualToc.length === 0 || !pageUrl) {
             return
         }
 
         const curPageUrl = pageUrl.length > 1 ? pageUrl[pageUrl.length - 1] : undefined
 
-        const curPageIndex = tableOfContentArr.findIndex((el) => el.url === curPageUrl)
+        const curPageIndex = manualToc.findIndex((el) => el.url === curPageUrl)
         setPrevPageIndex(curPageIndex - 1)
         setNexPageIndex(curPageIndex + 1)
-    }, [tableOfContentArr, pageUrl])
+    }, [manualToc, pageUrl])
 
     useEffect(() => {
         if (pageList.length === 0) {
@@ -153,7 +120,7 @@ function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap 
     return (
         <>
             <TableOfContents
-                tableOfContentArr={tableOfContentArr}
+                tableOfContentArr={manualToc}
                 currentPageUrl={pageUrl}
                 anchorLinks={anchorLinks}
                 catalogTitle={catalogTitle}
@@ -165,7 +132,7 @@ function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap 
                 pageList={pageList}
                 pageName={pageName}
                 children={children}
-                tableOfContentArr={tableOfContentArr}
+                tableOfContentArr={manualToc}
                 prevPageIndex={prevPageIndex}
                 nextPageIndex={nextPageIndex}
                 catalogIndex={catalogIndex}
@@ -177,10 +144,32 @@ function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap 
     )
 }
 
-export async function getServerSideProps({ params }) {
-    const { pageUrl } = params
-    const page = await getPageByUrl(pageUrl.join('/'))
+export async function getServerSideProps({ params: { pageUrl } }) {
     const tree = await getTree()
+    const manualPath = pageUrl
+    const catalogPathname = pageUrl[0]
+    const manualToc = getManualToc(tree, pageUrl)
+
+    if (manualPath?.length === 0 || manualToc?.length === 0) {
+        return {
+            notFound: true,
+        }
+    }
+
+    const isCatalogIndexPage = manualPath.includes(MANUAL_INDEX_PAGE)
+    const hasCatalogIndexPage = manualToc.some((x) => x.url === MANUAL_INDEX_PAGE)
+
+    if (isCatalogIndexPage && !hasCatalogIndexPage) {
+        const firstTocPage = manualToc[0].url
+        return {
+            redirect: {
+                destination: `/${catalogPathname}/${firstTocPage}`,
+                permanent: false,
+            },
+        }
+    }
+
+    const page = await getPageByUrl(pageUrl.join('/'))
     const colorMap = tree.children.map((children) => {
         return {
             color: children?.properties?.color?.rich_text[0]?.plain_text ?? null,

@@ -3,21 +3,11 @@ import React from 'react'
 import { getTree } from '../api/apiPage'
 
 import parseManualsPreview from '../utils/notionTypeParser/manualsPreviewParser'
-import ManualPreview from '../components/ManualPreview/ManualPreview'
 
-import styles from '../styles/home.module.css'
+import MainPage from '../components/MainPage/MainPage'
 
 export default function Home({ pageTitle, manualsPreview }) {
-    return (
-        <main className={styles.homeContainer}>
-            <h1 className={styles.mainTitle}>{pageTitle}</h1>
-            <section className={styles.manualsSection}>
-                {manualsPreview.map((manualPreviewData) => (
-                    <ManualPreview {...manualPreviewData} key={manualPreviewData.title} />
-                ))}
-            </section>
-        </main>
-    )
+    return <MainPage pageTitle={pageTitle} manualsPreview={manualsPreview} />
 }
 
 export async function getServerSideProps() {
