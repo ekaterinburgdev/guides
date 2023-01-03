@@ -1,13 +1,14 @@
 .CommonLinks__container {
     position: fixed;
     display: flex;
+    align-items: center;
     background-color: rgb(239 240 241);
-    border-radius: 10px 10px 0 0;
+    border-radius: 64px;
     width: calc(100vw);
     padding-left: 0;
-    height: 92px;
+    height: 76px;
     margin-left: 0px;
-    bottom: 0;
+    bottom: 16px;
     left: 0;
 }
 
@@ -17,6 +18,10 @@
 
 .CommonLinks__icon {
     margin: 16px 0 16px 16px;
+}
+
+.CommonLinks__text {
+    font-size: 20px;
 }
 
 .CommonLinks__text:hover {

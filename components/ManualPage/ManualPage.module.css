@@ -68,9 +68,7 @@
 }
 
 .previewImageContainer {
-    width: 100%;
     margin-top: 16px;
-    margin-left: 24px;
 }
 
 .previewImage {
@@ -82,14 +80,6 @@
 }
 
 @media (min-width: 991px) {
-    .previewImageContainer {
-        width: calc(100% + 100px);
-    }
-
-    .previewImage {
-        margin-left: -8%;
-    }
-
     .templateColumn {
         min-height: 100vh;
         padding-left: 128px;

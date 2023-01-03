@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 
 import styles from './TableOfContents.module.css'
-import tp from '../../utils/typograf/typograf.config'
+import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 import { CommonLinks } from '../CommonLinks/CommonLinks'
 import getManualColorScheme from '../../utils/getManualColorScheme'
@@ -24,7 +24,7 @@ function InnerLink({ anchor, baseState, setState, color }) {
                 key={anchor.title}
                 href={`#${anchor.id}`}
             >
-                {tp.execute(anchor.title)}
+                {tpForAsideMenu.execute(anchor.title)}
             </a>
         )
     }
@@ -37,7 +37,7 @@ function InnerLink({ anchor, baseState, setState, color }) {
             href={`#${anchor.id}`}
             onClick={() => setState(!baseState)}
         >
-            {tp.execute(anchor.title)}
+            {tpForAsideMenu.execute(anchor.title)}
         </a>
     )
 }
@@ -142,7 +142,7 @@ function TableOfContents({
                 })}
                 onClick={() => setIsOpen(!isOpen)}
             >
-                {tp.execute(title)}
+                {tpForAsideMenu.execute(title)}
             </Link>
             {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
                 <ul
@@ -199,7 +199,7 @@ function TableOfContents({
                                 width={32}
                                 height={32}
                             />
-                            {tp.execute(catalogTitle)}
+                            {tpForAsideMenu.execute(catalogTitle)}
                         </Link>
                         <div
                             style={{ borderBottomColor: colorScheme.bgLight }}
