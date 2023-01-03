@@ -86,36 +86,6 @@ function TableOfContents({
         arrayWithAnchorElements.forEach((section) => observer.observe(section))
     }, [anchorLinks])
 
-    // useEffect(() => {
-    //     const tableLinksElements = Array.from(
-    //         document.querySelectorAll('[class*=tableOfContentsLink]')
-    //     )
-    //     const allInnerTableOfContentsLinksElements = Array.from(
-    //         document.querySelectorAll('[class*=innerTableOfContentsLink]')
-    //     )
-    //     const allTableOfContentsLinks = [
-    //         ...tableLinksElements,
-    //         ...allInnerTableOfContentsLinksElements,
-    //     ]
-
-    //     const observerHandler = (entries) =>
-    //         entries.forEach((link) => {
-    //             if (link.intersectionRatio > 0) {
-    //                 link.target.classList.add(styles.hidden)
-    //             } else {
-    //                 link.target.classList.remove(styles.hidden)
-    //             }
-    //         })
-    //     const options = {
-    //         root: document.querySelector('#menuDivider'),
-    //         rootMargin: '0px',
-    //         threshold: 0.1,
-    //     }
-
-    //     const observer = new IntersectionObserver(observerHandler, options)
-    //     allTableOfContentsLinks.forEach((link) => observer.observe(link))
-    // }, [anchorLinks])
-
     useEffect(() => {
         const styleVisible = document.querySelector('.visible')?.style
         styleVisible?.setProperty('border-color', colorScheme.bgDark)
@@ -182,6 +152,12 @@ function TableOfContents({
                     }}
                 >
                     <div className={styles.titleContainer}>
+                        <Image
+                            className={styles.TableOfContents__icon}
+                            src={icon}
+                            width={50}
+                            height={50}
+                        />
                         <Link
                             href={{
                                 pathname: '/[[...pageUrl]]',
@@ -192,21 +168,14 @@ function TableOfContents({
                                 color: colorScheme.title,
                             }}
                         >
-                            <Image
-                                style={{ paddingTop: '0.2em' }}
-                                className={styles.TableOfContents__icon}
-                                src={icon}
-                                width={32}
-                                height={32}
-                            />
                             {tpForAsideMenu.execute(catalogTitle)}
                         </Link>
-                        <div
-                            style={{ borderBottomColor: colorScheme.bgLight }}
-                            id="menuDivider"
-                            className={styles.TableOfContents__divider}
-                        />
                     </div>
+                    <div
+                        style={{ borderBottomColor: colorScheme.bgLight }}
+                        id="menuDivider"
+                        className={styles.TableOfContents__divider}
+                    />
                     <ul className={styles.linkContainerList}>
                         {currentPageUrl &&
                             tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}

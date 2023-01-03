@@ -191,6 +191,7 @@ export async function getServerSideProps({ params: { pageUrl } }) {
             catalogPage: await getPageByUrl(pageUrl[0]),
             colorMap,
             iconMap,
+            manualToc,
         },
     }
 }

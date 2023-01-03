@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+
 import styles from './arrow.module.css'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 

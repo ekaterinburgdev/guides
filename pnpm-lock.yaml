@@ -25,6 +25,7 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   react-responsive: 9.0.2
+  react-wrap-balancer: ^0.2.4
   superagent: 7.1.5
   typograf: 6.15.1
   yet-another-react-lightbox: 2.2.5
@@ -41,6 +42,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-responsive: 9.0.2_react@18.2.0
+  react-wrap-balancer: 0.2.4_react@18.2.0
   superagent: 7.1.5
   typograf: 6.15.1
   yet-another-react-lightbox: 2.2.5_biqbaboplfbrettd7655fr4n2y
@@ -2071,6 +2073,14 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       shallow-equal: 1.2.1
+    dev: false
+
+  /react-wrap-balancer/0.2.4_react@18.2.0:
+    resolution: {integrity: sha512-MVL9/Tw1X72t0i5Y/2j3YmSx1vkJJ22b5Vb+vZ/IOEdq7r9JPNzTfnfkB8wrl98Jwx+F6VCwJXmU7a1lT5PtCA==}
+    peerDependencies:
+      react: ^18.0.0
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react/18.2.0:
