@@ -147,7 +147,7 @@ function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap 
             return
         }
         const anchorLinksForSet = pageList.map(getColumnItem)
-        setAnchorLinks(anchorLinksForSet.filter((l) => l?.id))
+        setAnchorLinks(anchorLinksForSet.filter((l) => l?.id >= 0))
     }, [pageList])
 
     return (
@@ -171,7 +171,7 @@ function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap 
                 catalogIndex={catalogIndex}
                 pageUrl={pageUrl}
                 pageImage={pageImage}
-                color={color}
+                colorMap={colorMap}
             />
         </>
     )

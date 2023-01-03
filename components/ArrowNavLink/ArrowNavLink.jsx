@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import styles from './arrow.module.css'
+import getManualColorScheme from '../../utils/getManualColorScheme'
 
 const getCatalogOptions = (catalog) => ({
     url: catalog.properties.pageUrl.url,
@@ -8,12 +9,20 @@ const getCatalogOptions = (catalog) => ({
 })
 
 // TODO: выделить общую логику у этих двух компонент
-export function PrevPage({ prevPageIndex, tableOfContentArr, pageUrl, catalogIndex, children }) {
+export function PrevPage({
+    prevPageIndex,
+    tableOfContentArr,
+    pageUrl,
+    catalogIndex,
+    children,
+    color,
+}) {
     let href = {
         pathname: '/[[...pageUrl]]',
         query: { pageUrl: [] },
     }
     let title = ''
+    const colorScheme = getManualColorScheme(color)
 
     if (prevPageIndex >= 0) {
         href.query.pageUrl = [pageUrl[0], tableOfContentArr[prevPageIndex].url]
@@ -34,18 +43,31 @@ export function PrevPage({ prevPageIndex, tableOfContentArr, pageUrl, catalogInd
     }
 
     return (
-        <Link className={styles.arrowNavLink} href={href} passHref>
+        <Link
+            style={{ background: colorScheme.bgLight, color: colorScheme.title }}
+            className={styles.arrowNavLink}
+            href={href}
+            passHref
+        >
             ←&nbsp;{title}
         </Link>
     )
 }
 
-export function NextPage({ nextPageIndex, tableOfContentArr, pageUrl, catalogIndex, children }) {
+export function NextPage({
+    nextPageIndex,
+    tableOfContentArr,
+    pageUrl,
+    catalogIndex,
+    children,
+    color,
+}) {
     let href = {
         pathname: '/[[...pageUrl]]',
         query: { pageUrl: [] },
     }
     let title = ''
+    const colorScheme = getManualColorScheme(color)
 
     if (nextPageIndex < tableOfContentArr.length) {
         href.query.pageUrl = [pageUrl[0], tableOfContentArr[nextPageIndex].url]
@@ -66,7 +88,11 @@ export function NextPage({ nextPageIndex, tableOfContentArr, pageUrl, catalogInd
     }
 
     return (
-        <Link className={styles.arrowNavLink} href={href}>
+        <Link
+            style={{ background: colorScheme.bgLight, color: colorScheme.title }}
+            className={styles.arrowNavLink}
+            href={href}
+        >
             {title}&nbsp;→
         </Link>
     )

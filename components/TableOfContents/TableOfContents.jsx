@@ -10,7 +10,7 @@ import styles from './TableOfContents.module.css'
 import tp from '../../utils/typograf/typograf.config'
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 import { CommonLinks } from '../CommonLinks/CommonLinks'
-import getBackgroundColor from '../../utils/getManualColorScheme'
+import getManualColorScheme from '../../utils/getManualColorScheme'
 
 function InnerLink({ anchor, baseState, setState, color }) {
     const isDesktop = useMediaQuery({
@@ -57,10 +57,12 @@ function TableOfContents({
     const { asPath } = useRouter()
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const icon = iconMap.filter((item) => asPath.includes(item.url))[0]?.imageUrl
-    const colorScheme = getBackgroundColor(color)
+    const colorScheme = getManualColorScheme(color)
 
     useEffect(() => {
-        const arrayWithAnchorElements = Array.from(document.querySelectorAll('h2[id], h3[id]'))
+        const arrayWithAnchorElements = Array.from(
+            document.querySelectorAll('h1[id], h2[id], h3[id]')
+        )
 
         const scrollHandler = (entries) =>
             entries.forEach((entry) => {
@@ -84,34 +86,39 @@ function TableOfContents({
         arrayWithAnchorElements.forEach((section) => observer.observe(section))
     }, [anchorLinks])
 
+    // useEffect(() => {
+    //     const tableLinksElements = Array.from(
+    //         document.querySelectorAll('[class*=tableOfContentsLink]')
+    //     )
+    //     const allInnerTableOfContentsLinksElements = Array.from(
+    //         document.querySelectorAll('[class*=innerTableOfContentsLink]')
+    //     )
+    //     const allTableOfContentsLinks = [
+    //         ...tableLinksElements,
+    //         ...allInnerTableOfContentsLinksElements,
+    //     ]
+
+    //     const observerHandler = (entries) =>
+    //         entries.forEach((link) => {
+    //             if (link.intersectionRatio > 0) {
+    //                 link.target.classList.add(styles.hidden)
+    //             } else {
+    //                 link.target.classList.remove(styles.hidden)
+    //             }
+    //         })
+    //     const options = {
+    //         root: document.querySelector('#menuDivider'),
+    //         rootMargin: '0px',
+    //         threshold: 0.1,
+    //     }
+
+    //     const observer = new IntersectionObserver(observerHandler, options)
+    //     allTableOfContentsLinks.forEach((link) => observer.observe(link))
+    // }, [anchorLinks])
+
     useEffect(() => {
-        const tableLinksElements = Array.from(
-            document.querySelectorAll('[class*=tableOfContentsLink]')
-        )
-        const allInnerTableOfContentsLinksElements = Array.from(
-            document.querySelectorAll('[class*=innerTableOfContentsLink]')
-        )
-        const allTableOfContentsLinks = [
-            ...tableLinksElements,
-            ...allInnerTableOfContentsLinksElements,
-        ]
-
-        const observerHandler = (entries) =>
-            entries.forEach((link) => {
-                if (link.intersectionRatio > 0) {
-                    link.target.classList.add(styles.hidden)
-                } else {
-                    link.target.classList.remove(styles.hidden)
-                }
-            })
-        const options = {
-            root: document.querySelector('#menuDivider'),
-            rootMargin: '0px',
-            threshold: 0.1,
-        }
-
-        const observer = new IntersectionObserver(observerHandler, options)
-        allTableOfContentsLinks.forEach((link) => observer.observe(link))
+        const styleVisible = document.querySelector('.visible')?.style
+        styleVisible?.setProperty('border-color', colorScheme.bgDark)
     }, [anchorLinks])
 
     // TODO: Сделать для большой вложенности...
@@ -204,12 +211,8 @@ function TableOfContents({
                         {currentPageUrl &&
                             tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}
                     </ul>
+                    <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />
                 </nav>
-                <CommonLinks
-                    isOpen={isOpen}
-                    color={colorScheme.title}
-                    bgColor={colorScheme.bgLight}
-                />
             </aside>
         </>
     )

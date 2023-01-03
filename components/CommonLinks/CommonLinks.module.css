@@ -1,16 +1,18 @@
 .CommonLinks__container {
     position: fixed;
-    display: none;
+    display: flex;
     background-color: rgb(239 240 241);
     border-radius: 10px 10px 0 0;
-    width: max(20%, 376px);
+    width: calc(100vw);
+    padding-left: 0;
     height: 92px;
-    margin-left: 15px;
+    margin-left: 0px;
     bottom: 0;
+    left: 0;
 }
 
 .open {
-    display: flex !important;
+    display: none !important;
 }
 
 .CommonLinks__icon {
@@ -37,6 +39,37 @@
 .CommonLinks__link:focus-visible {
     text-decoration: none;
     transition: .15s ease-in;
+}
+
+.CommonLinks__tooltiptarget {
+    position: relative;
+    display: inline-block;
+}
+
+.CommonLinks__tooltiptarget .CommonLinks__tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 8px;
+    margin-left: 5px;
+    bottom: 86px;
+    left: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.CommonLinks__tooltiptarget:hover .CommonLinks__tooltiptext {
+    visibility: visible;
+}
+
+@media screen and (min-width: 991px) {
+    .CommonLinks__container {
+        width: max(20%, 376px);
+        margin-left: 15px;
+    }
 }
 
 @media screen and (prefers-color-scheme: dark) {

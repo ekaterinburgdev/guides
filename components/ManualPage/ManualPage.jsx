@@ -1,6 +1,7 @@
 import React from 'react'
 import map from 'lodash/map'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 import styles from './ManualPage.module.css'
 import tp from '../../utils/typograf/typograf.config'
@@ -28,7 +29,11 @@ function ManualPage({
     catalogIndex,
     children,
     pageImage,
+    colorMap,
 }) {
+    const { asPath } = useRouter()
+    const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
+
     const getLine = (columnList) => {
         if (!columnList.children.length) {
             return
@@ -116,6 +121,7 @@ function ManualPage({
                             tableOfContentArr={tableOfContentArr}
                             catalogIndex={catalogIndex}
                             pageUrl={pageUrl}
+                            color={color}
                         />
                     )}
                     {(Number.isInteger(nextPageIndex) || Number.isInteger(catalogIndex)) && (
@@ -125,6 +131,7 @@ function ManualPage({
                             tableOfContentArr={tableOfContentArr}
                             catalogIndex={catalogIndex}
                             pageUrl={pageUrl}
+                            color={color}
                         />
                     )}
                 </nav>

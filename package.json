@@ -33,10 +33,10 @@
 		"normalize.css": "8.0.1",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
-		"react-medium-image-zoom": "^5.1.2",
 		"react-responsive": "9.0.2",
 		"superagent": "7.1.5",
-		"typograf": "6.15.1"
+		"typograf": "6.15.1",
+		"yet-another-react-lightbox": "2.2.5"
 	},
 	"devDependencies": {
 		"@next/eslint-plugin-next": "12.3.4",

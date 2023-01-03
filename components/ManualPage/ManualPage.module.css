@@ -50,8 +50,13 @@
     margin-top: 1rem;
 }
 
-.Manual__image__container {
+.Manual__image__container > img {
     position: unset !important;
+    border-radius: 8px !important;
+}
+
+.Manual__image__container:hover {
+    cursor: pointer;
 }
 
 .Manual__image_description {
@@ -65,10 +70,7 @@
 .previewImageContainer {
     width: 100%;
     margin-top: 16px;
-}
-
-.previewImageContainer {
-    position: unset !important;
+    margin-left: 24px;
 }
 
 .previewImage {
@@ -92,21 +94,8 @@
         min-height: 100vh;
         padding-left: 128px;
         padding-right: 128px;
-        max-width: 850px;
-        padding-right: 120px;
-        margin-left: max(20%, 376px + 5%);
-    }
-}
-
-@media (min-width: 1440px) {
-    .templateColumn {
-        padding-left: 100px;
-    }
-
-    @media (min-width: 1440px) {
-        .templateColumn {
-            max-width: 1000px;
-        }
+        margin-left: calc(max(20%, 376px) + 15px);
+        margin-right: 0px;
     }
 }
 
