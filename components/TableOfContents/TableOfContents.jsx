@@ -170,12 +170,11 @@ function TableOfContents({
                         >
                             {tpForAsideMenu.execute(catalogTitle)}
                         </Link>
+                        <div
+                            style={{ borderBottomColor: colorScheme.bgLight }}
+                            className={styles.TableOfContents__divider}
+                        />
                     </div>
-                    <div
-                        style={{ borderBottomColor: colorScheme.bgLight }}
-                        id="menuDivider"
-                        className={styles.TableOfContents__divider}
-                    />
                     <ul className={styles.linkContainerList}>
                         {currentPageUrl &&
                             tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}
