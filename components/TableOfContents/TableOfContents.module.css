@@ -73,16 +73,13 @@
 
 .catalogTitle:hover,
 .catalogTitle:focus-visible {
-    filter: invert(1);
+    filter: contrast(2);
 }
 
 .TableOfContents__divider {
     border-bottom: 2px solid;
-    width: max(20%, 376px);
-    margin-left: -20px;
-    margin-right: -20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    width: 100vw;
+    margin: 20px -20px;
 }
 
 .TableOfContents__icon {

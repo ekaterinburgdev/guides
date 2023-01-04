@@ -25,7 +25,7 @@
 }
 
 .CommonLinks__text:hover {
-    filter: invert(1);
+    filter: contrast(2);
 }
 
 .CommonLinks__link {
