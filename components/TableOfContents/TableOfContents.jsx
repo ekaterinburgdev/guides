@@ -143,7 +143,7 @@ function TableOfContents({
             <Head>
                 <title>{catalogTitle}</title>
             </Head>
-            <HamburgerMenu state={isOpen} changeState={() => setIsOpen(!isOpen)} />
+            <HamburgerMenu state={isOpen} changeState={() => setIsOpen(!isOpen)} color={color} />
             <aside className={styles.TableOfContents__aside}>
                 <nav
                     className={navClassName}

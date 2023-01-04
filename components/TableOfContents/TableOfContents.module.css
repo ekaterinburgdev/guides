@@ -73,7 +73,9 @@
 
 .catalogTitle:hover,
 .catalogTitle:focus-visible {
-    filter: contrast(2);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
 }
 
 .TableOfContents__divider {
