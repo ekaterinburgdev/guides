@@ -1,0 +1,34 @@
+.Toolbar__container {
+    height: 76px;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 200px;
+    overflow: auto;
+    z-index: 200;
+}
+
+.Toolbar__input {
+    outline: 0;
+    border: 0;
+    padding-left: 28px;
+    width: 32vw;
+    background-color: transparent;
+}
+
+.Toolbar__button {
+    border: none; 
+    outline: none;
+    flex: 1;
+}
+
+.Toolbar__button:hover {
+    cursor: pointer;
+}
+
+.hidden {
+    visibility: hidden;
+}

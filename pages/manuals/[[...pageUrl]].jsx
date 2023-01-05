@@ -9,6 +9,7 @@ import { API_HOST } from '../../consts/endpoints'
 import styles from './page.module.css'
 import getManualToc from '../../utils/getManualToc'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
+import { Toolbar } from '../../components/Toolbar/Toolbar'
 
 function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap, manualToc }) {
     const router = useRouter()
@@ -140,6 +141,7 @@ function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap,
                 pageImage={pageImage}
                 colorMap={colorMap}
             />
+            <Toolbar colorMap={colorMap} />
         </>
     )
 }
