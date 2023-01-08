@@ -5,6 +5,7 @@ import Image from 'next/image'
 import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
+import rgbaToRgb from 'rgba-to-rgb'
 
 import styles from './TableOfContents.module.css'
 import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
@@ -58,6 +59,15 @@ function TableOfContents({
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const icon = iconMap.filter((item) => asPath.includes(item.url))[0]?.imageUrl
     const colorScheme = getManualColorScheme(color)
+    const isDark = useMediaQuery({
+        query: '(prefers-color-scheme: dark)',
+    })
+    const asideColor = rgbaToRgb(
+        isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+        `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
+            colorScheme.bgLight.color[1]
+        )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
+    )
 
     useEffect(() => {
         const arrayWithAnchorElements = Array.from(
@@ -148,10 +158,10 @@ function TableOfContents({
                 <nav
                     className={navClassName}
                     style={{
-                        backgroundColor: colorScheme.bgLight,
+                        backgroundColor: asideColor,
                     }}
                 >
-                    <div className={styles.titleContainer}>
+                    <div style={{ backgroundColor: asideColor }} className={styles.titleContainer}>
                         <Image
                             className={styles.TableOfContents__icon}
                             src={icon}

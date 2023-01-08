@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/router'
+import rgbaToRgb from 'rgba-to-rgb'
 import { useMediaQuery } from 'react-responsive'
-import classNames from 'classnames'
 
 import styles from './Toolbar.module.css'
 import getManualColorScheme from '../../utils/getManualColorScheme'
@@ -9,15 +9,18 @@ import { SidePage } from '../SidePage/SidePage'
 
 export const Toolbar = ({ colorMap }) => {
     const { asPath } = useRouter()
-    const isDesktop = useMediaQuery({
-        query: '(min-width: 991px)',
-    })
     const [isOpenSidePage, setIsOpenSidePage] = useState(false)
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const colorScheme = getManualColorScheme(color)
-    const containerClassNames = classNames(styles.Toolbar__container, {
-        // [styles.hidden]: !isDesktop,
+    const isDark = useMediaQuery({
+        query: '(prefers-color-scheme: dark)',
     })
+    const toolbarColor = rgbaToRgb(
+        isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+        `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
+            colorScheme.bgLight.color[1]
+        )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
+    )
 
     function useOutsideAlerter(ref) {
         useEffect(() => {
@@ -46,8 +49,8 @@ export const Toolbar = ({ colorMap }) => {
     return (
         <>
             <section
-                style={{ backgroundColor: colorScheme.bgLight }}
-                className={containerClassNames}
+                style={{ backgroundColor: toolbarColor }}
+                className={styles.Toolbar__container}
             >
                 {!isOpenSidePage ? (
                     <button

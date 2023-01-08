@@ -23,6 +23,7 @@
     gap: 8px;
     align-items: center;
     flex-wrap: wrap;
+    padding-top: 16px;
 }
 
 .hidden {
@@ -110,7 +111,7 @@
     z-index: 9;
     overflow: auto;
     scrollbar-width: none;
-    
+    padding-top: 8px;
 }
 
 .open {
@@ -140,6 +141,10 @@
     border-radius: 10px;
     transition: 0.2s;
     padding: 10px 5px 10px 0.5rem;
+}
+
+.innerTableOfContentsLink:hover {
+    text-decoration: underline;
 }
 
 .innerlinkContainerList {
@@ -212,7 +217,8 @@
         width: 20%;
         background-color: #1231;
         overflow: auto;
-        scrollbar-width: none;
+        scrollbar-width: none;  
+        padding-top: 0px;
     }
 }
 

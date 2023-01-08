@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import cn from 'classnames'
-import { useMediaQuery } from 'react-responsive'
 
 import styles from './menu.module.css'
 import getManualColorScheme from '../../utils/getManualColorScheme'
@@ -8,19 +7,6 @@ import getManualColorScheme from '../../utils/getManualColorScheme'
 function HamburgerMenu({ state, changeState, color }) {
     const burgerMenuClassNames = cn(styles['hamburger-menu'], { [styles.opened]: state })
     const colorScheme = getManualColorScheme(color)
-    const isDesktop = useMediaQuery({
-        query: '(min-width: 991px)',
-    })
-
-    useEffect(() => {
-        const manualText = document.querySelector('div[class*="ManualPage_templateColumn"]')
-
-        if (state && !isDesktop) {
-            manualText?.classList.add(styles.hidden)
-        } else {
-            manualText?.classList.remove(styles.hidden)
-        }
-    }, [state])
 
     return (
         <button

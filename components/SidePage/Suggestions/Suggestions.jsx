@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 
 import { API_HOST } from '../../../consts/endpoints'
+import styles from './Suggestions.module.css'
 
 const SuggestItem = (suggest) => {
     const hostname =
@@ -13,45 +14,51 @@ const SuggestItem = (suggest) => {
     const rightText = suggest?.suggest?.text?.right
 
     return (
-        <a href={link}>
-            {leftText}
-            <span style={{ fontWeight: 500 }}>{target}</span>
-            {rightText}
-        </a>
+        <li className={styles.SuggestItem__listItem}>
+            <a className={styles.SuggestItem__link} href={link}>
+                {leftText}
+                <span className={styles.SuggestItem__target}>{target}</span>
+                {rightText}
+            </a>
+        </li>
     )
 }
 
-const SectionSuggestion = (section, colorHex) => {
-    const sectionName = section?.section?.sectionName
-    const suggestions = section?.section?.suggestions
-
-    console.log(colorHex)
+const SectionSuggestion = ({ section, colorHex }) => {
+    const sectionName = section?.sectionName
+    const suggestions = section?.suggestions
 
     return (
         <>
-            <p style={{ color: colorHex }}>{sectionName}</p>
-            <div>
+            <p style={{ color: colorHex, fontWeight: 500 }}>{sectionName}</p>
+            <ul className={styles.SectionSuggestion__list}>
                 {suggestions.map((suggest) => (
                     <SuggestItem suggest={suggest} />
                 ))}
-            </div>
+            </ul>
         </>
     )
 }
 
-const GuideSuggestion = (guideSuggestion) => {
-    const title = guideSuggestion?.guideSuggestion?.properties?.Name?.title[0]?.plain_text
-    const colorHex = guideSuggestion?.guideSuggestion?.properties?.color?.rich_text[0]?.plain_text
-    const icon = guideSuggestion?.guideSuggestion?.properties?.previewImage?.at(0)
-    const sections = guideSuggestion?.guideSuggestion?.sections
-
-    console.log(title)
+const GuideSuggestion = ({ guideSuggestion }) => {
+    const title = guideSuggestion?.properties?.Name?.title[0]?.plain_text
+    const colorHex = guideSuggestion?.properties?.color?.rich_text[0]?.plain_text
+    const icon = guideSuggestion?.properties?.previewImage?.at(0)
+    const sections = guideSuggestion?.sections
 
     return (
-        <article>
-            <div>
+        <article className={styles.GuideSuggestion}>
+            <div className={styles.GuideSuggestion__title}>
                 <Image width={28} height={28} src={`${API_HOST}/static/${icon}`} />
-                <h3 style={{ color: colorHex }}>{title}</h3>
+                <h3
+                    style={{
+                        color: colorHex,
+                        fontSize: '24px',
+                        marginBottom: '0px',
+                    }}
+                >
+                    {title}
+                </h3>
             </div>
             {sections.map((section) => (
                 <SectionSuggestion colorHex={colorHex} section={section} />
@@ -60,11 +67,11 @@ const GuideSuggestion = (guideSuggestion) => {
     )
 }
 
-export const Suggestions = (data) => {
-    const search = data?.data?.guideSuggestions
+export const Suggestions = ({ data }) => {
+    const search = data?.guideSuggestions
 
     return (
-        <div>
+        <div className={styles.Suggestions__container}>
             {search.map((guideSuggest) => (
                 <GuideSuggestion guideSuggestion={guideSuggest} />
             ))}

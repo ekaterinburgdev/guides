@@ -1,0 +1,46 @@
+.Suggestions__container {
+    margin-left: 48px;
+    margin-top: 40px;
+    margin-right: 48px;
+    height: calc(100vh - 160px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+.GuideSuggestion__title {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: baseline;
+}
+
+.GuideSuggestion {
+    border-bottom: 1px solid black;
+}
+
+.SectionSuggestion__list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.SuggestItem__target {
+    font-weight: 700;
+    color: black;
+}
+
+.SuggestItem__link {
+    text-decoration: none;
+    color: #14283C;
+}
+
+.SuggestItem__listItem:hover > .SuggestItem__link {
+    text-decoration: underline;
+    color: #14283C;
+}
+
+.SuggestItem__listItem {
+    margin-bottom: 16px;
+}

@@ -15,7 +15,7 @@
     outline: 0;
     border: 0;
     padding-left: 28px;
-    width: 32vw;
+    width: 48vw;
     background-color: transparent;
 }
 
@@ -31,4 +31,10 @@
 
 .hidden {
     visibility: hidden;
+}
+
+@media screen and (min-width: 991px) {
+    .Toolbar__input {
+        width: 32vw;
+    }
 }
