@@ -7,6 +7,16 @@ import styles from './Toolbar.module.css'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { SidePage } from '../SidePage/SidePage'
 
+const debounce = (func, timeout = 300) => {
+    let timer
+    return (...args) => {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+            func.apply(this, args)
+        }, timeout)
+    }
+}
+
 export const Toolbar = ({ colorMap }) => {
     const { asPath } = useRouter()
     const [isOpenSidePage, setIsOpenSidePage] = useState(false)
@@ -21,6 +31,8 @@ export const Toolbar = ({ colorMap }) => {
             colorScheme.bgLight.color[1]
         )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
     )
+
+    const [guideSuggestions, setGuideSuggestions] = useState([])
 
     function useOutsideAlerter(ref) {
         useEffect(() => {
@@ -87,6 +99,19 @@ export const Toolbar = ({ colorMap }) => {
                         type="text"
                         ref={inputRef}
                         className={styles.Toolbar__input}
+                        onChange={debounce(async (e) => {
+                            const textInputValue = e.target.value
+                            if (textInputValue.length > 2) {
+                                const response = await fetch(
+                                    `https://guides-api-test.ekaterinburg.design/api/content/search?pattern=${e.target.value}`
+                                )
+                                const responseJson = await response.json()
+                                const { guideSuggestions } = responseJson
+                                setGuideSuggestions(guideSuggestions)
+                            } else {
+                                setGuideSuggestions([])
+                            }
+                        })}
                     />
                 )}
                 <button
@@ -107,7 +132,7 @@ export const Toolbar = ({ colorMap }) => {
                 </button>
             </section>
             <div ref={rootEl}>
-                <SidePage close={!isOpenSidePage} />
+                <SidePage guideSuggestions={guideSuggestions} close={!isOpenSidePage} />
             </div>
         </>
     )

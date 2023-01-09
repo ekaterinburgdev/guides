@@ -6,6 +6,7 @@ export default function Document() {
     const ogDescription =
         'Делаем онлайн-платформу для официальных городских руководств и стандартов'
 
+    // TODO: content (adaptive theme)
     return (
         <Html lang="ru">
             <Head>

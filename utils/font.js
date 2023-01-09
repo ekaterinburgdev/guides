@@ -12,7 +12,7 @@ export const isetSansFont = localFont({
         },
         {
             path: '../styles/fonts/IsetSans-SemiBold.woff2',
-            weight: '700',
+            weight: '600',
         },
         {
             path: '../styles/fonts/IsetSans-Regular.woff2',

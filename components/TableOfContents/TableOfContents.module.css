@@ -187,6 +187,8 @@
     background-color: #ffffff;
     margin-bottom: 15px;
     text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
 }
 
 .active::hover {

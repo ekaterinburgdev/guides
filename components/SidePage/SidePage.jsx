@@ -5,13 +5,13 @@ import styles from './SidePage.module.css'
 import { Suggestions } from './Suggestions/Suggestions'
 import { mockDataForSearch } from '../../mocks/search.mock'
 
-export const SidePage = ({ close }) => {
+export const SidePage = ({ close, guideSuggestions }) => {
     const sidePageClassNames = classNames(styles.SidePage__container, {
         [styles.SidePage__close]: close,
     })
     return (
         <section id="SidePage" className={sidePageClassNames}>
-            <Suggestions data={mockDataForSearch} />
+            <Suggestions guideSuggestions={guideSuggestions} data={mockDataForSearch} />
         </section>
     )
 }

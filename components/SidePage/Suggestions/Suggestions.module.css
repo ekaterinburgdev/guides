@@ -4,7 +4,6 @@
     margin-right: 48px;
     height: calc(100vh - 160px);
     display: flex;
-    justify-content: center;
     align-items: flex-start;
     flex-direction: column;
     overflow: scroll;
