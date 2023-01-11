@@ -5,7 +5,9 @@ import { API_HOST } from '../../../consts/endpoints'
 import styles from './Suggestions.module.css'
 
 const SuggestItem = (suggest) => {
-    const link = `https://guides.ekaterinburg.io/${suggest?.suggest?.link}`
+    const origin =
+        typeof window !== 'undefined' && window.location.origin ? window.location.origin : ''
+    const link = `${origin}/${suggest?.suggest?.link}`
     const leftText = suggest?.suggest?.text?.left
     const target = suggest?.suggest?.text?.target
     const rightText = suggest?.suggest?.text?.right
@@ -13,9 +15,9 @@ const SuggestItem = (suggest) => {
     return (
         <li className={styles.SuggestItem__listItem}>
             <a className={styles.SuggestItem__link} href={link}>
-                {leftText}
+                <span className={styles.SuggestItem__suggestionText}>{leftText}</span>
                 <span className={styles.SuggestItem__target}>{target}</span>
-                {rightText}
+                <span className={styles.SuggestItem__suggestionText}>{rightText}</span>
             </a>
         </li>
     )
@@ -47,7 +49,12 @@ const GuideSuggestion = ({ guideSuggestion }) => {
     return (
         <article className={styles.GuideSuggestion}>
             <div className={styles.GuideSuggestion__title}>
-                <Image width={28} height={28} src={`${API_HOST}/static/${icon}`} />
+                <Image
+                    className={styles.GuideSuggestion__icon}
+                    width={28}
+                    height={28}
+                    src={`${API_HOST}/static/${icon}`}
+                />
                 <h3
                     style={{
                         color: colorHex,

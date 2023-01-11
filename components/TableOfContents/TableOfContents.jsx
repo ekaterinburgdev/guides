@@ -161,30 +161,28 @@ function TableOfContents({
                         backgroundColor: asideColor,
                     }}
                 >
-                    <div style={{ backgroundColor: asideColor }} className={styles.titleContainer}>
+                    <Link
+                        href={{
+                            pathname: '/[[...pageUrl]]',
+                            query: { pageUrl: [currentPageUrl[0]] },
+                        }}
+                        style={{ backgroundColor: asideColor }}
+                        className={styles.titleContainer}
+                    >
                         <Image
                             className={styles.TableOfContents__icon}
                             src={icon}
                             width={50}
                             height={50}
                         />
-                        <Link
-                            href={{
-                                pathname: '/[[...pageUrl]]',
-                                query: { pageUrl: [currentPageUrl[0]] },
-                            }}
-                            className={styles.catalogTitle}
-                            style={{
-                                color: colorScheme.title,
-                            }}
-                        >
+                        <span style={{ color: colorScheme.title }} className={styles.catalogTitle}>
                             {tpForAsideMenu.execute(catalogTitle)}
-                        </Link>
+                        </span>
                         <div
                             style={{ borderBottomColor: colorScheme.bgLight }}
                             className={styles.TableOfContents__divider}
                         />
-                    </div>
+                    </Link>
                     <ul className={styles.linkContainerList}>
                         {currentPageUrl &&
                             tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}

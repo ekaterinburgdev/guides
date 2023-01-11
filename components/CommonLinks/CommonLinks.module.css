@@ -17,7 +17,7 @@
 }
 
 .CommonLinks__icon {
-    margin: 16px 0 16px 16px;
+    margin: 16px 0 12px 16px;
 }
 
 .CommonLinks__text {
@@ -46,30 +46,6 @@
 .CommonLinks__link:focus-visible {
     text-decoration: none;
     transition: .15s ease-in;
-}
-
-.CommonLinks__tooltiptarget {
-    position: relative;
-    display: inline-block;
-}
-
-.CommonLinks__tooltiptarget .CommonLinks__tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 15px 0;
-    border-radius: 8px;
-    margin-left: 5px;
-    bottom: 86px;
-    left: 0;
-    position: absolute;
-    z-index: 1;
-}
-
-.CommonLinks__tooltiptarget:hover .CommonLinks__tooltiptext {
-    visibility: visible;
 }
 
 @media screen and (min-width: 991px) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
 import { useMediaQuery } from 'react-responsive'
@@ -33,6 +33,23 @@ export const Toolbar = ({ colorMap }) => {
     )
 
     const [guideSuggestions, setGuideSuggestions] = useState([])
+
+    const handleOnChange = useCallback(
+        debounce(async (e) => {
+            const textInputValue = e.target.value
+            if (textInputValue.length > 2) {
+                const response = await fetch(
+                    `https://guides-api-test.ekaterinburg.design/api/content/search?pattern=${e.target.value}`
+                )
+                const responseJson = await response.json()
+                const { guideSuggestions } = responseJson
+                setGuideSuggestions(guideSuggestions)
+            } else {
+                setGuideSuggestions([])
+            }
+        }),
+        [guideSuggestions]
+    )
 
     function useOutsideAlerter(ref) {
         useEffect(() => {
@@ -94,25 +111,15 @@ export const Toolbar = ({ colorMap }) => {
                         </svg>
                     </button>
                 ) : (
-                    <input
-                        style={{ color: colorScheme.title }}
-                        type="text"
-                        ref={inputRef}
-                        className={styles.Toolbar__input}
-                        onChange={debounce(async (e) => {
-                            const textInputValue = e.target.value
-                            if (textInputValue.length > 2) {
-                                const response = await fetch(
-                                    `https://guides-api-test.ekaterinburg.design/api/content/search?pattern=${e.target.value}`
-                                )
-                                const responseJson = await response.json()
-                                const { guideSuggestions } = responseJson
-                                setGuideSuggestions(guideSuggestions)
-                            } else {
-                                setGuideSuggestions([])
-                            }
-                        })}
-                    />
+                    <div className={styles.customInput}>
+                        <input
+                            style={{ color: colorScheme.title }}
+                            type="text"
+                            ref={inputRef}
+                            className={styles.Toolbar__input}
+                            onChange={handleOnChange}
+                        />
+                    </div>
                 )}
                 <button
                     style={{ backgroundColor: colorScheme.bgLight }}

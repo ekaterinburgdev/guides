@@ -6,7 +6,7 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    overflow: scroll;
+    overflow: visible;
 }
 
 .GuideSuggestion__title {
@@ -14,10 +14,15 @@
     flex-direction: row;
     gap: 8px;
     align-items: baseline;
+    margin-left: -36px;
+}
+
+.GuideSuggestion__icon {
+    transform: translateY(5px);
 }
 
 .GuideSuggestion {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #9BAAC3;
 }
 
 .SectionSuggestion__list {
@@ -26,8 +31,8 @@
 }
 
 .SuggestItem__target {
-    font-weight: 700;
-    color: black;
+    font-weight: 600;
+    color: #14283C;
 }
 
 .SuggestItem__link {
@@ -42,4 +47,9 @@
 
 .SuggestItem__listItem {
     margin-bottom: 16px;
+}
+
+.SuggestItem__suggestionText {
+    color: #14283C;
+    opacity: 0.5;
 }

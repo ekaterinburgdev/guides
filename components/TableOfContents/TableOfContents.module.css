@@ -14,6 +14,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
+    margin-top: 16px;
 }
 
 .titleContainer {
@@ -21,9 +22,10 @@
     top: 0;
     display: inline-flex;
     gap: 8px;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     padding-top: 16px;
+    text-decoration: none;
 }
 
 .hidden {
@@ -34,9 +36,10 @@
     content: '';
     width: 0;
     position: absolute;
-    left: 20px;
-    height: 20px;
+    left: 0;
+    height: 70%;
     border: 1px solid;
+    z-index: -2;
 }
 
 .linkContainerList {
@@ -83,11 +86,13 @@
     border-bottom: 2px solid;
     width: 100vw;
     margin: 20px -20px;
+    margin-bottom: 0px;
 }
 
 .TableOfContents__icon {
     margin-right: 8px;
     margin-left: 0px;
+    margin-top: 2px;
 }
 
 .TableOfContents__icon > img {
@@ -127,7 +132,6 @@
     display: flex;
     flex-direction: column;
     box-shadow: none;
-    gap: 1rem;
     flex-grow: 1;
 }
 
@@ -141,6 +145,8 @@
     border-radius: 10px;
     transition: 0.2s;
     padding: 10px 5px 10px 0.5rem;
+    position: relative;
+    z-index: -2;
 }
 
 .innerTableOfContentsLink:hover {

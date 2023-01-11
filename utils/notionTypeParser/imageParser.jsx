@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 import classNames from 'classnames'
-import Lightbox from 'yet-another-react-lightbox'
-import Zoom from 'yet-another-react-lightbox/plugins/zoom'
+// import Lightbox from 'yet-another-react-lightbox'
+// import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 
 import { API_HOST } from '../../consts/endpoints'
 import styles from '../../components/ManualPage/ManualPage.module.css'
@@ -12,16 +12,16 @@ function GuideImage({ notionType }) {
     const cn = classNames(styles.Manual__image, {
         [styles.Manual__image_svg]: String(notionType.content.image_name).includes('svg'),
     })
-    const [openLightbox, setOpenLigtbox] = React.useState(false)
-    const maxZoomPixelRatio = 1
-    const zoomInMultiplier = 2
-    const doubleTapDelay = 300
-    const doubleClickDelay = 300
-    const doubleClickMaxStops = 2
-    const keyboardMoveDistance = 50
-    const wheelZoomDistanceFactor = 100
-    const pinchZoomDistanceFactor = 100
-    const scrollToZoom = false
+    // const [openLightbox, setOpenLigtbox] = React.useState(false)
+    // const maxZoomPixelRatio = 1
+    // const zoomInMultiplier = 2
+    // const doubleTapDelay = 300
+    // const doubleClickDelay = 300
+    // const doubleClickMaxStops = 2
+    // const keyboardMoveDistance = 50
+    // const wheelZoomDistanceFactor = 100
+    // const pinchZoomDistanceFactor = 100
+    // const scrollToZoom = false
 
     const image = (
         <>
@@ -29,9 +29,8 @@ function GuideImage({ notionType }) {
                 className={cn}
                 src={`${API_HOST}/static/${notionType.content.image_name}`}
                 fill
-                onClick={() => setOpenLigtbox(true)}
             />
-            <Lightbox
+            {/* <Lightbox
                 open={openLightbox}
                 close={() => setOpenLigtbox(false)}
                 slides={[{ src: `${API_HOST}/static/${notionType.content.image_name}` }]}
@@ -47,7 +46,7 @@ function GuideImage({ notionType }) {
                     pinchZoomDistanceFactor,
                     scrollToZoom,
                 }}
-            />
+            /> */}
         </>
     )
 
@@ -61,7 +60,7 @@ function GuideImage({ notionType }) {
             <span className={styles.Manual__image_description}>
                 {notionType.content.image_data.caption[0].plain_text}
             </span>
-            <Lightbox
+            {/* <Lightbox
                 open={openLightbox}
                 close={() => setOpenLigtbox(false)}
                 slides={[{ src: `${API_HOST}/static/${notionType.content.image_name}` }]}
@@ -83,7 +82,7 @@ function GuideImage({ notionType }) {
                     pinchZoomDistanceFactor,
                     scrollToZoom,
                 }}
-            />
+            /> */}
         </div>
     )
 }

@@ -26,7 +26,6 @@ export function CommonLinks({ color, bgColor }) {
                     height={60}
                     className={styles.CommonLinks__icon}
                 />
-                <span className={styles.CommonLinks__tooltiptext}>Код Екатеринбурга</span>
             </Link>
             <Link className={styles.CommonLinks__tooltiptarget} href="/">
                 <Image
@@ -35,7 +34,6 @@ export function CommonLinks({ color, bgColor }) {
                     height={60}
                     className={styles.CommonLinks__icon}
                 />
-                <span className={styles.CommonLinks__tooltiptext}>Руководства Екатеринбурга</span>
             </Link>
             <Link className={styles.CommonLinks__link} href="/">
                 <p className={styles.CommonLinks__text} style={{ color }}>
