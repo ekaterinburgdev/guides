@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import { isetSansFont } from '../utils/font'
 
+import { isetSansFont } from '../utils/font'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {

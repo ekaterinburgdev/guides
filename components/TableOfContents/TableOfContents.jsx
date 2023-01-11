@@ -103,27 +103,31 @@ function TableOfContents({
 
     // TODO: Сделать для большой вложенности...
     const tableOfContentsLink = ({ url, title }) => (
-        <li className={styles.link}>
-            <Link
-                href={{
-                    pathname: '/[[...pageUrl]]',
-                    query: { pageUrl: [currentPageUrl[0], url] },
-                    as: `${currentPageUrl.join('/')}/${url}`,
-                }}
-                style={{
-                    color: colorScheme.title,
-                    backgroundColor:
-                        currentPageUrl[1] && currentPageUrl[1] === url ? colorScheme.bgLight : '',
-                }}
-                className={cn(styles.tableOfContentsLink, {
-                    [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
-                    [styles.separator]:
-                        currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length,
-                })}
-                onClick={() => setIsOpen(!isOpen)}
-            >
-                {tpForAsideMenu.execute(title)}
-            </Link>
+        <>
+            <li className={styles.link}>
+                <Link
+                    href={{
+                        pathname: '/[[...pageUrl]]',
+                        query: { pageUrl: [currentPageUrl[0], url] },
+                        as: `${currentPageUrl.join('/')}/${url}`,
+                    }}
+                    style={{
+                        color: colorScheme.title,
+                        backgroundColor:
+                            currentPageUrl[1] && currentPageUrl[1] === url
+                                ? colorScheme.bgLight
+                                : '',
+                    }}
+                    className={cn(styles.tableOfContentsLink, {
+                        [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
+                        [styles.separator]:
+                            currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length,
+                    })}
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    {tpForAsideMenu.execute(title)}
+                </Link>
+            </li>
             {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
                 <ul
                     style={{ backgroundColor: colorScheme.bgLight }}
@@ -141,7 +145,7 @@ function TableOfContents({
                     ))}
                 </ul>
             )}
-        </li>
+        </>
     )
 
     const navClassName = cn(styles.tableOfContents, {
@@ -183,10 +187,10 @@ function TableOfContents({
                             className={styles.TableOfContents__divider}
                         />
                     </Link>
-                    <ul className={styles.linkContainerList}>
+                    <div className={styles.linkContainerList}>
                         {currentPageUrl &&
                             tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}
-                    </ul>
+                    </div>
                     <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />
                 </nav>
             </aside>
