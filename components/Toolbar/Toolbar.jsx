@@ -119,6 +119,26 @@ export const Toolbar = ({ colorMap }) => {
                             className={styles.Toolbar__input}
                             onChange={handleOnChange}
                         />
+                        <svg
+                            width="70"
+                            height="70"
+                            viewBox="0 0 70 70"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <circle
+                                cx="31.501"
+                                cy="30.4995"
+                                r="14.5"
+                                stroke={colorScheme.title}
+                                stroke-width="6"
+                            />
+                            <path
+                                d="M40.001 39.4995L54.501 53.9995"
+                                stroke={colorScheme.title}
+                                stroke-width="6"
+                            />
+                        </svg>
                     </div>
                 )}
                 <button

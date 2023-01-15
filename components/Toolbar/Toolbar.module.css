@@ -19,21 +19,10 @@
     background-color: transparent;
 }
 
-.customInput::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 16px;
-    margin: auto 0;
-    width: 50px;
-    height: 50px;
-    background: url('../../public/Search.svg') no-repeat;
-    background-size: cover;
-}
-
 .customInput {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .Toolbar__button {
