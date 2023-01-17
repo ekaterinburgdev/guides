@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext, useMemo } from 'react'
 import map from 'lodash/map'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useMediaQuery } from 'react-responsive'
+import rgbaToRgb from 'rgba-to-rgb'
 
 import styles from './ManualPage.module.css'
 import tp from '../../utils/typograf/typograf.config'
@@ -18,6 +20,8 @@ import VideoPlayer from '../NotionTypes/VideoPlayer/VideoPlayer'
 import Code from '../NotionTypes/Text/Code/Code'
 import { API_HOST } from '../../consts/endpoints'
 import GuideImage from '../../utils/notionTypeParser/imageParser'
+import { ColorContext } from '../../pages/manuals/[[...pageUrl]]'
+import getManualColorScheme from '../../utils/getManualColorScheme'
 
 function ManualPage({
     pageList,
@@ -29,10 +33,25 @@ function ManualPage({
     catalogIndex,
     children,
     pageImage,
-    colorMap,
 }) {
     const { asPath } = useRouter()
-    const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
+    const colorContext = useContext(ColorContext)
+    const { colorMap } = colorContext
+    const color = useMemo(() => colorMap.filter((item) => asPath.includes(item.url))[0]?.color)
+    const colorScheme = getManualColorScheme(color)
+    const isDark = useMediaQuery({
+        query: '(prefers-color-scheme: dark)',
+    })
+    const arrowColor = useMemo(
+        () =>
+            rgbaToRgb(
+                isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+                `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
+                    colorScheme.bgLight.color[1]
+                )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
+            ),
+        [isDark]
+    )
 
     const getLine = (columnList) => {
         if (!columnList.children.length) {
@@ -116,6 +135,7 @@ function ManualPage({
                 <nav className={styles.footNav}>
                     {(Number.isInteger(prevPageIndex) || Number.isInteger(catalogIndex)) && (
                         <PrevPage
+                            backgroundColor={arrowColor}
                             children={children}
                             prevPageIndex={prevPageIndex}
                             tableOfContentArr={tableOfContentArr}
@@ -126,6 +146,7 @@ function ManualPage({
                     )}
                     {(Number.isInteger(nextPageIndex) || Number.isInteger(catalogIndex)) && (
                         <NextPage
+                            backgroundColor={arrowColor}
                             nextPageIndex={nextPageIndex}
                             children={children}
                             tableOfContentArr={tableOfContentArr}

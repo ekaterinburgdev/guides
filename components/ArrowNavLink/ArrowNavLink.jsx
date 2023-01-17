@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 
 import styles from './arrow.module.css'
-import getManualColorScheme from '../../utils/getManualColorScheme'
 
 const getCatalogOptions = (catalog) => ({
     url: catalog.properties.pageUrl.url,
@@ -17,13 +16,13 @@ export function PrevPage({
     catalogIndex,
     children,
     color,
+    backgroundColor,
 }) {
     let href = {
         pathname: '/[[...pageUrl]]',
         query: { pageUrl: [] },
     }
     let title = ''
-    const colorScheme = getManualColorScheme(color)
 
     if (prevPageIndex >= 0) {
         href.query.pageUrl = [pageUrl[0], tableOfContentArr[prevPageIndex].url]
@@ -45,7 +44,7 @@ export function PrevPage({
 
     return (
         <Link
-            style={{ background: colorScheme.bgLight, color: colorScheme.title }}
+            style={{ color, backgroundColor }}
             className={styles.arrowNavLink}
             href={href}
             passHref
@@ -62,13 +61,13 @@ export function NextPage({
     catalogIndex,
     children,
     color,
+    backgroundColor,
 }) {
     let href = {
         pathname: '/[[...pageUrl]]',
         query: { pageUrl: [] },
     }
     let title = ''
-    const colorScheme = getManualColorScheme(color)
 
     if (nextPageIndex < tableOfContentArr.length) {
         href.query.pageUrl = [pageUrl[0], tableOfContentArr[nextPageIndex].url]
@@ -89,11 +88,7 @@ export function NextPage({
     }
 
     return (
-        <Link
-            style={{ background: colorScheme.bgLight, color: colorScheme.title }}
-            className={styles.arrowNavLink}
-            href={href}
-        >
+        <Link style={{ color, backgroundColor }} className={styles.arrowNavLink} href={href}>
             {title}&nbsp;→
         </Link>
     )

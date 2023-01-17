@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -6,6 +6,7 @@ import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
+import { ColorContext } from '../../pages/manuals/[[...pageUrl]]'
 
 import styles from './TableOfContents.module.css'
 import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
@@ -43,17 +44,12 @@ function InnerLink({ anchor, baseState, setState, color }) {
     )
 }
 
-function TableOfContents({
-    tableOfContentArr,
-    currentPageUrl = [],
-    anchorLinks,
-    catalogTitle,
-    colorMap,
-    iconMap,
-}) {
+function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle }) {
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
+    const colorContext = useContext(ColorContext)
+    const { colorMap, iconMap } = colorContext
     const [isOpen, setIsOpen] = useState(isDesktop)
     const { asPath } = useRouter()
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color

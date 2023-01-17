@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react'
+import React, { useEffect, useState, useRef, useCallback, useContext } from 'react'
 import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
 import { useMediaQuery } from 'react-responsive'
+import { ColorContext } from '../../pages/manuals/[[...pageUrl]]'
 
 import styles from './Toolbar.module.css'
 import getManualColorScheme from '../../utils/getManualColorScheme'
@@ -17,9 +18,11 @@ const debounce = (func, timeout = 300) => {
     }
 }
 
-export const Toolbar = ({ colorMap }) => {
+export const Toolbar = () => {
     const { asPath } = useRouter()
     const [isOpenSidePage, setIsOpenSidePage] = useState(false)
+    const colorContext = useContext(ColorContext)
+    const { colorMap } = colorContext
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const colorScheme = getManualColorScheme(color)
     const isDark = useMediaQuery({
@@ -51,10 +54,14 @@ export const Toolbar = ({ colorMap }) => {
         [guideSuggestions]
     )
 
-    function useOutsideAlerter(ref) {
+    const useOutsideAlerter = (ref, ignoreRef) => {
         useEffect(() => {
             function handleClickOutside(event) {
-                if (ref.current && !ref.current.contains(event.target)) {
+                if (
+                    ref.current &&
+                    !ref.current.contains(event.target) &&
+                    !ignoreRef?.current?.contains(event.target)
+                ) {
                     setIsOpenSidePage(false)
                 }
             }
@@ -66,18 +73,19 @@ export const Toolbar = ({ colorMap }) => {
     }
 
     const rootEl = useRef(null)
-    const inputRef = useRef(null)
-    useOutsideAlerter(rootEl)
+    const toolbarRef = useRef(null)
+    useOutsideAlerter(rootEl, toolbarRef)
 
     useEffect(() => {
         if (isOpenSidePage) {
-            inputRef.current.focus()
+            toolbarRef.current.focus()
         }
     }, [isOpenSidePage])
 
     return (
         <>
             <section
+                ref={toolbarRef}
                 style={{ backgroundColor: toolbarColor }}
                 className={styles.Toolbar__container}
             >
@@ -101,12 +109,12 @@ export const Toolbar = ({ colorMap }) => {
                                 cy="30.4995"
                                 r="14.5"
                                 stroke={colorScheme.title}
-                                stroke-width="6"
+                                strokeWidth="6"
                             />
                             <path
                                 d="M40.001 39.4995L54.501 53.9995"
                                 stroke={colorScheme.title}
-                                stroke-width="6"
+                                strokeWidth="6"
                             />
                         </svg>
                     </button>
@@ -115,7 +123,6 @@ export const Toolbar = ({ colorMap }) => {
                         <input
                             style={{ color: colorScheme.title }}
                             type="text"
-                            ref={inputRef}
                             className={styles.Toolbar__input}
                             onChange={handleOnChange}
                         />
@@ -131,12 +138,12 @@ export const Toolbar = ({ colorMap }) => {
                                 cy="30.4995"
                                 r="14.5"
                                 stroke={colorScheme.title}
-                                stroke-width="6"
+                                strokeWidth="6"
                             />
                             <path
                                 d="M40.001 39.4995L54.501 53.9995"
                                 stroke={colorScheme.title}
-                                stroke-width="6"
+                                strokeWidth="6"
                             />
                         </svg>
                     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, createContext } from 'react'
 import { useRouter } from 'next/router'
 
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
@@ -11,7 +11,9 @@ import getManualToc from '../../utils/getManualToc'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 import { Toolbar } from '../../components/Toolbar/Toolbar'
 
-function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap, manualToc }) {
+export const ColorContext = createContext(null)
+
+function GetPage({ tree, page, catalogPage, pageImage, colorMap, iconMap, manualToc }) {
     const router = useRouter()
     const { pageUrl } = router.query
 
@@ -120,28 +122,31 @@ function GetPage({ tree, page, catalogPage, pageImage, color, colorMap, iconMap,
 
     return (
         <>
-            <TableOfContents
-                tableOfContentArr={manualToc}
-                currentPageUrl={pageUrl}
-                anchorLinks={anchorLinks}
-                catalogTitle={catalogTitle}
-                color={color}
-                colorMap={colorMap}
-                iconMap={iconMap}
-            />
-            <ManualPage
-                pageList={pageList}
-                pageName={pageName}
-                children={children}
-                tableOfContentArr={manualToc}
-                prevPageIndex={prevPageIndex}
-                nextPageIndex={nextPageIndex}
-                catalogIndex={catalogIndex}
-                pageUrl={pageUrl}
-                pageImage={pageImage}
-                colorMap={colorMap}
-            />
-            <Toolbar colorMap={colorMap} />
+            <ColorContext.Provider
+                value={{
+                    colorMap,
+                    iconMap,
+                }}
+            >
+                <TableOfContents
+                    tableOfContentArr={manualToc}
+                    currentPageUrl={pageUrl}
+                    anchorLinks={anchorLinks}
+                    catalogTitle={catalogTitle}
+                />
+                <ManualPage
+                    pageList={pageList}
+                    pageName={pageName}
+                    children={children}
+                    tableOfContentArr={manualToc}
+                    prevPageIndex={prevPageIndex}
+                    nextPageIndex={nextPageIndex}
+                    catalogIndex={catalogIndex}
+                    pageUrl={pageUrl}
+                    pageImage={pageImage}
+                />
+                <Toolbar />
+            </ColorContext.Provider>
         </>
     )
 }
