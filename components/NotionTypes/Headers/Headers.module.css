@@ -1,15 +1,15 @@
 .heading1 {
     font-size: clamp(56px, 10vw, 28px);
     font-weight: 500;
-    margin-top: .5em;
-    margin-bottom: .5em;
+    margin-top: 2vw;
+    margin-bottom: .5vw;
 }
 
 .heading2 {
     font-size: clamp(40px, 8vw, 24px);
     font-weight: 500;
-    margin-top: .5em;
-    margin-bottom: .5em;
+    margin-top: 1vw;
+    margin-bottom: .5vw;
 }
 
 .heading3 {
@@ -17,4 +17,12 @@
     font-weight: 500;
     margin-top: 1em;
     margin-bottom: .5em;
+}
+
+.heading1 + .heading2 {
+    margin-top: 1vw
+}
+
+br + .heading1 {
+    margin-top: 4vw
 }
