@@ -5,7 +5,7 @@
     margin-top: 1vw;
     margin-bottom: .5vw;
     margin-right: 2em;
-		opacity: .95
+	opacity: .95
 }
 
 .p + .p {
@@ -14,8 +14,4 @@
 
 .Template__item .p {
     line-height: 1.3
-}
-
-.col .p {
-    line-height: 1.3;
 }

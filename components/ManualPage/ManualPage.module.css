@@ -2,6 +2,10 @@
     margin-top: 0;
 }
 
+.Template__column p {
+    line-height: 1.3;
+}
+
 .templateColumn {
     padding-left: 0px;
     padding-top: 0px;
