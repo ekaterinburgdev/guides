@@ -20,7 +20,7 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   react-responsive: 9.0.2
-  react-wrap-balancer: ^0.3.0
+  react-wrap-balancer: 0.3.0
   rgba-to-rgb: 1.0.2
   superagent: 7.1.5
   typograf: 6.15.1
