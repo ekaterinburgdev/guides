@@ -175,14 +175,8 @@ export async function getServerSideProps({ params: { pageUrl } }) {
     }
 
     const page = await getPageByUrl(pageUrl.join('/'))
-
-    let pageList
-    let pageName
-
-    if (page) {
-        pageList = page.children
-        pageName = page.content.title
-    }
+    const pageList = page.children ?? []
+    const pageName = page.content.title ?? 'pageName'
 
     const colorMap = tree.children.map((children) => {
         return {
