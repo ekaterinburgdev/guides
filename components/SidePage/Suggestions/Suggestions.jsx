@@ -44,7 +44,9 @@ const GuideSuggestion = ({ guideSuggestion }) => {
     const title = guideSuggestion?.properties.properties?.Name?.title[0]?.plain_text
     const colorHex = guideSuggestion?.properties.properties?.color?.rich_text[0]?.plain_text
     const icon = guideSuggestion?.properties.properties?.previewImage?.at(0)
-    const sections = guideSuggestion?.sectionSuggestions
+    const sections = guideSuggestion?.sectionSuggestions.sort((a, b) =>
+        a?.sectionName?.localeCompare(b?.sectionName, 'ru')
+    )
 
     return (
         <article className={styles.GuideSuggestion}>
