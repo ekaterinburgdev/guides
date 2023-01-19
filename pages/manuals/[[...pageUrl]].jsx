@@ -13,16 +13,7 @@ import { Toolbar } from '../../components/Toolbar/Toolbar'
 
 export const ColorContext = createContext(null)
 
-function GetPage({
-    tree,
-    pageList,
-    pageName,
-    catalogPage,
-    pageImage,
-    colorMap,
-    iconMap,
-    manualToc,
-}) {
+function GetPage({ tree, page, catalogPage, pageImage, colorMap, iconMap, manualToc }) {
     const router = useRouter()
     const { pageUrl } = router.query
 
@@ -34,6 +25,9 @@ function GetPage({
     const [catalogTitle, setCatalogTitle] = React.useState('')
     const [catalogId, setCatalogId] = React.useState('')
     const [catalogIndex, setCatalogIndex] = React.useState()
+
+    const [pageList, setPageList] = React.useState([])
+    const [pageName, setPageName] = React.useState('')
 
     const getColumnItem = (columnItem) => {
         const getLine = (columnList) => {
@@ -80,6 +74,15 @@ function GetPage({
         setCatalogTitle(catalogPage.content.title)
         setCatalogId(catalogPage.id)
     }, [catalogPage])
+
+    useEffect(() => {
+        if (!page) {
+            return
+        }
+
+        setPageList(page.children)
+        setPageName(page.content.title)
+    }, [page])
 
     useEffect(() => {
         if (!tree) {
@@ -194,8 +197,7 @@ export async function getServerSideProps({ params: { pageUrl } }) {
     return {
         props: {
             tree,
-            pageName,
-            pageList,
+            page,
             pageImage: page?.node_properties?.cover,
             catalogPage: await getPageByUrl(pageUrl[0]),
             colorMap,
