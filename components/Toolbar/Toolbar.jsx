@@ -159,9 +159,9 @@ export const Toolbar = () => {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                     >
-                        <path d="M52 53H18" stroke={colorScheme.title} stroke-width="6" />
-                        <path d="M35 12V45" stroke={colorScheme.title} stroke-width="6" />
-                        <path d="M50 31L35 46L20 31" stroke={colorScheme.title} stroke-width="6" />
+                        <path d="M52 53H18" stroke={colorScheme.title} strokeWidth="6" />
+                        <path d="M35 12V45" stroke={colorScheme.title} strokeWidth="6" />
+                        <path d="M50 31L35 46L20 31" stroke={colorScheme.title} strokeWidth="6" />
                     </svg>
                 </button>
             </section>
