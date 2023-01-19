@@ -1,5 +1,5 @@
 .Suggestions__container {
-    padding-left: 48px;
+    padding-left: calc(48px + 50px);
     padding-top: 40px;
     padding-right: 48px;
     align-items: flex-start;
@@ -17,7 +17,7 @@
 }
 
 .GuideSuggestion__icon {
-    transform: translateY(5px);
+    transform: translateY(8px);
 }
 
 .GuideSuggestion {
