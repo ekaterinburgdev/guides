@@ -13,7 +13,16 @@ import { Toolbar } from '../../components/Toolbar/Toolbar'
 
 export const ColorContext = createContext(null)
 
-function GetPage({ tree, page, catalogPage, pageImage, colorMap, iconMap, manualToc }) {
+function GetPage({
+    tree,
+    pageList,
+    pageName,
+    catalogPage,
+    pageImage,
+    colorMap,
+    iconMap,
+    manualToc,
+}) {
     const router = useRouter()
     const { pageUrl } = router.query
 
@@ -25,9 +34,6 @@ function GetPage({ tree, page, catalogPage, pageImage, colorMap, iconMap, manual
     const [catalogTitle, setCatalogTitle] = React.useState('')
     const [catalogId, setCatalogId] = React.useState('')
     const [catalogIndex, setCatalogIndex] = React.useState()
-
-    const [pageList, setPageList] = React.useState([])
-    const [pageName, setPageName] = React.useState('')
 
     const getColumnItem = (columnItem) => {
         const getLine = (columnList) => {
@@ -65,15 +71,6 @@ function GetPage({ tree, page, catalogPage, pageImage, colorMap, iconMap, manual
                 return null
         }
     }
-
-    useEffect(() => {
-        if (!page) {
-            return
-        }
-
-        setPageList(page.children)
-        setPageName(page.content.title)
-    }, [page])
 
     useEffect(() => {
         if (!catalogPage) {
@@ -178,8 +175,8 @@ export async function getServerSideProps({ params: { pageUrl } }) {
     }
 
     const page = await getPageByUrl(pageUrl.join('/'))
-    // const pageList = page.children
-    // const pageName = page.content.title
+    const pageList = page.children
+    const pageName = page.content.title
 
     const colorMap = tree.children.map((children) => {
         return {
@@ -197,7 +194,8 @@ export async function getServerSideProps({ params: { pageUrl } }) {
     return {
         props: {
             tree,
-            page,
+            pageName,
+            pageList,
             pageImage: page?.node_properties?.cover,
             catalogPage: await getPageByUrl(pageUrl[0]),
             colorMap,
