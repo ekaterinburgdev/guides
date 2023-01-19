@@ -4,7 +4,6 @@ import classNames from 'classnames'
 
 import { API_HOST } from '../../consts/endpoints'
 import styles from '../../components/ManualPage/ManualPage.module.css'
-import 'yet-another-react-lightbox/styles.css'
 
 function GuideImage({ notionType }) {
     const cn = classNames(styles.Manual__image, {
