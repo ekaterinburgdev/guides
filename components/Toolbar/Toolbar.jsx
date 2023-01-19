@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef, useCallback, useContext } from 'rea
 import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
 import { useMediaQuery } from 'react-responsive'
-import { ColorContext } from '../../pages/manuals/[[...pageUrl]]'
 
+import { ColorContext } from '../../pages/manuals/[[...pageUrl]]'
 import styles from './Toolbar.module.css'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { SidePage } from '../SidePage/SidePage'

@@ -151,6 +151,7 @@ function GetPage({
 
 export async function getServerSideProps({ params: { pageUrl } }) {
     const tree = await getTree()
+    const children = tree?.children
     const manualPath = pageUrl
     const catalogPathname = pageUrl[0]
     const manualToc = getManualToc(tree, pageUrl)
@@ -178,13 +179,13 @@ export async function getServerSideProps({ params: { pageUrl } }) {
     const pageList = page.children
     const pageName = page.content.title
 
-    const colorMap = tree.children.map((children) => {
+    const colorMap = children.map((children) => {
         return {
             color: children?.properties?.color?.rich_text[0]?.plain_text ?? null,
             url: children?.properties?.pageUrl?.url ?? null,
         }
     })
-    const iconMap = tree.children.map((children) => {
+    const iconMap = children.map((children) => {
         return {
             imageUrl: `${API_HOST}/static/${children?.properties?.previewImage[0]}` ?? null,
             url: children?.properties?.pageUrl?.url ?? null,
