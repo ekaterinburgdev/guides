@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 import { API_HOST } from '../../../consts/endpoints'
 import styles from './Suggestions.module.css'
@@ -44,7 +45,6 @@ const GuideSuggestion = ({ guideSuggestion }) => {
     const colorHex = guideSuggestion?.properties.properties?.color?.rich_text[0]?.plain_text
     const icon = guideSuggestion?.properties.properties?.previewImage?.at(0)
     const sections = guideSuggestion?.sectionSuggestions
-    console.log(guideSuggestion)
 
     return (
         <article className={styles.GuideSuggestion}>
@@ -73,9 +73,19 @@ const GuideSuggestion = ({ guideSuggestion }) => {
 }
 
 export const Suggestions = ({ guideSuggestions }) => {
+    const { asPath } = useRouter()
+    const currentUrl = asPath.split('/').filter(Boolean).at(0)
+    const guides = guideSuggestions.reduce((acc, element) => {
+        const url = element?.properties?.properties?.pageUrl?.url
+        if (url !== currentUrl) {
+            return [...acc, element]
+        }
+        return [element, ...acc]
+    }, [])
+
     return (
         <div className={styles.Suggestions__container}>
-            {guideSuggestions?.map((guideSuggest) => (
+            {guides?.map((guideSuggest) => (
                 <GuideSuggestion guideSuggestion={guideSuggest} />
             ))}
         </div>

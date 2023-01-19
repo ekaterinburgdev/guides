@@ -1,12 +1,11 @@
 .Suggestions__container {
-    margin-left: 48px;
-    margin-top: 40px;
-    margin-right: 48px;
-    height: calc(100vh - 160px);
-    display: flex;
+    padding-left: 48px;
+    padding-top: 40px;
+    padding-right: 48px;
     align-items: flex-start;
     flex-direction: column;
-    overflow: visible;
+    overflow: auto;
+    height: calc(100vh - 145px);
 }
 
 .GuideSuggestion__title {

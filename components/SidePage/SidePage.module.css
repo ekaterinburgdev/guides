@@ -6,8 +6,7 @@
     top: 0;
     right: 0;
     border-left: 1px solid #9BAAC3;
-    display: flex;
-    justify-content: center;
+    overflow: auto;
 }
 
 .SidePage__close {
