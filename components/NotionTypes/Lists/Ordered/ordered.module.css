@@ -1,5 +1,5 @@
 .ol {
-    font-size: clamp(16px, 1.2rem, 16px);
+    font-size: clamp(13px, 2.5vw, 16px);
     line-height: 1.3;
     padding-left: 20px;
 }

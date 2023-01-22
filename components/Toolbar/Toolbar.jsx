@@ -149,7 +149,10 @@ export const Toolbar = () => {
                     </div>
                 )}
                 <button
-                    style={{ backgroundColor: colorScheme.bgLight }}
+                    style={{
+                        backgroundColor: colorScheme.bgLight,
+                        opacity: isOpenSidePage ? '0.5' : '1',
+                    }}
                     className={styles.Toolbar__button}
                 >
                     <svg

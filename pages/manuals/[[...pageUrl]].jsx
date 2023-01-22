@@ -155,6 +155,7 @@ export async function getServerSideProps({ params: { pageUrl } }) {
     const manualPath = pageUrl
     const catalogPathname = pageUrl[0]
     const manualToc = getManualToc(tree, pageUrl)
+    console.log(manualToc)
 
     if (manualPath?.length === 0 || manualToc?.length === 0) {
         return {

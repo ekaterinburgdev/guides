@@ -8,7 +8,12 @@ import styles from './Suggestions.module.css'
 const SuggestItem = (suggest) => {
     const origin =
         typeof window !== 'undefined' && window.location.origin ? window.location.origin : ''
-    const link = `${origin}/${suggest?.suggest?.link}`
+    const { asPath } = useRouter()
+    console.log(asPath)
+    console.log(`${origin}/${suggest?.suggest?.link}`.includes(asPath))
+    const link = `${origin}/${suggest?.suggest?.link}`.includes(asPath)
+        ? '#'
+        : `${origin}/${suggest?.suggest?.link}`
     const leftText = suggest?.suggest?.text?.left
     const target = suggest?.suggest?.text?.target
     const rightText = suggest?.suggest?.text?.right
@@ -47,6 +52,7 @@ const GuideSuggestion = ({ guideSuggestion }) => {
     const sections = guideSuggestion?.sectionSuggestions.sort((a, b) =>
         a?.sectionName?.localeCompare(b?.sectionName, 'ru')
     )
+    console.log(guideSuggestion)
 
     return (
         <article className={styles.GuideSuggestion}>

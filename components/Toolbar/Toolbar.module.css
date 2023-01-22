@@ -43,6 +43,6 @@
 
 @media screen and (min-width: 991px) {
     .Toolbar__input {
-        width: 34vw;
+        width: calc(30vw - 16px);
     }
 }

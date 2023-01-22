@@ -1,7 +1,8 @@
 .Suggestions__container {
     padding-left: calc(48px + 50px);
     padding-top: 40px;
-    padding-right: 48px;
+    padding-right: 64px;
+    padding-left: 96px;
     align-items: flex-start;
     flex-direction: column;
     overflow: auto;
