@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
 import { useMediaQuery } from 'react-responsive'
 
-import 'react-toastify/dist/ReactToastify.css'
 import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 import styles from './Toolbar.module.css'
 import getManualColorScheme from '../../utils/getManualColorScheme'
