@@ -169,12 +169,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                         style={{ backgroundColor: asideColor }}
                         className={styles.titleContainer}
                     >
-                        <Image
-                            className={styles.TableOfContents__icon}
-                            src={icon}
-                            width={50}
-                            height={50}
-                        />
                         <span style={{ color: colorScheme.title }} className={styles.catalogTitle}>
                             {tpForAsideMenu.execute(catalogTitle)}
                         </span>

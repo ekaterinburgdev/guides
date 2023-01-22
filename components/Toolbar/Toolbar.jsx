@@ -149,26 +149,49 @@ export const Toolbar = () => {
                         </svg>
                     </div>
                 )}
-                <a
-                    style={{
-                        backgroundColor: colorScheme.bgLight,
-                        opacity: isOpenSidePage ? '0.5' : '1',
-                    }}
-                    className={styles.Toolbar__button}
-                    href={pdfUrl}
-                >
-                    <svg
-                        width="70"
-                        height="70"
-                        viewBox="0 0 70 70"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                {!isOpenSidePage ? (
+                    <a
+                        style={{
+                            backgroundColor: colorScheme.bgLight,
+                        }}
+                        className={styles.Toolbar__button}
+                        href={pdfUrl}
                     >
-                        <path d="M52 53H18" stroke={colorScheme.title} strokeWidth="6" />
-                        <path d="M35 12V45" stroke={colorScheme.title} strokeWidth="6" />
-                        <path d="M50 31L35 46L20 31" stroke={colorScheme.title} strokeWidth="6" />
-                    </svg>
-                </a>
+                        <svg
+                            width="70"
+                            height="70"
+                            viewBox="0 0 70 70"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="M52 53H18" stroke={colorScheme.title} strokeWidth="6" />
+                            <path d="M35 12V45" stroke={colorScheme.title} strokeWidth="6" />
+                            <path
+                                d="M50 31L35 46L20 31"
+                                stroke={colorScheme.title}
+                                strokeWidth="6"
+                            />
+                        </svg>
+                    </a>
+                ) : (
+                    <div style={{ opacity: '0.5' }}>
+                        <svg
+                            width="70"
+                            height="70"
+                            viewBox="0 0 70 70"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path d="M52 53H18" stroke={colorScheme.title} strokeWidth="6" />
+                            <path d="M35 12V45" stroke={colorScheme.title} strokeWidth="6" />
+                            <path
+                                d="M50 31L35 46L20 31"
+                                stroke={colorScheme.title}
+                                strokeWidth="6"
+                            />
+                        </svg>
+                    </div>
+                )}
             </section>
             <div ref={rootEl}>
                 <SidePage guideSuggestions={guideSuggestions} close={!isOpenSidePage} />

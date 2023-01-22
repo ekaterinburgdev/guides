@@ -43,15 +43,11 @@ function ManualPage({
     const isDark = useMediaQuery({
         query: '(prefers-color-scheme: dark)',
     })
-    const arrowColor = useMemo(
-        () =>
-            rgbaToRgb(
-                isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
-                `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
-                    colorScheme.bgLight.color[1]
-                )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
-            ),
-        [isDark]
+    const arrowColor = rgbaToRgb(
+        isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+        `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
+            colorScheme.bgLight.color[1]
+        )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
     )
 
     const getLine = (columnList) => {
