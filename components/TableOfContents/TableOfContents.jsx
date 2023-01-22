@@ -181,7 +181,9 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                             tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}
                     </ul>
                 </nav>
-                {isOpen && <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />}
+                {(isOpen || isDesktop) && (
+                    <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />
+                )}
             </aside>
         </>
     )
