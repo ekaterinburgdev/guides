@@ -1,26 +1,37 @@
 import React from 'react'
-import styles from '../../components/ManualPage/Template.module.css'
-import { API_HOST } from '../../consts/endpoints'
+import Image from 'next/image'
+import classNames from 'classnames'
 
-const getImage = (imageObj) => {
+import { API_HOST } from '../../consts/endpoints'
+import styles from '../../components/ManualPage/ManualPage.module.css'
+
+function GuideImage({ notionType }) {
+    const cn = classNames(styles.Manual__image, {
+        [styles.Manual__image_svg]: String(notionType.content.image_name).includes('svg'),
+    })
+
     const image = (
-        <img
-            className={styles.templateImage}
-            src={`${API_HOST}/static/${imageObj.content.image_name}`}
-            alt=""
-        />
+        <>
+            <Image
+                className={cn}
+                src={`${API_HOST}/static/${notionType.content.image_name}`}
+                fill
+            />
+        </>
     )
 
-    if (imageObj.content.image_data.caption.length === 0) {
-        return image
+    if (notionType.content.image_data.caption.length === 0) {
+        return <div className={styles.Manual__image__container}>{image}</div>
     }
-    
+
     return (
-        <div>
+        <div className={styles.Manual__image__container}>
             {image}
-            <span>{imageObj.content.image_data.caption[0].plain_text}</span>
+            <span className={styles.Manual__image_description}>
+                {notionType.content.image_data.caption[0].plain_text}
+            </span>
         </div>
     )
 }
 
-export default getImage
+export default GuideImage

@@ -6,7 +6,11 @@
     position: fixed;
     top: -20px;
     right: -15px;
-    z-index: 3;
+    z-index: 100;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 .line {
@@ -58,25 +62,5 @@
 @media screen and (min-width: 991px) {
     .hamburger-menu {
         display: none;
-    }
-}
-
-@media screen and (prefers-color-scheme: light) {
-    .hamburger-menu {
-        background-color: rgba(239, 240, 241, 0.8);
-    }
-
-    .line {
-        stroke: black;
-    }
-}
-
-@media screen and (prefers-color-scheme: dark) {
-    .hamburger-menu {
-        background-color: rgba(40, 40, 40, 0.8);
-    }
-
-    .line {
-        stroke: white;
     }
 }

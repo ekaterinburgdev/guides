@@ -1,7 +1,17 @@
 .p {
     white-space: pre-wrap;
-    line-height: 1.4;
-    font-size: 1.3rem;
-    margin-top: 0.85rem;
-    margin-bottom: 0.85rem;
+    line-height: 1.5;
+    font-size: clamp(16px, 2.5vw, 22px);
+    margin-top: 1vw;
+    margin-bottom: .5vw;
+    margin-right: 2em;
+	opacity: .95
+}
+
+.p + .p {
+    margin-top: 0
+}
+
+.Template__item .p {
+    line-height: 1.3
 }

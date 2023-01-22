@@ -1,18 +1,28 @@
 .heading1 {
-    font-size: 3.5rem;
-    margin-top: 3.2rem;
-    margin-bottom: 0.8rem;
+    font-size: clamp(28px, 10vw, 56px);
+    font-weight: 500;
+    margin-top: 2vw;
+    margin-bottom: .5vw;
 }
 
 .heading2 {
-    font-size: 2.5rem;
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: clamp(24px, 8vw, 40px);
+    font-weight: 500;
+    margin-top: 1vw;
+    margin-bottom: .5vw;
 }
 
 .heading3 {
-    font-size: 1.5rem;
-    margin-top: 2.5rem;
-    margin-bottom: 0.65rem;
-    line-height: 1.29;
+    font-size: clamp(22px, 6vw, 28px);
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: .5em;
+}
+
+.heading1 + .heading2 {
+    margin-top: 1vw
+}
+
+br + .heading1 {
+    margin-top: 4vw
 }

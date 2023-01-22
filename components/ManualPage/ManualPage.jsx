@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useContext, useMemo } from 'react'
 import map from 'lodash/map'
-import styles from './Template.module.css'
-import getImage from '../../utils/notionTypeParser/imageParser'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useMediaQuery } from 'react-responsive'
+import rgbaToRgb from 'rgba-to-rgb'
+
+import styles from './ManualPage.module.css'
+import tp from '../../utils/typograf/typograf.config'
 import { H1, H2, H3 } from '../NotionTypes/Headers/Headers'
 import Bookmark from '../NotionTypes/Bookmark/Bookmark'
 import UnorderedList from '../NotionTypes/Lists/Unordered/Unordered'
 import OrderedList from '../NotionTypes/Lists/Ordered/Ordered'
+import File from '../File/File'
 import Paragraph from '../NotionTypes/Text/Paragraph/Paragraph'
 import { PrevPage, NextPage } from '../ArrowNavLink/ArrowNavLink'
+import Table from '../NotionTypes/Table/Table'
+import Divider from '../NotionTypes/Text/Divider/Divider'
+import VideoPlayer from '../NotionTypes/VideoPlayer/VideoPlayer'
+import Code from '../NotionTypes/Text/Code/Code'
+import { API_HOST } from '../../consts/endpoints'
+import GuideImage from '../../utils/notionTypeParser/imageParser'
+import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
+import getManualColorScheme from '../../utils/getManualColorScheme'
+import { Callout } from '../NotionTypes/Callout/Callout'
 
 function ManualPage({
     pageList,
@@ -18,66 +33,85 @@ function ManualPage({
     nextPageIndex,
     catalogIndex,
     children,
+    pageImage,
 }) {
+    const { asPath } = useRouter()
+    const colorContext = useContext(PageContext)
+    const { colorMap } = colorContext
+    const color = useMemo(() => colorMap.filter((item) => asPath.includes(item.url))[0]?.color)
+    const colorScheme = getManualColorScheme(color)
+    const isDark = useMediaQuery({
+        query: '(prefers-color-scheme: dark)',
+    })
+    const arrowColor = rgbaToRgb(
+        isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+        `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
+            colorScheme.bgLight.color[1]
+        )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
+    )
+
     const getLine = (columnList) => {
         if (!columnList.children.length) {
             return
         }
 
         return (
-            <div className="row gx-4">
-                {columnList.children.map((cols) => (
-                    <div className="col" key={cols.id}>
+            <article className={`row gx-2 ${styles.Template__item}`}>
+                {columnList.children.map((cols, i) => (
+                    <div className={`col ${styles.Template__column}`} key={`${cols.id}${i}`}>
                         {cols.children.map((col) => getColumnItem(col))}
                     </div>
                 ))}
-            </div>
+            </article>
         )
     }
 
-    const getColumnItem = (columnItem) => {
-        switch (columnItem.type) {
+    const getColumnItem = (notionType) => {
+        switch (notionType.type) {
             case 'column_list':
-                return <div className={styles.columnList}>{getLine(columnItem)}</div>
+                return <div className={styles.columnList}>{getLine(notionType)}</div>
 
             case 'image':
-                return getImage(columnItem)
+                return <GuideImage notionType={notionType} />
 
             case 'heading_1':
-                return <H1 columnItem={columnItem} />
+                return <H1 columnItem={notionType} />
 
             case 'heading_2':
-                return <H2 columnItem={columnItem} />
+                return <H2 columnItem={notionType} />
 
             case 'heading_3':
-                return <H3 columnItem={columnItem} />
+                return <H3 columnItem={notionType} />
 
             case 'paragraph':
-                return <Paragraph columnItem={columnItem} />
+                return <Paragraph columnItem={notionType} />
 
             case 'bookmark':
-                return <Bookmark columnItem={columnItem} />
+                return <Bookmark columnItem={notionType} />
 
             case 'bulleted_list':
-                return <UnorderedList columnItem={columnItem} />
+                return <UnorderedList columnItem={notionType} />
 
             case 'numbered_list':
-                return <OrderedList columnItem={columnItem} />
+                return <OrderedList columnItem={notionType} />
 
             case 'table':
-                return (
-                    <div className={styles.tableContainer}>
-                        <table className={styles.table1}>
-                            {columnItem.children.map((child) => (
-                                <tr key={child.id}>
-                                    {child?.content?.cells?.map((cell) => (
-                                        <td key={cell[0]?.plain_text}>{cell[0]?.plain_text}</td>
-                                    ))}
-                                </tr>
-                            ))}
-                        </table>
-                    </div>
-                )
+                return <Table columnItem={notionType} />
+
+            case 'divider':
+                return <Divider />
+
+            case 'video':
+                return <VideoPlayer columnItem={notionType} />
+
+            case 'file':
+                return <File columnItem={notionType} />
+
+            case 'code':
+                return <Code columnItem={notionType} />
+
+            case 'callout':
+                return <Callout columnItem={notionType} />
 
             default:
                 return <p>Unknown type</p>
@@ -86,26 +120,39 @@ function ManualPage({
 
     return (
         <div className={styles.templateColumn}>
-            <h1 className={styles.pageName}>{pageName}</h1>
+            {pageImage && (
+                <div className={styles.previewImageContainer}>
+                    <Image
+                        className={styles.previewImage}
+                        src={`${API_HOST}/static/${pageImage}`}
+                        fill
+                    />
+                </div>
+            )}
+            <h1 className={styles.pageName}>{tp.execute(pageName)}</h1>
             {map(pageList, (cl) => getColumnItem(cl))}
             {tableOfContentArr.length !== 0 && (
                 <nav className={styles.footNav}>
                     {(Number.isInteger(prevPageIndex) || Number.isInteger(catalogIndex)) && (
                         <PrevPage
+                            backgroundColor={arrowColor}
                             children={children}
                             prevPageIndex={prevPageIndex}
                             tableOfContentArr={tableOfContentArr}
                             catalogIndex={catalogIndex}
                             pageUrl={pageUrl}
+                            color={color}
                         />
                     )}
                     {(Number.isInteger(nextPageIndex) || Number.isInteger(catalogIndex)) && (
                         <NextPage
+                            backgroundColor={arrowColor}
                             nextPageIndex={nextPageIndex}
                             children={children}
                             tableOfContentArr={tableOfContentArr}
                             catalogIndex={catalogIndex}
                             pageUrl={pageUrl}
+                            color={color}
                         />
                     )}
                 </nav>

@@ -1,0 +1,9 @@
+.File__container {
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start;
+}
+
+.File__link {
+    text-decoration: none;
+}

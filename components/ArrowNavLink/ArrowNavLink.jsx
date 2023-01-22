@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+
 import styles from './arrow.module.css'
 
 const getCatalogOptions = (catalog) => ({
@@ -8,7 +9,15 @@ const getCatalogOptions = (catalog) => ({
 })
 
 // TODO: выделить общую логику у этих двух компонент
-export function PrevPage({ prevPageIndex, tableOfContentArr, pageUrl, catalogIndex, children }) {
+export function PrevPage({
+    prevPageIndex,
+    tableOfContentArr,
+    pageUrl,
+    catalogIndex,
+    children,
+    color,
+    backgroundColor,
+}) {
     let href = {
         pathname: '/[[...pageUrl]]',
         query: { pageUrl: [] },
@@ -34,13 +43,26 @@ export function PrevPage({ prevPageIndex, tableOfContentArr, pageUrl, catalogInd
     }
 
     return (
-        <Link className={styles.arrowNavLink} href={href} passHref>
+        <Link
+            style={{ color, backgroundColor }}
+            className={styles.arrowNavLink}
+            href={href}
+            passHref
+        >
             ←&nbsp;{title}
         </Link>
     )
 }
 
-export function NextPage({ nextPageIndex, tableOfContentArr, pageUrl, catalogIndex, children }) {
+export function NextPage({
+    nextPageIndex,
+    tableOfContentArr,
+    pageUrl,
+    catalogIndex,
+    children,
+    color,
+    backgroundColor,
+}) {
     let href = {
         pathname: '/[[...pageUrl]]',
         query: { pageUrl: [] },
@@ -66,7 +88,7 @@ export function NextPage({ nextPageIndex, tableOfContentArr, pageUrl, catalogInd
     }
 
     return (
-        <Link className={styles.arrowNavLink} href={href}>
+        <Link style={{ color, backgroundColor }} className={styles.arrowNavLink} href={href}>
             {title}&nbsp;→
         </Link>
     )

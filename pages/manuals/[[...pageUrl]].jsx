@@ -1,26 +1,36 @@
-/* eslint-disable no-undef */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, createContext } from 'react'
 import { useRouter } from 'next/router'
 
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
 import { getTree, getPageByUrl } from '../../api/apiPage'
 import tp from '../../utils/typograf/typograf.config'
+import { API_HOST } from '../../consts/endpoints'
 import styles from './page.module.css'
 import getManualToc from '../../utils/getManualToc'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
+import { Toolbar } from '../../components/Toolbar/Toolbar'
 
-function GetPage({ tree, page, catalogPage, manualToc }) {
+export const PageContext = createContext(null)
+
+function GetPage({
+    children,
+    pageList,
+    pageName,
+    catalogPage,
+    pageImage,
+    colorMap,
+    iconMap,
+    pdfUrlsMap,
+    manualToc,
+}) {
     const router = useRouter()
     const { pageUrl } = router.query
 
     const [prevPageIndex, setPrevPageIndex] = useState(-1)
     const [nextPageIndex, setNexPageIndex] = useState(9e13)
-    const [children, setChildren] = useState()
     const [anchorLinks, setAnchorLinks] = useState([])
 
-    const [pageList, setPageList] = React.useState([])
-    const [pageName, setPageName] = React.useState('')
     const [catalogTitle, setCatalogTitle] = React.useState('')
     const [catalogId, setCatalogId] = React.useState('')
     const [catalogIndex, setCatalogIndex] = React.useState()
@@ -62,16 +72,7 @@ function GetPage({ tree, page, catalogPage, manualToc }) {
         }
     }
 
-    React.useEffect(() => {
-        if (!page) {
-            return
-        }
-
-        setPageList(page.children)
-        setPageName(page.content.title)
-    }, [page])
-
-    React.useEffect(() => {
+    useEffect(() => {
         if (!catalogPage) {
             return
         }
@@ -79,14 +80,6 @@ function GetPage({ tree, page, catalogPage, manualToc }) {
         setCatalogTitle(catalogPage.content.title)
         setCatalogId(catalogPage.id)
     }, [catalogPage])
-
-    useEffect(() => {
-        if (!tree) {
-            return
-        }
-
-        setChildren(tree?.children)
-    }, [tree])
 
     useEffect(() => {
         if (!children || !catalogId || catalogId === '') {
@@ -113,38 +106,47 @@ function GetPage({ tree, page, catalogPage, manualToc }) {
         if (pageList.length === 0) {
             return
         }
-
         const anchorLinksForSet = pageList.map(getColumnItem)
-
-        setAnchorLinks(anchorLinksForSet.filter((l) => l?.id))
+        setAnchorLinks(anchorLinksForSet.filter((l) => l?.id >= 0))
     }, [pageList])
 
     return (
         <>
-            <TableOfContents
-                tableOfContentArr={manualToc}
-                currentPageUrl={pageUrl}
-                anchorLinks={anchorLinks}
-                catalogTitle={catalogTitle}
-            />
-            <ManualPage
-                pageList={pageList}
-                pageName={pageName}
-                children={children}
-                tableOfContentArr={manualToc}
-                prevPageIndex={prevPageIndex}
-                nextPageIndex={nextPageIndex}
-                catalogIndex={catalogIndex}
-                pageUrl={pageUrl}
-            />
+            <PageContext.Provider
+                value={{
+                    colorMap,
+                    iconMap,
+                    pdfUrlsMap,
+                }}
+            >
+                <TableOfContents
+                    tableOfContentArr={manualToc}
+                    currentPageUrl={pageUrl}
+                    anchorLinks={anchorLinks}
+                    catalogTitle={catalogTitle}
+                />
+                <ManualPage
+                    pageList={pageList}
+                    pageName={pageName}
+                    children={children}
+                    tableOfContentArr={manualToc}
+                    prevPageIndex={prevPageIndex}
+                    nextPageIndex={nextPageIndex}
+                    catalogIndex={catalogIndex}
+                    pageUrl={pageUrl}
+                    pageImage={pageImage}
+                />
+                <Toolbar />
+            </PageContext.Provider>
         </>
     )
 }
 
 export async function getServerSideProps({ params: { pageUrl } }) {
+    const tree = await getTree()
+    const children = tree?.children
     const manualPath = pageUrl
     const catalogPathname = pageUrl[0]
-    const tree = await getTree()
     const manualToc = getManualToc(tree, pageUrl)
 
     if (manualPath?.length === 0 || manualToc?.length === 0) {
@@ -166,12 +168,40 @@ export async function getServerSideProps({ params: { pageUrl } }) {
         }
     }
 
+    const page = await getPageByUrl(pageUrl.join('/'))
+    const pageList = page.children
+    const pageName = page.content.title
+
+    const colorMap = children.map((children) => {
+        return {
+            color: children?.properties?.color?.rich_text[0]?.plain_text ?? null,
+            url: children?.properties?.pageUrl?.url ?? null,
+        }
+    })
+    const iconMap = children.map((children) => {
+        return {
+            imageUrl: `${API_HOST}/static/${children?.properties?.previewImage[0]}` ?? null,
+            url: children?.properties?.pageUrl?.url ?? null,
+        }
+    })
+    const pdfUrlsMap = children.map((children) => {
+        return {
+            pdfUrl: children?.properties?.pdfUrl?.url ?? null,
+            url: children?.properties?.pageUrl?.url ?? null,
+        }
+    })
+
     return {
         props: {
-            tree,
+            children,
+            pageName,
+            pageList,
+            pageImage: page?.node_properties?.cover,
+            catalogPage: await getPageByUrl(pageUrl[0]),
+            colorMap,
+            iconMap,
+            pdfUrlsMap,
             manualToc,
-            page: await getPageByUrl(manualPath.join('/')),
-            catalogPage: await getPageByUrl(catalogPathname),
         },
     }
 }

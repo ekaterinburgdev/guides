@@ -1,12 +1,13 @@
 import React from 'react'
+
 import { getTextContent } from '../../../../utils/notionTypeParser/textParser'
 import styles from './ordered.module.css'
 
-function OrderedList({ columnItem }) {
+export function OrderedList({ columnItem }) {
     return (
-        <ol className={styles.ul}>
-            {columnItem.children.map((li) => (
-                <li className={styles.li} key={li.id}>
+        <ol className={styles.ol}>
+            {columnItem.children.map((li, i) => (
+                <li className={styles.li} key={`${li.id}${i}`}>
                     {getTextContent(li, true)}
                 </li>
             ))}

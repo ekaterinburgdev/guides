@@ -1,4 +1,5 @@
 import React from 'react'
+
 import tp from '../typograf/typograf.config'
 
 export const getHeaderContent = (item) =>
@@ -40,5 +41,5 @@ export const getTextContent = (item, useTypograf = false) =>
     })
 
 export const getListItem = (columnItem) => {
-    columnItem.children.map((li) => <li key={li.id}>{getTextContent(li, true)}</li>)
+    columnItem.children.map((li, i) => <li key={`${li.id}${i}`}>{getTextContent(li, true)}</li>)
 }

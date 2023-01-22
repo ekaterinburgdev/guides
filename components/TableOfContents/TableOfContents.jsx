@@ -1,37 +1,45 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
+import Image from 'next/image'
 import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
+import { useRouter } from 'next/router'
+import rgbaToRgb from 'rgba-to-rgb'
+import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 
-import Logo from '../Logo/Logo'
 import styles from './TableOfContents.module.css'
-import tp from '../../utils/typograf/typograf.config'
+import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
+import { CommonLinks } from '../CommonLinks/CommonLinks'
+import getManualColorScheme from '../../utils/getManualColorScheme'
 
-function InnerLink({ anchor, baseState, setState }) {
+function InnerLink({ anchor, baseState, setState, color }) {
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
     if (isDesktop) {
         return (
             <a
+                style={{ color }}
                 className={styles.innerTableOfContentsLink}
                 key={anchor.title}
                 href={`#${anchor.id}`}
             >
-                {anchor.title}
+                {tpForAsideMenu.execute(anchor.title)}
             </a>
         )
     }
+
     return (
         <a
+            style={{ color }}
             className={styles.innerTableOfContentsLink}
             key={anchor.title}
             href={`#${anchor.id}`}
             onClick={() => setState(!baseState)}
         >
-            {tp.execute(anchor.title)}
+            {tpForAsideMenu.execute(anchor.title)}
         </a>
     )
 }
@@ -40,36 +48,100 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
+    const colorContext = useContext(PageContext)
+    const { colorMap, iconMap } = colorContext
     const [isOpen, setIsOpen] = useState(isDesktop)
+    const { asPath } = useRouter()
+    const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
+    const icon = iconMap.filter((item) => asPath.includes(item.url))[0]?.imageUrl
+    const colorScheme = getManualColorScheme(color)
+    const isDark = useMediaQuery({
+        query: '(prefers-color-scheme: dark)',
+    })
+    const asideColor = rgbaToRgb(
+        isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+        `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
+            colorScheme.bgLight.color[1]
+        )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
+    )
+
+    useEffect(() => {
+        const arrayWithAnchorElements = Array.from(
+            document.querySelectorAll('h1[id], h2[id], h3[id]')
+        )
+
+        const scrollHandler = (entries) =>
+            entries.forEach((entry) => {
+                const section = entry.target
+                const sectionId = section.id
+                const sectionTagName = section.tagName
+                const sectionLink = document.querySelector(`a[href="#${sectionId}"]`)
+
+                if (sectionTagName === 'H3') {
+                    sectionLink?.classList?.add(styles.innerH3)
+                }
+
+                if (entry.intersectionRatio > 0) {
+                    sectionLink?.classList?.add(styles.visible)
+                } else {
+                    sectionLink?.classList?.remove(styles.visible)
+                }
+            })
+
+        const observer = new IntersectionObserver(scrollHandler)
+        arrayWithAnchorElements.forEach((section) => observer.observe(section))
+    }, [anchorLinks])
+
+    useEffect(() => {
+        const styleVisible = document.querySelector('.visible')?.style
+        styleVisible?.setProperty('border-color', colorScheme.bgDark)
+    }, [anchorLinks])
 
     // TODO: Сделать для большой вложенности...
     const tableOfContentsLink = ({ url, title }) => (
-        <li className={styles.link}>
-            <Link
-                href={{
-                    pathname: '/[[...pageUrl]]',
-                    query: { pageUrl: [currentPageUrl[0], url] },
-                    as: `${currentPageUrl.join('/')}/${url}`,
-                }}
-                className={cn(styles.tableOfContentsLink, {
-                    [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
-                    [styles.separator]:
-                        currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length,
-                })}
-                onClick={() => setIsOpen(!isOpen)}
-            >
-                {tp.execute(title)}
-            </Link>
+        <>
+            <li className={styles.link}>
+                <Link
+                    href={{
+                        pathname: '/[[...pageUrl]]',
+                        query: { pageUrl: [currentPageUrl[0], url] },
+                        as: `${currentPageUrl.join('/')}/${url}`,
+                    }}
+                    style={{
+                        color: colorScheme.title,
+                        backgroundColor:
+                            currentPageUrl[1] && currentPageUrl[1] === url
+                                ? colorScheme.bgLight
+                                : '',
+                    }}
+                    className={cn(styles.tableOfContentsLink, {
+                        [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
+                        [styles.separator]:
+                            currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length,
+                    })}
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    {tpForAsideMenu.execute(title)}
+                </Link>
+            </li>
             {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
-                <ul className={styles.innerlinkContainerList}>
+                <ul
+                    style={{ backgroundColor: colorScheme.bgLight }}
+                    className={styles.innerlinkContainerList}
+                >
                     {anchorLinks.map((anchor) => (
                         <li className={styles.innerlinkContainerListItem} key={anchor.id}>
-                            <InnerLink anchor={anchor} baseState={isOpen} setState={setIsOpen} />
+                            <InnerLink
+                                color={colorScheme.title}
+                                anchor={anchor}
+                                baseState={isOpen}
+                                setState={setIsOpen}
+                            />
                         </li>
                     ))}
                 </ul>
             )}
-        </li>
+        </>
     )
 
     const navClassName = cn(styles.tableOfContents, {
@@ -81,30 +153,35 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
             <Head>
                 <title>{catalogTitle}</title>
             </Head>
-            <HamburgerMenu state={isOpen} changeState={() => setIsOpen(!isOpen)} />
-            <aside>
-                <nav className={navClassName}>
-                    <Link
-                        href={{
-                            pathname: '/',
-                        }}
-                        className={styles.linkToAllManuals}
-                    >
-                        ←&nbsp;Все руководства
-                    </Link>
+            <HamburgerMenu state={isOpen} changeState={() => setIsOpen(!isOpen)} color={color} />
+            <aside className={styles.TableOfContents__aside}>
+                <nav
+                    className={navClassName}
+                    style={{
+                        backgroundColor: asideColor,
+                    }}
+                >
                     <Link
                         href={{
                             pathname: '/[[...pageUrl]]',
                             query: { pageUrl: [currentPageUrl[0]] },
                         }}
-                        className={styles.catalogTitle}
+                        style={{ backgroundColor: asideColor }}
+                        className={styles.titleContainer}
                     >
-                        {tp.execute(catalogTitle)}
+                        <span style={{ color: colorScheme.title }} className={styles.catalogTitle}>
+                            {tpForAsideMenu.execute(catalogTitle)}
+                        </span>
+                        <div
+                            style={{ borderBottomColor: colorScheme.bgLight }}
+                            className={styles.TableOfContents__divider}
+                        />
                     </Link>
-                    <ul className={styles.linkContainerList}>
-                        {currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}
-                    </ul>
-                    <Logo logoSrc="/Avatar.svg" linkTo="https://ekaterinburg.design/" />
+                    <div className={styles.linkContainerList}>
+                        {currentPageUrl &&
+                            tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}
+                    </div>
+                    <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />
                 </nav>
             </aside>
         </>

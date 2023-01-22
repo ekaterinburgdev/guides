@@ -1,0 +1,55 @@
+.Suggestions__container {
+    padding-left: calc(48px + 50px);
+    padding-top: 40px;
+    padding-right: 64px;
+    padding-left: 96px;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow: auto;
+    height: calc(100vh - 145px);
+}
+
+.GuideSuggestion__title {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: baseline;
+    margin-left: -36px;
+}
+
+.GuideSuggestion__icon {
+    transform: translateY(8px);
+}
+
+.GuideSuggestion {
+    border-bottom: 1px solid #9BAAC3;
+}
+
+.SectionSuggestion__list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.SuggestItem__target {
+    font-weight: 600;
+    color: #14283C;
+}
+
+.SuggestItem__link {
+    text-decoration: none;
+    color: #14283C;
+}
+
+.SuggestItem__listItem:hover > .SuggestItem__link {
+    text-decoration: underline;
+    color: #14283C;
+}
+
+.SuggestItem__listItem {
+    margin-bottom: 16px;
+}
+
+.SuggestItem__suggestionText {
+    color: #14283C;
+    opacity: 0.5;
+}
