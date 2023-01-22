@@ -74,11 +74,11 @@
     position: relative;
     font-weight: 400;
     margin-bottom: .15em;
-    font-size: 1.4vw;
+    font-size: 5vw;
 }
 
 .manualSubtitle {
-    font-size: 0.8vw;
+    font-size: 3vw;
     line-height: 1.25;
     font-weight: 300;
 }
@@ -119,6 +119,14 @@
     .manual {
         width: calc(100% / 2 - 2vw);
     }
+
+    .manualTitle {
+        font-size: 2.5vw;
+    }
+    
+    .manualSubtitle {
+        font-size: 1.4vw;
+    }
 }
 
 @media screen and (min-width: 991px) {
@@ -126,8 +134,12 @@
         width: calc(100% / 3 - 1.1vw);
     }
 
+    .manualTitle {
+        font-size: 1.4vw;
+    }
+    
     .manualSubtitle {
-        font-size: .65em;
+        font-size: 0.8vw;
     }
 }
 
