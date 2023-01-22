@@ -151,9 +151,7 @@ export const Toolbar = () => {
                 )}
                 {!isOpenSidePage ? (
                     <a
-                        style={{
-                            backgroundColor: colorScheme.bgLight,
-                        }}
+                        style={{ backgroundColor: colorScheme.bgLight }}
                         className={styles.Toolbar__button}
                         href={pdfUrl}
                     >
