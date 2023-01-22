@@ -60,8 +60,8 @@ function ManualPage({
 
         return (
             <article className={`row gx-2 ${styles.Template__item}`}>
-                {columnList.children.map((cols) => (
-                    <div className={`col ${styles.Template__column}`} key={cols.id}>
+                {columnList.children.map((cols, i) => (
+                    <div className={`col ${styles.Template__column}`} key={`${cols.id}${i}`}>
                         {cols.children.map((col) => getColumnItem(col))}
                     </div>
                 ))}

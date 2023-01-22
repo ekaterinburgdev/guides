@@ -18,6 +18,7 @@
     width: 48vw;
     background-color: transparent;
     flex: 1;
+    height: 76px;
 }
 
 .customInput {

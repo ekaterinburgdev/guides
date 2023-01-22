@@ -7,7 +7,7 @@ export function OrderedList({ columnItem }) {
     return (
         <ol className={styles.ol}>
             {columnItem.children.map((li) => (
-                <li className={styles.li} key={li.id}>
+                <li className={styles.li} key={`${li.id}${i}`}>
                     {getTextContent(li, true)}
                 </li>
             ))}

@@ -5,14 +5,10 @@ import ManualPreview from '../ManualPreview/ManualPreview'
 
 import mainPageLogo from './MainPageLogo.svg'
 import styles from './MainPage.module.css'
-import ChristmasLights from '../ChristmasLights/ChristmasLights'
-import Showflakes from '../Snowflake/Showflakes'
 
 export default function MainPage({ pageTitle, manualsPreview }) {
     return (
         <>
-            <ChristmasLights />
-            <Showflakes />
             <main className={styles.mainPage}>
                 <h1 className={styles.mainPageTitle}>
                     <div className={styles.mainPageLogo}>
@@ -22,8 +18,11 @@ export default function MainPage({ pageTitle, manualsPreview }) {
                 </h1>
 
                 <section className={styles.mainPageManuals}>
-                    {manualsPreview.map((manualPreviewData) => (
-                        <ManualPreview {...manualPreviewData} key={manualPreviewData.title} />
+                    {manualsPreview.map((manualPreviewData, i) => (
+                        <ManualPreview
+                            {...manualPreviewData}
+                            key={`${manualPreviewData.title}${i}`}
+                        />
                     ))}
                 </section>
             </main>
