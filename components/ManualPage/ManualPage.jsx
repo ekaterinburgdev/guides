@@ -20,7 +20,7 @@ import VideoPlayer from '../NotionTypes/VideoPlayer/VideoPlayer'
 import Code from '../NotionTypes/Text/Code/Code'
 import { API_HOST } from '../../consts/endpoints'
 import GuideImage from '../../utils/notionTypeParser/imageParser'
-import { ColorContext } from '../../pages/manuals/[[...pageUrl]]'
+import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { Callout } from '../NotionTypes/Callout/Callout'
 
@@ -36,7 +36,7 @@ function ManualPage({
     pageImage,
 }) {
     const { asPath } = useRouter()
-    const colorContext = useContext(ColorContext)
+    const colorContext = useContext(PageContext)
     const { colorMap } = colorContext
     const color = useMemo(() => colorMap.filter((item) => asPath.includes(item.url))[0]?.color)
     const colorScheme = getManualColorScheme(color)

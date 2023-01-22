@@ -155,9 +155,3 @@
         padding: 1em;
     }
 }
-
-@media screen and (prefers-color-scheme: dark) {
-    .manual {
-        box-shadow: rgba(255, 255, 255, 0.3) 0px 3px 8px;
-    }
-}

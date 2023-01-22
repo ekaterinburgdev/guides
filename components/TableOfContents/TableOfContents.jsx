@@ -6,7 +6,7 @@ import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
-import { ColorContext } from '../../pages/manuals/[[...pageUrl]]'
+import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 
 import styles from './TableOfContents.module.css'
 import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
@@ -48,7 +48,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
-    const colorContext = useContext(ColorContext)
+    const colorContext = useContext(PageContext)
     const { colorMap, iconMap } = colorContext
     const [isOpen, setIsOpen] = useState(isDesktop)
     const { asPath } = useRouter()

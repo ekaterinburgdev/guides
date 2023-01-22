@@ -9,7 +9,6 @@ const SuggestItem = (suggest) => {
     const origin =
         typeof window !== 'undefined' && window.location.origin ? window.location.origin : ''
     const { asPath } = useRouter()
-    console.log(asPath)
     const currentSection = asPath.split('/').filter(Boolean).at(1)
     const link = `${origin}/${suggest?.suggest?.link}`
     const leftText = suggest?.suggest?.text?.left

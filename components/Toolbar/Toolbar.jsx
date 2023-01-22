@@ -3,7 +3,8 @@ import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
 import { useMediaQuery } from 'react-responsive'
 
-import { ColorContext } from '../../pages/manuals/[[...pageUrl]]'
+import 'react-toastify/dist/ReactToastify.css'
+import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 import styles from './Toolbar.module.css'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { SidePage } from '../SidePage/SidePage'
@@ -21,9 +22,10 @@ const debounce = (func, timeout = 300) => {
 export const Toolbar = () => {
     const { asPath } = useRouter()
     const [isOpenSidePage, setIsOpenSidePage] = useState(false)
-    const colorContext = useContext(ColorContext)
-    const { colorMap } = colorContext
+    const colorContext = useContext(PageContext)
+    const { colorMap, pdfUrlsMap } = colorContext
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
+    const pdfUrl = pdfUrlsMap.filter((item) => asPath.includes(item.url))[0]?.pdfUrl ?? ''
     const colorScheme = getManualColorScheme(color)
     const isDark = useMediaQuery({
         query: '(prefers-color-scheme: dark)',
@@ -148,12 +150,13 @@ export const Toolbar = () => {
                         </svg>
                     </div>
                 )}
-                <button
+                <a
                     style={{
                         backgroundColor: colorScheme.bgLight,
                         opacity: isOpenSidePage ? '0.5' : '1',
                     }}
                     className={styles.Toolbar__button}
+                    href={pdfUrl}
                 >
                     <svg
                         width="70"
@@ -166,7 +169,7 @@ export const Toolbar = () => {
                         <path d="M35 12V45" stroke={colorScheme.title} strokeWidth="6" />
                         <path d="M50 31L35 46L20 31" stroke={colorScheme.title} strokeWidth="6" />
                     </svg>
-                </button>
+                </a>
             </section>
             <div ref={rootEl}>
                 <SidePage guideSuggestions={guideSuggestions} close={!isOpenSidePage} />

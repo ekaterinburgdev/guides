@@ -11,7 +11,7 @@ import getManualToc from '../../utils/getManualToc'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 import { Toolbar } from '../../components/Toolbar/Toolbar'
 
-export const ColorContext = createContext(null)
+export const PageContext = createContext(null)
 
 function GetPage({
     children,
@@ -21,6 +21,7 @@ function GetPage({
     pageImage,
     colorMap,
     iconMap,
+    pdfUrlsMap,
     manualToc,
 }) {
     const router = useRouter()
@@ -111,10 +112,11 @@ function GetPage({
 
     return (
         <>
-            <ColorContext.Provider
+            <PageContext.Provider
                 value={{
                     colorMap,
                     iconMap,
+                    pdfUrlsMap,
                 }}
             >
                 <TableOfContents
@@ -135,7 +137,7 @@ function GetPage({
                     pageImage={pageImage}
                 />
                 <Toolbar />
-            </ColorContext.Provider>
+            </PageContext.Provider>
         </>
     )
 }
@@ -182,6 +184,12 @@ export async function getServerSideProps({ params: { pageUrl } }) {
             url: children?.properties?.pageUrl?.url ?? null,
         }
     })
+    const pdfUrlsMap = children.map((children) => {
+        return {
+            pdfUrl: children?.properties?.pdfUrl?.url ?? null,
+            url: children?.properties?.pageUrl?.url ?? null,
+        }
+    })
 
     return {
         props: {
@@ -192,6 +200,7 @@ export async function getServerSideProps({ params: { pageUrl } }) {
             catalogPage: await getPageByUrl(pageUrl[0]),
             colorMap,
             iconMap,
+            pdfUrlsMap,
             manualToc,
         },
     }
