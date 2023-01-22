@@ -74,11 +74,11 @@
     position: relative;
     font-weight: 400;
     margin-bottom: .15em;
-    font-size: 24px;
+    font-size: 1.4vw;
 }
 
 .manualSubtitle {
-    font-size: 0.55em;
+    font-size: 0.8vw;
     line-height: 1.25;
     font-weight: 300;
 }

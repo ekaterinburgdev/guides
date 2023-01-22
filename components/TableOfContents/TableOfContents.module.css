@@ -1,5 +1,4 @@
 .linkToAllManuals {
-    background-color: transparent;
     box-shadow: none;
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
@@ -125,13 +124,6 @@
 
 .tableOfContents::-webkit-scrollbar {
     display: none;
-}
-
-.linkContainerList {
-    display: flex;
-    flex-direction: column;
-    box-shadow: none;
-    flex-grow: 1;
 }
 
 .innerTableOfContentsLink {

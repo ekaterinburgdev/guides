@@ -177,12 +177,12 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                             className={styles.TableOfContents__divider}
                         />
                     </Link>
-                    <div className={styles.linkContainerList}>
+                    <ul className={styles.linkContainerList}>
                         {currentPageUrl &&
                             tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}
-                    </div>
-                    <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />
+                    </ul>
                 </nav>
+                <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />
             </aside>
         </>
     )
