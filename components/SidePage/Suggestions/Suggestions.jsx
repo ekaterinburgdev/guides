@@ -10,17 +10,18 @@ const SuggestItem = (suggest) => {
         typeof window !== 'undefined' && window.location.origin ? window.location.origin : ''
     const { asPath } = useRouter()
     console.log(asPath)
-    console.log(`${origin}/${suggest?.suggest?.link}`.includes(asPath))
-    const link = `${origin}/${suggest?.suggest?.link}`.includes(asPath)
-        ? '#'
-        : `${origin}/${suggest?.suggest?.link}`
+    const currentSection = asPath.split('/').filter(Boolean).at(1)
+    const link = `${origin}/${suggest?.suggest?.link}`
     const leftText = suggest?.suggest?.text?.left
     const target = suggest?.suggest?.text?.target
     const rightText = suggest?.suggest?.text?.right
 
     return (
         <li className={styles.SuggestItem__listItem}>
-            <a className={styles.SuggestItem__link} href={link}>
+            <a
+                className={styles.SuggestItem__link}
+                href={link.includes(currentSection) ? '' : link}
+            >
                 <span className={styles.SuggestItem__suggestionText}>{leftText}</span>
                 <span className={styles.SuggestItem__target}>{target}</span>
                 <span className={styles.SuggestItem__suggestionText}>{rightText}</span>
@@ -52,7 +53,6 @@ const GuideSuggestion = ({ guideSuggestion }) => {
     const sections = guideSuggestion?.sectionSuggestions.sort((a, b) =>
         a?.sectionName?.localeCompare(b?.sectionName, 'ru')
     )
-    console.log(guideSuggestion)
 
     return (
         <article className={styles.GuideSuggestion}>

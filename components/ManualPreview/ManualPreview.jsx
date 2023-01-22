@@ -45,12 +45,6 @@ function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate,
                         {new Date(publishedDate).toLocaleDateString('ru')}
                     </time>
                 )}
-
-                {image && (
-                    <div className={styles.manualIcon}>
-                        <Image src={image} alt="" fill />
-                    </div>
-                )}
             </div>
         </Link>
     )

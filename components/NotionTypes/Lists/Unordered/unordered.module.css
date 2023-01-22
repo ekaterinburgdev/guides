@@ -1,6 +1,6 @@
 .ul {
     padding-left: 0;
-    font-size: clamp(13px, 2.5vw, 16px);
+    font-size: clamp(16px, 2.5vw, 22px);
     line-height: 1.3;
 }
 

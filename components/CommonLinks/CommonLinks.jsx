@@ -19,7 +19,7 @@ export function CommonLinks({ color, bgColor }) {
 
     return (
         <section style={{ backgroundColor: asideColor }} className={styles.CommonLinks__container}>
-            <Link className={styles.CommonLinks__tooltiptarget} href="/">
+            <Link className={styles.CommonLinks__tooltiptarget} href="https://ekaterinburg.design/">
                 <Image
                     src="/ecosystem.svg"
                     width={60}

@@ -14,3 +14,9 @@
 .arrowNavLink:focus-visible {
     transform: scale(1.05);
 }
+
+@media print {
+    .arrowNavLink {
+        display: none;
+    }
+}

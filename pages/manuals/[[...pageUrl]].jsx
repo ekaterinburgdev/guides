@@ -14,7 +14,7 @@ import { Toolbar } from '../../components/Toolbar/Toolbar'
 export const ColorContext = createContext(null)
 
 function GetPage({
-    tree,
+    children,
     pageList,
     pageName,
     catalogPage,
@@ -28,7 +28,6 @@ function GetPage({
 
     const [prevPageIndex, setPrevPageIndex] = useState(-1)
     const [nextPageIndex, setNexPageIndex] = useState(9e13)
-    const [children, setChildren] = useState()
     const [anchorLinks, setAnchorLinks] = useState([])
 
     const [catalogTitle, setCatalogTitle] = React.useState('')
@@ -80,14 +79,6 @@ function GetPage({
         setCatalogTitle(catalogPage.content.title)
         setCatalogId(catalogPage.id)
     }, [catalogPage])
-
-    useEffect(() => {
-        if (!tree) {
-            return
-        }
-
-        setChildren(tree?.children)
-    }, [tree])
 
     useEffect(() => {
         if (!children || !catalogId || catalogId === '') {
@@ -155,7 +146,6 @@ export async function getServerSideProps({ params: { pageUrl } }) {
     const manualPath = pageUrl
     const catalogPathname = pageUrl[0]
     const manualToc = getManualToc(tree, pageUrl)
-    console.log(manualToc)
 
     if (manualPath?.length === 0 || manualToc?.length === 0) {
         return {
@@ -195,7 +185,7 @@ export async function getServerSideProps({ params: { pageUrl } }) {
 
     return {
         props: {
-            tree,
+            children,
             pageName,
             pageList,
             pageImage: page?.node_properties?.cover,
