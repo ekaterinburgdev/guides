@@ -1,14 +1,22 @@
 import React from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
-import Image from 'next/image'
+import rgbaToRgb from 'rgba-to-rgb'
 
 import getManualColorScheme from '../../utils/getManualColorScheme'
 
 import styles from './ManualPreview.module.css'
 
-function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate, pattern, image }) {
+function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate, pattern }) {
     const colorScheme = getManualColorScheme(color)
+
+    const timeBgColor = rgbaToRgb(
+        'rgb(255, 255, 255)',
+        `rgba(${Math.trunc(colorScheme.manual[0])}, ${Math.trunc(
+            colorScheme.manual[1]
+        )}, ${Math.trunc(colorScheme.manual[2])}, ${colorScheme.manual})`
+    )
+
     return (
         <Link
             href={{
@@ -22,7 +30,7 @@ function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate,
                 <div
                     className={styles.manualBackground}
                     style={{
-                        backgroundColor: colorScheme.bgLight,
+                        backgroundColor: colorScheme.manual,
                         backgroundImage: pattern && `url(${pattern})`,
                     }}
                 />
@@ -41,7 +49,10 @@ function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate,
                 )}
 
                 {publishedDate && (
-                    <time className={styles.manualDate}>
+                    <time
+                        style={{ backgroundColor: timeBgColor, opacity: 1 }}
+                        className={styles.manualDate}
+                    >
                         {new Date(publishedDate).toLocaleDateString('ru')}
                     </time>
                 )}
