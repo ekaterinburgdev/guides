@@ -50,7 +50,7 @@ br + .Manual__image__container {
 }
 
 .Manual__image__container > img {
-    position: unset !important;
+    position: static;
     border-radius: 8px !important;
 }
 
