@@ -1,0 +1,12 @@
+.Callout__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(20, 40, 60, 0.16);
+    border-radius: 8px;
+}
+
+.Callout__icon {
+    margin-left: 8px;
+}

@@ -22,6 +22,7 @@ import { API_HOST } from '../../consts/endpoints'
 import GuideImage from '../../utils/notionTypeParser/imageParser'
 import { ColorContext } from '../../pages/manuals/[[...pageUrl]]'
 import getManualColorScheme from '../../utils/getManualColorScheme'
+import { Callout } from '../NotionTypes/Callout/Callout'
 
 function ManualPage({
     pageList,
@@ -112,6 +113,9 @@ function ManualPage({
 
             case 'code':
                 return <Code columnItem={notionType} />
+
+            case 'callout':
+                return <Callout columnItem={notionType} />
 
             default:
                 return <p>Unknown type</p>
