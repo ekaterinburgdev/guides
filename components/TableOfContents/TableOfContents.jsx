@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
-import Image from 'next/image'
 import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
@@ -182,7 +181,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                             tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}
                     </ul>
                 </nav>
-                <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />
+                {isOpen && <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />}
             </aside>
         </>
     )
