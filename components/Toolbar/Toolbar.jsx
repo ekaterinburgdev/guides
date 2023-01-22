@@ -122,7 +122,10 @@ export const Toolbar = () => {
                 ) : (
                     <div className={styles.customInput}>
                         <input
-                            style={{ color: colorScheme.title }}
+                            style={{
+                                color: colorScheme.title,
+                                backgroundColor: toolbarColor,
+                            }}
                             type="text"
                             className={styles.Toolbar__input}
                             onChange={handleOnChange}
