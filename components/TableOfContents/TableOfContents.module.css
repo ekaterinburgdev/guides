@@ -19,7 +19,7 @@
 
 .titleContainer {
     position: sticky;
-    top: 0;
+    top: -8px;
     display: inline-flex;
     gap: 8px;
     flex-wrap: wrap;
@@ -215,6 +215,10 @@
 }
 
 @media screen and (min-width: 991px) {
+    .titleContainer {
+        top: 0;
+    }
+
     .tableOfContents {
         margin: 15px;
         border-radius: 10px;
