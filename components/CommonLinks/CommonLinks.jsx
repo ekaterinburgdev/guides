@@ -63,7 +63,7 @@ export function CommonLinks({ color, bgColor, mainPage }) {
                     />
                     <p
                         className={styles.CommonLinks__text}
-                        style={{ color, textDecorationColor: bgColor.alpha(0.4).rgb() }}
+                        style={{ color, textDecorationColor: bgColor.alpha(0.2).rgb() }}
                     >
                         Руководства <br />
                         Екатеринбурга
