@@ -13,14 +13,14 @@ import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 import { CommonLinks } from '../CommonLinks/CommonLinks'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 
-function InnerLink({ anchor, baseState, setState, color }) {
+function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) {
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
     if (isDesktop) {
         return (
             <a
-                style={{ color }}
+                style={{ color, textDecorationColor }}
                 className={styles.innerTableOfContentsLink}
                 key={anchor.title}
                 href={`#${anchor.id}`}
@@ -32,7 +32,7 @@ function InnerLink({ anchor, baseState, setState, color }) {
 
     return (
         <a
-            style={{ color }}
+            style={{ color, textDecorationColor }}
             className={styles.innerTableOfContentsLink}
             key={anchor.title}
             href={`#${anchor.id}`}
@@ -139,6 +139,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                                 anchor={anchor}
                                 baseState={isOpen}
                                 setState={setIsOpen}
+                                textDecorationColor={colorScheme.bgLight}
                             />
                         </li>
                     ))}
@@ -172,7 +173,13 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                         style={{ backgroundColor: asideColor }}
                         className={styles.titleContainer}
                     >
-                        <span style={{ color: colorScheme.title }} className={styles.catalogTitle}>
+                        <span
+                            style={{
+                                color: colorScheme.title,
+                                textDecorationColor: colorScheme.bgLight,
+                            }}
+                            className={styles.catalogTitle}
+                        >
                             {tpForAsideMenu.execute(catalogTitle)}
                         </span>
                         <div

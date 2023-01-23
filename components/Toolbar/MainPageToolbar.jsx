@@ -3,7 +3,6 @@ import { useMediaQuery } from 'react-responsive'
 
 import styles from './Toolbar.module.css'
 import { SidePage } from '../SidePage/SidePage'
-import classNames from 'classnames'
 
 const debounce = (func, timeout = 300) => {
     let timer
@@ -23,10 +22,19 @@ export const MainPageToolbar = () => {
     const toolbarColor = isDark ? '#1A1C1F' : '#f5f8fb'
     const colorTitle = isDark ? '#f5f8fb' : '#1A1C1F'
     const [guideSuggestions, setGuideSuggestions] = useState([])
+    const [currentQuery, setCurrentQuery] = useState('')
+    const searchInputRef = React.useRef(null)
+
+    useEffect(() => {
+        if (isOpenSidePage) {
+            searchInputRef.current.focus()
+        }
+    }, [isOpenSidePage])
 
     const handleOnChange = useCallback(
         debounce(async (e) => {
             const textInputValue = e.target.value
+            setCurrentQuery(textInputValue)
             if (textInputValue.length > 2) {
                 const response = await fetch(
                     `https://guides-api-test.ekaterinburg.design/api/content/search?pattern=${e.target.value}`
@@ -93,6 +101,7 @@ export const MainPageToolbar = () => {
                             viewBox="0 0 70 70"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
+                            style={{ marginTop: '4px' }}
                         >
                             <circle
                                 cx="31.501"
@@ -117,6 +126,8 @@ export const MainPageToolbar = () => {
                             }}
                             type="text"
                             className={styles.Toolbar__input_main}
+                            ref={searchInputRef}
+                            placeholder={!currentQuery ? 'Например, скамейка' : currentQuery}
                             onChange={handleOnChange}
                         />
                         <svg
@@ -125,7 +136,7 @@ export const MainPageToolbar = () => {
                             viewBox="0 0 70 70"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
-                            style={{ paddingRight: '8px' }}
+                            style={{ marginRight: '8px' }}
                         >
                             <circle
                                 cx="31.501"

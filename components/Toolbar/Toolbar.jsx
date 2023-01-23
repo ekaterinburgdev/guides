@@ -26,6 +26,7 @@ export const Toolbar = () => {
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const pdfUrl = pdfUrlsMap.filter((item) => asPath.includes(item.url))[0]?.pdfUrl ?? ''
     const colorScheme = getManualColorScheme(color)
+    const [currentQuery, setCurrentQuery] = useState('')
     const isDark = useMediaQuery({
         query: '(prefers-color-scheme: dark)',
     })
@@ -41,6 +42,7 @@ export const Toolbar = () => {
     const handleOnChange = useCallback(
         debounce(async (e) => {
             const textInputValue = e.target.value
+            setCurrentQuery(textInputValue)
             if (textInputValue.length > 2) {
                 const response = await fetch(
                     `https://guides-api-test.ekaterinburg.design/api/content/search?pattern=${e.target.value}`
@@ -132,7 +134,7 @@ export const Toolbar = () => {
                             }}
                             type="text"
                             className={styles.Toolbar__input}
-                            placeholder="Например, скамья"
+                            placeholder={!currentQuery ? 'Например, скамья' : currentQuery}
                             ref={searchInputRef}
                             onChange={handleOnChange}
                         />
@@ -199,10 +201,13 @@ export const Toolbar = () => {
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
                         >
-                            <path d="M52 53H18" stroke={colorScheme.title} strokeWidth="6" />
-                            <path d="M35 12V45" stroke={colorScheme.title} strokeWidth="6" />
                             <path
-                                d="M50 31L35 46L20 31"
+                                d="M18 18L51.9995 51.9995"
+                                stroke={colorScheme.title}
+                                strokeWidth="6"
+                            />
+                            <path
+                                d="M52 18L18.0005 51.9995"
                                 stroke={colorScheme.title}
                                 strokeWidth="6"
                             />

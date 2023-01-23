@@ -20,7 +20,7 @@
 .CommonLinks__text_main {
     padding-left: 16px;
     font-size: 20px;
-    line-height: 1;
+    line-height: 1.05;
     font-weight: 400;
 }
 
@@ -34,13 +34,13 @@
 
 .CommonLinks__text {
     font-size: 20px;
-    line-height: 1;
+    line-height: 1.05;
     font-weight: 400;
 }
 
 .CommonLinks__text:hover {
     text-decoration: underline;
-    text-decoration-thickness: 1px;
+    text-decoration-thickness: 1.5px;
     text-underline-offset: 5px;
 }
 
@@ -68,11 +68,11 @@
 
 @media screen and (min-width: 991px) {
     .CommonLinks__container {
-        width: max(20%, 360px);
+        width: max(20%, 350px);
         margin-left: 15px;
     }
 
     .mainPageContainer {
-        width: max(20%, 360px);
+        width: max(20%, 350px);
     }
 }

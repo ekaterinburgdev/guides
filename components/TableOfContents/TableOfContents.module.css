@@ -76,12 +76,12 @@
 .catalogTitle:hover,
 .catalogTitle:focus-visible {
     text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 5px;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 6px;
 }
 
 .TableOfContents__divider {
-    border-bottom: 2px solid;
+    border-bottom: 1px solid;
     width: 100vw;
     margin: 20px -20px;
     margin-bottom: 0px;
@@ -134,6 +134,8 @@
     color: #14283C;
     text-decoration: none;
     border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     transition: 0.2s;
     padding: 10px 5px 10px 0.5rem;
     position: relative;
@@ -146,6 +148,8 @@
 
 .innerTableOfContentsLink:hover {
     text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
 }
 
 .innerlinkContainerList {
@@ -217,7 +221,7 @@
         flex-direction: column;
         position: fixed;
         padding: 16px 16px;
-        min-width: 360px;
+        min-width: 350px;
         height: calc(100vh - 116px);
         width: 20%;
         background-color: #1231;
