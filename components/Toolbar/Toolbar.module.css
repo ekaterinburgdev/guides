@@ -25,16 +25,6 @@
     width: 150px;
 }
 
-.Toolbar__input_main {
-    outline: 0;
-    border: 0;
-    flex: 1;
-    height: 76px;
-    width: 220px;
-    padding-left: 30px;
-    font-size: 20px;
-}
-
 .customInput {
     position: relative;
     display: flex;
@@ -75,12 +65,6 @@
         font-size: 22px;
         width: 215px;
     }
-
-    .Toolbar__input_main {
-        padding-left: 32px;
-        font-size: 22px;
-        width: 290px;
-    }
 }
 
 @media screen and (min-width: 1900px) {
@@ -88,11 +72,5 @@
         padding-left: 28px;
         font-size: 22px;
         width: 410px;
-    }
-
-    .Toolbar__input_main {
-        padding-left: 32px;
-        font-size: 22px;
-        width: 450px;
     }
 }

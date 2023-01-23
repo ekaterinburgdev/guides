@@ -125,9 +125,9 @@ export const MainPageToolbar = () => {
                                 backgroundColor: toolbarColor,
                             }}
                             type="text"
-                            className={styles.Toolbar__input_main}
+                            className={styles.Toolbar__input}
                             ref={searchInputRef}
-                            placeholder={!currentQuery ? 'Например, скамейка' : currentQuery}
+                            placeholder={!currentQuery ? 'Например, скамья' : currentQuery}
                             onChange={handleOnChange}
                         />
                         <svg
@@ -136,7 +136,9 @@ export const MainPageToolbar = () => {
                             viewBox="0 0 70 70"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
-                            style={{ marginRight: '8px' }}
+                            style={{
+                                transform: 'translateX(12px)',
+                            }}
                         >
                             <circle
                                 cx="31.501"
@@ -151,6 +153,34 @@ export const MainPageToolbar = () => {
                                 strokeWidth="6"
                             />
                         </svg>
+                        <button
+                            onClick={() => setIsOpenSidePage(!isOpenSidePage)}
+                            style={{
+                                border: '0',
+                                outline: '0',
+                                cursor: 'pointer',
+                                backgroundColor: 'inherit',
+                            }}
+                        >
+                            <svg
+                                width="70"
+                                height="70"
+                                viewBox="0 0 70 70"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M18 18L51.9995 51.9995"
+                                    stroke={colorTitle}
+                                    strokeWidth="6"
+                                />
+                                <path
+                                    d="M52 18L18.0005 51.9995"
+                                    stroke={colorTitle}
+                                    strokeWidth="6"
+                                />
+                            </svg>
+                        </button>
                     </div>
                 )}
             </section>
