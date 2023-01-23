@@ -35,7 +35,9 @@ const SectionSuggestion = ({ section, colorHex }) => {
 
     return (
         <>
-            <p style={{ color: colorHex, fontWeight: 500 }}>{sectionName}</p>
+            <p style={{ color: colorHex, fontWeight: 500, fontSize: '18px', paddingTop: '36px' }}>
+                {sectionName}
+            </p>
             <ul className={styles.SectionSuggestion__list}>
                 {suggestions?.map((suggest) => (
                     <SuggestItem suggest={suggest} />

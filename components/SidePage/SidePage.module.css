@@ -18,3 +18,9 @@
         width: 400px;
     }
 }
+
+@media screen and (min-width: 1900px) {
+    .SidePage__container {
+        width: 600px;
+    }
+}

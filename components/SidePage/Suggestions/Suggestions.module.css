@@ -57,6 +57,7 @@
 .SuggestItem__link {
     text-decoration: none;
     color: #14283C;
+    font-size: 18px;
 }
 
 .SuggestItem__listItem:hover > .SuggestItem__link {
