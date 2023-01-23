@@ -81,9 +81,9 @@ br + .Manual__image__container {
 @media (min-width: 991px) {
     .templateColumn {
         min-height: 100vh;
-        padding-left: 9%;
+        padding-left: 7%;
         padding-right: 25%;
-        margin-left: calc(max(20%, 376px) + 15px);
+        margin-left: calc(max(20%, 360px) + 15px);
         margin-right: 0px;
     }
 }

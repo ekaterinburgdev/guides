@@ -26,30 +26,45 @@ export function CommonLinks({ color, bgColor, mainPage }) {
 
     return (
         <section style={{ backgroundColor: commonColor }} className={containerClassnames}>
-            <Link className={styles.CommonLinks__tooltiptarget} href="https://ekaterinburg.design/">
+            <Link href="https://ekaterinburg.design/">
                 <Image
                     src="/ecosystem.svg"
                     width={60}
                     height={60}
                     className={styles.CommonLinks__icon}
-                />
-            </Link>
-            <Link className={styles.CommonLinks__tooltiptarget} href="/">
-                <Image
-                    src="/transport.svg"
-                    width={60}
-                    height={60}
-                    className={styles.CommonLinks__icon}
+                    style={{ marginTop: '15px' }}
                 />
             </Link>
             {mainPage ? (
-                <p className={styles.CommonLinks__text_main} style={{ color }}>
-                    Руководства <br />
-                    Екатеринбурга
-                </p>
+                <>
+                    <Image
+                        src="/transport.svg"
+                        width={60}
+                        height={60}
+                        className={styles.CommonLinks__icon}
+                        style={{ marginTop: '14px', marginLeft: '12px' }}
+                    />
+                    <p
+                        className={styles.CommonLinks__text_main}
+                        style={{ color, paddingLeft: '8px' }}
+                    >
+                        Руководства <br />
+                        Екатеринбурга
+                    </p>
+                </>
             ) : (
-                <Link className={styles.CommonLinks__link} href="/">
-                    <p className={styles.CommonLinks__text} style={{ color }}>
+                <Link style={{ paddingLeft: '12px' }} className={styles.CommonLinks__link} href="/">
+                    <Image
+                        src="/transport.svg"
+                        width={60}
+                        height={60}
+                        className={styles.CommonLinks__icon}
+                        style={{ marginLeft: '0', marginTop: '14px' }}
+                    />
+                    <p
+                        className={styles.CommonLinks__text}
+                        style={{ color, textDecorationColor: bgColor.alpha(0.4).rgb() }}
+                    >
                         Руководства <br />
                         Екатеринбурга
                     </p>

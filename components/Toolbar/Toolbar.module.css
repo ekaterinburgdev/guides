@@ -11,12 +11,26 @@
     z-index: 3;
 }
 
+.circleBar {
+    border-radius: 50%;
+}
+
 .Toolbar__input {
     outline: 0;
     border: 0;
     padding-left: 28px;
     flex: 1;
     height: 76px;
+    width: 150px;
+}
+
+.Toolbar__input_main {
+    outline: 0;
+    border: 0;
+    padding-left: 28px;
+    flex: 1;
+    height: 76px;
+    width: 220px;
 }
 
 .customInput {
@@ -45,62 +59,18 @@
     }
 }
 
-@media screen and (min-width: 320px) {
-    .Toolbar__input {
-        width: calc(28vw - 16px);
-    }
-}
-
-@media screen and (min-width: 375px) {
-    .Toolbar__input {
-        width: calc(36vw - 16px);
-    }
-}
-
-@media screen and (min-width: 425px) {
-    .Toolbar__input {
-        width: calc(42vw - 16px);
-    }
-}
-
 @media screen and (min-width: 768px) {
     .Toolbar__input {
-        width: calc(60vw - 16px);
-    }
-}
-
-@media screen and (min-width: 991px) {
-    .Toolbar__input {
-        width: calc(33vw - 16px);
+        width: 160px;
     }
 }
 
 @media screen and (min-width: 1300px) {
     .Toolbar__input {
-        width: calc(33vw - 16px);
+        width: 225px;
     }
-}
 
-@media screen and (min-width: 1600px) {
-    .Toolbar__input {
-        width: calc(34vw - 16px);
-    }
-}
-
-@media screen and (min-width: 1800px) {
-    .Toolbar__input {
-        width: calc(35vw - 16px);
-    }
-}
-
-@media screen and (min-width: 1900px) {
-    .Toolbar__input {
-        width: calc(36vw - 16px);
-    }
-}
-
-@media screen and (min-width: 2500px) {
-    .Toolbar__input {
-        width: calc(37vw - 16px);
+    .Toolbar__input_main {
+        width: 300px;
     }
 }

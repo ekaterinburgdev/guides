@@ -13,13 +13,15 @@
 }
 
 .mainPageContainer {
-    width: 166px;
+    width: 145px;
     overflow: hidden;
 }
 
 .CommonLinks__text_main {
     padding-left: 16px;
     font-size: 20px;
+    line-height: 1;
+    font-weight: 400;
 }
 
 .open {
@@ -27,11 +29,13 @@
 }
 
 .CommonLinks__icon {
-    margin: 16px 0 12px 16px;
+    margin: 12px 0 12px 8px;
 }
 
 .CommonLinks__text {
     font-size: 20px;
+    line-height: 1;
+    font-weight: 400;
 }
 
 .CommonLinks__text:hover {
@@ -44,11 +48,15 @@
     text-decoration: none;
     font-weight: 400;
     box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
     vertical-align: middle;
     text-decoration: none;
     border-radius: 10px;
     transition: 0.2s;
-    padding: 15px;
+    padding: 15px 15px 15px 8px;
     font-size: 1rem;
 }
 
@@ -60,24 +68,11 @@
 
 @media screen and (min-width: 991px) {
     .CommonLinks__container {
-        width: max(20%, 376px);
+        width: max(20%, 360px);
         margin-left: 15px;
     }
 
     .mainPageContainer {
-        width: max(20%, 376px);
-    }
-}
-
-@media screen and (prefers-color-scheme: dark) {
-    .CommonLinks__link {
-        display: inline-block;
-        color: white;
-    }
-
-    .CommonLinks__link:hover,
-    .CommonLinks__link:focus-visible {
-        text-decoration: none;
-        color: #E63223;
+        width: max(20%, 360px);
     }
 }

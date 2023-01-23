@@ -12,7 +12,7 @@
 
 .arrowNavLink:hover,
 .arrowNavLink:focus-visible {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 @media print {

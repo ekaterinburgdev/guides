@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive'
 
 import styles from './Toolbar.module.css'
 import { SidePage } from '../SidePage/SidePage'
+import classNames from 'classnames'
 
 const debounce = (func, timeout = 300) => {
     let timer
@@ -72,7 +73,10 @@ export const MainPageToolbar = () => {
         <>
             <section
                 ref={toolbarRef}
-                style={{ backgroundColor: toolbarColor }}
+                style={{
+                    backgroundColor: toolbarColor,
+                    borderRadius: isOpenSidePage ? '200px' : '50%',
+                }}
                 className={styles.Toolbar__container}
             >
                 {!isOpenSidePage ? (
@@ -112,7 +116,7 @@ export const MainPageToolbar = () => {
                                 backgroundColor: toolbarColor,
                             }}
                             type="text"
-                            className={styles.Toolbar__input}
+                            className={styles.Toolbar__input_main}
                             onChange={handleOnChange}
                         />
                         <svg

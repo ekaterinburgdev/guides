@@ -1,28 +1,46 @@
 .Suggestions__container {
     padding-left: calc(48px + 50px);
     padding-top: 40px;
-    padding-right: 64px;
-    padding-left: 96px;
+    padding-right: 48px;
+    padding-left: 48px;
     align-items: flex-start;
     flex-direction: column;
     overflow: auto;
-    height: calc(100vh - 145px);
+    height: calc(100vh - 100px);
 }
+
+.image__container {
+    width: 100%;
+}
+
+.image__container > div {
+    position: static;
+}
+
+.image__container .image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+    border-radius: 8px;
+}
+  
 
 .GuideSuggestion__title {
     display: flex;
     flex-direction: row;
     gap: 8px;
     align-items: baseline;
-    margin-left: -36px;
 }
 
 .GuideSuggestion__icon {
     transform: translateY(8px);
+    object-fit: contain;
 }
 
 .GuideSuggestion {
     border-bottom: 1px solid #9BAAC3;
+    margin-bottom: 1em;
 }
 
 .SectionSuggestion__list {

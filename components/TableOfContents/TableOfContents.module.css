@@ -219,7 +219,7 @@
         flex-direction: column;
         position: fixed;
         padding: 16px 20px;
-        min-width: 376px;
+        min-width: 360px;
         height: calc(100vh - 116px);
         width: 20%;
         background-color: #1231;

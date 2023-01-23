@@ -48,30 +48,17 @@ const SectionSuggestion = ({ section, colorHex }) => {
 const GuideSuggestion = ({ guideSuggestion }) => {
     const title = guideSuggestion?.properties.properties?.Name?.title[0]?.plain_text
     const colorHex = guideSuggestion?.properties.properties?.color?.rich_text[0]?.plain_text
-    const icon = guideSuggestion?.properties.properties?.previewImage?.at(0)
+    const icon = guideSuggestion?.properties.properties?.previewPattern?.at(0)
     const sections = guideSuggestion?.sectionSuggestions.sort((a, b) =>
         a?.sectionName?.localeCompare(b?.sectionName, 'ru')
     )
 
     return (
         <article className={styles.GuideSuggestion}>
-            <div className={styles.GuideSuggestion__title}>
-                <Image
-                    className={styles.GuideSuggestion__icon}
-                    width={28}
-                    height={28}
-                    src={`${API_HOST}/static/${icon}`}
-                />
-                <h3
-                    style={{
-                        color: colorHex,
-                        fontSize: '24px',
-                        marginBottom: '0px',
-                    }}
-                >
-                    {title}
-                </h3>
+            <div className={styles.image__container}>
+                <Image className={styles.image} fill src={`${API_HOST}/static/${icon}`} />
             </div>
+            <h3 style={{ color: colorHex }}>{title}</h3>
             {sections?.map((section) => (
                 <SectionSuggestion colorHex={colorHex} section={section} />
             ))}

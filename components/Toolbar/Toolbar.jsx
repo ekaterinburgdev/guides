@@ -92,7 +92,7 @@ export const Toolbar = () => {
             >
                 {!isOpenSidePage ? (
                     <button
-                        style={{ backgroundColor: colorScheme.bgLight }}
+                        style={{ backgroundColor: colorScheme.bgLight, paddingRight: '0' }}
                         className={styles.Toolbar__button}
                         onClick={() => {
                             setIsOpenSidePage((prev) => !prev)
@@ -164,6 +164,7 @@ export const Toolbar = () => {
                             viewBox="0 0 70 70"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
+                            style={{ marginTop: '2px' }}
                         >
                             <path d="M52 53H18" stroke={colorScheme.title} strokeWidth="6" />
                             <path d="M35 12V45" stroke={colorScheme.title} strokeWidth="6" />
