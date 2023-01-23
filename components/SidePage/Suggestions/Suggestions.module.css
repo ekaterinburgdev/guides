@@ -10,6 +10,7 @@
 }
 
 .image__container {
+    position: relative;
     width: 100%;
 }
 
@@ -39,7 +40,7 @@
 }
 
 .GuideSuggestion {
-    border-bottom: 1px solid #9BAAC3;
+    border-bottom: 1px solid rgb(155, 170, 195, 0.15);
     margin-bottom: 1em;
 }
 

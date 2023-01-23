@@ -35,7 +35,7 @@ export const Toolbar = () => {
             colorScheme.bgLight.color[1]
         )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
     )
-
+    const searchInputRef = React.useRef(null)
     const [guideSuggestions, setGuideSuggestions] = useState([])
 
     const handleOnChange = useCallback(
@@ -79,7 +79,7 @@ export const Toolbar = () => {
 
     useEffect(() => {
         if (isOpenSidePage) {
-            toolbarRef.current.focus()
+            searchInputRef.current.focus()
         }
     }, [isOpenSidePage])
 
@@ -92,7 +92,11 @@ export const Toolbar = () => {
             >
                 {!isOpenSidePage ? (
                     <button
-                        style={{ backgroundColor: colorScheme.bgLight, paddingRight: '0' }}
+                        style={{
+                            backgroundColor: colorScheme.bgLight,
+                            paddingRight: '0',
+                            paddingTop: '5px',
+                        }}
                         className={styles.Toolbar__button}
                         onClick={() => {
                             setIsOpenSidePage((prev) => !prev)
@@ -128,6 +132,8 @@ export const Toolbar = () => {
                             }}
                             type="text"
                             className={styles.Toolbar__input}
+                            placeholder="Например, скамья"
+                            ref={searchInputRef}
                             onChange={handleOnChange}
                         />
                         <svg
@@ -136,6 +142,7 @@ export const Toolbar = () => {
                             viewBox="0 0 70 70"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
+                            style={{ transform: 'translateX(12px)' }}
                         >
                             <circle
                                 cx="31.501"
@@ -176,7 +183,15 @@ export const Toolbar = () => {
                         </svg>
                     </a>
                 ) : (
-                    <div style={{ opacity: '0.5' }}>
+                    <button
+                        onClick={() => setIsOpenSidePage(!isOpenSidePage)}
+                        style={{
+                            border: '0',
+                            outline: '0',
+                            cursor: 'pointer',
+                            backgroundColor: 'inherit',
+                        }}
+                    >
                         <svg
                             width="70"
                             height="70"
@@ -192,7 +207,7 @@ export const Toolbar = () => {
                                 strokeWidth="6"
                             />
                         </svg>
-                    </div>
+                    </button>
                 )}
             </section>
             <div ref={rootEl}>

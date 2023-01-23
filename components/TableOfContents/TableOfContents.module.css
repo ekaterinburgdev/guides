@@ -159,7 +159,6 @@
     border-bottom-left-radius: 10px;
     display: flex;
     flex-direction: column;
-    margin-top: -15px;
     list-style: none;
 }
 
@@ -185,11 +184,11 @@
 
 .active {
     box-shadow: none;
-    background-color: #ffffff;
-    margin-bottom: 15px;
     text-decoration: none;
     font-weight: 600;
     font-size: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .active::hover {
@@ -197,8 +196,7 @@
 }
 
 .separator {
-    padding: 16px 16px 8px 16px;
-    border-bottom: 2px solid;
+    border-bottom: 1px solid;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -218,7 +216,7 @@
         display: flex;
         flex-direction: column;
         position: fixed;
-        padding: 16px 20px;
+        padding: 16px 16px;
         min-width: 360px;
         height: calc(100vh - 116px);
         width: 20%;

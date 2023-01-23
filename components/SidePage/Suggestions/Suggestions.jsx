@@ -57,8 +57,10 @@ const GuideSuggestion = ({ guideSuggestion }) => {
         <article className={styles.GuideSuggestion}>
             <div className={styles.image__container}>
                 <Image className={styles.image} fill src={`${API_HOST}/static/${icon}`} />
+                <h3 style={{ color: colorHex, position: 'absolute', top: '8px', left: '8px' }}>
+                    {title}
+                </h3>
             </div>
-            <h3 style={{ color: colorHex }}>{title}</h3>
             {sections?.map((section) => (
                 <SectionSuggestion colorHex={colorHex} section={section} />
             ))}

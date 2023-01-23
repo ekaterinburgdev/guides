@@ -20,6 +20,7 @@
     border: 0;
     padding-left: 28px;
     flex: 1;
+    font-size: 18px;
     height: 76px;
     width: 150px;
 }
@@ -27,10 +28,11 @@
 .Toolbar__input_main {
     outline: 0;
     border: 0;
-    padding-left: 28px;
     flex: 1;
     height: 76px;
     width: 220px;
+    padding-left: 30px;
+    font-size: 20px;
 }
 
 .customInput {
@@ -62,15 +64,21 @@
 @media screen and (min-width: 768px) {
     .Toolbar__input {
         width: 160px;
+        padding-left: 28px;
+        font-size: 20px;
     }
 }
 
 @media screen and (min-width: 1300px) {
     .Toolbar__input {
-        width: 225px;
+        padding-left: 28px;
+        font-size: 22px;
+        width: 215px;
     }
 
     .Toolbar__input_main {
+        padding-left: 32px;
+        font-size: 22px;
         width: 300px;
     }
 }

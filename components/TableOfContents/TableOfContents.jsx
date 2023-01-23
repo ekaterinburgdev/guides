@@ -115,13 +115,17 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     }}
                     className={cn(styles.tableOfContentsLink, {
                         [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
-                        [styles.separator]:
-                            currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length,
                     })}
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {tpForAsideMenu.execute(title)}
                 </Link>
+                {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length && (
+                    <div
+                        style={{ color: colorScheme.title, opacity: '0.4' }}
+                        className={styles.separator}
+                    />
+                )}
             </li>
             {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
                 <ul
