@@ -65,42 +65,42 @@
 
 @media screen and (min-width: 768px) {
     .Toolbar__input {
-        width: calc(58vw - 16px);
+        width: calc(60vw - 16px);
     }
 }
 
 @media screen and (min-width: 991px) {
     .Toolbar__input {
-        width: calc(24vw - 16px);
+        width: calc(33vw - 16px);
     }
 }
 
 @media screen and (min-width: 1300px) {
     .Toolbar__input {
-        width: calc(27vw - 16px);
+        width: calc(33vw - 16px);
     }
 }
 
 @media screen and (min-width: 1600px) {
     .Toolbar__input {
-        width: calc(29vw - 16px);
+        width: calc(34vw - 16px);
     }
 }
 
 @media screen and (min-width: 1800px) {
     .Toolbar__input {
-        width: calc(31vw - 16px);
+        width: calc(35vw - 16px);
     }
 }
 
 @media screen and (min-width: 1900px) {
     .Toolbar__input {
-        width: calc(32vw - 16px);
+        width: calc(36vw - 16px);
     }
 }
 
 @media screen and (min-width: 2500px) {
     .Toolbar__input {
-        width: calc(33vw - 16px);
+        width: calc(37vw - 16px);
     }
 }

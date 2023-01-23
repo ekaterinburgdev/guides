@@ -12,6 +12,16 @@
     left: 0;
 }
 
+.mainPageContainer {
+    width: 166px;
+    overflow: hidden;
+}
+
+.CommonLinks__text_main {
+    padding-left: 16px;
+    font-size: 20px;
+}
+
 .open {
     display: none !important;
 }
@@ -52,6 +62,10 @@
     .CommonLinks__container {
         width: max(20%, 376px);
         margin-left: 15px;
+    }
+
+    .mainPageContainer {
+        width: max(20%, 376px);
     }
 }
 

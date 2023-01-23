@@ -1,6 +1,7 @@
 .mainPage {
     padding: 2vmax;
     background-color: #fff;
+    margin-bottom: 20vh;
 }
 
 .mainPageTitle {
@@ -37,6 +38,10 @@
 @media screen and (prefers-color-scheme: dark) {
     .mainPageTitle {
         color: white;
+    }
+
+    .mainPage {
+        background-color: black;
     }
 
     .mainPageLogo {

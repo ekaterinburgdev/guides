@@ -20,13 +20,13 @@ body {
 @media screen and (prefers-color-scheme: light) {
     html,
     body {
-        background-color: #F6F8FA;
-        color: #323c50;
+        background-color: #fff;
+        color: black;
     }
 
     ::selection {
         background: #ffc800;
-        color: #323c50;
+        color: black;
     }
 }
 
