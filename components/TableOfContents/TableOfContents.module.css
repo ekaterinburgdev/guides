@@ -1,7 +1,7 @@
 .linkToAllManuals {
     box-shadow: none;
     padding: 10px 20px 10px 20px;
-    border-radius: 10px;
+    border-radius: 16px;
     display: inline-block;
     width: 100%;
     color: #14283C;
@@ -106,7 +106,7 @@
     width: 100%;
     height: calc(100vh - 96px);
     background-color: #eff0f1;
-    border-radius: 10px;
+    border-radius: 16px;
     position: fixed;
     top: 0;
     left: 0;
@@ -133,7 +133,7 @@
     box-shadow: none;
     color: #14283C;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 16px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     transition: 0.2s;
@@ -171,7 +171,7 @@
     box-shadow: none;
     color: #14283C;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 16px;
     transition: 0.2s;
     padding: 15px;
     font-size: 1rem;
@@ -216,7 +216,7 @@
 
     .tableOfContents {
         margin: 15px;
-        border-radius: 10px;
+        border-radius: 16px;
         display: flex;
         flex-direction: column;
         position: fixed;

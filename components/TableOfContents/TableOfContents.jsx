@@ -112,6 +112,14 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                             currentPageUrl[1] && currentPageUrl[1] === url
                                 ? colorScheme.bgLight
                                 : '',
+                        borderBottomLeftRadius:
+                            currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0
+                                ? 0
+                                : '16px',
+                        borderBottomRightRadius:
+                            currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0
+                                ? 0
+                                : '16px',
                     }}
                     className={cn(styles.tableOfContentsLink, {
                         [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
@@ -120,9 +128,12 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                 >
                     {tpForAsideMenu.execute(title)}
                 </Link>
-                {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length && (
+                {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
                     <div
-                        style={{ color: colorScheme.title, opacity: '0.4' }}
+                        style={{
+                            color: colorScheme.title,
+                            opacity: '0.4',
+                        }}
                         className={styles.separator}
                     />
                 )}
