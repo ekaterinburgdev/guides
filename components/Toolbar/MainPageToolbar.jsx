@@ -77,7 +77,7 @@ export const MainPageToolbar = () => {
 
     return (
         <>
-            <section
+            <div
                 ref={toolbarRef}
                 style={{
                     backgroundColor: toolbarColor,
@@ -181,7 +181,7 @@ export const MainPageToolbar = () => {
                         </button>
                     </div>
                 )}
-            </section>
+            </div>
             <div ref={rootEl}>
                 <SidePage guideSuggestions={guideSuggestions} close={!isOpenSidePage} />
             </div>

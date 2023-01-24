@@ -28,6 +28,10 @@ export const getTextContent = (item, useTypograf = false) =>
                 : 'none',
         }
 
+        if (stylePar.color === 'default') {
+            stylePar.color === 'black'
+        }
+
         if (!textContent) {
             return
         }
