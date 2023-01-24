@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
@@ -6,8 +6,12 @@ import { API_HOST } from '../../../consts/endpoints'
 import styles from './Suggestions.module.css'
 
 const SuggestItem = (suggest) => {
-    const origin =
-        typeof window !== 'undefined' && window.location.origin ? window.location.origin : ''
+    const [origin, setOrigin] = useState('')
+
+    useEffect(() => {
+        setOrigin(window.location.origin)
+    }, [])
+
     const { asPath } = useRouter()
     const currentSection = asPath.split('/').filter(Boolean).at(1)
     const link = `${origin}/${suggest?.suggest?.link}`
@@ -34,7 +38,7 @@ const SectionSuggestion = ({ section, colorHex }) => {
     const suggestions = section?.suggestions
 
     return (
-        <>
+        <div>
             <p style={{ color: colorHex, fontWeight: 500, fontSize: '18px', paddingTop: '28px' }}>
                 {sectionName}
             </p>
@@ -43,7 +47,7 @@ const SectionSuggestion = ({ section, colorHex }) => {
                     <SuggestItem suggest={suggest} />
                 ))}
             </ul>
-        </>
+        </div>
     )
 }
 
@@ -51,9 +55,7 @@ const GuideSuggestion = ({ guideSuggestion }) => {
     const title = guideSuggestion?.properties.properties?.Name?.title[0]?.plain_text
     const colorHex = guideSuggestion?.properties.properties?.color?.rich_text[0]?.plain_text
     const icon = guideSuggestion?.properties.properties?.previewPattern?.at(0)
-    const sections = guideSuggestion?.sectionSuggestions.sort((a, b) =>
-        a?.sectionName?.localeCompare(b?.sectionName, 'ru')
-    )
+    const sections = guideSuggestion?.sectionSuggestions.sort(new Intl.Collator('ru').compare)
 
     return (
         <article className={styles.GuideSuggestion}>
@@ -65,7 +67,7 @@ const GuideSuggestion = ({ guideSuggestion }) => {
                         position: 'absolute',
                         top: '0px',
                         left: '16px',
-                        fontSize: '24px',
+                        fontSize: 'clamp(16px, 5vw, 24px)',
                     }}
                 >
                     {title}

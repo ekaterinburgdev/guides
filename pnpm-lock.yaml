@@ -20,7 +20,6 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   react-responsive: 9.0.2
-  react-wrap-balancer: 0.3.0
   rgba-to-rgb: 1.0.2
   superagent: 7.1.5
   typograf: 6.15.1
@@ -37,7 +36,6 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-responsive: 9.0.2_react@18.2.0
-  react-wrap-balancer: 0.3.0_react@18.2.0
   rgba-to-rgb: 1.0.2
   superagent: 7.1.5
   typograf: 6.15.1
@@ -2047,14 +2045,6 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       shallow-equal: 1.2.1
-    dev: false
-
-  /react-wrap-balancer/0.3.0_react@18.2.0:
-    resolution: {integrity: sha512-UlnQvCvSRW0jh8uILic2LJs4tV0KjOO+P70ookE5qRpfZvsKmY8KLcV8s7TBPB6cuVYkoH7+fbqankFrFata8w==}
-    peerDependencies:
-      react: ^18.0.0
-    dependencies:
-      react: 18.2.0
     dev: false
 
   /react/18.2.0:
