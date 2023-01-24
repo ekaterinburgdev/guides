@@ -1,16 +1,26 @@
-import React, { createContext } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import Head from 'next/head'
-import { useMediaQuery } from 'react-responsive'
 
 import { isetSansFont } from '../utils/font'
 import '../styles/globals.css'
 
 export const ThemeContext = createContext(null)
 
+export const useDark = () => {
+    const [dark, setDark] = useState('')
+    useEffect(() => {
+        window
+            .matchMedia('(prefers-color-scheme: dark)')
+            .addEventListener('change', (e) => e.matches && setDark(true))
+        window
+            .matchMedia('(prefers-color-scheme: light)')
+            .addEventListener('change', (e) => e.matches && setDark(false))
+    }, [])
+    return dark
+}
+
 function MyApp({ Component, pageProps }) {
-    const isDark = useMediaQuery({
-        query: '(prefers-color-scheme: dark)',
-    })
+    const isDark = useDark()
 
     return (
         <>
