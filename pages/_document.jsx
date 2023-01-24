@@ -1,12 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Html, Head, Main, NextScript } from 'next/document'
 
-import { useMediaQuery } from 'react-responsive'
+import { ThemeContext } from './_app'
 
 export default function Document() {
-    const isDark = useMediaQuery({
-        query: '(prefers-color-scheme: dark)',
-    })
+    const isDark = useContext(ThemeContext)
 
     const ogTitle = 'Городские руководства Екатеринбурга'
     const ogDescription =

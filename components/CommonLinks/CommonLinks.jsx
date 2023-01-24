@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useMediaQuery } from 'react-responsive'
 import rgbaToRgb from 'rgba-to-rgb'
 import classNames from 'classnames'
 
 import styles from './CommonLinks.module.css'
+import { ThemeContext } from '../../pages/_app'
 
 export function CommonLinks({ color, bgColor, mainPage }) {
-    const isDark = useMediaQuery({
-        query: '(prefers-color-scheme: dark)',
-    })
+    const isDark = useContext(ThemeContext)
     const mainPageColor = isDark ? '#1A1C1F' : '#f5f8fb'
     const commonColor = mainPage
         ? mainPageColor

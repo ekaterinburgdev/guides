@@ -2,7 +2,6 @@ import React, { useContext, useMemo } from 'react'
 import map from 'lodash/map'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useMediaQuery } from 'react-responsive'
 import rgbaToRgb from 'rgba-to-rgb'
 
 import styles from './ManualPage.module.css'
@@ -23,6 +22,7 @@ import GuideImage from '../../utils/notionTypeParser/imageParser'
 import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { Callout } from '../NotionTypes/Callout/Callout'
+import { ThemeContext } from '../../pages/_app'
 
 function ManualPage({
     pageList,
@@ -40,9 +40,7 @@ function ManualPage({
     const { colorMap } = colorContext
     const color = useMemo(() => colorMap.filter((item) => asPath.includes(item.url))[0]?.color)
     const colorScheme = getManualColorScheme(color)
-    const isDark = useMediaQuery({
-        query: '(prefers-color-scheme: dark)',
-    })
+    const isDark = useContext(ThemeContext)
     const arrowColor = rgbaToRgb(
         isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
         `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(

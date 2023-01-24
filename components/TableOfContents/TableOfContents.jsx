@@ -12,6 +12,7 @@ import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 import { CommonLinks } from '../CommonLinks/CommonLinks'
 import getManualColorScheme from '../../utils/getManualColorScheme'
+import { ThemeContext } from '../../pages/_app'
 
 function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) {
     const isDesktop = useMediaQuery({
@@ -54,9 +55,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const icon = iconMap.filter((item) => asPath.includes(item.url))[0]?.imageUrl
     const colorScheme = getManualColorScheme(color)
-    const isDark = useMediaQuery({
-        query: '(prefers-color-scheme: dark)',
-    })
+    const isDark = useContext(ThemeContext)
     const asideColor = rgbaToRgb(
         isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
         `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(

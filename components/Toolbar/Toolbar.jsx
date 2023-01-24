@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef, useCallback, useContext } from 'react'
 import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
-import { useMediaQuery } from 'react-responsive'
 
 import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 import styles from './Toolbar.module.css'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { SidePage } from '../SidePage/SidePage'
+import { ThemeContext } from '../../pages/_app'
 
 const debounce = (func, timeout = 300) => {
     let timer
@@ -27,9 +27,7 @@ export const Toolbar = () => {
     const pdfUrl = pdfUrlsMap.filter((item) => asPath.includes(item.url))[0]?.pdfUrl ?? ''
     const colorScheme = getManualColorScheme(color)
     const [currentQuery, setCurrentQuery] = useState('')
-    const isDark = useMediaQuery({
-        query: '(prefers-color-scheme: dark)',
-    })
+    const isDark = useContext(ThemeContext)
     const toolbarColor = rgbaToRgb(
         isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
         `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
