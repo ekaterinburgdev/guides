@@ -16,17 +16,16 @@
     display: none;
 }
 
+.hidden {
+    display: none;
+}
+
 .CommonLinks__text_main {
     padding-left: 16px;
     font-size: 20px;
     line-height: 1.05;
     font-weight: 400;
 }
-
-.open {
-    display: none !important;
-}
-
 .CommonLinks__icon {
     margin: 12px 0 12px 8px;
 }

@@ -10,7 +10,6 @@ import styles from './page.module.css'
 import getManualToc from '../../utils/getManualToc'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 import { Toolbar } from '../../components/Toolbar/Toolbar'
-import { CommonLinks } from '../../components/CommonLinks/CommonLinks'
 
 export const PageContext = createContext(null)
 

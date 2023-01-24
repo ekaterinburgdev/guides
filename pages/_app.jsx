@@ -1,26 +1,21 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useState } from 'react'
 import Head from 'next/head'
 
 import { isetSansFont } from '../utils/font'
+import { useDark } from '../hooks/hooks'
+import { useMediaQuery } from 'react-responsive'
 import '../styles/globals.css'
+import HamburgerMenu from '../components/HamburgerMenu/HamburgerMenu'
 
 export const ThemeContext = createContext(null)
-
-export const useDark = () => {
-    const [dark, setDark] = useState('')
-    useEffect(() => {
-        window
-            .matchMedia('(prefers-color-scheme: dark)')
-            .addEventListener('change', (e) => e.matches && setDark(true))
-        window
-            .matchMedia('(prefers-color-scheme: light)')
-            .addEventListener('change', (e) => e.matches && setDark(false))
-    }, [])
-    return dark
-}
+export const OpenTocContext = createContext(null)
 
 function MyApp({ Component, pageProps }) {
     const isDark = useDark()
+    const isDesktop = useMediaQuery({
+        query: '(min-width: 991px)',
+    })
+    const [isOpen, setIsOpen] = useState(isDesktop)
 
     return (
         <>
@@ -30,7 +25,10 @@ function MyApp({ Component, pageProps }) {
             </Head>
             <ThemeContext.Provider value={isDark}>
                 <main className={isetSansFont.className}>
-                    <Component {...pageProps} />
+                    <HamburgerMenu state={isOpen} changeState={() => setIsOpen(!isOpen)} />
+                    <OpenTocContext.Provider value={{ isOpen, setIsOpen, isDesktop }}>
+                        <Component {...pageProps} />
+                    </OpenTocContext.Provider>
                 </main>
             </ThemeContext.Provider>
         </>
