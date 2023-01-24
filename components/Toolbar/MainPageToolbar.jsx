@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react'
-import { useMediaQuery } from 'react-responsive'
+import React, { useEffect, useState, useRef, useCallback, useContext } from 'react'
 
 import styles from './Toolbar.module.css'
 import { SidePage } from '../SidePage/SidePage'
+import { ThemeContext } from '../../pages/_app'
 
 const debounce = (func, timeout = 300) => {
     let timer
@@ -16,9 +16,7 @@ const debounce = (func, timeout = 300) => {
 
 export const MainPageToolbar = () => {
     const [isOpenSidePage, setIsOpenSidePage] = useState(false)
-    const isDark = useMediaQuery({
-        query: '(prefers-color-scheme: dark)',
-    })
+    const isDark = useContext(ThemeContext)
     const toolbarColor = isDark ? '#1A1C1F' : '#f5f8fb'
     const colorTitle = isDark ? '#f5f8fb' : '#1A1C1F'
     const [guideSuggestions, setGuideSuggestions] = useState([])
