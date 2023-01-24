@@ -13,8 +13,7 @@
 }
 
 .mainPageContainer {
-    width: 145px;
-    overflow: hidden;
+    display: none;
 }
 
 .CommonLinks__text_main {
@@ -68,11 +67,12 @@
 
 @media screen and (min-width: 991px) {
     .CommonLinks__container {
-        width: max(20%, 350px);
+        width: 350px;
         margin-left: 15px;
     }
 
     .mainPageContainer {
-        width: max(20%, 350px);
+        display: flex;
+        width: 350px;
     }
 }

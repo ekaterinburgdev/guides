@@ -113,6 +113,9 @@ function ManualPage({
             case 'callout':
                 return <Callout columnItem={notionType} />
 
+            case 'table_of_contents':
+                return <br />
+
             default:
                 return <p>Unknown type</p>
         }
