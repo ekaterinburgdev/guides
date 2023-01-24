@@ -221,9 +221,8 @@
         flex-direction: column;
         position: fixed;
         padding: 16px 16px;
-        min-width: 350px;
         height: calc(100vh - 116px);
-        width: 20%;
+        width: 380px;
         background-color: #1231;
         overflow: auto;
         scrollbar-width: none;  
