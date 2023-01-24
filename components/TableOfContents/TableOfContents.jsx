@@ -62,6 +62,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
             colorScheme.bgLight.color[1]
         )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
     )
+    const commonLinksVisibleCondition = isOpen || isDesktop
 
     useEffect(() => {
         const arrayWithAnchorElements = Array.from(
@@ -202,10 +203,8 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                             tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}
                     </ul>
                 </nav>
-                {(isOpen || isDesktop) && (
-                    <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />
-                )}
             </aside>
+            <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />
         </>
     )
 }
