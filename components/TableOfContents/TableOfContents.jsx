@@ -12,11 +12,10 @@ import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
 import { CommonLinks } from '../CommonLinks/CommonLinks'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { ThemeContext, OpenTocContext } from '../../pages/_app'
+import { useDesktop } from '../../hooks/hooks'
 
 function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) {
-    const isDesktop = useMediaQuery({
-        query: '(min-width: 991px)',
-    })
+    const isDesktop = useDesktop()
     if (isDesktop) {
         return (
             <a

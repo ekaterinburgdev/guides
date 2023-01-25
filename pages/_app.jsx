@@ -2,20 +2,18 @@ import React, { createContext, useState } from 'react'
 import Head from 'next/head'
 
 import { isetSansFont } from '../utils/font'
-import { useDark } from '../hooks/hooks'
-import { useMediaQuery } from 'react-responsive'
+import { useDark, useDesktop } from '../hooks/hooks'
 import '../styles/globals.css'
 import HamburgerMenu from '../components/HamburgerMenu/HamburgerMenu'
+import { useMobileDetect } from '../hooks/hooks'
 
 export const ThemeContext = createContext(null)
 export const OpenTocContext = createContext(null)
 
 function MyApp({ Component, pageProps }) {
     const isDark = useDark()
-    const isDesktop = useMediaQuery({
-        query: '(min-width: 991px)',
-    })
-    const [isOpen, setIsOpen] = useState(isDesktop)
+    const isDesktop = useDesktop()
+    const [isOpen, setIsOpen] = useState(!useMobileDetect().isMobile())
 
     return (
         <>

@@ -19,9 +19,10 @@ export function CommonLinks({ color, bgColor, mainPage }) {
                   bgColor.color[2]
               )}, ${bgColor.valpha})`
           )
+
     const containerClassnames = classNames(styles.CommonLinks__container, {
         [styles.mainPageContainer]: mainPage,
-        [styles.hidden]: !isOpen,
+        [styles.open]: isOpen,
     })
 
     return (
