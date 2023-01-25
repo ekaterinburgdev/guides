@@ -2,8 +2,29 @@
     display: flex; 
     align-items: center; 
     justify-content: flex-start;
+    padding: 4px;
+    text-decoration: none;
+    transition: .2s ease;
+    border-radius: 8px;
 }
 
 .File__link {
     text-decoration: none;
+    color: #000;
+}
+
+.File__container:hover {
+    background-color: #F2F2F2;
+    border-radius: 8px;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    .File__link {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .File__container:hover {
+        background-color: #1A1C1F;
+    }
 }

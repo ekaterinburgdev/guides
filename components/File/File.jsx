@@ -4,15 +4,13 @@ import React from 'react'
 import styles from './File.module.css'
 
 function File({ columnItem }) {
-    const src = columnItem?.content?.external?.url
+    const src = columnItem?.content?.file?.url
 
     return (
-        <div className={styles.File__container}>
+        <a className={styles.File__container} href={src}>
             <Image width={32} height={32} src="/pdfIcon.svg" />
-            <a className={styles.File__link} href={src}>
-                Ссылка на файл
-            </a>
-        </div>
+            <p className={styles.File__link}>Ссылка на файл</p>
+        </a>
     )
 }
 
