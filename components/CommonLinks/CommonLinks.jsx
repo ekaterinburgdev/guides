@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import rgbaToRgb from 'rgba-to-rgb'
 import classNames from 'classnames'
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 
 import styles from './CommonLinks.module.css'
 import { ThemeContext } from '../../pages/_app'
