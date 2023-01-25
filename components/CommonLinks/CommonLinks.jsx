@@ -9,7 +9,7 @@ import styles from './CommonLinks.module.css'
 import { ThemeContext } from '../../pages/_app'
 import { useMobileDetect } from '../../hooks/hooks'
 
-export function CommonLinks({ color, bgColor, mainPage }) {
+export function CommonLinks({ color, bgColor, mainPage, state }) {
     const isDark = useContext(ThemeContext)
     const { asPath } = useRouter()
     const mainPageColor = isDark ? '#1A1C1F' : '#f5f8fb'
@@ -23,12 +23,11 @@ export function CommonLinks({ color, bgColor, mainPage }) {
           )
 
     const containerClassnames = classNames(styles.CommonLinks__container, {
-        [styles.mainPageContainer]: !useMobileDetect().isMobile(),
+        [styles.hidden]: !state || useMobileDetect().isMobile(),
     })
 
     return (
-        asPath !== '/' &&
-        useMobileDetect().isMobile() && (
+        asPath !== '/' && (
             <section style={{ backgroundColor: commonColor }} className={containerClassnames}>
                 <Link href="https://ekaterinburg.design/">
                     <Image

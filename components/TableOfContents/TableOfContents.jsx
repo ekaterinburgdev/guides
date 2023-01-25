@@ -195,7 +195,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     </ul>
                 </nav>
             </aside>
-            <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />
+            <CommonLinks state={isOpen} color={colorScheme.title} bgColor={colorScheme.bgLight} />
         </>
     )
 }

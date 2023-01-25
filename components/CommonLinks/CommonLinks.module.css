@@ -1,6 +1,6 @@
 .CommonLinks__container {
     position: fixed;
-    display: none;
+    display: flex;
     align-items: center;
     border-radius: 64px;
     width: 100vw;
@@ -12,13 +12,8 @@
     z-index: 12;
 }
 
-.mainPageContainer {
+.hidden {
     display: none;
-}
-
-.open {
-    display: flex !important;
-    flex-direction: row !important;
 }
 
 .CommonLinks__text_main {

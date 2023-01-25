@@ -1,13 +1,12 @@
 import React from 'react'
 import cn from 'classnames'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 
 import styles from './menu.module.css'
 
 function HamburgerMenu({ state, changeState }) {
     const burgerMenuClassNames = cn(styles['hamburger-menu'], { [styles.opened]: state })
     const { asPath } = useRouter()
-    console.log(11, asPath)
 
     return (
         asPath !== '/' && (

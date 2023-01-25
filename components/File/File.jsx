@@ -4,7 +4,8 @@ import React from 'react'
 import styles from './File.module.css'
 
 function File({ columnItem }) {
-    const src = columnItem?.content?.external?.url
+    const src = columnItem?.content?.file?.url
+    console.log({ src })
 
     return (
         <div className={styles.File__container}>

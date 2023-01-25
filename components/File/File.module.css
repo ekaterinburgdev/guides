@@ -6,4 +6,12 @@
 
 .File__link {
     text-decoration: none;
+    color: #000;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    .File__link {
+        text-decoration: none;
+        color: #fff;
+    }
 }
