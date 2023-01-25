@@ -25,7 +25,6 @@
     height: unset !important;
     border-radius: 8px;
 }
-  
 
 .GuideSuggestion__title {
     display: flex;
@@ -51,12 +50,12 @@
 
 .SuggestItem__target {
     font-weight: 600;
-    color: #14283C;
+    color: #14283c;
 }
 
 .SuggestItem__link {
     text-decoration: none;
-    color: #14283C;
+    color: #14283c;
     font-size: 18px;
 }
 
@@ -72,6 +71,6 @@
 }
 
 .SuggestItem__suggestionText {
-    color: #14283C;
+    color: #14283c;
     opacity: 0.5;
 }

@@ -1,12 +1,12 @@
 .Divider {
     border: 0;
     height: 2px;
-    background: #14283C;
+    background: #14283c;
     opacity: 0.1;
 }
 
 @media screen and (prefers-color-scheme: dark) {
-    .Divider { 
+    .Divider {
         background-color: #fff;
         opacity: 0.5;
     }

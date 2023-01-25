@@ -1,6 +1,6 @@
 export const ANIMATION_DURATION = 500
-export const MAX_ZOOM_PIXEL_RATIO = 1
-export const ZOOM_IN_MULTIPLIER = 2
+export const MAX_ZOOM_PIXEL_RATIO = 3
+export const ZOOM_IN_MULTIPLIER = 1
 export const DOUBLE_TAP_DELAY = 300
 export const DOUBLE_CLICK_DELAY = 300
 export const DOUBLE_CLICK_MAX_STOPS = 2
