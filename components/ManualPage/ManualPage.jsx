@@ -127,6 +127,7 @@ function ManualPage({
                         className={styles.previewImage}
                         src={`${API_HOST}/static/${pageImage}`}
                         fill
+                        priority
                     />
                 </div>
             )}
