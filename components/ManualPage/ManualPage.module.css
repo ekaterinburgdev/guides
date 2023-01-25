@@ -83,7 +83,7 @@ br + .Manual__image__container {
         min-height: 100vh;
         padding-left: 7%;
         padding-right: 25%;
-        margin-left: calc(max(20%, 380px) + 15px);
+        margin-left: calc(max(16%, 350px) + 15px);
         margin-right: 0px;
     }
 }
