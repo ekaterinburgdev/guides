@@ -56,7 +56,13 @@ const GuideSuggestion = ({ guideSuggestion }) => {
     const title = guideSuggestion?.properties.properties?.Name?.title[0]?.plain_text
     const colorHex = guideSuggestion?.properties.properties?.color?.rich_text[0]?.plain_text
     const icon = guideSuggestion?.properties.properties?.previewPattern?.at(0)
-    const sections = guideSuggestion?.sectionSuggestions.sort(new Intl.Collator('ru').compare)
+    const collator = new Intl.Collator('ru', {
+        numeric: true,
+        sensitivity: 'base',
+    })
+    const sections = guideSuggestion?.sectionSuggestions.sort((a, b) =>
+        collator.compare(a.sectionName, b.sectionName)
+    )
 
     return (
         <article className={styles.GuideSuggestion}>
