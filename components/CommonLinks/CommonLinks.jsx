@@ -23,8 +23,7 @@ export function CommonLinks({ color, bgColor, mainPage }) {
           )
 
     const containerClassnames = classNames(styles.CommonLinks__container, {
-        [styles.mainPageContainer]: mainPage,
-        [styles.open]: !useMobileDetect().isMobile(),
+        [styles.mainPageContainer]: !useMobileDetect().isMobile(),
     })
 
     return (
