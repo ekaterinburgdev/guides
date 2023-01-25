@@ -7,7 +7,6 @@
 ## Development
 
 1. Add `.env.local` with back-end endpoints
-
 ```sh
 NEXT_PUBLIC_HOST=https://guides-api-test.ekaterinburg.design
 NEXT_PUBLIC_IMAGE_DOMAIN=guides-api-test.ekaterinburg.design
@@ -29,5 +28,5 @@ pnpm dev
 
 ## Tools
 
--   [Next.js](https://nextjs.org/)
--   [Vercel Serverless](https://vercel.com/)
+- [Next.js](https://nextjs.org/)
+- [Vercel Serverless](https://vercel.com/)

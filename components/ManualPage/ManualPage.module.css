@@ -27,7 +27,7 @@
     font-size: clamp(48px, 11vw, 64px);
     margin: 4vw 0 4vw;
     font-weight: 500;
-    line-height: 1.05;
+		line-height: 1.05
 }
 
 .Manual__image {
@@ -46,7 +46,7 @@
 }
 
 br + .Manual__image__container {
-    margin-top: 3vw;
+	margin-top: 3vw;
 }
 
 .Manual__image__container > img {

@@ -4,7 +4,7 @@
     border-radius: 16px;
     display: inline-block;
     width: 100%;
-    color: #14283c;
+    color: #14283C;
     text-decoration: none;
     transition: 0.2s;
 }
@@ -51,7 +51,7 @@
 .linkToAllManuals:focus-visible {
     box-shadow: none;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    color: #14283c;
+    color: #14283C;
     background-color: #fff;
     text-decoration: none;
 }
@@ -69,8 +69,8 @@
 }
 
 .innerH3 {
-    margin-left: 0.5em;
-    font-size: 14px !important;
+    margin-left: .5em;
+    font-size: 14px !important
 }
 
 .catalogTitle:hover,
@@ -131,7 +131,7 @@
     width: 100%;
     font-weight: 400;
     box-shadow: none;
-    color: #14283c;
+    color: #14283C;
     text-decoration: none;
     border-radius: 16px;
     border-bottom-left-radius: 0;
@@ -169,7 +169,7 @@
 .tableOfContentsLink {
     font-weight: 400;
     box-shadow: none;
-    color: #14283c;
+    color: #14283C;
     text-decoration: none;
     border-radius: 16px;
     transition: 0.2s;
@@ -225,7 +225,7 @@
         width: 380px;
         background-color: #1231;
         overflow: auto;
-        scrollbar-width: none;
+        scrollbar-width: none;  
         padding-top: 0px;
     }
 }

@@ -1,19 +1,19 @@
 .link {
     display: inline;
-    color: #14283c !important;
+    color: #14283C !important;
     text-decoration: none !important;
     border: none !important;
     transition: all;
     transition-duration: 0.2s;
-    box-shadow: 0 3px 0 0 #14283c;
+    box-shadow: 0 3px 0 0 #14283C;
 }
 
 .link:hover {
-    color: #e63223 !important;
+    color: #E63223 !important;
 }
 
 @media screen and (prefers-color-scheme: dark) {
     .link {
-        color: #e63223 !important;
+        color: #E63223 !important;
     }
 }
