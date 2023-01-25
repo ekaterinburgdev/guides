@@ -28,6 +28,12 @@ export const Toolbar = () => {
     const colorScheme = getManualColorScheme(color)
     const [currentQuery, setCurrentQuery] = useState('')
     const isDark = useContext(ThemeContext)
+    const toolbarColor = rgbaToRgb(
+        isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+        `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
+            colorScheme.bgLight.color[1]
+        )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
+    )
     const searchInputRef = React.useRef(null)
     const [guideSuggestions, setGuideSuggestions] = useState([])
 
@@ -79,7 +85,11 @@ export const Toolbar = () => {
 
     return (
         <>
-            <section ref={toolbarRef} className={styles.Toolbar__container}>
+            <section
+                ref={toolbarRef}
+                style={{ backgroundColor: toolbarColor }}
+                className={styles.Toolbar__container}
+            >
                 {!isOpenSidePage ? (
                     <button
                         style={{
@@ -118,6 +128,7 @@ export const Toolbar = () => {
                         <input
                             style={{
                                 color: colorScheme.title,
+                                backgroundColor: toolbarColor,
                             }}
                             type="text"
                             className={styles.Toolbar__input}
