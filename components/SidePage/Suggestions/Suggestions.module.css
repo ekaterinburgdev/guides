@@ -62,7 +62,9 @@
 
 .SuggestItem__listItem:hover > .SuggestItem__link {
     text-decoration: underline;
-    color: #14283C;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(20, 40, 60, 0.4);
 }
 
 .SuggestItem__listItem {

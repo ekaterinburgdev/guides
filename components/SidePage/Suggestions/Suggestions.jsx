@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { API_HOST } from '../../../consts/endpoints'
@@ -21,14 +22,14 @@ const SuggestItem = (suggest) => {
 
     return (
         <li className={styles.SuggestItem__listItem}>
-            <a
+            <Link
                 className={styles.SuggestItem__link}
                 href={link.includes(currentSection) ? '' : link}
             >
                 <span className={styles.SuggestItem__suggestionText}>{leftText}</span>
                 <span className={styles.SuggestItem__target}>{target}</span>
                 <span className={styles.SuggestItem__suggestionText}>{rightText}</span>
-            </a>
+            </Link>
         </li>
     )
 }
