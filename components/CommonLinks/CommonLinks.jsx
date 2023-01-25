@@ -22,14 +22,7 @@ export function CommonLinks({ color, bgColor, mainPage }) {
         query: '(min-width: 991px)',
     })
     const mainPageColor = isDark ? '#1A1C1F' : '#f5f8fb'
-    const commonColor = mainPage
-        ? mainPageColor
-        : rgbaToRgb(
-              isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
-              `rgba(${Math.trunc(bgColor.color[0])}, ${Math.trunc(bgColor.color[1])}, ${Math.trunc(
-                  bgColor.color[2]
-              )}, ${bgColor.valpha})`
-          )
+    const commonColor = mainPage ? mainPageColor : 'inherit'
     const containerClassnames = classNames(styles.CommonLinks__container, {
         [styles.mainPageContainer]: mainPage,
     })
