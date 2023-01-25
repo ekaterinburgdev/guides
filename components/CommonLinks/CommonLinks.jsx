@@ -21,14 +21,16 @@ export function CommonLinks({ color, bgColor, mainPage }) {
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
+    const currentColor = color ?? 'rgba(0, 0, 0, 1)'
+    const currentBgColor = bgColor ?? 'rgba(255, 255, 255, 1)'
     const mainPageColor = isDark ? '#1A1C1F' : '#f5f8fb'
     const commonColor = mainPage
         ? mainPageColor
         : rgbaToRgb(
               isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
-              `rgba(${Math.trunc(bgColor.color[0])}, ${Math.trunc(bgColor.color[1])}, ${Math.trunc(
-                  bgColor.color[2]
-              )}, ${bgColor.valpha})`
+              `rgba(${Math.trunc(currentBgColor.color[0])}, ${Math.trunc(
+                  currentBgColor.color[1]
+              )}, ${Math.trunc(currentBgColor.color[2])}, ${currentBgColor.valpha})`
           )
     const containerClassnames = classNames(styles.CommonLinks__container, {
         [styles.mainPageContainer]: mainPage,
@@ -63,7 +65,7 @@ export function CommonLinks({ color, bgColor, mainPage }) {
                         />
                         <p
                             className={styles.CommonLinks__text_main}
-                            style={{ color, paddingLeft: '8px' }}
+                            style={{ color: currentColor, paddingLeft: '8px' }}
                         >
                             Руководства <br />
                             Екатеринбурга
@@ -84,7 +86,10 @@ export function CommonLinks({ color, bgColor, mainPage }) {
                         />
                         <p
                             className={styles.CommonLinks__text}
-                            style={{ color, textDecorationColor: bgColor.alpha(0.2).rgb() }}
+                            style={{
+                                color: currentColor,
+                                textDecorationColor: bgColor.alpha(0.2).rgb(),
+                            }}
                         >
                             Руководства <br />
                             Екатеринбурга
