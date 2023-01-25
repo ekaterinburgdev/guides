@@ -23,6 +23,7 @@ specifiers:
   rgba-to-rgb: 1.0.2
   superagent: 7.1.5
   typograf: 6.15.1
+  yet-another-react-lightbox: ^2.2.7
 
 dependencies:
   '@next/font': 13.1.2
@@ -39,6 +40,7 @@ dependencies:
   rgba-to-rgb: 1.0.2
   superagent: 7.1.5
   typograf: 6.15.1
+  yet-another-react-lightbox: 2.2.7_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
   '@next/eslint-plugin-next': 13.1.2
@@ -2512,6 +2514,17 @@ packages:
     resolution: {integrity: sha512-AacA8nRULjKMX2DvWvOAdBZMOfQlypSFkjcOcu9FalllIDJ1kvlREzcdIZmidQUqqeMv7jorHjq2HlLv/+c2lg==}
     engines: {node: '>= 14'}
     dev: true
+
+  /yet-another-react-lightbox/2.2.7_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-v6/P2NUOjAQ9egmPYyn8BG3qs6tszVNGWC5fVaKaURqDXcwEqpoSBr4/9djWwiW6DdzxJh06KRV9Fas2HHeExg==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}

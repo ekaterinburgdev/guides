@@ -36,7 +36,8 @@
 		"react-responsive": "9.0.2",
 		"rgba-to-rgb": "1.0.2",
 		"superagent": "7.1.5",
-		"typograf": "6.15.1"
+		"typograf": "6.15.1",
+		"yet-another-react-lightbox": "2.2.7"
 	},
 	"devDependencies": {
 		"@next/eslint-plugin-next": "13.1.2",
