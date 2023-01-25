@@ -118,7 +118,6 @@ export const Toolbar = () => {
                         <input
                             style={{
                                 color: colorScheme.title,
-                                backgroundColor: toolbarColor,
                             }}
                             type="text"
                             className={styles.Toolbar__input}
