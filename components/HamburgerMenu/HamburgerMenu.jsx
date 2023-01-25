@@ -1,11 +1,14 @@
 import React from 'react'
 import cn from 'classnames'
+import { useRouter } from 'next/router'
 
 import styles from './menu.module.css'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 
-function HamburgerMenu({ state, changeState, color }) {
+function HamburgerMenu({ state, changeState, colorMap }) {
+    const { asPath } = useRouter()
     const burgerMenuClassNames = cn(styles['hamburger-menu'], { [styles.opened]: state })
+    const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const colorScheme = getManualColorScheme(color)
 
     return (
@@ -13,7 +16,7 @@ function HamburgerMenu({ state, changeState, color }) {
             style={{ backgroundColor: colorScheme.bgLight }}
             type="button"
             className={burgerMenuClassNames}
-            onClick={changeState}
+            onClick={() => changeState(!state)}
             aria-label="Оглавление"
         >
             <svg width="100" height="100" viewBox="0 0 100 100">

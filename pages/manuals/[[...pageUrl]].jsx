@@ -1,5 +1,6 @@
 import React, { useEffect, useState, createContext } from 'react'
 import { useRouter } from 'next/router'
+import { useMediaQuery } from 'react-responsive'
 
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
@@ -10,9 +11,10 @@ import styles from './page.module.css'
 import getManualToc from '../../utils/getManualToc'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 import { Toolbar } from '../../components/Toolbar/Toolbar'
-import { CommonLinks } from '../../components/CommonLinks/CommonLinks'
+import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu'
 
 export const PageContext = createContext(null)
+export const TocStateContext = createContext(null)
 
 function GetPage({
     children,
@@ -27,10 +29,14 @@ function GetPage({
 }) {
     const router = useRouter()
     const { pageUrl } = router.query
+    const isDesktop = useMediaQuery({
+        query: '(min-width: 991px)',
+    })
 
     const [prevPageIndex, setPrevPageIndex] = useState(-1)
     const [nextPageIndex, setNexPageIndex] = useState(9e13)
     const [anchorLinks, setAnchorLinks] = useState([])
+    const [isOpen, setIsOpen] = useState(isDesktop)
 
     const [catalogTitle, setCatalogTitle] = React.useState('')
     const [catalogId, setCatalogId] = React.useState('')
@@ -120,24 +126,27 @@ function GetPage({
                     pdfUrlsMap,
                 }}
             >
-                <TableOfContents
-                    tableOfContentArr={manualToc}
-                    currentPageUrl={pageUrl}
-                    anchorLinks={anchorLinks}
-                    catalogTitle={catalogTitle}
-                />
-                <ManualPage
-                    pageList={pageList}
-                    pageName={pageName}
-                    children={children}
-                    tableOfContentArr={manualToc}
-                    prevPageIndex={prevPageIndex}
-                    nextPageIndex={nextPageIndex}
-                    catalogIndex={catalogIndex}
-                    pageUrl={pageUrl}
-                    pageImage={pageImage}
-                />
-                <Toolbar />
+                <HamburgerMenu state={isOpen} changeState={setIsOpen} colorMap={colorMap} />
+                <TocStateContext.Provider value={{ isOpen, setIsOpen }}>
+                    <TableOfContents
+                        tableOfContentArr={manualToc}
+                        currentPageUrl={pageUrl}
+                        anchorLinks={anchorLinks}
+                        catalogTitle={catalogTitle}
+                    />
+                    <ManualPage
+                        pageList={pageList}
+                        pageName={pageName}
+                        children={children}
+                        tableOfContentArr={manualToc}
+                        prevPageIndex={prevPageIndex}
+                        nextPageIndex={nextPageIndex}
+                        catalogIndex={catalogIndex}
+                        pageUrl={pageUrl}
+                        pageImage={pageImage}
+                    />
+                    <Toolbar />
+                </TocStateContext.Provider>
             </PageContext.Provider>
         </>
     )

@@ -1,15 +1,14 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
-import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
+import { PageContext, TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
 
 import styles from './TableOfContents.module.css'
 import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
-import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 import { CommonLinks } from '../CommonLinks/CommonLinks'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { ThemeContext } from '../../pages/_app'
@@ -45,12 +44,9 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
 }
 
 function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle }) {
-    const isDesktop = useMediaQuery({
-        query: '(min-width: 991px)',
-    })
+    const { isOpen, setIsOpen } = useContext(TocStateContext)
     const colorContext = useContext(PageContext)
     const { colorMap, iconMap } = colorContext
-    const [isOpen, setIsOpen] = useState(isDesktop)
     const { asPath } = useRouter()
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const icon = iconMap.filter((item) => asPath.includes(item.url))[0]?.imageUrl
@@ -62,7 +58,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
             colorScheme.bgLight.color[1]
         )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
     )
-    const commonLinksVisibleCondition = isOpen || isDesktop
 
     useEffect(() => {
         const arrayWithAnchorElements = Array.from(
@@ -168,7 +163,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
             <Head>
                 <title>{catalogTitle}</title>
             </Head>
-            <HamburgerMenu state={isOpen} changeState={() => setIsOpen(!isOpen)} color={color} />
             <aside className={styles.TableOfContents__aside}>
                 <nav
                     className={navClassName}
@@ -204,7 +198,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     </ul>
                 </nav>
             </aside>
-            <CommonLinks color={colorScheme.title} bgColor={colorScheme.bgLight} />
+            <CommonLinks open={isOpen} color={colorScheme.title} bgColor={colorScheme.bgLight} />
         </>
     )
 }
