@@ -6,6 +6,7 @@ import classNames from 'classnames'
 
 import styles from './CommonLinks.module.css'
 import { ThemeContext, OpenTocContext } from '../../pages/_app'
+import { useMobileDetect } from '../../hooks/hooks'
 
 export function CommonLinks({ color, bgColor, mainPage }) {
     const isDark = useContext(ThemeContext)
@@ -22,7 +23,7 @@ export function CommonLinks({ color, bgColor, mainPage }) {
 
     const containerClassnames = classNames(styles.CommonLinks__container, {
         [styles.mainPageContainer]: mainPage,
-        [styles.open]: isOpen,
+        [styles.open]: !useMobileDetect().isMobile(),
     })
 
     return (
