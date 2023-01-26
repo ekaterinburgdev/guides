@@ -1,11 +1,14 @@
 .p {
+    width: 100%;
+    max-width: 670px;
+		padding-left: 4px;
     white-space: pre-wrap;
-    line-height: 1.5;
-    font-size: clamp(16px, 2.5vw, 22px);
-    margin-top: 1vw;
-    margin-bottom: .5vw;
-    margin-right: 2em;
-	opacity: .95
+    line-height: 1.4;
+    font-size: clamp(14px, 2vw, 19px);
+    color: #1e2841;
+    margin: 1vw auto;
+    opacity: .9;
+    /* hyphens: auto; */
 }
 
 .p + .p {
@@ -13,5 +16,6 @@
 }
 
 .Template__item .p {
-    line-height: 1.3
+    line-height: 1.3;
+    padding: 0;
 }

@@ -1,20 +1,27 @@
+.heading1, .heading2, .heading3 {
+		width: 100%;
+		max-width: 670px;
+		margin-left: auto;
+		margin-right: auto;
+		font-weight: 500;
+		color: #1e2841;
+		/* font-feature-settings: "onum"; */
+}
+
 .heading1 {
     font-size: clamp(28px, 10vw, 56px);
-    font-weight: 500;
-    margin-top: 2vw;
+    margin-top: 2.5vw;
     margin-bottom: .5vw;
 }
 
 .heading2 {
     font-size: clamp(24px, 8vw, 40px);
-    font-weight: 500;
     margin-top: 1vw;
     margin-bottom: .5vw;
 }
 
 .heading3 {
     font-size: clamp(22px, 6vw, 28px);
-    font-weight: 500;
     margin-top: 1em;
     margin-bottom: .5em;
 }
