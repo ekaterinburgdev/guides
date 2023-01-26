@@ -67,7 +67,7 @@
 
 @media screen and (min-width: 991px) {
     .CommonLinks__container {
-        width: 380px;
+        width: max(350px, 16%);
         margin-left: 15px;
     }
 

@@ -222,7 +222,7 @@
         position: fixed;
         padding: 16px 16px;
         height: calc(100vh - 116px);
-        width: 380px;
+        width: max(350px, 16%);
         background-color: #1231;
         overflow: auto;
         scrollbar-width: none;  
