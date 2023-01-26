@@ -21,7 +21,7 @@ export function CommonLinks({ color, bgColor, mainPage }) {
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
-    const currentColor = color ?? (isDark ? 'rgba(255, 255, 255, 1)' : 'rgba(0, 0, 0, 1)')
+    const currentColor = color ?? (isDark ? 'rgba(255, 255, 255, 1)' : 'rgba(17, 34, 51, 1)')
     const currentBgColor = bgColor ?? 'rgba(255, 255, 255, 1)'
     const mainPageColor = isDark ? '#1A1C1F' : '#f5f8fb'
     const commonColor = mainPage
