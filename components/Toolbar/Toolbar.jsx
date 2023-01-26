@@ -7,6 +7,9 @@ import styles from './Toolbar.module.css'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { SidePage } from '../SidePage/SidePage'
 import { ThemeContext } from '../../pages/_app'
+import { API_HOST, PDF_HOST } from '../../consts/endpoints'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const debounce = (func, timeout = 300) => {
     let timer
@@ -24,9 +27,11 @@ export const Toolbar = () => {
     const colorContext = useContext(PageContext)
     const { colorMap, pdfUrlsMap } = colorContext
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
-    const pdfUrl = pdfUrlsMap.filter((item) => asPath.includes(item.url))[0]?.pdfUrl ?? ''
+    const currentUrl = pdfUrlsMap.filter((item) => asPath.includes(item.url))[0]
+    const pdfUrl = currentUrl?.pdfUrl ?? ''
     const colorScheme = getManualColorScheme(color)
     const [currentQuery, setCurrentQuery] = useState('')
+    const [generatePdfUrl, setGeneratePdfUrl] = useState('')
     const isDark = useContext(ThemeContext)
     const toolbarColor = rgbaToRgb(
         isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
@@ -36,6 +41,39 @@ export const Toolbar = () => {
     )
     const searchInputRef = React.useRef(null)
     const [guideSuggestions, setGuideSuggestions] = useState([])
+    let finalUrl
+
+    const getGeneratePdfUrl = async () => {
+        const existsPdf = await (await fetch(`${PDF_HOST}/guides/`, { mode: 'cors' })).json()
+        const pdfList = existsPdf?.guides
+        if (pdfList.includes(`${currentUrl?.url}.pdf`)) {
+            setGeneratePdfUrl(`${PDF_HOST}/guides/${currentUrl?.url}.pdf`)
+        }
+    }
+
+    const notify = () =>
+        toast('Для этого руководства еще не был создан pdf файл :(', {
+            position: 'top-center',
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        })
+
+    useEffect(() => {
+        getGeneratePdfUrl()
+    }, [])
+
+    if (pdfUrl) {
+        finalUrl = pdfUrl
+    } else if (generatePdfUrl) {
+        finalUrl = generatePdfUrl
+    } else {
+        finalUrl = false
+    }
 
     const handleOnChange = useCallback(
         debounce(async (e) => {
@@ -43,7 +81,7 @@ export const Toolbar = () => {
             setCurrentQuery(textInputValue)
             if (textInputValue.length > 2) {
                 const response = await fetch(
-                    `https://guides-api-test.ekaterinburg.design/api/content/search?pattern=${e.target.value}`
+                    `${API_HOST}/api/content/search?pattern=${e.target.value}`
                 )
                 const responseJson = await response.json()
                 const { guideSuggestions } = responseJson
@@ -163,7 +201,8 @@ export const Toolbar = () => {
                     <a
                         style={{ backgroundColor: colorScheme.bgLight }}
                         className={styles.Toolbar__button}
-                        href={pdfUrl}
+                        href={finalUrl}
+                        onClick={!finalUrl ? notify : false}
                     >
                         <svg
                             width="70"
@@ -212,6 +251,7 @@ export const Toolbar = () => {
                         </svg>
                     </button>
                 )}
+                <ToastContainer />
             </section>
             <div ref={rootEl}>
                 <SidePage guideSuggestions={guideSuggestions} close={!isOpenSidePage} />

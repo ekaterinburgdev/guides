@@ -26,6 +26,7 @@ export const getTextContent = (item, useTypograf = false) =>
                     ? 'line-through'
                     : 'underline'
                 : 'none',
+            filter: par?.annotations?.color === 'yellow' ? 'contrast(0.6)' : 'contrast(1)',
         }
 
         if (stylePar.color === 'default') {
