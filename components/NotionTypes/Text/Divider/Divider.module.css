@@ -1,12 +1,15 @@
 .Divider {
+    width: 100%;
+    max-width: 670px;
+    margin: 1vw auto;
     border: 0;
-    height: 2px;
+    height: 1px;
     background: #14283C;
     opacity: 0.1;
 }
 
 @media screen and (prefers-color-scheme: dark) {
-    .Divider { 
+    .Divider {
         background-color: #fff;
         opacity: 0.5;
     }
