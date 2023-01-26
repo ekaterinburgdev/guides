@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
+
 import Image from 'next/image'
 import classNames from 'classnames'
 import Lightbox from 'yet-another-react-lightbox'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import 'yet-another-react-lightbox/styles.css'
-import { API_HOST } from '../../consts/endpoints'
-import styles from '../../components/ManualPage/ManualPage.module.css'
+
 import {
     ANIMATION_DURATION,
     DOUBLE_CLICK_DELAY,
@@ -18,7 +18,11 @@ import {
     SCROLL_TO_ZOOM,
     WHEEL_ZOOM_DISTANCE_FACTOR,
     ZOOM_IN_MULTIPLIER,
-} from '../../consts/zoomOptions.consts'
+} from '../../consts/imageParserLightboxParams'
+
+import { API_HOST } from '../../consts/endpoints'
+import styles from '../../components/ManualPage/ManualPage.module.css'
+import { useState } from 'react'
 
 function GuideImage({ notionType }) {
     const cn = classNames(styles.Manual__image, {
@@ -44,18 +48,6 @@ function GuideImage({ notionType }) {
 
     const srcUrl = `${API_HOST}/static/${notionType.content.image_name}`
 
-    const zoomOptions = {
-        maxZoomPixelRatio,
-        zoomInMultiplier,
-        doubleTapDelay,
-        doubleClickDelay,
-        doubleClickMaxStops,
-        keyboardMoveDistance,
-        wheelZoomDistanceFactor,
-        pinchZoomDistanceFactor,
-        scrollToZoom,
-    }
-
     const image = (
         <>
             <Lightbox
@@ -64,7 +56,17 @@ function GuideImage({ notionType }) {
                 slides={[{ src: srcUrl }]}
                 plugins={[Zoom]}
                 animation={{ zoom: animationDuration }}
-                zoom={zoomOptions}
+                zoom={{
+                    maxZoomPixelRatio,
+                    zoomInMultiplier,
+                    doubleTapDelay,
+                    doubleClickDelay,
+                    doubleClickMaxStops,
+                    keyboardMoveDistance,
+                    wheelZoomDistanceFactor,
+                    pinchZoomDistanceFactor,
+                    scrollToZoom,
+                }}
                 carousel={{
                     finite,
                 }}
