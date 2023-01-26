@@ -1,19 +1,23 @@
 .arrowNavLink {
     box-shadow: none;
     text-decoration: none;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
+		margin: .2vw 0;
     border-radius: 2rem;
     font-weight: 500;
-    margin-bottom: 2rem;
-    margin-top: 1rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
     transition: 0.3s;
     z-index: 11;
 }
 
 .arrowNavLink:hover,
 .arrowNavLink:focus-visible {
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+.arrowNavLink.arrowBack {
+	font-size: .75rem;
+	opacity: .7
 }
 
 @media print {
