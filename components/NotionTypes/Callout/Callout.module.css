@@ -1,7 +1,7 @@
 .Callout__container {
     display: flex;
     flex-direction: row;
-    align-items: start;
+    align-items: flex-start;
     gap: 8px;
 		width: 100%;
     max-width: 670px;
