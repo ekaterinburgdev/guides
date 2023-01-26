@@ -5,23 +5,24 @@
 		margin-right: auto;
 		font-weight: 500;
 		color: #1e2841;
+		line-height: 1;
 		/* font-feature-settings: "onum"; */
 }
 
 .heading1 {
-    font-size: clamp(28px, 10vw, 56px);
+    font-size: clamp(28px, 10vw, 50px);
     margin-top: 2.5vw;
     margin-bottom: .5vw;
 }
 
 .heading2 {
-    font-size: clamp(24px, 8vw, 40px);
+    font-size: clamp(24px, 8vw, 36px);
     margin-top: 1vw;
     margin-bottom: .5vw;
 }
 
 .heading3 {
-    font-size: clamp(22px, 6vw, 28px);
+    font-size: clamp(22px, 6vw, 24px);
     margin-top: 1em;
     margin-bottom: .5em;
 }
