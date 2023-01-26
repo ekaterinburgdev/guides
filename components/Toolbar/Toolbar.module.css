@@ -53,7 +53,7 @@
 
 @media screen and (min-width: 768px) {
     .Toolbar__input {
-        width: 150px;
+        width: 160px;
         padding-left: 28px;
         font-size: 20px;
     }
@@ -63,7 +63,7 @@
     .Toolbar__input {
         padding-left: 28px;
         font-size: 22px;
-        width: 215px;
+        width: 225px;
     }
 }
 
@@ -71,6 +71,6 @@
     .Toolbar__input {
         padding-left: 28px;
         font-size: 22px;
-        width: 410px;
+        width: 420px;
     }
 }

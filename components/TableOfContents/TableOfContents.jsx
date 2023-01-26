@@ -145,7 +145,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                                 anchor={anchor}
                                 baseState={isOpen}
                                 setState={setIsOpen}
-                                textDecorationColor={colorScheme.bgLight}
+                                textDecorationColor={colorScheme.textDecoration}
                             />
                         </li>
                     ))}

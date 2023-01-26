@@ -144,7 +144,7 @@ export const Toolbar = () => {
                             width="70"
                             height="70"
                             viewBox="0 0 70 70"
-                            fill="none"
+                            fill="transparent"
                             xmlns="http://www.w3.org/2000/svg"
                         >
                             <circle
@@ -178,9 +178,9 @@ export const Toolbar = () => {
                             width="70"
                             height="70"
                             viewBox="0 0 70 70"
-                            fill="none"
+                            fill="transparent"
                             xmlns="http://www.w3.org/2000/svg"
-                            style={{ transform: 'translateX(12px)' }}
+                            style={{ transform: 'translateX(8px)' }}
                         >
                             <circle
                                 cx="31.501"
@@ -208,7 +208,7 @@ export const Toolbar = () => {
                             width="70"
                             height="70"
                             viewBox="0 0 70 70"
-                            fill="none"
+                            fill="transparent"
                             xmlns="http://www.w3.org/2000/svg"
                             style={{
                                 marginTop: '2px',
@@ -232,13 +232,14 @@ export const Toolbar = () => {
                             outline: '0',
                             cursor: 'pointer',
                             backgroundColor: 'inherit',
+                            paddingRight: '10px',
                         }}
                     >
                         <svg
                             width="70"
                             height="70"
                             viewBox="0 0 70 70"
-                            style={{ fill: colorScheme.title }}
+                            fill="transparent"
                             xmlns="http://www.w3.org/2000/svg"
                         >
                             <path

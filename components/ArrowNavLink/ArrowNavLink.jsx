@@ -25,8 +25,8 @@ export function PrevPage({
     let title = ''
 
     if (prevPageIndex >= 0) {
-        href.query.pageUrl = [pageUrl[0], tableOfContentArr[prevPageIndex].url]
-        title = tableOfContentArr[prevPageIndex].title
+        href.query.pageUrl = [pageUrl[0], tableOfContentArr[prevPageIndex]?.url]
+        title = tableOfContentArr[prevPageIndex]?.title
     } else {
         const prevCatalogIndex = catalogIndex - 1
         if (Number.isNaN(prevCatalogIndex)) {

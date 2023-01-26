@@ -15,12 +15,12 @@
 
 @media screen and (min-width: 1300px) {
     .SidePage__container {
-        width: 400px;
+        width: 415px;
     }
 }
 
 @media screen and (min-width: 1900px) {
     .SidePage__container {
-        width: 600px;
+        width: 610px;
     }
 }
