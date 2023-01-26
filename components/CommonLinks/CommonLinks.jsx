@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 
+import mainPageLogo from '../MainPage/MainPageLogo.svg'
 import styles from './CommonLinks.module.css'
 import { ThemeContext } from '../../pages/_app'
 import NoSsr from '../NoSsr/NoSsr'
@@ -57,7 +58,7 @@ export function CommonLinks({ color, bgColor, mainPage }) {
                 {mainPage ? (
                     <>
                         <Image
-                            src="/transport.svg"
+                            src={mainPageLogo}
                             width={60}
                             height={60}
                             className={styles.CommonLinks__icon}
