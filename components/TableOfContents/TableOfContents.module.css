@@ -13,7 +13,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    margin-top: 16px;
+    margin-top: 12px;
 }
 
 .titleContainer {
@@ -35,8 +35,8 @@
     content: '';
     width: 0;
     position: absolute;
-    left: 0;
-    height: 70%;
+    left: -9px;
+    height: 100%;
     border: 1px solid;
 }
 
@@ -69,7 +69,8 @@
 }
 
 .innerH3 {
-    margin-left: .5em;
+    margin-left: 0px;
+    padding-left: 16px !important;
     font-size: 14px !important
 }
 
@@ -133,13 +134,12 @@
     box-shadow: none;
     color: #14283C;
     text-decoration: none;
-    border-radius: 16px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 8px;
     transition: 0.2s;
-    padding: 10px 5px 10px 0.5rem;
+    padding: 12px 8px 12px 8px;
     position: relative;
     font-size: 18px;
+    opacity: 0.8;
 }
 
 .innerLinkHidden {
@@ -150,6 +150,7 @@
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 4px;
+    opacity: 1;
 }
 
 .innerlinkContainerList {
@@ -173,7 +174,7 @@
     text-decoration: none;
     border-radius: 16px;
     transition: 0.2s;
-    padding: 15px;
+    padding: 12px 16px 12px 16px;
     font-size: 1rem;
 }
 
@@ -191,8 +192,7 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 20px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 8px;
 }
 
 .active::hover {

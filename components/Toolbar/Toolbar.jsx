@@ -210,7 +210,10 @@ export const Toolbar = () => {
                             viewBox="0 0 70 70"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
-                            style={{ marginTop: '2px' }}
+                            style={{
+                                marginTop: '2px',
+                                marginRight: '10px',
+                            }}
                         >
                             <path d="M52 53H18" stroke={colorScheme.title} strokeWidth="6" />
                             <path d="M35 12V45" stroke={colorScheme.title} strokeWidth="6" />
@@ -235,7 +238,7 @@ export const Toolbar = () => {
                             width="70"
                             height="70"
                             viewBox="0 0 70 70"
-                            fill="none"
+                            style={{ fill: colorScheme.title }}
                             xmlns="http://www.w3.org/2000/svg"
                         >
                             <path
