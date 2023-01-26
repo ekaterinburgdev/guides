@@ -110,11 +110,11 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                         borderBottomLeftRadius:
                             currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0
                                 ? 0
-                                : '16px',
+                                : '8px',
                         borderBottomRightRadius:
                             currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0
                                 ? 0
-                                : '16px',
+                                : '8px',
                     }}
                     className={cn(styles.tableOfContentsLink, {
                         [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
