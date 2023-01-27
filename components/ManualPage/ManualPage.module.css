@@ -3,9 +3,9 @@
 }
 
 /* TODO: Move .row rule to a separate file */
-.Template__item[class*=row] {
+.Template__item:global(.row) {
     /* TODO: Move all `670px` values to common css-variable */
-    max-width: 670px;
+    max-width: calc(670px + 1rem);
     margin: 0 auto;
 }
 
