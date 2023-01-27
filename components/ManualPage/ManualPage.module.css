@@ -3,7 +3,7 @@
 }
 
 /* TODO: Move .row rule to a separate file */
-.Template__item.row {
+.Template__item[class*=row] {
     /* TODO: Move all `670px` values to common css-variable */
     max-width: 670px;
     margin: 0 auto;
