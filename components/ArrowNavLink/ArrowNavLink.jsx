@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import cn from 'classnames'
 
 import styles from './arrow.module.css'
 
@@ -45,11 +46,11 @@ export function PrevPage({
     return (
         <Link
             style={{ color, backgroundColor }}
-            className={styles.arrowNavLink}
+            className={cn(styles.arrowNavLink, styles.arrowBack)}
             href={href}
             passHref
         >
-            ←&nbsp;{title}
+            {title}
         </Link>
     )
 }
@@ -88,8 +89,12 @@ export function NextPage({
     }
 
     return (
-        <Link style={{ color, backgroundColor }} className={styles.arrowNavLink} href={href}>
-            {title}&nbsp;→
+        <Link
+            style={{ color, backgroundColor }}
+            className={cn(styles.arrowNavLink, styles.arrowNext)}
+            href={href}
+        >
+            {title}
         </Link>
     )
 }

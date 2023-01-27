@@ -1,12 +1,20 @@
 .Callout__container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
+    width: 100%;
+    max-width: 670px;
+    margin: 1.5vw auto;
     border: 1px solid rgba(20, 40, 60, 0.16);
     border-radius: 8px;
 }
 
 .Callout__icon {
-    margin-left: 8px;
+    margin: 16px 8px 16px 16px;
+}
+
+.Callout__container p {
+    font-size: 16px;
+    line-height: 1.4;
 }

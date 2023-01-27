@@ -1,28 +1,37 @@
-.heading1 {
-    font-size: clamp(28px, 10vw, 56px);
+.heading1,
+.heading2,
+.heading3 {
+    width: 100%;
+    max-width: 670px;
+    margin-left: auto;
+    margin-right: auto;
     font-weight: 500;
-    margin-top: 2vw;
-    margin-bottom: .5vw;
+    color: #1e2841;
+    line-height: 1;
+}
+
+.heading1 {
+    font-size: clamp(28px, 10vw, 50px);
+    margin-top: 2.5vw;
+    margin-bottom: 0.5vw;
 }
 
 .heading2 {
-    font-size: clamp(24px, 8vw, 40px);
-    font-weight: 500;
+    font-size: clamp(24px, 8vw, 36px);
     margin-top: 1vw;
-    margin-bottom: .5vw;
+    margin-bottom: 0.5vw;
 }
 
 .heading3 {
-    font-size: clamp(22px, 6vw, 28px);
-    font-weight: 500;
+    font-size: clamp(22px, 6vw, 24px);
     margin-top: 1em;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
 }
 
 .heading1 + .heading2 {
-    margin-top: 1vw
+    margin-top: 1vw;
 }
 
 br + .heading1 {
-    margin-top: 4vw
+    margin-top: 4vw;
 }
