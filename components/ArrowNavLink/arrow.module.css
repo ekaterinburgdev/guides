@@ -2,7 +2,7 @@
     box-shadow: none;
     text-decoration: none;
     padding: 1rem 1.5rem;
-		margin: .2vw 0;
+    margin: 0.2vw 0;
     border-radius: 2rem;
     font-weight: 500;
     font-size: 1.1rem;
@@ -16,8 +16,8 @@
 }
 
 .arrowNavLink.arrowBack {
-	font-size: .75rem;
-	opacity: .7
+    font-size: 0.75rem;
+    opacity: 0.7;
 }
 
 @media print {

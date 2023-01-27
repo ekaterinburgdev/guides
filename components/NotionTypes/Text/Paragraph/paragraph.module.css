@@ -1,18 +1,17 @@
 .p {
     width: 100%;
     max-width: 670px;
-		padding-left: 4px;
+    padding-left: 4px;
     white-space: pre-wrap;
     line-height: 1.4;
     font-size: clamp(14px, 2vw, 19px);
     color: #1e2841;
     margin: 1vw auto;
-    opacity: .9;
-    /* hyphens: auto; */
+    opacity: 0.9;
 }
 
 .p + .p {
-    margin-top: 0
+    margin-top: 0;
 }
 
 .Template__item .p {

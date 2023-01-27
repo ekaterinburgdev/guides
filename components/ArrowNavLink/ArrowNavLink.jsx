@@ -90,9 +90,10 @@ export function NextPage({
 
     return (
         <Link
-          style={{ color, backgroundColor }}
-          className={cn(styles.arrowNavLink, styles.arrowNext)}
-          href={href}>
+            style={{ color, backgroundColor }}
+            className={cn(styles.arrowNavLink, styles.arrowNext)}
+            href={href}
+        >
             {title}
         </Link>
     )

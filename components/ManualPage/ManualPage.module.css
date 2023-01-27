@@ -14,25 +14,24 @@
 }
 
 .footNav {
-		width: 100%;
-		max-width: 670px;
-		margin: 4vw auto 1vw;
+    width: 100%;
+    max-width: 670px;
+    margin: 4vw auto 1vw;
     display: flex;
-		flex-direction: column;
+    flex-direction: column;
     justify-content: flex-start;
     gap: 0;
     align-items: flex-start;
-    /* text-align: center; */
 }
 
 .pageName {
-		width: 100%;
-		max-width: 670px;
-		margin: 4vw auto 2vw;
+    width: 100%;
+    max-width: 670px;
+    margin: 4vw auto 2vw;
     font-size: clamp(48px, 12vw, 70px);
-		color: #1e2841;
+    color: #1e2841;
     font-weight: 500;
-    line-height: .95;
+    line-height: 0.95;
 }
 
 .Manual__image {
@@ -51,11 +50,11 @@
 }
 
 .Manual__image__container + .Manual__image__container {
-	margin-top: .1vw;
+    margin-top: 0.1vw;
 }
 
 br + .Manual__image__container {
-	margin-top: 3vw;
+    margin-top: 3vw;
 }
 
 .Manual__image__container > img {

@@ -6,20 +6,20 @@
     font-size: clamp(14px, 2vw, 19px);
     line-height: 1.4;
     color: #1e2841;
-    opacity: .9;
-		list-style-type: none;
-		counter-reset: num;
+    opacity: 0.9;
+    list-style-type: none;
+    counter-reset: num;
 }
 
 .ol li {
-    margin: .6vw 0;
+    margin: 0.6vw 0;
 }
 
 .ol li:before {
     display: inline-block;
-    content: counter(num) ". ";
+    content: counter(num) '. ';
     counter-increment: num;
     width: 1.5em;
     margin-left: -1.5em;
-    opacity: .5;
+    opacity: 0.5;
 }
