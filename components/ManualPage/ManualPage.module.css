@@ -2,6 +2,13 @@
     margin-top: 0;
 }
 
+/* TODO: Move .row rule to a separate file */
+.Template__item:global(.row) {
+    /* TODO: Move all `670px` values to common css-variable */
+    max-width: calc(670px + 1rem);
+    margin: 0 auto;
+}
+
 .Template__column p {
     line-height: 1.3;
 }
