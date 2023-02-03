@@ -82,27 +82,26 @@ export const MainPageToolbar = () => {
                 style={{
                     backgroundColor: toolbarColor,
                     borderRadius: isOpenSidePage ? '200px' : '50%',
+                    aspectRatio: !isOpenSidePage ? '1 / 1' : '',
                 }}
                 className={styles.Toolbar__container}
             >
                 {!isOpenSidePage ? (
                     <button
-                        style={{ backgroundColor: toolbarColor }}
                         className={styles.Toolbar__button}
                         onClick={() => {
                             setIsOpenSidePage((prev) => !prev)
                         }}
                     >
                         <svg
-                            width="70"
-                            height="70"
+                            width="40"
+                            height="40"
                             viewBox="0 0 70 70"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
-                            style={{ marginTop: '4px' }}
                         >
                             <circle
-                                cx="31.501"
+                                cx="30.501"
                                 cy="30.4995"
                                 r="14.5"
                                 stroke={colorTitle}
@@ -117,29 +116,16 @@ export const MainPageToolbar = () => {
                     </button>
                 ) : (
                     <div className={styles.customInput}>
-                        <input
-                            style={{
-                                color: colorTitle,
-                                backgroundColor: toolbarColor,
-                            }}
-                            type="text"
-                            className={styles.Toolbar__input}
-                            ref={searchInputRef}
-                            placeholder={!currentQuery ? 'Например, скамья' : currentQuery}
-                            onChange={handleOnChange}
-                        />
                         <svg
-                            width="70"
-                            height="70"
+                            width="40"
+                            height="40"
                             viewBox="0 0 70 70"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
-                            style={{
-                                transform: 'translateX(12px)',
-                            }}
+                            className={styles.Toolbar__searchIcon}
                         >
                             <circle
-                                cx="31.501"
+                                cx="30.501"
                                 cy="30.4995"
                                 r="14.5"
                                 stroke={colorTitle}
@@ -151,18 +137,24 @@ export const MainPageToolbar = () => {
                                 strokeWidth="6"
                             />
                         </svg>
+                        <input
+                            style={{
+                                color: colorTitle,
+                                backgroundColor: toolbarColor,
+                            }}
+                            type="text"
+                            className={styles.Toolbar__input}
+                            ref={searchInputRef}
+                            placeholder={!currentQuery ? 'Например, скамья' : currentQuery}
+                            onChange={handleOnChange}
+                        />
                         <button
                             onClick={() => setIsOpenSidePage(!isOpenSidePage)}
-                            style={{
-                                border: '0',
-                                outline: '0',
-                                cursor: 'pointer',
-                                backgroundColor: 'inherit',
-                            }}
+                            className={styles.Toolbar__button}
                         >
                             <svg
-                                width="70"
-                                height="70"
+                                width="40"
+                                height="40"
                                 viewBox="0 0 70 70"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"

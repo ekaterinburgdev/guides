@@ -130,22 +130,18 @@ export const Toolbar = () => {
                 className={styles.Toolbar__container}
             >
                 {!isOpenSidePage ? (
-                    <>
+                    <div>
                         <a
-                            style={{ backgroundColor: colorScheme.bgLight }}
                             className={styles.Toolbar__button}
                             href={finalUrl}
                             onClick={!finalUrl ? notify : false}
                         >
                             <svg
-                                width="70"
-                                height="70"
-                                viewBox="0 0 50 70"
+                                width="40"
+                                height="40"
+                                viewBox="0 0 70 70"
                                 fill="transparent"
                                 xmlns="http://www.w3.org/2000/svg"
-                                style={{
-                                    marginTop: '2px',
-                                }}
                             >
                                 <path d="M52 53H18" stroke={colorScheme.title} strokeWidth="6" />
                                 <path d="M35 12V45" stroke={colorScheme.title} strokeWidth="6" />
@@ -157,28 +153,20 @@ export const Toolbar = () => {
                             </svg>
                         </a>
                         <button
-                            style={{
-                                backgroundColor: colorScheme.bgLight,
-                                paddingRight: '0',
-                            }}
                             className={styles.Toolbar__button}
                             onClick={() => {
                                 setIsOpenSidePage((prev) => !prev)
                             }}
                         >
                             <svg
-                                width="70"
-                                height="70"
+                                width="40"
+                                height="40"
                                 viewBox="0 0 70 70"
                                 fill="transparent"
                                 xmlns="http://www.w3.org/2000/svg"
-                                style={{
-                                    marginRight: '10px',
-                                    marginTop: '2px',
-                                }}
                             >
                                 <circle
-                                    cx="31.501"
+                                    cx="30.501"
                                     cy="30.4995"
                                     r="14.5"
                                     stroke={colorScheme.title}
@@ -191,38 +179,30 @@ export const Toolbar = () => {
                                 />
                             </svg>
                         </button>
-                    </>
+                    </div>
                 ) : (
                     <>
-                        <button
-                            onClick={() => setIsOpenSidePage(!isOpenSidePage)}
-                            style={{
-                                border: '0',
-                                outline: '0',
-                                cursor: 'pointer',
-                                backgroundColor: 'inherit',
-                                paddingRight: '10px',
-                            }}
+                        <svg
+                            width="40"
+                            height="40"
+                            viewBox="0 0 70 70"
+                            fill="transparent"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className={styles.Toolbar__searchIcon}
                         >
-                            <svg
-                                width="70"
-                                height="70"
-                                viewBox="0 0 70 70"
-                                fill="transparent"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M18 18L51.9995 51.9995"
-                                    stroke={colorScheme.title}
-                                    strokeWidth="6"
-                                />
-                                <path
-                                    d="M52 18L18.0005 51.9995"
-                                    stroke={colorScheme.title}
-                                    strokeWidth="6"
-                                />
-                            </svg>
-                        </button>
+                            <circle
+                                cx="30.501"
+                                cy="30.4995"
+                                r="14.5"
+                                stroke={colorScheme.title}
+                                strokeWidth="6"
+                            />
+                            <path
+                                d="M40.001 39.4995L54.501 53.9995"
+                                stroke={colorScheme.title}
+                                strokeWidth="6"
+                            />
+                        </svg>
                         <div className={styles.customInput}>
                             <input
                                 style={{
@@ -235,27 +215,30 @@ export const Toolbar = () => {
                                 ref={searchInputRef}
                                 onChange={handleOnChange}
                             />
-                            <svg
-                                width="70"
-                                height="70"
-                                viewBox="0 0 70 70"
-                                fill="transparent"
-                                xmlns="http://www.w3.org/2000/svg"
-                                style={{ transform: 'translateX(8px)' }}
+
+                            <button
+                                onClick={() => setIsOpenSidePage(!isOpenSidePage)}
+                                className={styles.Toolbar__closeButton}
                             >
-                                <circle
-                                    cx="31.501"
-                                    cy="30.4995"
-                                    r="14.5"
-                                    stroke={colorScheme.title}
-                                    strokeWidth="6"
-                                />
-                                <path
-                                    d="M40.001 39.4995L54.501 53.9995"
-                                    stroke={colorScheme.title}
-                                    strokeWidth="6"
-                                />
-                            </svg>
+                                <svg
+                                    width="40"
+                                    height="40"
+                                    viewBox="0 0 70 70"
+                                    fill="transparent"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M18 18L51.9995 51.9995"
+                                        stroke={colorScheme.title}
+                                        strokeWidth="6"
+                                    />
+                                    <path
+                                        d="M52 18L18.0005 51.9995"
+                                        stroke={colorScheme.title}
+                                        strokeWidth="6"
+                                    />
+                                </svg>
+                            </button>
                         </div>
                     </>
                 )}
