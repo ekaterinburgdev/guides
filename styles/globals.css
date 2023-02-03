@@ -10,7 +10,6 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     font-size: 1rem;
-    scroll-behavior: smooth;
 }
 
 * {
