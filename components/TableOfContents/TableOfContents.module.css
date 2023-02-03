@@ -49,7 +49,6 @@
 
 .linkToAllManuals:hover,
 .linkToAllManuals:focus-visible {
-    box-shadow: none;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     color: #14283C;
     background-color: #fff;
@@ -84,8 +83,7 @@
 .TableOfContents__divider {
     border-bottom: 1px solid;
     width: 100vw;
-    margin: 20px -20px;
-    margin-bottom: 0px;
+    margin: 20px -20px 0px;
 }
 
 .TableOfContents__icon {
@@ -103,7 +101,6 @@
     text-align: left;
     padding: 8px;
     display: none;
-    margin-top: 3rem;
     width: 100%;
     height: calc(100vh - 96px);
     background-color: #eff0f1;
@@ -115,7 +112,6 @@
     z-index: 12;
     overflow: auto;
     scrollbar-width: none;
-    padding-top: 8px;
 }
 
 .open {
@@ -185,7 +181,6 @@
     background-color: #ffffff;
     color: #112233;
     text-decoration: none;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .active {
@@ -196,7 +191,7 @@
     border-radius: 8px;
 }
 
-.active::hover {
+.active:hover {
     box-shadow: none !important;
 }
 
@@ -221,13 +216,12 @@
         display: flex;
         flex-direction: column;
         position: fixed;
-        padding: 16px 16px;
         height: calc(100vh - 116px);
         width: max(350px, 16%);
         background-color: #1231;
         overflow: auto;
-        scrollbar-width: none;  
-        padding-top: 0px;
+        scrollbar-width: none;
+        padding: 0px 16px 16px;
     }
 }
 

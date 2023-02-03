@@ -11,10 +11,6 @@
     overflow: hidden;
 }
 
-.circleBar {
-    border-radius: 50%;
-}
-
 .Toolbar__input {
     outline: 0;
     border: 0;
