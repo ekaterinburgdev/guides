@@ -35,16 +35,3 @@
     }
 }
 
-@media screen and (prefers-color-scheme: dark) {
-    .mainPageTitle {
-        color: white;
-    }
-
-    .mainPage {
-        background-color: black;
-    }
-
-    .mainPageLogo {
-        filter: invert(1);
-    }
-}

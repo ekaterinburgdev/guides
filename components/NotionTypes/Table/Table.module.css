@@ -17,7 +17,6 @@
     text-align: left;
     border: none;
     padding: 10px 15px;
-    font-size: 14px;
     vertical-align: top;
     font-size: 1.1em;
 }
@@ -37,11 +36,5 @@
 @media (min-width: 991px) {
     .Table__container {
         overflow-x: auto;
-    }
-}
-
-@media screen and (prefers-color-scheme: dark) {
-    .Table__container tr:nth-child(odd) {
-        background: #404040;
     }
 }
