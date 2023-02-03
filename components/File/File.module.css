@@ -17,14 +17,3 @@
     background-color: #F2F2F2;
     border-radius: 8px;
 }
-
-@media screen and (prefers-color-scheme: dark) {
-    .File__link {
-        text-decoration: none;
-        color: #fff;
-    }
-
-    .File__container:hover {
-        background-color: #1A1C1F;
-    }
-}
