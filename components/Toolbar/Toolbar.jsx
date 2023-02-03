@@ -224,7 +224,6 @@ export const Toolbar = () => {
                             </svg>
                         </button>
                         <div className={styles.customInput}>
-                            a
                             <input
                                 style={{
                                     color: colorScheme.title,
