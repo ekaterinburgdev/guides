@@ -11,9 +11,3 @@
 .link:hover {
     color: #E63223 !important;
 }
-
-@media screen and (prefers-color-scheme: dark) {
-    .link {
-        color: #E63223 !important;
-    }
-}

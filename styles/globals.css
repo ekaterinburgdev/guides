@@ -34,16 +34,3 @@ body {
         color: black;
     }
 }
-
-@media screen and (prefers-color-scheme: dark) {
-    html,
-    body {
-        color: white;
-        background-color: black;
-    }
-
-    ::selection {
-        background: #ffc800;
-        color: black;
-    }
-}

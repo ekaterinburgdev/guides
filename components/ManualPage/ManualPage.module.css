@@ -102,8 +102,3 @@ br + .Manual__image__container {
     }
 }
 
-@media screen and (prefers-color-scheme: dark) {
-    .Manual__image_description {
-        color: #f3f3f3;
-    }
-}

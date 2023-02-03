@@ -231,8 +231,3 @@
     }
 }
 
-@media screen and (prefers-color-scheme: dark) {
-    .catalogTitle {
-        color: white;
-    }
-}

@@ -7,10 +7,3 @@
     background: #14283C;
     opacity: 0.1;
 }
-
-@media screen and (prefers-color-scheme: dark) {
-    .Divider {
-        background-color: #fff;
-        opacity: 0.5;
-    }
-}
