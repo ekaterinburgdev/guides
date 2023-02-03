@@ -104,6 +104,7 @@ export const Toolbar = () => {
                     setIsOpenSidePage(false)
                 }
             }
+
             document.addEventListener('mousedown', handleClickOutside)
             return () => {
                 document.removeEventListener('mousedown', handleClickOutside)
@@ -129,131 +130,135 @@ export const Toolbar = () => {
                 className={styles.Toolbar__container}
             >
                 {!isOpenSidePage ? (
-                    <button
-                        style={{
-                            backgroundColor: colorScheme.bgLight,
-                            paddingRight: '0',
-                            paddingTop: '5px',
-                        }}
-                        className={styles.Toolbar__button}
-                        onClick={() => {
-                            setIsOpenSidePage((prev) => !prev)
-                        }}
-                    >
-                        <svg
-                            width="70"
-                            height="70"
-                            viewBox="0 0 70 70"
-                            fill="transparent"
-                            xmlns="http://www.w3.org/2000/svg"
+                    <>
+                        <a
+                            style={{ backgroundColor: colorScheme.bgLight }}
+                            className={styles.Toolbar__button}
+                            href={finalUrl}
+                            onClick={!finalUrl ? notify : false}
                         >
-                            <circle
-                                cx="31.501"
-                                cy="30.4995"
-                                r="14.5"
-                                stroke={colorScheme.title}
-                                strokeWidth="6"
-                            />
-                            <path
-                                d="M40.001 39.4995L54.501 53.9995"
-                                stroke={colorScheme.title}
-                                strokeWidth="6"
-                            />
-                        </svg>
-                    </button>
-                ) : (
-                    <div className={styles.customInput}>
-                        <input
+                            <svg
+                                width="70"
+                                height="70"
+                                viewBox="0 0 50 70"
+                                fill="transparent"
+                                xmlns="http://www.w3.org/2000/svg"
+                                style={{
+                                    marginTop: '2px',
+                                }}
+                            >
+                                <path d="M52 53H18" stroke={colorScheme.title} strokeWidth="6" />
+                                <path d="M35 12V45" stroke={colorScheme.title} strokeWidth="6" />
+                                <path
+                                    d="M50 31L35 46L20 31"
+                                    stroke={colorScheme.title}
+                                    strokeWidth="6"
+                                />
+                            </svg>
+                        </a>
+                        <button
                             style={{
-                                color: colorScheme.title,
-                                backgroundColor: toolbarColor,
+                                backgroundColor: colorScheme.bgLight,
+                                paddingRight: '0',
                             }}
-                            type="text"
-                            className={styles.Toolbar__input}
-                            placeholder={!currentQuery ? 'Например, скамья' : currentQuery}
-                            ref={searchInputRef}
-                            onChange={handleOnChange}
-                        />
-                        <svg
-                            width="70"
-                            height="70"
-                            viewBox="0 0 70 70"
-                            fill="transparent"
-                            xmlns="http://www.w3.org/2000/svg"
-                            style={{ transform: 'translateX(8px)' }}
-                        >
-                            <circle
-                                cx="31.501"
-                                cy="30.4995"
-                                r="14.5"
-                                stroke={colorScheme.title}
-                                strokeWidth="6"
-                            />
-                            <path
-                                d="M40.001 39.4995L54.501 53.9995"
-                                stroke={colorScheme.title}
-                                strokeWidth="6"
-                            />
-                        </svg>
-                    </div>
-                )}
-                {!isOpenSidePage ? (
-                    <a
-                        style={{ backgroundColor: colorScheme.bgLight }}
-                        className={styles.Toolbar__button}
-                        href={finalUrl}
-                        onClick={!finalUrl ? notify : false}
-                    >
-                        <svg
-                            width="70"
-                            height="70"
-                            viewBox="0 0 70 70"
-                            fill="transparent"
-                            xmlns="http://www.w3.org/2000/svg"
-                            style={{
-                                marginTop: '2px',
-                                marginRight: '10px',
+                            className={styles.Toolbar__button}
+                            onClick={() => {
+                                setIsOpenSidePage((prev) => !prev)
                             }}
                         >
-                            <path d="M52 53H18" stroke={colorScheme.title} strokeWidth="6" />
-                            <path d="M35 12V45" stroke={colorScheme.title} strokeWidth="6" />
-                            <path
-                                d="M50 31L35 46L20 31"
-                                stroke={colorScheme.title}
-                                strokeWidth="6"
-                            />
-                        </svg>
-                    </a>
+                            <svg
+                                width="70"
+                                height="70"
+                                viewBox="0 0 70 70"
+                                fill="transparent"
+                                xmlns="http://www.w3.org/2000/svg"
+                                style={{
+                                    marginRight: '10px',
+                                    marginTop: '2px',
+                                }}
+                            >
+                                <circle
+                                    cx="31.501"
+                                    cy="30.4995"
+                                    r="14.5"
+                                    stroke={colorScheme.title}
+                                    strokeWidth="6"
+                                />
+                                <path
+                                    d="M40.001 39.4995L54.501 53.9995"
+                                    stroke={colorScheme.title}
+                                    strokeWidth="6"
+                                />
+                            </svg>
+                        </button>
+                    </>
                 ) : (
-                    <button
-                        onClick={() => setIsOpenSidePage(!isOpenSidePage)}
-                        style={{
-                            border: '0',
-                            outline: '0',
-                            cursor: 'pointer',
-                            backgroundColor: 'inherit',
-                            paddingRight: '10px',
-                        }}
-                    >
-                        <svg
-                            width="70"
-                            height="70"
-                            viewBox="0 0 70 70"
-                            fill="transparent"
-                            xmlns="http://www.w3.org/2000/svg"
+                    <>
+                        <button
+                            onClick={() => setIsOpenSidePage(!isOpenSidePage)}
+                            style={{
+                                border: '0',
+                                outline: '0',
+                                cursor: 'pointer',
+                                backgroundColor: 'inherit',
+                                paddingRight: '10px',
+                            }}
                         >
-                            <path
-                                d="M18 18L51.9995 51.9995"
-                                stroke={colorScheme.title}
-                                strokeWidth="6"
+                            <svg
+                                width="70"
+                                height="70"
+                                viewBox="0 0 70 70"
+                                fill="transparent"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M18 18L51.9995 51.9995"
+                                    stroke={colorScheme.title}
+                                    strokeWidth="6"
+                                />
+                                <path
+                                    d="M52 18L18.0005 51.9995"
+                                    stroke={colorScheme.title}
+                                    strokeWidth="6"
+                                />
+                            </svg>
+                        </button>
+                        <div className={styles.customInput}>
+                            a
+                            <input
+                                style={{
+                                    color: colorScheme.title,
+                                    backgroundColor: toolbarColor,
+                                }}
+                                type="text"
+                                className={styles.Toolbar__input}
+                                placeholder={!currentQuery ? 'Например, скамья' : currentQuery}
+                                ref={searchInputRef}
+                                onChange={handleOnChange}
                             />
-                            <path
-                                d="M52 18L18.0005 51.9995"
-                                stroke={colorScheme.title}
-                                strokeWidth="6"
-                            />
-                        </svg>
-                    </button>
+                            <svg
+                                width="70"
+                                height="70"
+                                viewBox="0 0 70 70"
+                                fill="transparent"
+                                xmlns="http://www.w3.org/2000/svg"
+                                style={{ transform: 'translateX(8px)' }}
+                            >
+                                <circle
+                                    cx="31.501"
+                                    cy="30.4995"
+                                    r="14.5"
+                                    stroke={colorScheme.title}
+                                    strokeWidth="6"
+                                />
+                                <path
+                                    d="M40.001 39.4995L54.501 53.9995"
+                                    stroke={colorScheme.title}
+                                    strokeWidth="6"
+                                />
+                            </svg>
+                        </div>
+                    </>
                 )}
                 <ToastContainer />
             </section>
