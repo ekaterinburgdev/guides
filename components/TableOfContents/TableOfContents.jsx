@@ -49,7 +49,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     const { colorMap, iconMap } = colorContext
     const { asPath } = useRouter()
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
-    const icon = iconMap.filter((item) => asPath.includes(item.url))[0]?.imageUrl
     const colorScheme = getManualColorScheme(color)
     const isDark = useContext(ThemeContext)
     const asideColor = rgbaToRgb(
