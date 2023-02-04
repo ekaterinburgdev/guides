@@ -41,7 +41,6 @@
 }
 
 .Manual__image {
-    border-radius: 8px;
     object-fit: contain;
     width: 100% !important;
     position: relative !important;
