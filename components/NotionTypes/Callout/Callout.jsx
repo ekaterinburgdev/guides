@@ -11,13 +11,7 @@ export const Callout = ({ columnItem }) => {
 
     return (
         <div className={styles.Callout__container}>
-            <Image
-                className={styles.Callout__icon}
-                width={25}
-                height={25}
-                src={iconUrl}
-                alt="icon"
-            />
+            <Image className={styles.Callout__icon} width={25} height={25} src={iconUrl} alt="" />
             <div>{text}</div>
         </div>
     )
