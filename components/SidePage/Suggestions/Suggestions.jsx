@@ -40,7 +40,7 @@ const SectionSuggestion = ({ section, colorHex }) => {
 
     return (
         <div>
-            <p style={{ color: colorHex, fontWeight: 500, fontSize: '18px', paddingTop: '28px' }}>
+            <p style={{ color: colorHex }} className={styles.SectionSuggestion__title}>
                 {sectionName}
             </p>
             <ul className={styles.SectionSuggestion__list}>
@@ -67,15 +67,12 @@ const GuideSuggestion = ({ guideSuggestion }) => {
     return (
         <article className={styles.GuideSuggestion}>
             <div className={styles.image__container}>
-                <Image className={styles.image} fill src={`${API_HOST}/static/${icon}`} />
+                <Image className={styles.image} fill src={`${API_HOST}/static/${icon}`} alt="" />
                 <h3
                     style={{
                         color: colorHex,
-                        position: 'absolute',
-                        top: '0px',
-                        left: '16px',
-                        fontSize: 'clamp(16px, 5vw, 24px)',
                     }}
+                    className={styles.GuideSuggestion__title}
                 >
                     {title}
                 </h3>
