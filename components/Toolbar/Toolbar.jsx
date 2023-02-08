@@ -10,6 +10,7 @@ import { ThemeContext } from '../../pages/_app'
 import { API_HOST, PDF_HOST } from '../../consts/endpoints'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { atom } from 'nanostores'
 
 const debounce = (func, timeout = 300) => {
     let timer
@@ -20,6 +21,9 @@ const debounce = (func, timeout = 300) => {
         }, timeout)
     }
 }
+
+export const loadingState = atom(false)
+export const currentQueryState = atom('')
 
 export const Toolbar = () => {
     const { asPath } = useRouter()
@@ -80,12 +84,15 @@ export const Toolbar = () => {
             const textInputValue = e.target.value
             setCurrentQuery(textInputValue)
             if (textInputValue.length > 2) {
+                loadingState.set(true)
+                currentQueryState.set(textInputValue)
                 const response = await fetch(
                     `${API_HOST}/api/content/search?pattern=${e.target.value}`
                 )
                 const responseJson = await response.json()
                 const { guideSuggestions } = responseJson
                 setGuideSuggestions(guideSuggestions)
+                loadingState.set(false)
             } else {
                 setGuideSuggestions([])
             }

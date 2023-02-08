@@ -1,15 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import classNames from 'classnames'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { useRouter } from 'next/router'
+import { useStore } from '@nanostores/react'
 
 import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 import styles from './SidePage.module.css'
 import { Suggestions } from './Suggestions/Suggestions'
-import { loadingState } from '../Toolbar/MainPageToolbar'
+import { loadingState } from '../Toolbar/Toolbar'
 
 export const SidePage = ({ close, guideSuggestions }) => {
     const { asPath } = useRouter()
+    const isLoading = useStore(loadingState)
     const sidePageClassNames = classNames(styles.SidePage__container, {
         [styles.SidePage__close]: close,
     })
@@ -23,14 +25,12 @@ export const SidePage = ({ close, guideSuggestions }) => {
         left: '33%',
     }
 
-    console.log(loadingState)
-
     return (
         <section id="SidePage" className={sidePageClassNames}>
             <Suggestions guideSuggestions={guideSuggestions} />
             <ClipLoader
                 color={color}
-                loading={false}
+                loading={isLoading}
                 size={150}
                 cssOverride={override}
                 aria-label="Загрузка предложений"

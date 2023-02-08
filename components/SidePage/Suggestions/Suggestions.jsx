@@ -6,8 +6,9 @@ import { useStore } from '@nanostores/react'
 
 import { API_HOST } from '../../../consts/endpoints'
 import styles from './Suggestions.module.css'
-import { currentQueryState } from '../../Toolbar/MainPageToolbar'
+
 import getManualColorScheme from '../../../utils/getManualColorScheme.js'
+import { currentQueryState } from '../../Toolbar/Toolbar'
 
 const SuggestItem = ({ suggest, colorHex }) => {
     const [origin, setOrigin] = useState('')
