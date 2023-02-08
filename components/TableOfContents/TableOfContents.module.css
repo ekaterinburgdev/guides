@@ -171,7 +171,7 @@
     border-radius: 8px;
     transition: 0.2s;
     padding: 12px 16px 12px 16px;
-    font-size: 1rem;
+    font-size: 20px;
 }
 
 .tableOfContentsLink:hover,
