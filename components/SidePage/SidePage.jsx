@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import classNames from 'classnames'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { useRouter } from 'next/router'
@@ -16,8 +16,7 @@ export const SidePage = ({ close, guideSuggestions }) => {
         [styles.SidePage__close]: close,
     })
     const colorContext = useContext(PageContext)
-    const { colorMap } = colorContext
-    const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
+    const color = colorContext?.colorMap?.filter((item) => asPath?.includes(item.url))[0]?.color
 
     const override = {
         position: 'absolute',

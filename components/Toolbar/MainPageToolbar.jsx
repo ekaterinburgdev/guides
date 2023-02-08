@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback, use } from 'react'
+import React, { useEffect, useState, useRef, useCallback, useContext } from 'react'
 
 import styles from './Toolbar.module.css'
 import { SidePage } from '../SidePage/SidePage'
