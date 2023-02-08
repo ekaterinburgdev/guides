@@ -8,6 +8,10 @@
     height: calc(100vh - 100px);
 }
 
+.Suggestions__not_found {
+    text-align: center;
+}
+
 .image__container {
     position: relative;
     width: 100%;

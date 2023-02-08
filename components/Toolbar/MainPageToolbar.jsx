@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useRef, useCallback, useContext } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 
 import styles from './Toolbar.module.css'
 import { SidePage } from '../SidePage/SidePage'
 import { ThemeContext } from '../../pages/_app'
+import { atom } from 'nanostores'
 
 const debounce = (func, timeout = 300) => {
     let timer
@@ -13,6 +14,9 @@ const debounce = (func, timeout = 300) => {
         }, timeout)
     }
 }
+
+export const loadingState = atom(false)
+export const currentQueryState = atom('')
 
 export const MainPageToolbar = () => {
     const [isOpenSidePage, setIsOpenSidePage] = useState(false)
@@ -34,12 +38,14 @@ export const MainPageToolbar = () => {
             const textInputValue = e.target.value
             setCurrentQuery(textInputValue)
             if (textInputValue.length > 2) {
+                loadingState.set(true)
                 const response = await fetch(
                     `https://guides-api-test.ekaterinburg.design/api/content/search?pattern=${e.target.value}`
                 )
                 const responseJson = await response.json()
                 const { guideSuggestions } = responseJson
                 setGuideSuggestions(guideSuggestions)
+                loadingState.set(false)
             } else {
                 setGuideSuggestions([])
             }
