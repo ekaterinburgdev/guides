@@ -128,6 +128,7 @@ function ManualPage({
                         src={`${API_HOST}/static/${pageImage}`}
                         fill
                         priority
+                        alt=""
                     />
                 </div>
             )}
@@ -135,7 +136,7 @@ function ManualPage({
             {map(pageList, (cl) => getColumnItem(cl))}
             {tableOfContentArr.length !== 0 && (
                 <nav className={styles.footNav}>
-                    {(Number.isInteger(prevPageIndex) || Number.isInteger(catalogIndex)) && (
+                    {Number.isInteger(prevPageIndex) && (
                         <PrevPage
                             backgroundColor={arrowColor}
                             children={children}
@@ -146,7 +147,7 @@ function ManualPage({
                             color={color}
                         />
                     )}
-                    {(Number.isInteger(nextPageIndex) || Number.isInteger(catalogIndex)) && (
+                    {Number.isInteger(nextPageIndex) && (
                         <NextPage
                             backgroundColor={arrowColor}
                             nextPageIndex={nextPageIndex}
