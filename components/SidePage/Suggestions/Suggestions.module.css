@@ -24,14 +24,6 @@
     height: unset !important;
     border-radius: 8px;
 }
-  
-
-.GuideSuggestion__title {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    align-items: baseline;
-}
 
 .GuideSuggestion__icon {
     transform: translateY(8px);
@@ -43,9 +35,25 @@
     margin-bottom: 40px;
 }
 
+
+.GuideSuggestion__title {
+    position: absolute;
+    font-weight: 400;
+    margin-bottom: .15em;
+    font-size: 5vw;
+    top: 0;
+    padding: 0 16px;
+}
+
 .SectionSuggestion__list {
     list-style: none;
     padding-left: 0;
+}
+
+.SectionSuggestion__title {
+    font-weight: 500;
+    font-size: 20px;
+    padding-top: 28px;
 }
 
 .SuggestItem__target {
@@ -56,7 +64,7 @@
 .SuggestItem__link {
     text-decoration: none;
     color: #14283C;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .SuggestItem__listItem:hover > .SuggestItem__link {
@@ -73,4 +81,18 @@
 .SuggestItem__suggestionText {
     color: #14283C;
     opacity: 0.5;
+}
+
+
+@media screen and (min-width: 768px) {
+    .GuideSuggestion__title {
+        font-size: 2.5vw;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    .GuideSuggestion__title {
+        font-size: 1.4vw;
+    }
+
 }
