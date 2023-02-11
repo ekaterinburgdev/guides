@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, Fragment } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
@@ -92,7 +92,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
 
     // TODO: Сделать для большой вложенности...
     const tableOfContentsLink = ({ url, title }) => (
-        <>
+        <Fragment key={url}>
             <li className={styles.link}>
                 <Link
                     href={{
@@ -150,7 +150,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     ))}
                 </ul>
             )}
-        </>
+        </Fragment>
     )
 
     const navClassName = cn(styles.tableOfContents, {

@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react'
+import React, { Fragment, useContext, useMemo } from 'react'
 import map from 'lodash/map'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -133,10 +133,12 @@ function ManualPage({
                 </div>
             )}
             <h1 className={styles.pageName}>{tp.execute(pageName)}</h1>
-            {map(pageList, (cl) => getColumnItem(cl))}
+            {map(pageList, (cl) => (
+                <Fragment key={cl.id}>{getColumnItem(cl)}</Fragment>
+            ))}
             {tableOfContentArr.length !== 0 && (
                 <nav className={styles.footNav}>
-                    {Number.isInteger(prevPageIndex) && (
+                    {(Number.isInteger(prevPageIndex) || Number.isInteger(catalogIndex)) && (
                         <PrevPage
                             backgroundColor={arrowColor}
                             children={children}
@@ -147,7 +149,7 @@ function ManualPage({
                             color={color}
                         />
                     )}
-                    {Number.isInteger(nextPageIndex) && (
+                    {(Number.isInteger(nextPageIndex) || Number.isInteger(catalogIndex)) && (
                         <NextPage
                             backgroundColor={arrowColor}
                             nextPageIndex={nextPageIndex}
