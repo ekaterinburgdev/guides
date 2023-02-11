@@ -134,7 +134,7 @@ export const Toolbar = () => {
                         <a
                             className={styles.Toolbar__button}
                             href={finalUrl}
-                            onClick={!finalUrl ? notify : false}
+                            onClick={!finalUrl ? notify : null}
                         >
                             <svg
                                 width="40"
