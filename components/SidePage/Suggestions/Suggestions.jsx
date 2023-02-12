@@ -23,13 +23,10 @@ const SuggestItem = ({ suggest, colorHex }) => {
     const rightText =
         suggest?.text?.right.length >= 3 ? suggest?.text?.right + '...' : suggest?.text?.right
 
-    const colorScheme = getManualColorScheme(colorHex)
+    const backgroundColor = getManualColorScheme(colorHex).bgLight.alpha(0.05)
 
     return (
-        <li
-            className={styles.SuggestItem__listItem}
-            style={{ backgroundColor: colorScheme.bgLight }}
-        >
+        <li className={styles.SuggestItem__listItem} style={{ backgroundColor }}>
             <Link
                 className={styles.SuggestItem__link}
                 href={link.includes(currentSection) ? '' : link}
