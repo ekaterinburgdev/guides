@@ -57,7 +57,7 @@
 }
 
 .SuggestItem__target {
-    font-weight: 600;
+    font-weight: 500;
     color: #14283C;
 }
 
@@ -76,6 +76,9 @@
 
 .SuggestItem__listItem {
     margin-bottom: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #f0f2f4;
 }
 
 .SuggestItem__suggestionText {

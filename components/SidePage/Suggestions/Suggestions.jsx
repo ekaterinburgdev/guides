@@ -16,9 +16,15 @@ const SuggestItem = (suggest) => {
     const { asPath } = useRouter()
     const currentSection = asPath.split('/').filter(Boolean).at(1)
     const link = `${origin}/${suggest?.suggest?.link}`
-    const leftText = suggest?.suggest?.text?.left
+    const leftText =
+        suggest?.suggest?.text?.left.length >= 3
+            ? '...' + suggest?.suggest?.text?.left
+            : suggest?.suggest?.text?.left
     const target = suggest?.suggest?.text?.target
-    const rightText = suggest?.suggest?.text?.right
+    const rightText =
+        suggest?.suggest?.text?.right.length >= 3
+            ? suggest?.suggest?.text?.right + '...'
+            : suggest?.suggest?.text?.right
 
     return (
         <li className={styles.SuggestItem__listItem}>
