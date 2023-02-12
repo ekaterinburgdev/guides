@@ -104,11 +104,11 @@ export const Suggestions = ({ guideSuggestions }) => {
 
     return (
         <div className={styles.Suggestions__container}>
-            {guideSuggestions.length > 0 ? (
-                guides?.map((guideSuggest) => <GuideSuggestion guideSuggestion={guideSuggest} />)
-            ) : currentQuery.length > 0 ? (
+            {guideSuggestions.length > 0 &&
+                guides?.map((guideSuggest) => <GuideSuggestion guideSuggestion={guideSuggest} />)}
+            {guideSuggestions.length === 0 && currentQuery.length > 0 && (
                 <p className={styles.Suggestions__not_found}>Ничего не нашли</p>
-            ) : null}
+            )}
         </div>
     )
 }
