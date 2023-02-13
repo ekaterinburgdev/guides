@@ -17,11 +17,9 @@ const SuggestItem = ({ suggest, colorHex }) => {
     const { asPath } = useRouter()
     const currentSection = asPath.split('/').filter(Boolean).at(1)
     const link = `${origin}/${suggest?.link}`
-    const leftText =
-        suggest?.text?.left.length >= 3 ? '...' + suggest?.text?.left : suggest?.text?.left
+    const leftText = suggest?.text?.left
     const target = suggest?.text?.target
-    const rightText =
-        suggest?.text?.right.length >= 3 ? suggest?.text?.right + '...' : suggest?.text?.right
+    const rightText = suggest?.text?.right
 
     const backgroundColor = getManualColorScheme(colorHex).bgLight.alpha(0.05)
 
