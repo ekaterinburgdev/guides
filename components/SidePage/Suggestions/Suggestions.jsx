@@ -5,8 +5,9 @@ import { useRouter } from 'next/router'
 
 import { API_HOST } from '../../../consts/endpoints'
 import styles from './Suggestions.module.css'
+import getManualColorScheme from '../../../utils/getManualColorScheme.js'
 
-const SuggestItem = (suggest) => {
+const SuggestItem = ({ suggest, colorHex }) => {
     const [origin, setOrigin] = useState('')
 
     useEffect(() => {
@@ -15,13 +16,15 @@ const SuggestItem = (suggest) => {
 
     const { asPath } = useRouter()
     const currentSection = asPath.split('/').filter(Boolean).at(1)
-    const link = `${origin}/${suggest?.suggest?.link}`
-    const leftText = suggest?.suggest?.text?.left
-    const target = suggest?.suggest?.text?.target
-    const rightText = suggest?.suggest?.text?.right
+    const link = `${origin}/${suggest?.link}`
+    const leftText = suggest?.text?.left
+    const target = suggest?.text?.target
+    const rightText = suggest?.text?.right
+
+    const backgroundColor = getManualColorScheme(colorHex).bgLight.alpha(0.05)
 
     return (
-        <li className={styles.SuggestItem__listItem}>
+        <li className={styles.SuggestItem__listItem} style={{ backgroundColor }}>
             <Link
                 className={styles.SuggestItem__link}
                 href={link.includes(currentSection) ? '' : link}
@@ -45,7 +48,7 @@ const SectionSuggestion = ({ section, colorHex }) => {
             </p>
             <ul className={styles.SectionSuggestion__list}>
                 {suggestions?.map((suggest) => (
-                    <SuggestItem suggest={suggest} />
+                    <SuggestItem suggest={suggest} colorHex={colorHex} />
                 ))}
             </ul>
         </div>
