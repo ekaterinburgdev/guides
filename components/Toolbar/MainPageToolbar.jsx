@@ -145,8 +145,9 @@ export const MainPageToolbar = () => {
                             type="text"
                             className={styles.Toolbar__input}
                             ref={searchInputRef}
-                            placeholder={!currentQuery ? 'Например, скамья' : currentQuery}
+                            placeholder="Например, скамья"
                             onChange={handleOnChange}
+                            defaultValue={currentQuery}
                         />
                         <button
                             onClick={() => setIsOpenSidePage(!isOpenSidePage)}

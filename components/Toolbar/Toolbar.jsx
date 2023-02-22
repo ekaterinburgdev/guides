@@ -211,9 +211,10 @@ export const Toolbar = () => {
                                 }}
                                 type="text"
                                 className={styles.Toolbar__input}
-                                placeholder={!currentQuery ? 'Например, скамья' : currentQuery}
+                                placeholder="Например, скамья"
                                 ref={searchInputRef}
                                 onChange={handleOnChange}
+                                defaultValue={currentQuery}
                             />
 
                             <button
