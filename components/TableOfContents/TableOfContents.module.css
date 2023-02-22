@@ -135,6 +135,7 @@
     position: relative;
     font-size: 16px;
     opacity: 0.8;
+    text-underline-offset: 4px;
 }
 
 .innerLinkHidden {
@@ -144,7 +145,6 @@
 .innerTableOfContentsLink:hover {
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
-    text-underline-offset: 4px;
     opacity: 1;
 }
 
