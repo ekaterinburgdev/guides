@@ -126,7 +126,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     <div
                         style={{
                             color: colorScheme.title,
-                            opacity: '0.4',
                         }}
                         className={styles.separator}
                     />
@@ -186,10 +185,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                         >
                             {tpForAsideMenu.execute(catalogTitle)}
                         </span>
-                        <div
-                            style={{ borderBottomColor: colorScheme.bgLight }}
-                            className={styles.TableOfContents__divider}
-                        />
                     </Link>
                     <ul className={styles.linkContainerList}>
                         {currentPageUrl &&

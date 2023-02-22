@@ -59,12 +59,15 @@
     line-height: 1.2;
     font-size: 32px;
     font-weight: 500;
-    text-decoration: none;
     transition: 0.2s;
     padding-top: 0px;
     margin-top: 12px;
     flex: 1;
     padding-left: 13px;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 4px;
 }
 
 .innerH3 {
@@ -75,12 +78,10 @@
 .catalogTitle:hover,
 .catalogTitle:focus-visible {
     text-decoration: underline;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 6px;
 }
 
 .TableOfContents__divider {
-    border-bottom: 1px solid;
+    border-bottom: 1px solid transparent;
     width: 100vw;
     margin: 20px -20px 0px;
 }
@@ -198,6 +199,7 @@
     border-bottom: 1px solid;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    opacity: 0.2;
 }
 
 .TableOfContents__aside {
