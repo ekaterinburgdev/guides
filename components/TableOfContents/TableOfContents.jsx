@@ -68,16 +68,16 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                 const section = entry.target
                 const sectionId = section.id
                 const sectionTagName = section.tagName
-                const sectionLink = document.querySelector(`a[href="#${sectionId}"]`)
+                const sectionLi = document.querySelector(`a[href="#${sectionId}"]`)?.parentElement
 
                 if (sectionTagName === 'H3') {
-                    sectionLink?.classList?.add(styles.innerH3)
+                    sectionLi?.classList?.add(styles.innerH3)
                 }
 
                 if (entry.intersectionRatio > 0) {
-                    sectionLink?.classList?.add(styles.visible)
+                    sectionLi?.classList?.add(styles.visible)
                 } else {
-                    sectionLink?.classList?.remove(styles.visible)
+                    sectionLi?.classList?.remove(styles.visible)
                 }
             })
 
@@ -137,7 +137,11 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     className={styles.innerlinkContainerList}
                 >
                     {anchorLinks.map((anchor) => (
-                        <li className={styles.innerlinkContainerListItem} key={anchor.id}>
+                        <li
+                            style={{ color: colorScheme.title }}
+                            className={styles.innerlinkContainerListItem}
+                            key={anchor.id}
+                        >
                             <InnerLink
                                 color={colorScheme.title}
                                 anchor={anchor}
