@@ -16,7 +16,7 @@ export default function MainPage({ pageTitle, manualsPreview }) {
                     <div className={styles.mainPageLogo}>
                         <Image src={mainPageLogo} fill alt="" />
                     </div>
-                    {pageTitle}
+                    <span className={styles.mainPageText}>{pageTitle}</span>
                 </h1>
                 <section className={styles.mainPageManuals}>
                     {manualsPreview.map((manualPreviewData, i) => (
