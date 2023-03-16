@@ -134,6 +134,7 @@ export const Toolbar = () => {
                         <a
                             className={styles.Toolbar__button}
                             href={finalUrl}
+                            target="_blank"
                             onClick={!finalUrl ? notify : null}
                         >
                             <svg
