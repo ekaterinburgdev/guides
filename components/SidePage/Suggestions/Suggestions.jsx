@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useStore } from '@nanostores/react'
 
 import { API_HOST } from '../../../consts/endpoints'
 import styles from './Suggestions.module.css'
+
 import getManualColorScheme from '../../../utils/getManualColorScheme.js'
+import { currentQueryState } from '../../Toolbar/Toolbar'
 
 const SuggestItem = ({ suggest, colorHex }) => {
     const [origin, setOrigin] = useState('')
@@ -97,12 +100,15 @@ export const Suggestions = ({ guideSuggestions }) => {
         }
         return [element, ...acc]
     }, [])
+    const currentQuery = useStore(currentQueryState)
 
     return (
         <div className={styles.Suggestions__container}>
-            {guides?.map((guideSuggest) => (
-                <GuideSuggestion guideSuggestion={guideSuggest} />
-            ))}
+            {guideSuggestions.length > 0 &&
+                guides?.map((guideSuggest) => <GuideSuggestion guideSuggestion={guideSuggest} />)}
+            {guideSuggestions.length === 0 && currentQuery.length > 0 && (
+                <p className={styles.Suggestions__not_found}>Ничего не нашли</p>
+            )}
         </div>
     )
 }

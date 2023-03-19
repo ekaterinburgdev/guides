@@ -1,0 +1,133 @@
+.logo {
+    transform: scale(1);
+    transition: transform 0.15s ease-in-out;
+}
+
+.logo svg {
+    width: 94%;
+    height: auto;
+    margin: 3%;
+    transform: scale(1);
+    transition: transform 0.15s ease-in-out;
+}
+
+.circles {
+    height: 400px;
+    position: absolute;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    transform: translate3D(-50%, -50%, 0) scale(1);
+    transition: transform 0.15s ease-in-out;
+    max-width: 60%;
+    aspect-ratio: 1 / 1;
+    width: 400px;
+}
+
+.circle {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: solid transparent;
+    border-width: 4.25vmin;
+    border-radius: 115% 140% 145% 110%/125% 140% 110% 125%;
+    mix-blend-mode: overlay;
+    transition: all 0.15s ease-in-out;
+}
+
+.circle.first {
+    border-color: #00b400;
+    background-color: rgba(0, 187, 0, 0);
+    box-shadow: 0 0 0vmin 0 rgba(170, 255, 170, 0) inset;
+    transform-origin: 48% 50%;
+    animation: spin1 10s linear infinite;
+}
+
+.circle.second {
+    border-color: #ffd400;
+    box-shadow: 0 0 0 0vmin rgba(255, 212, 0, 0);
+    transform-origin: 50% 52%;
+    animation: spin2 10s linear infinite;
+}
+
+.circle.third {
+    border-color: #00b4ff;
+    transform-origin: 52% 50%;
+    animation: spin3 10s linear infinite;
+    box-shadow: 0 0 10vh 0 rgba(0, 180, 0, 0.7), 0 0 10vh 0 rgba(0, 255, 0, 0.5) inset;
+}
+
+.circles:hover {
+    transform: translate3D(-50%, -50%, 0) scale(1.1);
+}
+
+.circles:hover .logo svg {
+    transform: scale(0.85);
+}
+
+.circles:hover .circle.first {
+    border-width: 5.25vmin;
+}
+
+.circles:hover .circle.second {
+    border-width: 5.25vmin;
+}
+
+.circles:hover .circle.third {
+    border-width: 5.25vmin;
+    box-shadow: 0 0 10vh 0 rgba(0, 180, 0, 0.8), 0 0 10vh 0 rgba(0, 255, 0, 0.6) inset;
+}
+
+.circles:active {
+    transform: translate3D(-50%, -50%, 0) scale(1.3);
+}
+
+.circles:active .logo svg {
+    transform: scale(1.15);
+}
+
+.circles:active .circle.first {
+    background-color: #0b0;
+    box-shadow: 0 0 10vmin 0 rgba(255, 255, 255, 0.5) inset;
+    border-width: 0;
+}
+
+.circles:active .circle.second {
+    border-width: 25vmin;
+}
+
+.circles:active .circle.third {
+    border-width: 25vmin;
+    box-shadow: 0 0 10vh 0 #00b400, 0 0 10vh 0 rgba(0, 255, 0, 0.6) inset;
+}
+
+@keyframes spin1 {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin2 {
+    0% {
+        transform: rotate(72deg);
+    }
+
+    100% {
+        transform: rotate(-288deg);
+    }
+}
+
+@keyframes spin3 {
+    0% {
+        transform: rotate(-144deg);
+    }
+
+    100% {
+        transform: rotate(216deg);
+    }
+}

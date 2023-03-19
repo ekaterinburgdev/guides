@@ -23,6 +23,7 @@
 		}
 	},
 	"dependencies": {
+		"@nanostores/react": "^0.4.1",
 		"@next/font": "13.1.2",
 		"@popperjs/core": "2.11.6",
 		"bootstrap": "5.2.3",
@@ -30,11 +31,13 @@
 		"color": "4.2.3",
 		"eslint-config-next": "13.1.2",
 		"lodash": "4.17.21",
+		"nanostores": "^0.7.3",
 		"next": "13.1.2",
 		"normalize.css": "8.0.1",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-responsive": "9.0.2",
+		"react-spinners": "^0.13.8",
 		"react-toastify": "9.1.1",
 		"rgba-to-rgb": "1.0.2",
 		"superagent": "7.1.5",
