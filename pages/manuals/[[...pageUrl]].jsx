@@ -10,7 +10,7 @@ import { API_HOST } from '../../consts/endpoints'
 import styles from './page.module.css'
 import getManualToc from '../../utils/getManualToc'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
-import { Toolbar } from '../../components/Toolbar/Toolbar'
+import { PageToolbar } from '../../components/Toolbar/PageToolbar.jsx'
 import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu'
 
 export const PageContext = createContext(null)
@@ -149,7 +149,7 @@ function GetPage({
                         pageUrl={pageUrl}
                         pageImage={pageImage}
                     />
-                    <Toolbar />
+                    <PageToolbar />
                 </TocStateContext.Provider>
             </PageContext.Provider>
         </>
