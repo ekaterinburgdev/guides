@@ -88,10 +88,10 @@ const GuideSuggestion = ({ guideSuggestion }) => {
     )
 }
 
-export const Suggestions = ({ guideSuggestions, currentQuery, isLoading }) => {
+export const Suggestions = ({ items, query, isLoading }) => {
     const { asPath } = useRouter()
     const currentUrl = asPath.split('/').filter(Boolean).at(0)
-    const guides = guideSuggestions.reduce((acc, element) => {
+    const guides = items.reduce((acc, element) => {
         const url = element?.properties?.properties?.pageUrl?.url
         if (url !== currentUrl) {
             return [...acc, element]
@@ -101,9 +101,9 @@ export const Suggestions = ({ guideSuggestions, currentQuery, isLoading }) => {
 
     return (
         <div className={styles.Suggestions__container}>
-            {guideSuggestions.length > 0 &&
+            {items.length > 0 &&
                 guides?.map((guideSuggest) => <GuideSuggestion guideSuggestion={guideSuggest} />)}
-            {guideSuggestions.length === 0 && currentQuery.length > 0 && !isLoading && (
+            {items.length === 0 && query.length > 0 && !isLoading && (
                 <p className={styles.Suggestions__not_found}>Ничего не нашли</p>
             )}
         </div>

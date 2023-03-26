@@ -76,8 +76,8 @@ export const Toolbar = ({ toolbarColor = '#f5f8fb', colorTitle = '#1A1C1F', pdfU
                 ref={toolbarRef}
                 style={{
                     backgroundColor: toolbarColor,
-                    borderRadius: isMain ? (isOpenSidePage ? '200px' : '50%') : undefined,
-                    aspectRatio: isMain ? (!isOpenSidePage ? '1 / 1' : '') : undefined,
+                    borderRadius: isMain ? (isOpenSidePage ? '200px' : '50%') : '',
+                    aspectRatio: isMain ? (!isOpenSidePage ? '1 / 1' : '') : '',
                 }}
                 className={styles.Toolbar__container}
             >
@@ -196,10 +196,10 @@ export const Toolbar = ({ toolbarColor = '#f5f8fb', colorTitle = '#1A1C1F', pdfU
             </section>
             <div ref={rootEl}>
                 <SidePage
-                    guideSuggestions={guideSuggestions}
-                    close={!isOpenSidePage}
+                    items={guideSuggestions}
+                    isClose={!isOpenSidePage}
                     isLoading={isLoadingSuggestion}
-                    currentQuery={currentQuery}
+                    query={currentQuery}
                 />
             </div>
         </>
