@@ -12,16 +12,14 @@
 }
 
 .circles {
-    height: 400px;
+    width: 50%;
     position: absolute;
     margin: 0 auto;
     top: 50%;
     left: 50%;
     transform: translate3D(-50%, -50%, 0) scale(1);
     transition: transform 0.15s ease-in-out;
-    max-width: 60%;
     aspect-ratio: 1 / 1;
-    width: 400px;
 }
 
 .circle {
@@ -29,8 +27,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    border: solid transparent;
-    border-width: 4.25vmin;
+    border: 4.25vmin solid transparent;
     border-radius: 115% 140% 145% 110%/125% 140% 110% 125%;
     mix-blend-mode: overlay;
     transition: all 0.15s ease-in-out;
@@ -39,14 +36,14 @@
 .circle.first {
     border-color: #00b400;
     background-color: rgba(0, 187, 0, 0);
-    box-shadow: 0 0 0vmin 0 rgba(170, 255, 170, 0) inset;
+    box-shadow: 0 0 0 0 rgba(170, 255, 170, 0) inset;
     transform-origin: 48% 50%;
     animation: spin1 10s linear infinite;
 }
 
 .circle.second {
     border-color: #ffd400;
-    box-shadow: 0 0 0 0vmin rgba(255, 212, 0, 0);
+    box-shadow: 0 0 0 0 rgba(255, 212, 0, 0);
     transform-origin: 50% 52%;
     animation: spin2 10s linear infinite;
 }
