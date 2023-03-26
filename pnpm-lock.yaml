@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@nanostores/react': ^0.4.1
   '@next/eslint-plugin-next': 13.1.2
   '@next/font': 13.1.2
   '@popperjs/core': 2.11.6
@@ -24,7 +23,6 @@ specifiers:
   react-dom: 18.2.0
   react-responsive: 9.0.2
   react-spinners: ^0.13.8
-  react-toastify: 9.1.1
   rgba-to-rgb: 1.0.2
   superagent: 7.1.5
   typescript: 4.9.4
@@ -32,7 +30,6 @@ specifiers:
   yet-another-react-lightbox: 2.2.7
 
 dependencies:
-  '@nanostores/react': 0.4.1_r2zhwuwjlamxsrqcq6x6g7w7iu
   '@next/font': 13.1.2
   '@popperjs/core': 2.11.6
   bootstrap: 5.2.3_@popperjs+core@2.11.6
@@ -47,7 +44,6 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-responsive: 9.0.2_react@18.2.0
   react-spinners: 0.13.8_biqbaboplfbrettd7655fr4n2y
-  react-toastify: 9.1.1_biqbaboplfbrettd7655fr4n2y
   rgba-to-rgb: 1.0.2
   superagent: 7.1.5
   typescript: 4.9.4
@@ -105,18 +101,6 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
-
-  /@nanostores/react/0.4.1_r2zhwuwjlamxsrqcq6x6g7w7iu:
-    resolution: {integrity: sha512-lsv0CYrMxczbXtoV/mxFVEoL/uVjEjseoP89srO/5yNAOkJka+dSFS7LYyWEbuvCPO7EgbtkvRpO5V+OztKQOw==}
-    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
-    peerDependencies:
-      nanostores: ^0.7.0
-      react: '>=18.0.0'
-    dependencies:
-      nanostores: 0.7.3
-      react: 18.2.0
-      use-sync-external-store: 1.2.0_react@18.2.0
-    dev: false
 
   /@next/env/13.1.2:
     resolution: {integrity: sha512-PpT4UZIX66VMTqXt4HKEJ+/PwbS+tWmmhZlazaws1a+dbUA5pPdjntQ46Jvj616i3ZKN9doS9LHx3y50RLjAWg==}
@@ -575,11 +559,6 @@ packages:
 
   /client-only/0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
-    dev: false
-
-  /clsx/1.2.1:
-    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
-    engines: {node: '>=6'}
     dev: false
 
   /color-convert/2.0.1:
@@ -2221,17 +2200,6 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /react-toastify/9.1.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-pkFCla1z3ve045qvjEmn2xOJOy4ZciwRXm1oMPULVkELi5aJdHCN/FHnuqXq8IwGDLB7PPk2/J6uP9D8ejuiRw==}
-    peerDependencies:
-      react: '>=16'
-      react-dom: '>=16'
-    dependencies:
-      clsx: 1.2.1
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
   /react/18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
@@ -2664,14 +2632,6 @@ packages:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
       punycode: 2.3.0
-
-  /use-sync-external-store/1.2.0_react@18.2.0:
-    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-    dev: false
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}

@@ -1,16 +1,8 @@
-import React, { useEffect, useState, useRef, useCallback, useContext } from 'react'
-import { useRouter } from 'next/router'
-import rgbaToRgb from 'rgba-to-rgb'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 
-import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 import styles from './Toolbar.module.css'
-import getManualColorScheme from '../../utils/getManualColorScheme'
 import { SidePage } from '../SidePage/SidePage'
-import { ThemeContext } from '../../pages/_app'
-import { API_HOST, PDF_HOST } from '../../consts/endpoints'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { atom } from 'nanostores'
+import { API_HOST } from '../../consts/endpoints'
 
 const debounce = (func, timeout = 300) => {
     let timer
@@ -22,80 +14,29 @@ const debounce = (func, timeout = 300) => {
     }
 }
 
-export const loadingState = atom(false)
-export const currentQueryState = atom('')
-
-export const Toolbar = () => {
-    const { asPath } = useRouter()
+export const Toolbar = ({ toolbarColor = '#f5f8fb', colorTitle = '#1A1C1F', pdfUrl, isMain }) => {
     const [isOpenSidePage, setIsOpenSidePage] = useState(false)
-    const colorContext = useContext(PageContext)
-    const { colorMap, pdfUrlsMap } = colorContext
-    const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
-    const currentUrl = pdfUrlsMap.filter((item) => asPath.includes(item.url))[0]
-    const pdfUrl = currentUrl?.pdfUrl ?? ''
-    const colorScheme = getManualColorScheme(color)
+    const [isLoadingSuggestion, setIsLoadingSuggestion] = useState(false)
     const [currentQuery, setCurrentQuery] = useState('')
-    const [generatePdfUrl, setGeneratePdfUrl] = useState('')
-    const isDark = useContext(ThemeContext)
-    const toolbarColor = rgbaToRgb(
-        isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
-        `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
-            colorScheme.bgLight.color[1]
-        )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
-    )
     const searchInputRef = React.useRef(null)
     const [guideSuggestions, setGuideSuggestions] = useState([])
-    let finalUrl
-
-    const getGeneratePdfUrl = async () => {
-        const existsPdf = await (await fetch(`${PDF_HOST}/guides/`, { mode: 'cors' })).json()
-        const pdfList = existsPdf?.guides
-        if (pdfList.includes(`${currentUrl?.url}.pdf`)) {
-            setGeneratePdfUrl(`${PDF_HOST}/guides/${currentUrl?.url}.pdf`)
-        }
-    }
-
-    const notify = () =>
-        toast('Для этого руководства еще не был создан pdf файл :(', {
-            position: 'top-center',
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-        })
-
-    useEffect(() => {
-        getGeneratePdfUrl()
-    }, [])
-
-    if (pdfUrl) {
-        finalUrl = pdfUrl
-    } else if (generatePdfUrl) {
-        finalUrl = generatePdfUrl
-    } else {
-        finalUrl = false
-    }
 
     const handleOnChange = useCallback(
         debounce(async (e) => {
             const textInputValue = e.target.value
-            setCurrentQuery(textInputValue)
             if (textInputValue.length > 2) {
-                loadingState.set(true)
-                currentQueryState.set(textInputValue)
+                setIsLoadingSuggestion(true)
+                setCurrentQuery(textInputValue)
                 const response = await fetch(
                     `${API_HOST}/api/content/search?pattern=${e.target.value}`
                 )
                 const responseJson = await response.json()
                 const { guideSuggestions } = responseJson
                 setGuideSuggestions(guideSuggestions)
-                loadingState.set(false)
             } else {
                 setGuideSuggestions([])
             }
+            setIsLoadingSuggestion(false)
         }),
         [guideSuggestions]
     )
@@ -133,33 +74,34 @@ export const Toolbar = () => {
         <>
             <section
                 ref={toolbarRef}
-                style={{ backgroundColor: toolbarColor }}
+                style={{
+                    backgroundColor: toolbarColor,
+                    borderRadius: isMain ? (isOpenSidePage ? '200px' : '50%') : '',
+                    aspectRatio: isMain ? (!isOpenSidePage ? '1 / 1' : '') : '',
+                }}
                 className={styles.Toolbar__container}
             >
                 {!isOpenSidePage ? (
                     <div>
-                        <a
-                            className={styles.Toolbar__button}
-                            href={finalUrl}
-                            target="_blank"
-                            onClick={!finalUrl ? notify : null}
-                        >
-                            <svg
-                                width="40"
-                                height="40"
-                                viewBox="0 0 70 70"
-                                fill="transparent"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M52 53H18" stroke={colorScheme.title} strokeWidth="6" />
-                                <path d="M35 12V45" stroke={colorScheme.title} strokeWidth="6" />
-                                <path
-                                    d="M50 31L35 46L20 31"
-                                    stroke={colorScheme.title}
-                                    strokeWidth="6"
-                                />
-                            </svg>
-                        </a>
+                        {pdfUrl && (
+                            <a className={styles.Toolbar__button} href={pdfUrl} target="_blank">
+                                <svg
+                                    width="40"
+                                    height="40"
+                                    viewBox="0 0 70 70"
+                                    fill="transparent"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M52 53H18" stroke={colorTitle} strokeWidth="6" />
+                                    <path d="M35 12V45" stroke={colorTitle} strokeWidth="6" />
+                                    <path
+                                        d="M50 31L35 46L20 31"
+                                        stroke={colorTitle}
+                                        strokeWidth="6"
+                                    />
+                                </svg>
+                            </a>
+                        )}
                         <button
                             className={styles.Toolbar__button}
                             onClick={() => {
@@ -177,12 +119,12 @@ export const Toolbar = () => {
                                     cx="30.501"
                                     cy="30.4995"
                                     r="14.5"
-                                    stroke={colorScheme.title}
+                                    stroke={colorTitle}
                                     strokeWidth="6"
                                 />
                                 <path
                                     d="M40.001 39.4995L54.501 53.9995"
-                                    stroke={colorScheme.title}
+                                    stroke={colorTitle}
                                     strokeWidth="6"
                                 />
                             </svg>
@@ -202,19 +144,19 @@ export const Toolbar = () => {
                                 cx="30.501"
                                 cy="30.4995"
                                 r="14.5"
-                                stroke={colorScheme.title}
+                                stroke={colorTitle}
                                 strokeWidth="6"
                             />
                             <path
                                 d="M40.001 39.4995L54.501 53.9995"
-                                stroke={colorScheme.title}
+                                stroke={colorTitle}
                                 strokeWidth="6"
                             />
                         </svg>
                         <div className={styles.customInput}>
                             <input
                                 style={{
-                                    color: colorScheme.title,
+                                    color: colorTitle,
                                     backgroundColor: toolbarColor,
                                 }}
                                 type="text"
@@ -238,12 +180,12 @@ export const Toolbar = () => {
                                 >
                                     <path
                                         d="M18 18L51.9995 51.9995"
-                                        stroke={colorScheme.title}
+                                        stroke={colorTitle}
                                         strokeWidth="6"
                                     />
                                     <path
                                         d="M52 18L18.0005 51.9995"
-                                        stroke={colorScheme.title}
+                                        stroke={colorTitle}
                                         strokeWidth="6"
                                     />
                                 </svg>
@@ -251,10 +193,14 @@ export const Toolbar = () => {
                         </div>
                     </>
                 )}
-                <ToastContainer />
             </section>
             <div ref={rootEl}>
-                <SidePage guideSuggestions={guideSuggestions} close={!isOpenSidePage} />
+                <SidePage
+                    items={guideSuggestions}
+                    isClose={!isOpenSidePage}
+                    isLoading={isLoadingSuggestion}
+                    query={currentQuery}
+                />
             </div>
         </>
     )
