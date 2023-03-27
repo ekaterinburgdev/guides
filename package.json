@@ -1,6 +1,6 @@
 {
 	"name": "guides",
-	"homepage": "https://guides.ekaterinburg.design",
+	"homepage": "https://guides.ekaterinburg.io",
 	"type": "module",
 	"scripts": {
 		"dev": "next dev -p 8080",
