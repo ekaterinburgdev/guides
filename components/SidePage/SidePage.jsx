@@ -13,7 +13,7 @@ export const SidePage = ({ isClose, items, isLoading = false, query = '' }) => {
     return (
         <section id="SidePage" className={sidePageClassNames}>
             <Suggestions items={items} query={query} isLoading={isLoading} />
-            <Loader isLoading={isLoading} />
+            {isLoading && <Loader />}
         </section>
     )
 }
