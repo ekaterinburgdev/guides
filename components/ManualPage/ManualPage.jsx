@@ -58,7 +58,7 @@ function ManualPage({
                 {columnList.children.map((cols, i) => (
                     <div className={`col ${styles.Template__column}`} key={`${cols.id}${i}`}>
                         {cols.children.map((col, i) => (
-                            <Fragment key={i}>getColumnItem(col)</Fragment>
+                            <Fragment key={i}>{getColumnItem(col)}</Fragment>
                         ))}
                     </div>
                 ))}
