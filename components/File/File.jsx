@@ -8,7 +8,7 @@ function File({ columnItem }) {
 
     return (
         <a className={styles.File__container} href={src}>
-            <Image width={32} height={32} src="/pdfIcon.svg" />
+            <Image width={32} height={32} src="/pdfIcon.svg" alt="pdf icon" />
             <p className={styles.File__link}>Ссылка на файл</p>
         </a>
     )
