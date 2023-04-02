@@ -26,19 +26,19 @@
 }
 
 .Toolbar__searchIcon {
-    margin: 1.5em .25em 1.5em 1.25em;
+    margin: 1.5em 0.25em 1.5em 1.25em;
 }
 
 .Toolbar__button {
     display: inline-block;
     background: transparent;
     border: 0;
-    outline-width: 0; 
+    outline-width: 0;
     outline: none;
     padding: 1.5em;
     margin: 0 -2.25em 0 0;
     cursor: pointer;
-    transition: .15s ease filter;
+    transition: 0.15s ease filter;
 }
 
 .Toolbar__button:last-child {
@@ -46,7 +46,7 @@
 }
 
 .Toolbar__button:hover {
-    filter: brightness(.5);
+    filter: brightness(0.5);
 }
 
 .Toolbar__button:focus-visible svg {
@@ -55,14 +55,14 @@
 
 .Toolbar__closeButton {
     border: 0;
-    outline-width: 0; 
+    outline-width: 0;
     cursor: pointer;
     background-color: inherit;
     padding: 1.5em;
 }
 
 .Toolbar__closeButton:hover {
-    filter: brightness(.5);
+    filter: brightness(0.5);
 }
 
 .Toolbar__closeButton:focus-visible svg {

@@ -1,8 +1,5 @@
 {
-    "extends": [
-        "plugin:prettier/recommended",
-        "plugin:@next/next/recommended"
-    ],
+    "extends": ["plugin:prettier/recommended", "plugin:@next/next/recommended"],
     "plugins": ["prettier", "react"],
     "parserOptions": {
         "ecmaFeatures": {
