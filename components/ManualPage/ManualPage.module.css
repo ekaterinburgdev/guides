@@ -14,8 +14,8 @@
 }
 
 .templateColumn {
-    padding-left: 0px;
-    padding-top: 0px;
+    padding-left: 0;
+    padding-top: 0;
     margin-left: 4%;
     margin-right: 4%;
 }
@@ -96,7 +96,6 @@ br + .Manual__image__container {
         padding-left: 10%;
         padding-right: 26%;
         margin-left: calc(max(16%, 350px) + 15px);
-        margin-right: 0px;
+        margin-right: 0;
     }
 }
-

@@ -51,9 +51,9 @@ const GuideSuggestion = ({ guide }) => {
                     {title}
                 </h3>
             </div>
-            {sections?.map((section, i) => {
-                return <SectionSuggestion colorHex={colorHex} section={section} key={i} />
-            })}
+            {sections?.map((section, i) => (
+                <SectionSuggestion colorHex={colorHex} section={section} key={i} />
+            ))}
         </article>
     )
 }
@@ -62,6 +62,7 @@ function getGuides({ items, currentUrl }) {
     const collator = new Intl.Collator('ru', {
         numeric: true,
         sensitivity: 'base',
+        ignorePunctuation: true,
     })
     return items.reduce((acc, item) => {
         const title = item?.properties.properties?.Name?.title[0]?.plain_text

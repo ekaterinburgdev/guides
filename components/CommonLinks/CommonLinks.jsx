@@ -53,6 +53,7 @@ export function CommonLinks({ color, bgColor, mainPage }) {
                         height={60}
                         className={styles.CommonLinks__icon}
                         style={{ marginTop: '15px' }}
+                        alt="ecosystem image"
                     />
                 </Link>
                 {mainPage ? (
@@ -63,6 +64,7 @@ export function CommonLinks({ color, bgColor, mainPage }) {
                             height={60}
                             className={styles.CommonLinks__icon}
                             style={{ marginTop: '14px', marginLeft: '12px' }}
+                            alt="logo image"
                         />
                         <p
                             className={styles.CommonLinks__text_main}
@@ -84,6 +86,7 @@ export function CommonLinks({ color, bgColor, mainPage }) {
                             height={60}
                             className={styles.CommonLinks__icon}
                             style={{ marginLeft: '0', marginTop: '14px' }}
+                            alt="logo image"
                         />
                         <p
                             className={styles.CommonLinks__text}

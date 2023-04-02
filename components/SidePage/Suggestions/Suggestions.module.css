@@ -40,11 +40,10 @@
     margin-bottom: 40px;
 }
 
-
 .GuideSuggestion__title {
     position: absolute;
     font-weight: 400;
-    margin-bottom: .15em;
+    margin-bottom: 0.15em;
     font-size: 5vw;
     top: 0;
     padding: 0 16px;
@@ -63,12 +62,12 @@
 
 .SuggestItem__target {
     font-weight: 500;
-    color: #14283C;
+    color: #14283c;
 }
 
 .SuggestItem__link {
     text-decoration: none;
-    color: #14283C;
+    color: #14283c;
     font-size: 16px;
 }
 
@@ -86,10 +85,9 @@
 }
 
 .SuggestItem__suggestionText {
-    color: #14283C;
+    color: #14283c;
     opacity: 0.5;
 }
-
 
 @media screen and (min-width: 768px) {
     .GuideSuggestion__title {
@@ -101,5 +99,4 @@
     .GuideSuggestion__title {
         font-size: 1.4vw;
     }
-
 }
