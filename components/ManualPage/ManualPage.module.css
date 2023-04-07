@@ -16,8 +16,8 @@
 .templateColumn {
     padding-left: 0;
     padding-top: 0;
-    margin-left: 4%;
-    margin-right: 4%;
+    margin-left: max(430px, 16%);
+    margin-right: max(365px, 16%);
 }
 
 .footNav {
@@ -90,12 +90,10 @@ br + .Manual__image__container {
     border-radius: 16px;
 }
 
-@media (min-width: 991px) {
+@media (max-width: 991px) {
     .templateColumn {
         min-height: 100vh;
-        padding-left: 10%;
-        padding-right: 26%;
-        margin-left: calc(max(16%, 350px) + 15px);
-        margin-right: 0;
+        margin-left: 12px;
+        margin-right: 12px;
     }
 }

@@ -1,11 +1,9 @@
 .SidePage__container {
-    background-color: white;
     height: 100vh;
     width: max(350px, 16%);
     position: fixed;
     top: 0;
     right: 0;
-    border-left: 1px solid rgb(155, 170, 195, 0.15);
     overflow: auto;
 }
 
@@ -13,7 +11,7 @@
     visibility: hidden;
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1500px) {
     .SidePage__container {
         width: max(416px, 16%);
     }

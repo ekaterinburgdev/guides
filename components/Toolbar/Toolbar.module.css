@@ -15,8 +15,8 @@
     outline: 0;
     border: 0;
     flex: 1;
-    font-size: 18px;
-    width: max(350px, 16%);
+    font-size: 20px;
+    width: 180px;
 }
 
 .customInput {
@@ -78,24 +78,16 @@
         display: none;
     }
 }
-
-@media screen and (min-width: 768px) {
-    .Toolbar__input {
-        width: 160px;
-        font-size: 20px;
-    }
-}
-
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1500px) {
     .Toolbar__input {
         font-size: 22px;
-        width: 225px;
+        width: 250px;
     }
 }
 
 @media screen and (min-width: 1900px) {
     .Toolbar__input {
         font-size: 22px;
-        width: 420px;
+        width: 444px;
     }
 }

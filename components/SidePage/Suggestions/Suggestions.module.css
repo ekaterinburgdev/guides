@@ -1,28 +1,35 @@
-.Suggestions__container {
-    padding-top: 40px;
-    padding-right: 24px;
-    padding-left: 24px;
+.SuggestionsContainer {
+    display: flex;
     align-items: flex-start;
     flex-direction: column;
     overflow: auto;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 116px);
+    margin-top: 16px;
+    gap: 40px;
+    margin-right: 16px;
+    border-radius: 16px;
 }
 
-.Suggestions__not_found {
-    text-align: center;
+.SuggestionsContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.SuggestionsNotFound {
+    align-self: center;
     font-size: 24px;
 }
 
-.image__container {
+.imageContainer {
     position: relative;
     width: 100%;
+    margin-bottom: 12px;
 }
 
-.image__container > div {
+.imageContainer > div {
     position: static;
 }
 
-.image__container .image {
+.imageContainer .image {
     object-fit: contain;
     width: 100% !important;
     position: relative !important;
@@ -30,17 +37,13 @@
     border-radius: 8px;
 }
 
-.GuideSuggestion__icon {
-    transform: translateY(8px);
-    object-fit: contain;
-}
-
 .GuideSuggestion {
     border-bottom: 1px solid rgb(155, 170, 195, 0.15);
-    margin-bottom: 40px;
+    padding: 24px;
+    border-radius: 16px;
 }
 
-.GuideSuggestion__title {
+.GuideSuggestionTitle {
     position: absolute;
     font-weight: 400;
     margin-bottom: 0.15em;
@@ -49,54 +52,59 @@
     padding: 0 16px;
 }
 
-.SectionSuggestion__list {
+.SectionSuggestion {
+    border-radius: 16px;
+    margin-bottom: 12px;
+}
+
+.SectionSuggestionList {
     list-style: none;
     padding-left: 0;
 }
 
-.SectionSuggestion__title {
+.SectionSuggestionTitle {
     font-weight: 500;
     font-size: 20px;
-    padding-top: 28px;
+    margin-left: 16px;
 }
 
-.SuggestItem__target {
+.SuggestItemTarget {
     font-weight: 500;
     color: #14283c;
 }
 
-.SuggestItem__link {
+.SuggestItemLink {
     text-decoration: none;
     color: #14283c;
     font-size: 16px;
 }
 
-.SuggestItem__listItem:hover > .SuggestItem__link {
+.SuggestItemListItem {
+    margin-bottom: 8px;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.SuggestItemListItem:hover > .SuggestItemLink {
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 3px;
     text-decoration-color: rgba(20, 40, 60, 0.4);
 }
 
-.SuggestItem__listItem {
-    margin-bottom: 8px;
-    padding: 16px;
-    border-radius: 8px;
-}
-
-.SuggestItem__suggestionText {
+.SuggestItemSuggestionText {
     color: #14283c;
     opacity: 0.5;
 }
 
 @media screen and (min-width: 768px) {
-    .GuideSuggestion__title {
+    .GuideSuggestionTitle {
         font-size: 2.5vw;
     }
 }
 
 @media screen and (min-width: 991px) {
-    .GuideSuggestion__title {
+    .GuideSuggestionTitle {
         font-size: 1.4vw;
     }
 }
