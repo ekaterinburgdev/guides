@@ -50,7 +50,7 @@
 .catalogTitle {
     line-height: 1.2;
     font-size: 32px;
-    font-weight: 600;
+    font-weight: 500;
     transition: 0.2s;
     padding-top: 0px;
     margin-top: 12px;
@@ -63,7 +63,6 @@
 }
 
 .innerH3 a {
-    font-weight: 400;
     font-size: 12px;
     margin-left: 0px;
     padding-left: 16px !important;
