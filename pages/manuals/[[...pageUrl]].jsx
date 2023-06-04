@@ -66,10 +66,10 @@ function GetPage({
                 return <div className={styles.columnList}>{getLine(columnItem)}</div>
 
             case 'heading_1':
-                return { id: columnItem.id, title: getTextContent(columnItem, true) }
+                return { id: columnItem.id, title: getTextContent(columnItem) }
 
             case 'heading_2':
-                return { id: columnItem.id, title: getTextContent(columnItem, true) }
+                return { id: columnItem.id, title: getTextContent(columnItem), type: 'heading_2' }
 
             default:
                 return null

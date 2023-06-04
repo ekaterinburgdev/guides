@@ -17,11 +17,15 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
+    let className = ''
+    if (anchor.type === 'heading_2') {
+        className = styles.heading2
+    }
     if (isDesktop) {
         return (
             <a
                 style={{ color, textDecorationColor }}
-                className={styles.innerTableOfContentsLink}
+                className={cn(styles.innerTableOfContentsLink, className)}
                 key={anchor.title}
                 href={`#${anchor.id}`}
             >
@@ -33,7 +37,7 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
     return (
         <a
             style={{ color, textDecorationColor }}
-            className={styles.innerTableOfContentsLink}
+            className={cn(styles.innerTableOfContentsLink, className)}
             key={anchor.title}
             href={`#${anchor.id}`}
             onClick={() => setState(!baseState)}
@@ -67,10 +71,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                 const sectionId = section.id
                 const sectionTagName = section.tagName
                 const sectionLi = document.querySelector(`a[href="#${sectionId}"]`)?.parentElement
-
-                if (sectionTagName === 'H2') {
-                    sectionLi?.classList?.add(styles.innerH2)
-                }
 
                 if (entry.intersectionRatio > 0) {
                     sectionLi?.classList?.add(styles.visible)

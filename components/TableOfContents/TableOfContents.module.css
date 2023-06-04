@@ -62,12 +62,6 @@
     text-decoration-thickness: 4px;
 }
 
-.innerH2 a {
-    font-size: 12px;
-    margin-left: 0px;
-    padding-left: 16px !important;
-}
-
 .catalogTitle:hover,
 .catalogTitle:focus-visible {
     text-decoration: underline;
@@ -159,6 +153,12 @@
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
     opacity: 1;
+}
+
+.heading2 {
+    font-size: 12px;
+    margin-left: 0px;
+    padding-left: 16px !important;
 }
 
 .visible::before {
