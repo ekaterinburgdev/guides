@@ -17,30 +17,15 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
-    let className = ''
-    if (anchor.type === 'heading_2') {
-        className = styles.heading2
-    }
-    if (isDesktop) {
-        return (
-            <a
-                style={{ color, textDecorationColor }}
-                className={cn(styles.innerTableOfContentsLink, className)}
-                key={anchor.title}
-                href={`#${anchor.id}`}
-            >
-                {tpForAsideMenu.execute(anchor.title)}
-            </a>
-        )
-    }
-
     return (
         <a
             style={{ color, textDecorationColor }}
-            className={cn(styles.innerTableOfContentsLink, className)}
+            className={cn(styles.innerTableOfContentsLink, {
+                [styles.heading2]: anchor.type === 'heading_2',
+            })}
             key={anchor.title}
             href={`#${anchor.id}`}
-            onClick={() => setState(!baseState)}
+            onClick={() => !isDesktop && setState(!baseState)}
         >
             {tpForAsideMenu.execute(anchor.title)}
         </a>
