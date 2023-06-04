@@ -59,9 +59,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     )
 
     useEffect(() => {
-        const arrayWithAnchorElements = Array.from(
-            document.querySelectorAll('h1[id], h2[id], h3[id]')
-        )
+        const arrayWithAnchorElements = Array.from(document.querySelectorAll('h1[id], h2[id]'))
 
         const scrollHandler = (entries) =>
             entries.forEach((entry) => {
@@ -70,8 +68,8 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                 const sectionTagName = section.tagName
                 const sectionLi = document.querySelector(`a[href="#${sectionId}"]`)?.parentElement
 
-                if (sectionTagName === 'H3') {
-                    sectionLi?.classList?.add(styles.innerH3)
+                if (sectionTagName === 'H2') {
+                    sectionLi?.classList?.add(styles.innerH2)
                 }
 
                 if (entry.intersectionRatio > 0) {

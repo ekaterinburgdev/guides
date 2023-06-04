@@ -71,9 +71,6 @@ function GetPage({
             case 'heading_2':
                 return { id: columnItem.id, title: getTextContent(columnItem, true) }
 
-            case 'heading_3':
-                return { id: columnItem.id, title: getTextContent(columnItem, true) }
-
             default:
                 return null
         }
@@ -118,6 +115,7 @@ function GetPage({
             return
         }
         const anchorLinksForSet = pageList.map(getColumnItem)
+
         setAnchorLinks(anchorLinksForSet.filter((l) => l?.id >= 0))
     }, [pageList])
 
