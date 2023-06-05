@@ -17,26 +17,15 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
-    if (isDesktop) {
-        return (
-            <a
-                style={{ color, textDecorationColor }}
-                className={styles.innerTableOfContentsLink}
-                key={anchor.title}
-                href={`#${anchor.id}`}
-            >
-                {tpForAsideMenu.execute(anchor.title)}
-            </a>
-        )
-    }
-
     return (
         <a
             style={{ color, textDecorationColor }}
-            className={styles.innerTableOfContentsLink}
+            className={cn(styles.innerTableOfContentsLink, {
+                [styles.heading2]: anchor.type === 'heading_2',
+            })}
             key={anchor.title}
             href={`#${anchor.id}`}
-            onClick={() => setState(!baseState)}
+            onClick={() => !isDesktop && setState(!baseState)}
         >
             {tpForAsideMenu.execute(anchor.title)}
         </a>
@@ -59,9 +48,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     )
 
     useEffect(() => {
-        const arrayWithAnchorElements = Array.from(
-            document.querySelectorAll('h1[id], h2[id], h3[id]')
-        )
+        const arrayWithAnchorElements = [...document.querySelectorAll('h1[id], h2[id]')]
 
         const scrollHandler = (entries) =>
             entries.forEach((entry) => {
@@ -69,10 +56,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                 const sectionId = section.id
                 const sectionTagName = section.tagName
                 const sectionLi = document.querySelector(`a[href="#${sectionId}"]`)?.parentElement
-
-                if (sectionTagName === 'H3') {
-                    sectionLi?.classList?.add(styles.innerH3)
-                }
 
                 if (entry.intersectionRatio > 0) {
                     sectionLi?.classList?.add(styles.visible)
