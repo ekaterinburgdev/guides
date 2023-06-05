@@ -48,7 +48,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     )
 
     useEffect(() => {
-        const arrayWithAnchorElements = Array.from(document.querySelectorAll('h1[id], h2[id]'))
+        const arrayWithAnchorElements = [...document.querySelectorAll('h1[id], h2[id]')]
 
         const scrollHandler = (entries) =>
             entries.forEach((entry) => {
