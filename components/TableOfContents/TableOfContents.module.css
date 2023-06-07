@@ -227,7 +227,7 @@
     }
 
     .tableOfContents {
-        margin: 15px;
+        margin: 8px;
         border-radius: 16px;
         display: flex;
         flex-direction: column;

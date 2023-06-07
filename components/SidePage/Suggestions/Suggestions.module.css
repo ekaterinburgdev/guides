@@ -4,7 +4,7 @@
     flex-direction: column;
     overflow: auto;
     height: calc(100vh - 116px);
-    margin-top: 16px;
+    margin-top: 8px;
     gap: 40px;
     margin-right: 16px;
     border-radius: 16px;

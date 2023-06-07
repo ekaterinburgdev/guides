@@ -1,8 +1,8 @@
 .Toolbar__container {
     height: 76px;
     position: fixed;
-    bottom: 16px;
-    right: 16px;
+    bottom: 8px;
+    right: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
