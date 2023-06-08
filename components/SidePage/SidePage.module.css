@@ -13,7 +13,7 @@
 
 @media screen and (min-width: 1500px) {
     .SidePage__container {
-        width: max(416px, 16%);
+        width: max(410px, 16%);
     }
 }
 

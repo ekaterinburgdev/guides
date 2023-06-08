@@ -232,7 +232,7 @@
         display: flex;
         flex-direction: column;
         position: fixed;
-        height: calc(100vh - 116px);
+        height: calc(100vh - 100px);
         width: max(350px, 16%);
         background-color: #1231;
         overflow: auto;
