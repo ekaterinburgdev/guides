@@ -3,10 +3,10 @@
     align-items: flex-start;
     flex-direction: column;
     overflow: auto;
-    height: calc(100vh - 116px);
-    margin-top: 16px;
-    gap: 40px;
-    margin-right: 16px;
+    height: calc(100vh - 100px);
+    margin-top: 8px;
+    gap: 8px;
+    margin-right: 8px;
     border-radius: 16px;
 }
 

@@ -1,8 +1,8 @@
 .Toolbar__container {
     height: 76px;
     position: fixed;
-    bottom: 16px;
-    right: 16px;
+    bottom: 8px;
+    right: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,6 +88,6 @@
 @media screen and (min-width: 1900px) {
     .Toolbar__input {
         font-size: 22px;
-        width: 444px;
+        width: 344px;
     }
 }
