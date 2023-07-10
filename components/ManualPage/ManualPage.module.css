@@ -12,10 +12,28 @@
 }
 
 .templateColumn {
-    padding-left: 0;
     padding-top: 0;
-    margin-left: max(500px, 16%);
+    margin-left: calc(max(350px, 16%) + 32px);
+    margin-right: max(350px, 16%);
+}
+
+.column {
     max-width: 670px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+@media screen and (min-width: 1500px) {
+    .templateColumn {
+        margin-right: max(410px, 16%);
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    .templateColumn {
+        margin-right: 502px;
+    }
 }
 
 .footNav {

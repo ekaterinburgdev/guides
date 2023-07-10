@@ -123,47 +123,49 @@ function ManualPage({
 
     return (
         <div className={styles.templateColumn}>
-            {pageImage && (
-                <div className={styles.previewImageContainer}>
-                    <Image
-                        className={styles.previewImage}
-                        src={`${API_HOST}/static/${pageImage}`}
-                        fill
-                        priority
-                        alt=""
-                    />
-                </div>
-            )}
-            <h1 className={styles.pageName}>{tp.execute(pageName)}</h1>
-            {map(pageList, (cl) => (
-                <Fragment key={cl.id}>{getColumnItem(cl)}</Fragment>
-            ))}
-            {tableOfContentArr.length !== 0 && (
-                <nav className={styles.footNav}>
-                    {Number.isInteger(prevPageIndex) && (
-                        <PrevPage
-                            backgroundColor={arrowColor}
-                            children={children}
-                            prevPageIndex={prevPageIndex}
-                            tableOfContentArr={tableOfContentArr}
-                            catalogIndex={catalogIndex}
-                            pageUrl={pageUrl}
-                            color={color}
+            <div className={styles.column}>
+                {pageImage && (
+                    <div className={styles.previewImageContainer}>
+                        <Image
+                            className={styles.previewImage}
+                            src={`${API_HOST}/static/${pageImage}`}
+                            fill
+                            priority
+                            alt=""
                         />
-                    )}
-                    {Number.isInteger(nextPageIndex) && (
-                        <NextPage
-                            backgroundColor={arrowColor}
-                            nextPageIndex={nextPageIndex}
-                            children={children}
-                            tableOfContentArr={tableOfContentArr}
-                            catalogIndex={catalogIndex}
-                            pageUrl={pageUrl}
-                            color={color}
-                        />
-                    )}
-                </nav>
-            )}
+                    </div>
+                )}
+                <h1 className={styles.pageName}>{tp.execute(pageName)}</h1>
+                {map(pageList, (cl) => (
+                    <Fragment key={cl.id}>{getColumnItem(cl)}</Fragment>
+                ))}
+                {tableOfContentArr.length !== 0 && (
+                    <nav className={styles.footNav}>
+                        {Number.isInteger(prevPageIndex) && (
+                            <PrevPage
+                                backgroundColor={arrowColor}
+                                children={children}
+                                prevPageIndex={prevPageIndex}
+                                tableOfContentArr={tableOfContentArr}
+                                catalogIndex={catalogIndex}
+                                pageUrl={pageUrl}
+                                color={color}
+                            />
+                        )}
+                        {Number.isInteger(nextPageIndex) && (
+                            <NextPage
+                                backgroundColor={arrowColor}
+                                nextPageIndex={nextPageIndex}
+                                children={children}
+                                tableOfContentArr={tableOfContentArr}
+                                catalogIndex={catalogIndex}
+                                pageUrl={pageUrl}
+                                color={color}
+                            />
+                        )}
+                    </nav>
+                )}
+            </div>
         </div>
     )
 }
