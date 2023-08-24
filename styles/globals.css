@@ -1,6 +1,11 @@
 @import 'normalize.css';
 @import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 
+:root {
+    --main-page-container-width: 350px;
+    --offset: 16%;
+}
+
 html,
 body {
     padding: 0;

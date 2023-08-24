@@ -66,12 +66,12 @@
 
 @media screen and (min-width: 991px) {
     .CommonLinks__container {
-        width: max(350px, 16%);
+        width: max(var(--main-page-container-width), var(--offset));
         margin-left: 8px;
     }
 
     .mainPageContainer {
         display: flex;
-        width: 350px;
+        width: var(--main-page-container-width);
     }
 }
