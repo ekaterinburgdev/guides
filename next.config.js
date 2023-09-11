@@ -1,7 +1,9 @@
+import { NEXT_PUBLIC_IMAGE_DOMAIN } from './consts/endpoints.js';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: [process.env.NEXT_PUBLIC_IMAGE_DOMAIN],
+        domains: [NEXT_PUBLIC_IMAGE_DOMAIN],
         unoptimized: true,
     },
     async rewrites() {
