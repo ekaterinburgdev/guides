@@ -13,8 +13,8 @@
 
 .templateColumn {
     padding-top: 0;
-    margin-left: calc(max(var(--main-page-container-width), var(--offset)) + 32px);
-    margin-right: max(var(--main-page-container-width), var(--offset));
+    margin-left: calc(max(var(--sidebar-width), var(--sidebar-width-offset)) + 32px);
+    margin-right: max(var(--sidebar-width), var(--sidebar-width-offset));
 }
 
 .column {
@@ -26,7 +26,7 @@
 
 @media screen and (min-width: 1500px) {
     .templateColumn {
-        margin-right: max(410px, var(--offset));
+        margin-right: max(410px, var(--sidebar-width-offset));
     }
 }
 

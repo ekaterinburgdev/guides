@@ -33,7 +33,7 @@
         min-height: 100vh;
         padding-left: 60px;
         padding-right: 60px;
-        margin-left: max(var(--main-page-container-width), var(--offset));
+        margin-left: max(var(--sidebar-width), var(--sidebar-width-offset));
         max-width: 900px;
         font-size: 1.5em;
         line-height: 1.3;

@@ -233,7 +233,7 @@
         flex-direction: column;
         position: fixed;
         height: calc(100vh - 100px);
-        width: max(var(--main-page-container-width), var(--offset));
+        width: max(var(--sidebar-width), var(--sidebar-width-offset));
         background-color: #1231;
         overflow: auto;
         scrollbar-width: none;
