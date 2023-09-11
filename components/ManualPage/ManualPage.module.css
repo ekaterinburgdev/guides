@@ -4,8 +4,6 @@
 
 /* TODO: Move .row rule to a separate file */
 .Template__item:global(.row) {
-    /* TODO: Move all `670px` values to common css-variable */
-    max-width: calc(670px + 1rem);
     margin: 0 auto;
 }
 
@@ -14,15 +12,31 @@
 }
 
 .templateColumn {
-    padding-left: 0;
     padding-top: 0;
-    margin-left: max(430px, 16%);
-    margin-right: max(365px, 16%);
+    margin-left: calc(max(var(--sidebar-width), var(--sidebar-width-offset)) + 32px);
+    margin-right: max(var(--sidebar-width), var(--sidebar-width-offset));
+}
+
+.column {
+    max-width: 670px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+@media screen and (min-width: 1500px) {
+    .templateColumn {
+        margin-right: max(410px, var(--sidebar-width-offset));
+    }
+}
+
+@media screen and (min-width: 1900px) {
+    .templateColumn {
+        margin-right: 502px;
+    }
 }
 
 .footNav {
-    width: 100%;
-    max-width: 670px;
     margin: 4vw auto 1vw;
     display: flex;
     flex-direction: column;
@@ -31,8 +45,6 @@
 }
 
 .pageName {
-    width: 100%;
-    max-width: 670px;
     margin: 4vw auto 2vw;
     font-size: clamp(48px, 12vw, 70px);
     color: #1e2841;
