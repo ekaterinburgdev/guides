@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, Fragment } from 'react'
+import React, { useEffect, useContext, Fragment, useState } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
@@ -35,7 +35,7 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
 function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle }) {
     const { isOpen, setIsOpen } = useContext(TocStateContext)
     const colorContext = useContext(PageContext)
-    const { colorMap, iconMap } = colorContext
+    const { colorMap } = colorContext
     const { asPath } = useRouter()
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const colorScheme = getManualColorScheme(color)
@@ -46,6 +46,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
             colorScheme.bgLight.color[1]
         )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
     )
+    const [currentActiveAnchor, setCurrentActiveAnchor] = useState(null)
 
     useEffect(() => {
         const arrayWithAnchorElements = [...document.querySelectorAll('h1[id], h2[id]')]
@@ -54,11 +55,11 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
             entries.forEach((entry) => {
                 const section = entry.target
                 const sectionId = section.id
-                const sectionTagName = section.tagName
                 const sectionLi = document.querySelector(`a[href="#${sectionId}"]`)?.parentElement
 
                 if (entry.intersectionRatio > 0) {
                     sectionLi?.classList?.add(styles.visible)
+                    setCurrentActiveAnchor(sectionLi)
                 } else {
                     sectionLi?.classList?.remove(styles.visible)
                 }
@@ -67,6 +68,33 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
         const observer = new IntersectionObserver(scrollHandler)
         arrayWithAnchorElements.forEach((section) => observer.observe(section))
     }, [anchorLinks])
+
+    useEffect(() => {
+        const scrollIntoViewOptions = {
+            rootMargin: '0px',
+            threshold: 1.0,
+        }
+
+        const scrollIntoView = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.intersectionRatio < 0.1) {
+                    entry.target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center',
+                    })
+                }
+            })
+        }
+
+        const scrollIntoViewObserver = new IntersectionObserver(
+            scrollIntoView,
+            scrollIntoViewOptions
+        )
+
+        if (currentActiveAnchor) {
+            scrollIntoViewObserver.observe(currentActiveAnchor)
+        }
+    }, [currentActiveAnchor])
 
     useEffect(() => {
         const styleVisible = document.querySelector('.visible')?.style
