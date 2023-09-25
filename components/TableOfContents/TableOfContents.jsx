@@ -5,6 +5,7 @@ import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
+import scrollIntoView from 'scroll-into-view-if-needed'
 
 import { PageContext, TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
 import styles from './TableOfContents.module.css'
@@ -69,7 +70,11 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
 
                 if (entry.intersectionRatio > 0) {
                     sectionLi?.classList?.add(styles.visible)
-                    sectionLi?.scrollIntoViewIfNeeded()
+                    scrollIntoView(sectionLi, {
+                        scrollMode: 'if-needed',
+                        block: 'center',
+                        inline: 'center',
+                    })
                 } else {
                     sectionLi?.classList?.remove(styles.visible)
                 }
