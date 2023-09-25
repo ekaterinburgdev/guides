@@ -74,6 +74,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                         scrollMode: 'if-needed',
                         block: 'center',
                         inline: 'center',
+                        behavior: 'smooth',
                     })
                 } else {
                     sectionLi?.classList?.remove(styles.visible)
