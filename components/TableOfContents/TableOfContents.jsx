@@ -69,17 +69,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
 
                 if (entry.intersectionRatio > 0) {
                     sectionLi?.classList?.add(styles.visible)
-
-                    if (sectionLi && !isInViewport(sectionLi)) {
-                        document.addEventListener('wheel', wheelListener)
-                        function wheelListener() {
-                            sectionLi.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start',
-                                inline: 'start',
-                            })
-                        }
-                    }
+                    sectionLi?.scrollIntoViewIfNeeded()
                 } else {
                     sectionLi?.classList?.remove(styles.visible)
                 }
