@@ -25,10 +25,16 @@ function GuideImage({ notionType }) {
 
     const image = (
         <>
-            {/* Add zoom-in / zoom-out cursors */}
             <style
                 dangerouslySetInnerHTML={{
                     __html: `
+                    /* Fix sizing */
+                    .yarl__slide_image {
+                        max-width: 100% !important;
+                        max-height: 100% !important;
+                    }
+
+                    /* Add zoom pointer */
                     .yarl__root:has([aria-label="Zoom out"]:not(:disabled)) .yarl__slide_image {
                         cursor: zoom-out;
                     }
