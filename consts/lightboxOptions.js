@@ -1,13 +1,4 @@
-export const ANIMATION_DURATION = 500
-export const DOUBLE_CLICK_DELAY = 300
-export const DOUBLE_CLICK_MAX_STOPS = 2
-export const DOUBLE_TAP_DELAY = 300
-export const KEYBOARD_MOVE_DISTANCE = 50
-export const MAX_ZOOM_PIXEL_RATIO = 10
-export const PINCH_ZOOM_DISTANCE_FACTOR = 100
-export const SCROLL_TO_ZOOM = false
-export const WHEEL_ZOOM_DISTANCE_FACTOR = 100
-export const ZOOM_IN_MULTIPLIER = 2
+export const ANIMATION_DURATION = 150
 
 export const LIGHTBOX_STYLES = {
     container: {
@@ -26,4 +17,16 @@ export const CONTROLLER_SETTINGS = {
 
 export const CAROUSEL_SETTINGS = {
     isFinite: true,
+}
+
+export const ZOOM_SETTINGS = {
+    doubleClickDelay: 300,
+    doubleClickMaxStops: 2,
+    doubleTapDelay: 300,
+    keyboardMoveDistance: 50,
+    maxZoomPixelRatio: 10,
+    pinchZoomDistanceFactor: 100,
+    scrollToZoom: false,
+    wheelZoomDistanceFactor: 100,
+    zoomInMultiplier: 2,
 }
