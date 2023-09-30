@@ -9,7 +9,7 @@ import 'yet-another-react-lightbox/styles.css'
 import styles from '../../components/ManualPage/ManualPage.module.css'
 
 import {
-    ANIMATION_DURATION,
+    ANIMATION_DURATION_SETTINGS,
     CAROUSEL_SETTINGS,
     CONTROLLER_SETTINGS,
     LIGHTBOX_STYLES,
@@ -32,7 +32,7 @@ function GuideImage({ notionType }) {
                 slides={[{ src: srcUrl }]}
                 plugins={[Zoom]}
                 zoom={ZOOM_SETTINGS}
-                animation={ANIMATION_DURATION}
+                animation={ANIMATION_DURATION_SETTINGS}
                 carousel={CAROUSEL_SETTINGS}
                 controller={CONTROLLER_SETTINGS}
                 styles={LIGHTBOX_STYLES}

@@ -1,4 +1,7 @@
-export const ANIMATION_DURATION = 150
+export const ANIMATION_DURATION_SETTINGS = {
+    fade: 250,
+    zoom: 250,
+}
 
 export const LIGHTBOX_STYLES = {
     container: {
