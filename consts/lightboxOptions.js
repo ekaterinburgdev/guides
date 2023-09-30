@@ -29,7 +29,7 @@ export const ZOOM_SETTINGS = {
     keyboardMoveDistance: 50,
     maxZoomPixelRatio: 10,
     pinchZoomDistanceFactor: 100,
-    scrollToZoom: false,
+    scrollToZoom: true,
     wheelZoomDistanceFactor: 100,
     zoomInMultiplier: 2,
 }
