@@ -1,6 +1,6 @@
 export const ANIMATION_DURATION_SETTINGS = {
     fade: 250,
-    zoom: 250,
+    zoom: 300,
 }
 
 export const LIGHTBOX_STYLES = {
@@ -24,7 +24,7 @@ export const CAROUSEL_SETTINGS = {
 
 export const ZOOM_SETTINGS = {
     doubleClickDelay: 300,
-    doubleClickMaxStops: 2,
+    doubleClickMaxStops: 3,
     doubleTapDelay: 300,
     keyboardMoveDistance: 50,
     maxZoomPixelRatio: 10,

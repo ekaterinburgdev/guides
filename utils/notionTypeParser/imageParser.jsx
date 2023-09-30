@@ -26,6 +26,20 @@ function GuideImage({ notionType }) {
 
     const image = (
         <>
+            {/* Add zoom-in / zoom-out cursors */}
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: `
+                    .yarl__root:has([aria-label="Zoom out"]:not(:disabled)) .yarl__slide_image {
+                        cursor: zoom-out;
+                    }
+
+                    .yarl__root:has([aria-label="Zoom in"]:not(:disabled)) .yarl__slide_image {
+                        cursor: zoom-in;
+                    }
+            `,
+                }}
+            />
             <Lightbox
                 open={open}
                 close={() => setOpen(false)}
