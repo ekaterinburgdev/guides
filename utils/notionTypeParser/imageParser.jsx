@@ -10,15 +10,16 @@ import styles from '../../components/ManualPage/ManualPage.module.css'
 
 import {
     ANIMATION_DURATION,
+    CAROUSEL_SETTINGS,
     CONTROLLER_SETTINGS,
     DOUBLE_CLICK_DELAY,
     DOUBLE_CLICK_MAX_STOPS,
     DOUBLE_TAP_DELAY,
     KEYBOARD_MOVE_DISTANCE,
+    LIGHTBOX_STYLES,
     MAX_ZOOM_PIXEL_RATIO,
     PINCH_ZOOM_DISTANCE_FACTOR,
     SCROLL_TO_ZOOM,
-    LIGHTBOX_STYLES,
     WHEEL_ZOOM_DISTANCE_FACTOR,
     ZOOM_IN_MULTIPLIER,
 } from '../../consts/lightboxOptions'

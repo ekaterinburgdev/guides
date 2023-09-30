@@ -21,6 +21,7 @@ export const LIGHTBOX_STYLES = {
 
 export const CONTROLLER_SETTINGS = {
     closeOnBackdropClick: true,
+    closeOnPullDown: true,
 }
 
 export const CAROUSEL_SETTINGS = {
