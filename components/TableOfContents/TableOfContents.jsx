@@ -1,10 +1,11 @@
-import React, { useEffect, useContext, Fragment } from 'react'
+import React, { useEffect, useContext, Fragment, useState } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
+import scrollIntoView from 'scroll-into-view-if-needed'
 
 import { PageContext, TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
 import styles from './TableOfContents.module.css'
@@ -35,7 +36,7 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
 function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle }) {
     const { isOpen, setIsOpen } = useContext(TocStateContext)
     const colorContext = useContext(PageContext)
-    const { colorMap, iconMap } = colorContext
+    const { colorMap } = colorContext
     const { asPath } = useRouter()
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const colorScheme = getManualColorScheme(color)
@@ -54,11 +55,16 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
             entries.forEach((entry) => {
                 const section = entry.target
                 const sectionId = section.id
-                const sectionTagName = section.tagName
                 const sectionLi = document.querySelector(`a[href="#${sectionId}"]`)?.parentElement
 
                 if (entry.intersectionRatio > 0) {
                     sectionLi?.classList?.add(styles.visible)
+                    scrollIntoView(sectionLi, {
+                        scrollMode: 'if-needed',
+                        block: 'center',
+                        inline: 'center',
+                        behavior: 'smooth',
+                    })
                 } else {
                     sectionLi?.classList?.remove(styles.visible)
                 }
