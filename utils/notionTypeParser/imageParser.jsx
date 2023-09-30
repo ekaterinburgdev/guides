@@ -3,22 +3,25 @@ import Image from 'next/image'
 import classNames from 'classnames'
 import Lightbox from 'yet-another-react-lightbox'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
-import 'yet-another-react-lightbox/styles.css'
 import { API_HOST } from '../../consts/endpoints'
+
+import 'yet-another-react-lightbox/styles.css'
 import styles from '../../components/ManualPage/ManualPage.module.css'
+
 import {
     ANIMATION_DURATION,
+    CONTROLLER_SETTINGS,
     DOUBLE_CLICK_DELAY,
     DOUBLE_CLICK_MAX_STOPS,
     DOUBLE_TAP_DELAY,
-    IS_FINITE,
     KEYBOARD_MOVE_DISTANCE,
     MAX_ZOOM_PIXEL_RATIO,
     PINCH_ZOOM_DISTANCE_FACTOR,
     SCROLL_TO_ZOOM,
+    LIGHTBOX_STYLES,
     WHEEL_ZOOM_DISTANCE_FACTOR,
     ZOOM_IN_MULTIPLIER,
-} from '../../consts/zoomOptions.consts'
+} from '../../consts/lightboxOptions'
 
 function GuideImage({ notionType }) {
     const cn = classNames(styles.Manual__image, {
@@ -26,34 +29,18 @@ function GuideImage({ notionType }) {
     })
 
     const [open, setOpen] = useState(false)
-    const [animationDuration, setAnimationDuration] = useState(ANIMATION_DURATION)
-    const [maxZoomPixelRatio, setMaxZoomPixelRatio] = useState(MAX_ZOOM_PIXEL_RATIO)
-    const [zoomInMultiplier, setZoomInMultiplier] = useState(ZOOM_IN_MULTIPLIER)
-    const [doubleTapDelay, setDoubleTapDelay] = useState(DOUBLE_TAP_DELAY)
-    const [doubleClickDelay, setDoubleClickDelay] = useState(DOUBLE_CLICK_DELAY)
-    const [doubleClickMaxStops, setDoubleClickMaxStops] = useState(DOUBLE_CLICK_MAX_STOPS)
-    const [keyboardMoveDistance, setKeyboardMoveDistance] = useState(KEYBOARD_MOVE_DISTANCE)
-    const [wheelZoomDistanceFactor, setWheelZoomDistanceFactor] = useState(
-        WHEEL_ZOOM_DISTANCE_FACTOR
-    )
-    const [pinchZoomDistanceFactor, setPinchZoomDistanceFactor] = useState(
-        PINCH_ZOOM_DISTANCE_FACTOR
-    )
-    const [scrollToZoom, setScrollToZoom] = useState(SCROLL_TO_ZOOM)
-    const [finite, setFinite] = useState(IS_FINITE)
-
     const srcUrl = `${API_HOST}/static/${notionType.content.image_name}`
 
     const zoomOptions = {
-        maxZoomPixelRatio,
-        zoomInMultiplier,
-        doubleTapDelay,
-        doubleClickDelay,
-        doubleClickMaxStops,
-        keyboardMoveDistance,
-        wheelZoomDistanceFactor,
-        pinchZoomDistanceFactor,
-        scrollToZoom,
+        doubleClickDelay: DOUBLE_CLICK_DELAY,
+        doubleClickMaxStops: DOUBLE_CLICK_MAX_STOPS,
+        doubleTapDelay: DOUBLE_TAP_DELAY,
+        keyboardMoveDistance: KEYBOARD_MOVE_DISTANCE,
+        maxZoomPixelRatio: MAX_ZOOM_PIXEL_RATIO,
+        pinchZoomDistanceFactor: PINCH_ZOOM_DISTANCE_FACTOR,
+        scrollToZoom: SCROLL_TO_ZOOM,
+        wheelZoomDistanceFactor: WHEEL_ZOOM_DISTANCE_FACTOR,
+        zoomInMultiplier: ZOOM_IN_MULTIPLIER,
     }
 
     const image = (
@@ -63,11 +50,11 @@ function GuideImage({ notionType }) {
                 close={() => setOpen(false)}
                 slides={[{ src: srcUrl }]}
                 plugins={[Zoom]}
-                animation={{ zoom: animationDuration }}
+                animation={{ zoom: ANIMATION_DURATION }}
                 zoom={zoomOptions}
-                carousel={{
-                    finite,
-                }}
+                carousel={CAROUSEL_SETTINGS}
+                controller={CONTROLLER_SETTINGS}
+                styles={LIGHTBOX_STYLES}
                 render={{
                     buttonPrev: () => null,
                     buttonNext: () => null,
