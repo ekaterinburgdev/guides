@@ -18,12 +18,7 @@ export const CONTROLLER_SETTINGS = {
     closeOnPullDown: true,
 }
 
-export const CAROUSEL_SETTINGS = {
-    isFinite: true,
-}
-
 export const ZOOM_SETTINGS = {
-    doubleClickDelay: 300,
     doubleClickMaxStops: 3,
     doubleTapDelay: 300,
     keyboardMoveDistance: 50,

@@ -10,7 +10,6 @@ import styles from '../../components/ManualPage/ManualPage.module.css'
 
 import {
     ANIMATION_DURATION_SETTINGS,
-    CAROUSEL_SETTINGS,
     CONTROLLER_SETTINGS,
     LIGHTBOX_STYLES,
     ZOOM_SETTINGS,
@@ -47,7 +46,6 @@ function GuideImage({ notionType }) {
                 plugins={[Zoom]}
                 zoom={ZOOM_SETTINGS}
                 animation={ANIMATION_DURATION_SETTINGS}
-                carousel={CAROUSEL_SETTINGS}
                 controller={CONTROLLER_SETTINGS}
                 styles={LIGHTBOX_STYLES}
                 render={{
