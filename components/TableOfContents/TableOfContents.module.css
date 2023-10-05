@@ -25,6 +25,7 @@
     padding-top: 16px;
     text-decoration: none;
     z-index: 4;
+    padding-left: 4px;
 }
 
 .hidden {
@@ -49,7 +50,7 @@
 
 .catalogTitle {
     line-height: 1.2;
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 500;
     transition: 0.2s;
     padding-top: 0px;
@@ -113,6 +114,9 @@
 .innerlinkContainerListItem {
     position: relative;
 }
+.innerlinkContainerListItem:first-of-type a {
+    margin-top: 8px;
+}
 
 .innerlinkContainerListItem::before {
     content: '';
@@ -159,6 +163,8 @@
     font-size: 12px;
     margin-left: 0px;
     padding-left: 16px !important;
+    padding-top: 0;
+    padding-bottom: 16px;
 }
 
 .visible::before {
@@ -180,14 +186,14 @@
 }
 
 .tableOfContentsLink {
-    font-weight: 400;
+    font-weight: 300;
     box-shadow: none;
     color: #14283C;
     text-decoration: none;
     border-radius: 8px;
     transition: 0.2s;
     padding: 12px 16px 12px 16px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .tableOfContentsLink:hover,
@@ -201,8 +207,7 @@
 .active {
     box-shadow: none;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 20px;
+    font-weight: 400;
     border-radius: 8px;
 }
 
@@ -237,7 +242,7 @@
         background-color: #1231;
         overflow: auto;
         scrollbar-width: none;
-        padding: 0px 15px 16px;
+        padding: 0px 11px 16px 7px;
     }
 }
 
