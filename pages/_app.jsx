@@ -3,6 +3,7 @@ import Head from 'next/head'
 
 import { isetSansFont } from '../utils/font'
 import '../styles/globals.css'
+import 'ekb/style.css'
 
 export const ThemeContext = createContext(null)
 
