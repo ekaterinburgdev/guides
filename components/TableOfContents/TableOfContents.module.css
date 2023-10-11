@@ -152,11 +152,8 @@
 }
 
 .innerlinkContainerListItem3Level + .innerlinkContainerListItem2Level {
-    padding-top: 8px;
+    padding-top: 4px;
 }
-.innerlinkContainerListItem2Level:not(:first-of-type) {
-}
-
 
 .innerTableOfContentsLink {
     display: inline-block;

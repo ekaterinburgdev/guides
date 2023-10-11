@@ -129,10 +129,8 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                         <li
                             style={{ color: colorScheme.title }}
                             className={cn(styles.innerlinkContainerListItem, {
-                                [styles.innerlinkContainerListItem2Level]:
-                                    anchor.type === undefined,
-                                [styles.innerlinkContainerListItem3Level]:
-                                    anchor.type === 'heading_2',
+                                [styles.innerlinkContainerListItem2Level]: anchor.type === undefined,
+                                [styles.innerlinkContainerListItem3Level]: anchor.type === 'heading_2',
                             })}
                             key={anchor.id}
                         >
