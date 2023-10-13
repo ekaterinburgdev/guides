@@ -3,7 +3,12 @@
 
 :root {
     --sidebar-width: 350px;
-    --sidebar-width-offset: 16%;
+}
+
+@media screen and (min-width: 1441px) {
+    :root {
+        --sidebar-width: 400px;
+    }
 }
 
 html {
