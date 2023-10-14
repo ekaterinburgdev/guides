@@ -9,7 +9,13 @@
 html {
     padding: 0;
     margin: 0;
-    scroll-behavior: smooth;
+    scroll-padding-top: 8px;
+}
+
+@media screen and (min-width: 768px) {
+    html {
+        scroll-padding-top: 16px;
+    }
 }
 
 body {
