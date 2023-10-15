@@ -22,7 +22,7 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
         <a
             style={{ color, textDecorationColor }}
             className={cn(styles.innerTableOfContentsLink, {
-                [styles.heading2]: anchor.type === 'heading_2',
+                [styles.innerTableOfContentsLink3Level]: anchor.type === 'heading_2',
             })}
             key={anchor.title}
             href={`#${anchor.id}`}

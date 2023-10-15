@@ -151,8 +151,12 @@
     opacity: 0;
 }
 
+.innerlinkContainerListItem3Level {
+    margin-bottom: 16px;
+}
+
 .innerlinkContainerListItem3Level + .innerlinkContainerListItem2Level {
-    padding-top: 4px;
+    margin-top: 4px;
 }
 
 .innerTableOfContentsLink {
@@ -182,10 +186,10 @@
     opacity: 1;
 }
 
-.heading2 {
+.innerTableOfContentsLink3Level {
     margin-left: 0px;
     padding-top: 0;
-    padding-bottom: 16px;
+    padding-bottom: 0;
     font-weight: 300;
     opacity: 0.8;
 }
