@@ -158,7 +158,7 @@
 }
 
 .visible + .visible::before {
-    height: calc(100% + 40px);
+    height: calc(100% + 32px);
     margin-top: -16px;
     transition: none;
 }
