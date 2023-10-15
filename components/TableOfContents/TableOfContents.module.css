@@ -133,47 +133,66 @@
 .innerlinkContainerListItem {
     position: relative;
 }
+
 .innerlinkContainerListItem:first-of-type a {
     margin-top: 8px;
 }
 
 .innerlinkContainerListItem::before {
     content: '';
-    width: 0;
     position: absolute;
+    top: 50%;
     left: -10px;
-    height: calc(100% + 2px);
-    top: 0;
+    width: 0;
+    height: calc(100% + 8px);
+    transform: translateY(-50%);
     border-right: 2px solid;
     border-left: 1px solid;
     border-radius: 2px;
-    transition: opacity 0.2s;
     opacity: 0;
+}
+
+.visible::before {
+    opacity: 1;
+    transition: opacity .15s ease;
+}
+
+.visible + .visible::before {
+    height: calc(100% + 40px);
+    margin-top: -16px;
+    transition: none;
+}
+
+.innerlinkContainerListItem2Level {
+    margin: 12px 0;
+    font-weight: 400;
+}
+
+.innerlinkContainerListItem3Level + .innerlinkContainerListItem2Level {
+    margin-top: 16px;
 }
 
 .innerlinkContainerListItem3Level {
     margin-bottom: 16px;
+    font-weight: 300;
 }
 
-.innerlinkContainerListItem3Level + .innerlinkContainerListItem2Level {
-    margin-top: 4px;
+.innerlinkContainerListItem3Level .innerTableOfContentsLink {
+    opacity: .8;
 }
 
 .innerTableOfContentsLink {
     display: inline-block;
-    width: 100%;
-    font-weight: 400;
-    box-shadow: none;
     color: #14283C;
     text-decoration: none;
     border-radius: 8px;
-    transition: 0.2s;
-    padding: 12px 8px 12px 8px;
+    transition: .15s ease;
+    padding: 0 8px;
     position: relative;
     font-size: 14px;
     opacity: 1;
     text-underline-offset: 4px;
-    line-height:  1.35;
+    line-height: 1.35;
 }
 
 .innerLinkHidden {
@@ -183,18 +202,6 @@
 .innerTableOfContentsLink:hover {
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
-    opacity: 1;
-}
-
-.innerTableOfContentsLink3Level {
-    margin-left: 0px;
-    padding-top: 0;
-    padding-bottom: 0;
-    font-weight: 300;
-    opacity: 0.8;
-}
-
-.visible::before {
     opacity: 1;
 }
 
