@@ -21,9 +21,7 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
     return (
         <a
             style={{ color, textDecorationColor }}
-            className={cn(styles.innerTableOfContentsLink, {
-                [styles.innerTableOfContentsLink3Level]: anchor.type === 'heading_2',
-            })}
+            className={cn(styles.innerTableOfContentsLink)}
             key={anchor.title}
             href={`#${anchor.id}`}
             onClick={() => !isDesktop && setState(!baseState)}
