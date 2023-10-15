@@ -1,0 +1,64 @@
+.heading1,
+.heading2,
+.heading3 {
+    color: #1e2841;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.heading1 a,
+.heading2 a,
+.heading3 a {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+}
+
+.heading1 a:after,
+.heading2 a:after,
+.heading3 a:after {
+    content: '#';
+    position: absolute;
+    top: .25em;
+    left: -1em;
+    vertical-align: middle;
+    margin-left: .25em;
+    font-size: .9em;
+    opacity: .5;
+    opacity: 0;
+    transition: .15s ease;
+}
+
+@media screen and (min-width: 768px) and (hover: hover) {
+    .heading1:hover a:after,
+    .heading2:hover a:after,
+    .heading3:hover a:after {
+        opacity: .4;
+    }
+}
+
+.heading1 {
+    margin-top: 2.5vw;
+    margin-bottom: 0.5vw;
+    font-size: clamp(28px, 10vw, 50px);
+}
+
+.heading2 {
+    margin-top: 1vw;
+    margin-bottom: 0.5vw;
+    font-size: clamp(24px, 8vw, 36px);
+}
+
+.heading3 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-size: clamp(22px, 6vw, 24px);
+}
+
+.heading1 + .heading2 {
+    margin-top: 1vw;
+}
+
+br + .heading1 {
+    margin-top: 4vw;
+}
