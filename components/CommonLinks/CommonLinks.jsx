@@ -5,8 +5,6 @@ import { ProjectsPanel, PROJECT_GUIDES, PRODUCTION_PROJECTS, Theme } from 'ekb'
 import { ThemeContext } from '../../pages/_app'
 import { TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
 
-const WIDTH = 270
-
 export function CommonLinks({ color, bgColor, mainPage }) {
     const isDark = useContext(ThemeContext)
     const { asPath } = useRouter()
@@ -30,7 +28,10 @@ export function CommonLinks({ color, bgColor, mainPage }) {
             projects={[PROJECT_GUIDES, ...PRODUCTION_PROJECTS]}
             activeProjectId={PROJECT_GUIDES.id}
             theme={Theme.LIGHT}
-            toggleStyle={{ width: WIDTH, backgroundColor: commonColor }}
+            toggleStyle={{
+                width: 'calc(var(--sidebar-width) - 88px)',
+                backgroundColor: commonColor,
+            }}
             style={{ left: '8px', bottom: '8px', fontFamily: 'inherit', fontWeight: '400' }}
         />
     )

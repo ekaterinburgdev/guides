@@ -111,6 +111,25 @@
     display: none;
 }
 
+.tableOfContentsLink {
+    font-weight: 300;
+    box-shadow: none;
+    color: #14283C;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.2s;
+    padding: 12px 16px 12px 16px;
+    font-size: 16px;
+}
+
+.tableOfContentsLink:hover,
+.tableOfContentsLink:focus-visible {
+    box-shadow: none !important;
+    background-color: #ffffff;
+    color: #112233;
+    text-decoration: none;
+}
+
 .innerlinkContainerListItem {
     position: relative;
 }
@@ -132,6 +151,13 @@
     opacity: 0;
 }
 
+.innerlinkContainerListItem3Level {
+    margin-bottom: 16px;
+}
+
+.innerlinkContainerListItem3Level + .innerlinkContainerListItem2Level {
+    margin-top: 4px;
+}
 
 .innerTableOfContentsLink {
     display: inline-block;
@@ -144,9 +170,10 @@
     transition: 0.2s;
     padding: 12px 8px 12px 8px;
     position: relative;
-    font-size: 16px;
-    opacity: 0.8;
+    font-size: 14px;
+    opacity: 1;
     text-underline-offset: 4px;
+    line-height:  1.35;
 }
 
 .innerLinkHidden {
@@ -159,12 +186,12 @@
     opacity: 1;
 }
 
-.heading2 {
-    font-size: 12px;
+.innerTableOfContentsLink3Level {
     margin-left: 0px;
-    padding-left: 16px !important;
     padding-top: 0;
-    padding-bottom: 16px;
+    padding-bottom: 0;
+    font-weight: 300;
+    opacity: 0.8;
 }
 
 .visible::before {
@@ -183,25 +210,6 @@
     display: flex;
     flex-direction: column;
     list-style: none;
-}
-
-.tableOfContentsLink {
-    font-weight: 300;
-    box-shadow: none;
-    color: #14283C;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: 0.2s;
-    padding: 12px 16px 12px 16px;
-    font-size: 18px;
-}
-
-.tableOfContentsLink:hover,
-.tableOfContentsLink:focus-visible {
-    box-shadow: none !important;
-    background-color: #ffffff;
-    color: #112233;
-    text-decoration: none;
 }
 
 .active {
@@ -238,7 +246,7 @@
         flex-direction: column;
         position: fixed;
         height: calc(100vh - 100px);
-        width: max(var(--sidebar-width), var(--sidebar-width-offset));
+        width: var(--sidebar-width);
         background-color: #1231;
         overflow: auto;
         scrollbar-width: none;
