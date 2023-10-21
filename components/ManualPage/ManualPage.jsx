@@ -6,7 +6,7 @@ import rgbaToRgb from 'rgba-to-rgb'
 
 import styles from './ManualPage.module.css'
 import tp from '../../utils/typograf/typograf.config'
-import { H1, H2, H3 } from '../NotionTypes/Headers/Headers'
+import { H1, H2, H3 } from '../NotionTypes/Headings/Headings'
 import Bookmark from '../NotionTypes/Bookmark/Bookmark'
 import UnorderedList from '../NotionTypes/Lists/Unordered/Unordered'
 import OrderedList from '../NotionTypes/Lists/Ordered/Ordered'
