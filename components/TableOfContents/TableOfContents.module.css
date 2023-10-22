@@ -17,7 +17,6 @@
 }
 
 .titleContainer {
-    position: sticky;
     top: -8px;
     display: inline-flex;
     gap: 8px;
@@ -38,6 +37,12 @@
     margin-left: 2px;
     margin-top: 0;
     margin-bottom: 0;
+    overflow: auto;
+    border-radius: 8px;
+}
+
+.linkContainerList::-webkit-scrollbar {
+    display: none;
 }
 
 .linkToAllManuals:hover,
@@ -105,10 +110,6 @@
 .open {
     display: flex !important;
     flex-direction: column !important;
-}
-
-.tableOfContents::-webkit-scrollbar {
-    display: none;
 }
 
 .tableOfContentsLink {
