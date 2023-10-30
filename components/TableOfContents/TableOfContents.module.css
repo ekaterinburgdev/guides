@@ -97,7 +97,7 @@
     width: 100%;
     height: calc(100vh - 96px);
     background-color: #eff0f1;
-    border-radius: 16px;
+    border-radius: 17px;
     position: fixed;
     top: 0;
     left: 0;
@@ -249,7 +249,6 @@
 
     .tableOfContents {
         margin: 8px;
-        border-radius: 16px;
         display: flex;
         flex-direction: column;
         position: fixed;
@@ -258,7 +257,7 @@
         background-color: #1231;
         overflow: auto;
         scrollbar-width: none;
-        padding: 0px 11px 11px 8px;
+        padding: 0px 11px 11px 9px;
     }
 }
 
