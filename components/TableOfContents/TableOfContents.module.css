@@ -135,8 +135,8 @@
     position: relative;
 }
 
-.innerlinkContainerListItem:first-of-type a {
-    margin-top: 8px;
+.innerlinkContainerListItem:first-of-type {
+    margin-top: 16px;
 }
 
 .innerlinkContainerListItem::before {
@@ -159,7 +159,7 @@
 }
 
 .visible + .visible::before {
-    height: calc(100% + 32px);
+    height: calc(100% + 40px);
     margin-top: -16px;
     transition: none;
 }
