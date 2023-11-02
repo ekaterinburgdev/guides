@@ -26,7 +26,10 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
             href={`#${anchor.id}`}
             onClick={() => !isDesktop && setState(!baseState)}
         >
-            {tpForAsideMenu.execute(anchor.title)}
+            {tpForAsideMenu.execute(
+                // TODO: Remove after remove numbers from headings
+                anchor.title[0].replace(/.*\. /, '')
+            )}
         </a>
     )
 }
