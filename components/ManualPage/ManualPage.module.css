@@ -56,10 +56,10 @@
 .pageName:before {
     content: counter(page-chapter) ". ";
     position: absolute;
-    top: .6ex;
+    top: .27em;
     right: calc(100% + 10px);
+    opacity: .4;
     font-size: .73em;
-    opacity: .5;
 }
 
 .Manual__image {

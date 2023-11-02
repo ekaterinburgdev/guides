@@ -1,6 +1,7 @@
 .heading1,
 .heading2,
 .heading3 {
+    position: relative;
     font-weight: 500;
     color: #1e2841;
     line-height: 1;
@@ -9,7 +10,7 @@
 .heading1 a,
 .heading2 a,
 .heading3 a {
-    position: relative;
+    display: inline-block;
     color: inherit;
     text-decoration: none;
 }
@@ -18,11 +19,11 @@
 .heading2 a:before,
 .heading3 a:before {
     position: absolute;
+    top: .27em;
+    font-size: .73em;
     right: calc(100% + 4px);
     opacity: .4;
     transition: .15s ease opacity;
-    font-size: .725em;
-    top: .46em;
 }
 
 .heading1:hover a:before,
