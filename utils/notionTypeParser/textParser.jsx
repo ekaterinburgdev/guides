@@ -10,7 +10,8 @@ export const getHeaderContent = (item) =>
             return
         }
 
-        return textContent
+        // TODO: Remove after remove numbers from headers
+        return textContent.replace(/.*\. /, '')
     })
 
 export const getTextContent = (item, useTypograf = false) =>

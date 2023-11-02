@@ -136,6 +136,14 @@ function ManualPage({
                     </div>
                 )}
                 <h1 className={styles.pageName}>{tp.execute(pageName)}</h1>
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: `body { counter-reset: page-chapter ${pageName.replace(
+                            /\. .*/,
+                            ''
+                        )} }`,
+                    }}
+                />
                 {map(pageList, (cl) => (
                     <Fragment key={cl.id}>{getColumnItem(cl)}</Fragment>
                 ))}

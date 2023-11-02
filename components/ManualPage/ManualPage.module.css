@@ -13,7 +13,7 @@
 
 .templateColumn {
     padding-top: 0;
-    margin-left: calc(var(--sidebar-width) + 32px);
+    margin-left: calc(var(--sidebar-width) + 64px);
     margin-right: var(--sidebar-width);
 }
 
