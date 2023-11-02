@@ -48,7 +48,8 @@ function ManualPage({
         )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
     )
 
-    const pageNumber = pageName.replace(/\. .*/, '');
+    // TODO: Remove after remove numbers from headings
+    const pageNumber = pageName.replace(/\. .*/, '')
 
     const getLine = (columnList) => {
         if (!columnList.children.length) {
@@ -130,7 +131,7 @@ function ManualPage({
                     __html: `body { counter-reset: page-chapter ${pageNumber} }`,
                 }}
             />
-            
+
             <div className={styles.column}>
                 {pageImage && (
                     <div className={styles.previewImageContainer}>

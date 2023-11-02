@@ -50,7 +50,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
             colorScheme.bgLight.color[1]
         )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
     )
-    
+
     useEffect(() => {
         const arrayWithAnchorElements = [...document.querySelectorAll('h1[id], h2[id]')]
 
@@ -119,10 +119,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     </div>
                 </Link>
                 {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
-                    <div
-                        style={{ color: colorScheme.title }}
-                        className={styles.separator}
-                    />
+                    <div style={{ color: colorScheme.title }} className={styles.separator} />
                 )}
             </li>
             {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
