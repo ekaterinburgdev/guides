@@ -45,11 +45,21 @@
 }
 
 .pageName {
+    position: relative;
     margin: 4vw auto 2vw;
     font-size: clamp(48px, 12vw, 70px);
     color: #1e2841;
     font-weight: 500;
-    line-height: 0.95;
+    line-height: .95;
+}
+
+.pageName:before {
+    content: counter(page-chapter) ". ";
+    position: absolute;
+    top: .6ex;
+    right: calc(100% + 10px);
+    font-size: .73em;
+    opacity: .5;
 }
 
 .Manual__image {
