@@ -26,10 +26,12 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
             href={`#${anchor.id}`}
             onClick={() => !isDesktop && setState(!baseState)}
         >
-            {tpForAsideMenu.execute(
-                // TODO: Remove after remove numbers from headings
-                anchor.title[0].replace(/.*\. /, '')
-            )}
+            <span>
+                {tpForAsideMenu.execute(
+                    // TODO: Remove after remove numbers from headings
+                    anchor.title[0].replace(/.*\. /, '')
+                )}
+            </span>
         </a>
     )
 }
@@ -48,7 +50,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
             colorScheme.bgLight.color[1]
         )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
     )
-
+    
     useEffect(() => {
         const arrayWithAnchorElements = [...document.querySelectorAll('h1[id], h2[id]')]
 
@@ -110,13 +112,15 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     })}
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    {tpForAsideMenu.execute(title)}
+                    {/* TODO: Remove after remove numbers from headings */}
+                    <div style={{ display: 'flex' }}>
+                        <span>{title.replace(/\. .*/, '')}.&nbsp;</span>
+                        {tpForAsideMenu.execute(title).replace(/.*\. /, '')}
+                    </div>
                 </Link>
                 {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
                     <div
-                        style={{
-                            color: colorScheme.title,
-                        }}
+                        style={{ color: colorScheme.title }}
                         className={styles.separator}
                     />
                 )}
