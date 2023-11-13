@@ -1,7 +1,7 @@
-import React, { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import Head from 'next/head'
-
 import { isetSansFont } from '../utils/font'
+
 import '../styles/globals.css'
 import 'ekb/style.css'
 
@@ -29,11 +29,11 @@ function MyApp({ Component, pageProps }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <title>Городские руководства</title>
             </Head>
-            <ThemeContext.Provider value={isDark}>
-                <main className={isetSansFont.className}>
+            <main className={isetSansFont.className}>
+                <ThemeContext.Provider value={isDark}>
                     <Component {...pageProps} />
-                </main>
-            </ThemeContext.Provider>
+                </ThemeContext.Provider>
+            </main>
         </>
     )
 }
