@@ -71,7 +71,7 @@ function ManualPage({
     }
 
     const getColumnItem = (notionType) => {
-        console.log(notionType);
+        console.log(notionType)
         switch (notionType.type) {
             case 'column_list':
                 return <div className={styles.columnList}>{getLine(notionType)}</div>
