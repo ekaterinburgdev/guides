@@ -1,68 +1,24 @@
 import React from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
+import tp from '../../utils/typograf/typograf.config';
 
 import styles from './arrow.module.css'
+
 
 const getCatalogOptions = (catalog) => ({
     url: catalog.properties.pageUrl.url,
     title: catalog.properties.Name.title[0].plain_text,
 })
 
-// TODO: выделить общую логику у этих двух компонент
-export function PrevPage({
-    prevPageIndex,
-    tableOfContentArr,
-    pageUrl,
-    catalogIndex,
-    children,
-    color,
-    backgroundColor,
-}) {
-    let href = {
-        pathname: '/[[...pageUrl]]',
-        query: { pageUrl: [] },
-    }
-    let title = ''
-
-    if (prevPageIndex >= 0) {
-        href.query.pageUrl = [pageUrl[0], tableOfContentArr[prevPageIndex]?.url]
-        title = tableOfContentArr[prevPageIndex]?.title
-    } else {
-        const prevCatalogIndex = catalogIndex - 1
-        if (Number.isNaN(prevCatalogIndex)) {
-            return prevCatalogIndex + 1
-        }
-        if (prevCatalogIndex <= -1) {
-            title = 'Назад к руководствам'
-            href = { pathname: '/' }
-        } else {
-            const prevCatalog = getCatalogOptions(children[prevCatalogIndex])
-            title = prevCatalog.title
-            href.query.pageUrl = [prevCatalog.url]
-        }
-    }
-
-    return (
-        <Link
-            style={{ color, backgroundColor }}
-            className={cn(styles.arrowNavLink, styles.arrowBack)}
-            href={href}
-            passHref
-        >
-            {title}
-        </Link>
-    )
-}
-
-export function NextPage({
+export function ArrowNavLink({
     nextPageIndex,
     tableOfContentArr,
     pageUrl,
     catalogIndex,
     children,
     color,
-    backgroundColor,
+    textDecoration
 }) {
     let href = {
         pathname: '/[[...pageUrl]]',
@@ -90,11 +46,19 @@ export function NextPage({
 
     return (
         <Link
-            style={{ color, backgroundColor }}
-            className={cn(styles.arrowNavLink, styles.arrowNext)}
+            style={{ color }}
+            className={cn(styles.arrowNavLink)}
             href={href}
         >
-            {title}
+            <span className={cn(styles.arrowNavLinkNext)}>
+                Далее
+            </span>
+            
+            <br />
+            
+            <span className={cn(styles.arrowNavLinkNextText)} style={{ textDecorationColor: textDecoration }}>
+                {tp.execute(title)}
+            </span>
         </Link>
     )
 }

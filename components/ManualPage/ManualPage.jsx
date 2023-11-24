@@ -12,7 +12,7 @@ import UnorderedList from '../NotionTypes/Lists/Unordered/Unordered'
 import OrderedList from '../NotionTypes/Lists/Ordered/Ordered'
 import File from '../File/File'
 import Paragraph from '../NotionTypes/Text/Paragraph/Paragraph'
-import { PrevPage, NextPage } from '../ArrowNavLink/ArrowNavLink'
+import { PrevPage, ArrowNavLink } from '../ArrowNavLink/ArrowNavLink'
 import Table from '../NotionTypes/Table/Table'
 import Divider from '../NotionTypes/Text/Divider/Divider'
 import VideoPlayer from '../NotionTypes/VideoPlayer/VideoPlayer'
@@ -71,7 +71,6 @@ function ManualPage({
     }
 
     const getColumnItem = (notionType) => {
-        console.log(notionType)
         switch (notionType.type) {
             case 'column_list':
                 return <div className={styles.columnList}>{getLine(notionType)}</div>
@@ -158,27 +157,18 @@ function ManualPage({
                 ))}
                 {tableOfContentArr.length !== 0 && (
                     <nav className={styles.footNav}>
-                        {Number.isInteger(prevPageIndex) && (
-                            <PrevPage
-                                backgroundColor={arrowColor}
-                                children={children}
-                                prevPageIndex={prevPageIndex}
-                                tableOfContentArr={tableOfContentArr}
-                                catalogIndex={catalogIndex}
-                                pageUrl={pageUrl}
-                                color={color}
-                            />
-                        )}
                         {Number.isInteger(nextPageIndex) && (
-                            <NextPage
+                            <ArrowNavLink
                                 backgroundColor={arrowColor}
                                 nextPageIndex={nextPageIndex}
-                                children={children}
                                 tableOfContentArr={tableOfContentArr}
                                 catalogIndex={catalogIndex}
                                 pageUrl={pageUrl}
                                 color={color}
-                            />
+                                textDecoration={colorScheme.textDecoration}
+                            >
+                                {children}
+                            </ArrowNavLink>
                         )}
                     </nav>
                 )}
