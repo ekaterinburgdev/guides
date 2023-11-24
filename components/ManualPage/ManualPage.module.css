@@ -12,9 +12,10 @@
 }
 
 .templateColumn {
+    min-height: 100vh;
     padding-top: 0;
-    margin-left: calc(var(--sidebar-width) + 32px);
-    margin-right: var(--sidebar-width);
+    padding-left: 48px;
+    padding-right: 8px;
 }
 
 .column {
@@ -24,15 +25,22 @@
 }
 
 
-@media screen and (min-width: 1500px) {
+@media (min-width: 400px) {
     .templateColumn {
-        margin-right: max(410px, var(--sidebar-width));
+        padding-right: 24px;
     }
 }
 
-@media screen and (min-width: 1900px) {
+@media (min-width: 991px) {
     .templateColumn {
-        margin-right: 502px;
+        padding-left: calc(var(--sidebar-width) + var(--sidebar-spacer));
+        padding-right: 16px;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .templateColumn {
+        padding-right: max(410px, var(--sidebar-width));
     }
 }
 
@@ -45,11 +53,27 @@
 }
 
 .pageName {
-    margin: 4vw auto 2vw;
-    font-size: clamp(48px, 12vw, 70px);
+    position: relative;
+    margin: 1em auto .7em;
     color: #1e2841;
+    font-size: 28px;
     font-weight: 500;
-    line-height: 0.95;
+    line-height: .95;
+}
+
+.pageName:before {
+    content: counter(page-chapter) ". ";
+    position: absolute;
+    top: .27em;
+    right: calc(100% + 10px);
+    opacity: .4;
+    font-size: .73em;
+}
+
+@media (min-width: 991px) {
+    .pageName {
+        font-size: clamp(48px, 6vw, 56px);
+    }
 }
 
 .Manual__image {
@@ -100,12 +124,4 @@ br + .Manual__image__container {
     position: relative !important;
     height: unset !important;
     border-radius: 16px;
-}
-
-@media (max-width: 991px) {
-    .templateColumn {
-        min-height: 100vh;
-        margin-left: 12px;
-        margin-right: 12px;
-    }
 }

@@ -48,6 +48,9 @@ function ManualPage({
         )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
     )
 
+    // TODO: Remove after remove numbers from headings
+    const pageNumber = pageName.replace(/\. .*/, '')
+
     const getLine = (columnList) => {
         if (!columnList.children.length) {
             return
@@ -56,7 +59,7 @@ function ManualPage({
         return (
             <article className={`row gx-2 ${styles.Template__item}`}>
                 {columnList.children.map((cols, i) => (
-                    <div className={`col ${styles.Template__column}`} key={`${cols.id}${i}`}>
+                    <div className={`col-sm ${styles.Template__column}`} key={`${cols.id}${i}`}>
                         {cols.children.map((col, i) => (
                             <Fragment key={i}>{getColumnItem(col)}</Fragment>
                         ))}
@@ -123,6 +126,12 @@ function ManualPage({
 
     return (
         <div className={styles.templateColumn}>
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: `body { counter-reset: page-chapter ${pageNumber} }`,
+                }}
+            />
+
             <div className={styles.column}>
                 {pageImage && (
                     <div className={styles.previewImageContainer}>
@@ -135,7 +144,10 @@ function ManualPage({
                         />
                     </div>
                 )}
-                <h1 className={styles.pageName}>{tp.execute(pageName)}</h1>
+                <h1 className={styles.pageName}>
+                    {/* TODO: Remove after remove numbers from headings */}
+                    {tp.execute(pageName).replace(/.*\. /, '')}
+                </h1>
                 {map(pageList, (cl) => (
                     <Fragment key={cl.id}>{getColumnItem(cl)}</Fragment>
                 ))}

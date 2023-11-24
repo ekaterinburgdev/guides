@@ -97,7 +97,7 @@
     opacity: 0.5;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 991px) {
     .GuideSuggestionTitle {
         font-size: 2.5vw;
     }

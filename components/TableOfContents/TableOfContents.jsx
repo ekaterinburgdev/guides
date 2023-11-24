@@ -26,7 +26,12 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
             href={`#${anchor.id}`}
             onClick={() => !isDesktop && setState(!baseState)}
         >
-            {tpForAsideMenu.execute(anchor.title)}
+            <span>
+                {tpForAsideMenu.execute(
+                    // TODO: Remove after remove numbers from headings
+                    anchor.title[0].replace(/.*\. /, '')
+                )}
+            </span>
         </a>
     )
 }
@@ -107,15 +112,10 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     })}
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    {tpForAsideMenu.execute(title)}
+                    {tpForAsideMenu.execute(title).replace(/.*\. /, '')}
                 </Link>
                 {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
-                    <div
-                        style={{
-                            color: colorScheme.title,
-                        }}
-                        className={styles.separator}
-                    />
+                    <div style={{ color: colorScheme.title }} className={styles.separator} />
                 )}
             </li>
             {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (

@@ -1,7 +1,7 @@
 .ul {
     margin: 1.5vw auto;
     padding-left: 30px;
-    font-size: clamp(14px, 2vw, 19px);
+    font-size: clamp(14px, 1.8vw, 18px);
     line-height: 1.4;
     color: #1e2841;
     opacity: .9;

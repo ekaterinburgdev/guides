@@ -1,11 +1,17 @@
 .p {
-    padding-left: 4px;
     white-space: pre-wrap;
+    font-size: 13px;
     line-height: 1.4;
-    font-size: clamp(14px, 2vw, 19px);
     color: #1e2841;
-    margin: 1vw auto;
+    margin: .9em auto;
+    padding-left: 4px;
     opacity: 0.9;
+}
+
+@media screen and (min-width: 991px) {
+    .p {
+        font-size: clamp(14px, 1.8vw, 18px);
+    }
 }
 
 .p + .p {

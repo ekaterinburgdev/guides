@@ -2,7 +2,14 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 
 :root {
-    --sidebar-width: 350px;
+    --sidebar-width: 310px;
+    --sidebar-spacer: 80px;
+}
+
+@media screen and (min-width: 1200px) {
+    :root {
+        --sidebar-width: 350px;
+    }
 }
 
 @media screen and (min-width: 1441px) {
@@ -20,6 +27,18 @@ html {
 @media screen and (min-width: 768px) {
     html {
         scroll-padding-top: 16px;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    :root {
+        --sidebar-spacer: 100px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    :root {
+        --sidebar-spacer: 80px;
     }
 }
 
