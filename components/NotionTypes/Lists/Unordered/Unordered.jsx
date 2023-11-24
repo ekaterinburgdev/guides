@@ -1,5 +1,5 @@
 import React from 'react'
-import { getTextContent } from '../../../../utils/notionTypeParser/textParser'
+import { getTextContent } from '../../../../utils/textParser'
 import styles from './unordered.module.css'
 
 function UnorderedList({ columnItem }) {

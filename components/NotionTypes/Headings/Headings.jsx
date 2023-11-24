@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getHeaderContent } from '../../../utils/notionTypeParser/textParser'
+import { getHeaderContent } from '../../../utils/textParser'
 
 import styles from './Headings.module.css'
 

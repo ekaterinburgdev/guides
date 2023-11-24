@@ -1,6 +1,6 @@
 import React from 'react'
 
-import tp from '../typograf/typograf.config'
+import tp from './typograf/typograf.config'
 
 export const getHeaderContent = (item) =>
     item.content.text.map((par) => {

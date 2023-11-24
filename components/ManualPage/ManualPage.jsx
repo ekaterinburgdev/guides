@@ -18,11 +18,12 @@ import Divider from '../NotionTypes/Text/Divider/Divider'
 import VideoPlayer from '../NotionTypes/VideoPlayer/VideoPlayer'
 import Code from '../NotionTypes/Text/Code/Code'
 import { API_HOST } from '../../consts/endpoints'
-import GuideImage from '../../utils/notionTypeParser/imageParser'
+import GuideImage from '../NotionTypes/GuideImage/GuideImage'
 import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { Callout } from '../NotionTypes/Callout/Callout'
 import { ThemeContext } from '../../pages/_app'
+import { Iframe } from '../NotionTypes/Iframe/Iframe'
 
 function ManualPage({
     pageList,
@@ -70,6 +71,7 @@ function ManualPage({
     }
 
     const getColumnItem = (notionType) => {
+        console.log(notionType);
         switch (notionType.type) {
             case 'column_list':
                 return <div className={styles.columnList}>{getLine(notionType)}</div>
@@ -115,6 +117,9 @@ function ManualPage({
 
             case 'callout':
                 return <Callout columnItem={notionType} />
+
+            case 'embed':
+                return <Iframe src={notionType.content.url} />
 
             case 'table_of_contents':
                 return <br />

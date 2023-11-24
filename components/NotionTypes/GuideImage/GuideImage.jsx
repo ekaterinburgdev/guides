@@ -3,17 +3,17 @@ import Image from 'next/image'
 import classNames from 'classnames'
 import Lightbox from 'yet-another-react-lightbox'
 import Zoom from 'yet-another-react-lightbox/plugins/zoom'
-import { API_HOST } from '../../consts/endpoints'
+import { API_HOST } from '../../../consts/endpoints'
 
 import 'yet-another-react-lightbox/styles.css'
-import styles from '../../components/ManualPage/ManualPage.module.css'
+import styles from '../../ManualPage/ManualPage.module.css'
 
 import {
     ANIMATION_DURATION_SETTINGS,
     CONTROLLER_SETTINGS,
     LIGHTBOX_STYLES,
     ZOOM_SETTINGS,
-} from '../../consts/lightboxOptions'
+} from '../../../consts/lightboxOptions'
 
 function GuideImage({ notionType }) {
     const cn = classNames(styles.Manual__image, {
