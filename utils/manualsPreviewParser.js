@@ -1,7 +1,7 @@
-import tp from '../typograf/typograf.config'
+import tp from './typograf/typograf.config'
 
-import { MANUALS_HIDDEN } from '../../consts/manuals'
-import { API_HOST } from '../../consts/endpoints'
+import { MANUALS_HIDDEN } from '../consts/manuals'
+import { API_HOST } from '../consts/endpoints'
 
 function parseManualsPreview(tree) {
     // TODO Remove hard-code after back-end feature https://github.com/ekaterinburgdev/guides-api/issues/10

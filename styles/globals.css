@@ -38,7 +38,7 @@ html {
 
 @media screen and (min-width: 1200px) {
     :root {
-        --sidebar-spacer: 80px;
+        --sidebar-spacer: 64px;
     }
 }
 

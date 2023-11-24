@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { getTextContent } from '../../../utils/notionTypeParser/textParser'
+import { getTextContent } from '../../../utils/textParser'
 
 import styles from './Callout.module.css'
 
