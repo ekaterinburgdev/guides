@@ -1,0 +1,9 @@
+.link {
+    color: rgb(31, 71, 148);
+    text-decoration: none;
+}
+
+.link:hover {
+    transition: .2s ease-in-out all;
+    box-shadow: 0 1.5px rgba(31, 71, 148, 0.3);
+}

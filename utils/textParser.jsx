@@ -2,6 +2,8 @@ import React from 'react'
 
 import tp from './typograf/typograf.config'
 
+import styles from './text.module.css'
+
 export const getHeaderContent = (item) =>
     item.content.text.map((par) => {
         const textContent = tp.execute(par?.text?.content)
@@ -41,7 +43,7 @@ export const getTextContent = (item, useTypograf = false) =>
 
         // eslint-disable-next-line consistent-return
         return par?.text?.link?.url ? (
-            <a key={textContent} target="_blank" href={url}>
+            <a className={styles.link} key={textContent} target="_blank" href={url}>
                 {textContent}
             </a>
         ) : (
