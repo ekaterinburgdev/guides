@@ -97,7 +97,6 @@
     width: 100%;
     height: 100vh;
     background-color: #eff0f1;
-    border-radius: 17px;
     position: fixed;
     top: 0;
     left: 0;
@@ -270,6 +269,10 @@ html:has(.open) {
 @media screen and (min-width: 991px) {
     .titleContainer {
         top: 0;
+    }
+
+    .tableOfContents {
+        border-radius: 17px;
     }
 
     .tableOfContents {
