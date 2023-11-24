@@ -146,13 +146,12 @@ html:has(.open) {
     content: '';
     position: absolute;
     top: 50%;
-    right: calc(100% + 5px);
+    right: calc(100% + 7px);
     width: 0;
     height: calc(100% + 8px);
     transform: translateY(-50%);
     border-right: 2px solid;
     border-left: 1px solid;
-    border-radius: 2px;
     opacity: 0;
 }
 
