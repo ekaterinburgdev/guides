@@ -20,10 +20,15 @@
 
 .column {
     max-width: 670px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
+@media screen and (min-width: 991px) {
+    .templateColumn {
+        margin-bottom: 0;
+        margin-left: calc(max(var(--sidebar-width), var(--sidebar-width-offset)) + 32px);
+    }
+}
 
 @media (min-width: 400px) {
     .templateColumn {

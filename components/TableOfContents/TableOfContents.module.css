@@ -21,7 +21,7 @@
     display: inline-flex;
     gap: 8px;
     flex-wrap: wrap;
-    padding-top: 16px;
+    padding-top: 4px;
     text-decoration: none;
     z-index: 4;
     padding-left: 4px;
@@ -59,7 +59,7 @@
     font-weight: 500;
     transition: 0.2s;
     padding-top: 0px;
-    margin-top: 12px;
+    margin-top: 6px;
     flex: 1;
     padding-left: 13px;
     padding-bottom: 6px;
@@ -95,9 +95,8 @@
     padding: 8px;
     display: none;
     width: 100%;
-    height: calc(100vh - 96px);
+    height: 100vh;
     background-color: #eff0f1;
-    border-radius: 17px;
     position: fixed;
     top: 0;
     left: 0;
@@ -105,6 +104,10 @@
     z-index: 12;
     overflow: auto;
     scrollbar-width: none;
+}
+
+html:has(.open) {
+    overflow-y: hidden;
 }
 
 .open {
@@ -143,13 +146,12 @@
     content: '';
     position: absolute;
     top: 50%;
-    right: calc(100% + 5px);
+    right: calc(100% + 7px);
     width: 0;
     height: calc(100% + 8px);
     transform: translateY(-50%);
     border-right: 2px solid;
     border-left: 1px solid;
-    border-radius: 2px;
     opacity: 0;
 }
 
@@ -253,9 +255,23 @@
     display: flex;
 }
 
+@media screen and (min-width: 768px) {
+    .titleContainer {
+        padding-top: 16px;
+    }
+
+    .catalogTitle {
+        margin-top: 12px;
+    }
+}
+
 @media screen and (min-width: 991px) {
     .titleContainer {
         top: 0;
+    }
+
+    .tableOfContents {
+        border-radius: 17px;
     }
 
     .tableOfContents {
