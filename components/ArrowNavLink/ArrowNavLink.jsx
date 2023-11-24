@@ -1,10 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
-import tp from '../../utils/typograf/typograf.config';
+import tp from '../../utils/typograf/typograf.config'
 
 import styles from './arrow.module.css'
-
 
 const getCatalogOptions = (catalog) => ({
     url: catalog.properties.pageUrl.url,
@@ -18,7 +17,7 @@ export function ArrowNavLink({
     catalogIndex,
     children,
     color,
-    textDecoration
+    textDecoration,
 }) {
     let href = {
         pathname: '/[[...pageUrl]]',
@@ -45,18 +44,15 @@ export function ArrowNavLink({
     }
 
     return (
-        <Link
-            style={{ color }}
-            className={cn(styles.arrowNavLink)}
-            href={href}
-        >
-            <span className={cn(styles.arrowNavLinkNext)}>
-                Далее
-            </span>
-            
+        <Link style={{ color }} className={cn(styles.arrowNavLink)} href={href}>
+            <span className={cn(styles.arrowNavLinkNext)}>Далее</span>
+
             <br />
-            
-            <span className={cn(styles.arrowNavLinkNextText)} style={{ textDecorationColor: textDecoration }}>
+
+            <span
+                className={cn(styles.arrowNavLinkNextText)}
+                style={{ textDecorationColor: textDecoration }}
+            >
                 {tp.execute(title)}
             </span>
         </Link>

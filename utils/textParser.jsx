@@ -16,6 +16,8 @@ export const getHeaderContent = (item) =>
 export const getTextContent = (item, useTypograf = false) =>
     item.content.text.map((par) => {
         const textContent = useTypograf ? tp.execute(par?.text?.content) : par?.text?.content
+        const url = par?.text?.link?.url ?? null
+
         const stylePar = {
             fontWeight: par?.annotations?.bold ? '500' : '300',
             color: par?.annotations?.color ? par?.annotations?.color : 'black',
@@ -38,7 +40,11 @@ export const getTextContent = (item, useTypograf = false) =>
         }
 
         // eslint-disable-next-line consistent-return
-        return (
+        return par?.text?.link?.url ? (
+            <a key={textContent} target="_blank" href={url}>
+                {textContent}
+            </a>
+        ) : (
             <span style={{ ...stylePar }} key={textContent}>
                 {textContent}
             </span>
