@@ -112,11 +112,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     })}
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    {/* TODO: Remove after remove numbers from headings */}
-                    <div style={{ display: 'flex' }}>
-                        <span>{title.replace(/\. .*/, '')}.&nbsp;</span>
-                        {tpForAsideMenu.execute(title).replace(/.*\. /, '')}
-                    </div>
+                    {tpForAsideMenu.execute(title).replace(/.*\. /, '')}
                 </Link>
                 {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
                     <div style={{ color: colorScheme.title }} className={styles.separator} />
