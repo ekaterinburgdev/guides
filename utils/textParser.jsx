@@ -21,7 +21,10 @@ export const getTextContent = (item, useTypograf = false) =>
         const url = par?.text?.link?.url ?? null
         const colorMapObject = {
             blue: 'rgba(51, 126, 169, 1)',
-            yellow: 'rgba(203, 145, 47, 1)',
+            yellow: 'rgb(203, 145, 47)',
+            red: 'rgba(212, 76, 71, 1)',
+            green: 'rgba(68, 131, 97, 1)',
+            gray: 'rgba(120, 119, 116, 1)',
             default: 'black',
         }
 
