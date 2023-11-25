@@ -19,10 +19,17 @@ export const getTextContent = (item, useTypograf = false) =>
     item.content.text.map((par) => {
         const textContent = useTypograf ? tp.execute(par?.text?.content) : par?.text?.content
         const url = par?.text?.link?.url ?? null
+        const colorMapObject = {
+            blue: 'rgba(51, 126, 169, 1)',
+            yellow: 'rgba(203, 145, 47, 1)',
+            default: 'black',
+        }
 
         const stylePar = {
             fontWeight: par?.annotations?.bold ? '500' : '300',
-            color: par?.annotations?.color ? par?.annotations?.color : 'black',
+            color: par?.annotations?.color
+                ? colorMapObject[par?.annotations?.color] ?? par?.annotations?.color
+                : 'black',
             fontStyle: par?.annotations?.italic ? 'italic' : 'normal',
             // eslint-disable-next-line no-nested-ternary
             textDecoration: par?.annotations?.underline
@@ -31,10 +38,6 @@ export const getTextContent = (item, useTypograf = false) =>
                     : 'underline'
                 : 'none',
             filter: par?.annotations?.color === 'yellow' ? 'contrast(0.6)' : 'contrast(1)',
-        }
-
-        if (stylePar.color === 'default') {
-            stylePar.color === 'black'
         }
 
         if (!textContent) {
