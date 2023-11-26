@@ -1,30 +1,40 @@
-export const ANIMATION_DURATION_SETTINGS = {
-    fade: 250,
-    zoom: 300,
-}
+import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 
-export const LIGHTBOX_STYLES = {
-    container: {
-        background: 'white',
+/** @type { import('yet-another-react-lightbox/dist/types.d.ts').LightboxProps } */
+export const lightboxOptions = {
+    plugins: [Zoom],
+    carousel: {
+        finite: true,
     },
-    button: {
-        filter: 'none',
-        color: 'black',
+    render: {
+        buttonPrev: () => null,
+        buttonNext: () => null,
     },
-}
-
-export const CONTROLLER_SETTINGS = {
-    closeOnBackdropClick: true,
-    closeOnPullDown: true,
-}
-
-export const ZOOM_SETTINGS = {
-    doubleClickMaxStops: 3,
-    doubleTapDelay: 300,
-    keyboardMoveDistance: 50,
-    maxZoomPixelRatio: 10,
-    pinchZoomDistanceFactor: 100,
-    scrollToZoom: true,
-    wheelZoomDistanceFactor: 100,
-    zoomInMultiplier: 2,
+    zoom: {
+        doubleClickMaxStops: 3,
+        doubleTapDelay: 300,
+        keyboardMoveDistance: 50,
+        maxZoomPixelRatio: 10,
+        pinchZoomDistanceFactor: 100,
+        scrollToZoom: true,
+        wheelZoomDistanceFactor: 100,
+        zoomInMultiplier: 2,
+    },
+    animation: {
+        fade: 250,
+        zoom: 300,
+    },
+    controller: {
+        closeOnBackdropClick: true,
+        closeOnPullDown: true,
+    },
+    styles: {
+        container: {
+            background: 'white',
+        },
+        button: {
+            filter: 'none',
+            color: 'black',
+        },
+    },
 }

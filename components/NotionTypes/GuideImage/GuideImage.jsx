@@ -2,18 +2,11 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import classNames from 'classnames'
 import Lightbox from 'yet-another-react-lightbox'
-import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 import { API_HOST } from '../../../consts/endpoints'
+import { lightboxOptions } from '../../../consts/lightboxOptions'
 
 import 'yet-another-react-lightbox/styles.css'
 import styles from '../../ManualPage/ManualPage.module.css'
-
-import {
-    ANIMATION_DURATION_SETTINGS,
-    CONTROLLER_SETTINGS,
-    LIGHTBOX_STYLES,
-    ZOOM_SETTINGS,
-} from '../../../consts/lightboxOptions'
 
 function GuideImage({ notionType }) {
     const cn = classNames(styles.Manual__image, {
@@ -49,15 +42,7 @@ function GuideImage({ notionType }) {
                 open={open}
                 close={() => setOpen(false)}
                 slides={[{ src: srcUrl }]}
-                plugins={[Zoom]}
-                zoom={ZOOM_SETTINGS}
-                animation={ANIMATION_DURATION_SETTINGS}
-                controller={CONTROLLER_SETTINGS}
-                styles={LIGHTBOX_STYLES}
-                render={{
-                    buttonPrev: () => null,
-                    buttonNext: () => null,
-                }}
+                {...lightboxOptions}
             />
             <Image onClick={() => setOpen(true)} className={cn} src={srcUrl} fill />
         </>
