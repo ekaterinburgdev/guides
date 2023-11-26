@@ -112,7 +112,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     })}
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    {tpForAsideMenu.execute(title).replace(/.*\. /, '')}
+                    {tpForAsideMenu.execute(title)}
                 </Link>
                 {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
                     <div style={{ color: colorScheme.title }} className={styles.separator} />
