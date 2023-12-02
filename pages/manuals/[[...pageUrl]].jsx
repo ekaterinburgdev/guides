@@ -17,10 +17,10 @@ export const PageContext = createContext(null)
 export const TocStateContext = createContext(null)
 
 function GetPage({
-    children,
-    pageList,
+    catalogTitle,
+    catalogIndex,
     pageName,
-    catalogPage,
+    pageList,
     pageImage,
     colorMap,
     iconMap,
@@ -36,10 +36,6 @@ function GetPage({
     const [nextPageIndex, setNexPageIndex] = useState(null)
     const [anchorLinks, setAnchorLinks] = useState([])
     const [isOpen, setIsOpen] = useState(isDesktop)
-
-    const [catalogTitle, setCatalogTitle] = useState('')
-    const [catalogId, setCatalogId] = useState('')
-    const [catalogIndex, setCatalogIndex] = useState()
 
     const getColumnItem = (columnItem) => {
         const getLine = (columnList) => {
@@ -74,24 +70,6 @@ function GetPage({
                 return null
         }
     }
-
-    useEffect(() => {
-        if (!catalogPage) {
-            return
-        }
-
-        setCatalogTitle(catalogPage.content.title)
-        setCatalogId(catalogPage.id)
-    }, [catalogPage])
-
-    useEffect(() => {
-        if (!children || !catalogId || catalogId === '') {
-            return
-        }
-
-        const catalogIndexForSet = children.findIndex((catalog) => catalog.id === catalogId)
-        setCatalogIndex(catalogIndexForSet)
-    }, [children, catalogId])
 
     useEffect(() => {
         if (manualToc.length === 0 || !pageUrl) {
@@ -135,7 +113,6 @@ function GetPage({
                     <ManualPage
                         pageList={pageList}
                         pageName={pageName}
-                        children={children}
                         tableOfContentArr={manualToc}
                         nextPageIndex={nextPageIndex}
                         catalogIndex={catalogIndex}
@@ -185,12 +162,14 @@ export async function getServerSideProps({ params: { pageUrl } }) {
             url: children?.properties?.pageUrl?.url ?? null,
         }
     })
+
     const iconMap = children.map((children) => {
         return {
             imageUrl: `${API_HOST}/static/${children?.properties?.previewImage[0]}` ?? null,
             url: children?.properties?.pageUrl?.url ?? null,
         }
     })
+
     const pdfUrlsMap = children.map((children) => {
         return {
             pdfUrl: children?.properties?.pdfUrl?.url ?? null,
@@ -198,13 +177,19 @@ export async function getServerSideProps({ params: { pageUrl } }) {
         }
     })
 
+    const catalogPage = await getPageByUrl(catalogPathname)
+    const catalogIndex = children.findIndex((catalog) => catalog.id === catalogPage.id)
+    const catalogTitle = catalogPage.content.title
+    const pageImage = page?.node_properties?.cover
+
     return {
         props: {
-            children,
+            catalogPage,
+            catalogTitle,
+            catalogIndex,
             pageName,
             pageList,
-            pageImage: page?.node_properties?.cover,
-            catalogPage: await getPageByUrl(pageUrl[0]),
+            pageImage,
             colorMap,
             iconMap,
             pdfUrlsMap,

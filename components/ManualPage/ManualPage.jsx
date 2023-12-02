@@ -32,7 +32,6 @@ function ManualPage({
     pageUrl,
     nextPageIndex,
     catalogIndex,
-    children,
     pageImage,
 }) {
     const { asPath } = useRouter()
@@ -165,9 +164,7 @@ function ManualPage({
                                 pageUrl={pageUrl}
                                 color={color}
                                 textDecoration={colorScheme.textDecoration}
-                            >
-                                {children}
-                            </ArrowNavLink>
+                            />
                         )}
                     </nav>
                 )}
