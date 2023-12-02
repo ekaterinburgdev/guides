@@ -18,7 +18,7 @@ export const Toolbar = ({ toolbarColor = '#f5f8fb', colorTitle = '#1A1C1F', pdfU
     const [isOpenSidePage, setIsOpenSidePage] = useState(false)
     const [isLoadingSuggestion, setIsLoadingSuggestion] = useState(false)
     const [currentQuery, setCurrentQuery] = useState('')
-    const searchInputRef = React.useRef(null)
+    const searchInputRef = useRef(null)
     const [guideSuggestions, setGuideSuggestions] = useState([])
 
     const handleOnChange = useCallback(

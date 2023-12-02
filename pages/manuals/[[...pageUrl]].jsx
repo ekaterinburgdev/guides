@@ -37,9 +37,9 @@ function GetPage({
     const [anchorLinks, setAnchorLinks] = useState([])
     const [isOpen, setIsOpen] = useState(isDesktop)
 
-    const [catalogTitle, setCatalogTitle] = React.useState('')
-    const [catalogId, setCatalogId] = React.useState('')
-    const [catalogIndex, setCatalogIndex] = React.useState()
+    const [catalogTitle, setCatalogTitle] = useState('')
+    const [catalogId, setCatalogId] = useState('')
+    const [catalogIndex, setCatalogIndex] = useState()
 
     const getColumnItem = (columnItem) => {
         const getLine = (columnList) => {
