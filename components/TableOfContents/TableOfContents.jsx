@@ -149,7 +149,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     return (
         <>
             <Head>
-                <meta name="theme-color" content={color} />
                 <title>{catalogTitle}</title>
             </Head>
             <aside className={styles.TableOfContents__aside}>
