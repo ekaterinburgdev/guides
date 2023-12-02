@@ -43,7 +43,7 @@
     }
 }
 
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 1600px) {
     .templateColumn {
         padding-right: max(410px, var(--sidebar-width));
     }
