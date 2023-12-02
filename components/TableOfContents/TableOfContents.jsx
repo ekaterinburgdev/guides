@@ -85,7 +85,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     href={{
                         pathname: '/[[...pageUrl]]',
                         query: { pageUrl: [currentPageUrl[0], url] },
-                        as: `${currentPageUrl.join('/')}/${url}`,
                     }}
                     style={{
                         color: colorScheme.title,
@@ -150,6 +149,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     return (
         <>
             <Head>
+                <meta name="theme-color" content={color} />
                 <title>{catalogTitle}</title>
             </Head>
             <aside className={styles.TableOfContents__aside}>
