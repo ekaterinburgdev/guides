@@ -33,7 +33,6 @@ function GetPage({
         query: '(min-width: 991px)',
     })
 
-    const [prevPageIndex, setPrevPageIndex] = useState(null)
     const [nextPageIndex, setNexPageIndex] = useState(null)
     const [anchorLinks, setAnchorLinks] = useState([])
     const [isOpen, setIsOpen] = useState(isDesktop)
@@ -102,9 +101,6 @@ function GetPage({
         const curPageUrl = pageUrl.length > 1 ? pageUrl[pageUrl.length - 1] : undefined
 
         const curPageIndex = manualToc.findIndex((el) => el.url === curPageUrl)
-        if (curPageIndex > 0) {
-            setPrevPageIndex(curPageIndex - 1)
-        }
         if (curPageIndex + 1 < manualToc.length) {
             setNexPageIndex(curPageIndex + 1)
         }
@@ -141,7 +137,6 @@ function GetPage({
                         pageName={pageName}
                         children={children}
                         tableOfContentArr={manualToc}
-                        prevPageIndex={prevPageIndex}
                         nextPageIndex={nextPageIndex}
                         catalogIndex={catalogIndex}
                         pageUrl={pageUrl}

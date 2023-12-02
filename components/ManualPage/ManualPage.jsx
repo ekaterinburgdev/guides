@@ -12,7 +12,7 @@ import UnorderedList from '../NotionTypes/Lists/Unordered/Unordered'
 import OrderedList from '../NotionTypes/Lists/Ordered/Ordered'
 import File from '../File/File'
 import Paragraph from '../NotionTypes/Text/Paragraph/Paragraph'
-import { PrevPage, ArrowNavLink } from '../ArrowNavLink/ArrowNavLink'
+import { ArrowNavLink } from '../ArrowNavLink/ArrowNavLink'
 import Table from '../NotionTypes/Table/Table'
 import Divider from '../NotionTypes/Text/Divider/Divider'
 import VideoPlayer from '../NotionTypes/VideoPlayer/VideoPlayer'
@@ -30,7 +30,6 @@ function ManualPage({
     pageName,
     tableOfContentArr,
     pageUrl,
-    prevPageIndex,
     nextPageIndex,
     catalogIndex,
     children,
