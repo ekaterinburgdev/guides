@@ -35,7 +35,6 @@
 		"react-responsive": "^9.0.2",
 		"rgba-to-rgb": "^1.0.2",
 		"scroll-into-view-if-needed": "^3.1.0",
-		"superagent": "^8.1.2",
 		"typograf": "^7.3.0",
 		"yet-another-react-lightbox": "^3.15.6"
 	},
