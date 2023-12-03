@@ -9,7 +9,7 @@ import { getNotionColor } from '../../../utils/colors'
 export const Callout = ({ columnItem }) => {
     const iconUrl = columnItem?.content?.icon?.external?.url
     const text = getTextContent(columnItem, true)
-    const color = getNotionColor(columnItem?.content?.color);
+    const color = getNotionColor(columnItem?.content?.color)
 
     return (
         <div className={styles.Callout__container}>
