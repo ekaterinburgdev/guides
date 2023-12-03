@@ -39,16 +39,12 @@ export const getTextContent = (item, useTypograf = false) =>
             return
         }
 
-        // eslint-disable-next-line consistent-return
-        return par?.text?.link?.url ? (
-            <a className={styles.link} key={textContent} target="_blank" href={url}>
-                {textContent}
-            </a>
-        ) : (
-            <span style={{ ...stylePar }} key={textContent}>
-                {textContent}
-            </span>
-        )
+        const isLink = par?.text?.link?.url;
+        const textFragmentHtml = { dangerouslySetInnerHTML: { __html: textContent.replace('\n') } }
+
+        return isLink
+            ? <a href={url} target="_blank" className={styles.link} {...textFragmentHtml} />
+            : <span style={{ ...stylePar }} {...textFragmentHtml} />
     })
 
 export const getListItem = (columnItem) => {
