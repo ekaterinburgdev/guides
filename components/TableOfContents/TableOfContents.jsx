@@ -40,9 +40,10 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     const colorScheme = getManualColorScheme(color)
     const isDark = useContext(ThemeContext)
     const asideColor = rgbaToRgb(
-        isDark
-            ? 'rgb(0, 0, 0)'
-            : 'rgb(255, 255, 255)', `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(colorScheme.bgLight.color[1])}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
+        isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+        `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
+            colorScheme.bgLight.color[1]
+        )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
     )
 
     useEffect(() => {
@@ -151,36 +152,39 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                 <title>{catalogTitle}</title>
             </Head>
             <aside className={styles.TableOfContents__aside}>
-                <nav
-                    className={navClassName}
-                    style={{ backgroundColor: asideColor }}
-                >
+                <nav className={navClassName} style={{ backgroundColor: asideColor }}>
                     <Link
                         href="/"
                         className={styles.linkMainpage}
-                        style={{ color: colorScheme.title, textDecorationColor: colorScheme.bgDark }}
+                        style={{
+                            color: colorScheme.title,
+                            textDecorationColor: colorScheme.bgDark,
+                        }}
                     >
                         Все руководства
                     </Link>
                     <Link
-                        href={{ pathname: '/[[...pageUrl]]', query: { pageUrl: [currentPageUrl[0]] } }}
+                        href={{
+                            pathname: '/[[...pageUrl]]',
+                            query: { pageUrl: [currentPageUrl[0]] },
+                        }}
                         className={styles.catalogTitle}
-                        style={{ color: colorScheme.title, textDecorationColor: colorScheme.bgDark }}
+                        style={{
+                            color: colorScheme.title,
+                            textDecorationColor: colorScheme.bgDark,
+                        }}
                     >
                         {tpForAsideMenu.execute(catalogTitle)}
                     </Link>
 
                     <ul className={styles.linkContainerList}>
-                        {currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}
+                        {currentPageUrl &&
+                            tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}
                     </ul>
                 </nav>
             </aside>
 
-            <CommonLinks
-                open={isOpen}
-                color={colorScheme.title}
-                bgColor={colorScheme.bgLight}
-            />
+            <CommonLinks open={isOpen} color={colorScheme.title} bgColor={colorScheme.bgLight} />
         </>
     )
 }
