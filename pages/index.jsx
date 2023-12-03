@@ -3,7 +3,6 @@ import React from 'react'
 import { getTree } from '../api/apiPage'
 
 import parseManualsPreview from '../utils/manualsPreviewParser'
-import setCacheHeaders from '../utils/setCacheHeaders'
 
 import MainPage from '../components/MainPage/MainPage'
 
@@ -11,9 +10,7 @@ export default function Home({ pageTitle, manualsPreview }) {
     return <MainPage pageTitle={pageTitle} manualsPreview={manualsPreview} />
 }
 
-export async function getServerSideProps({ res }) {
-    setCacheHeaders(res)
-
+export async function getServerSideProps() {
     const tree = await getTree()
 
     return {

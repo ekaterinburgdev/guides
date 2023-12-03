@@ -6,8 +6,6 @@ import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
 import { getTree, getPageByUrl } from '../../api/apiPage'
 import tp from '../../utils/typograf/typograf.config'
-import setCacheHeaders from '../../utils/setCacheHeaders'
-
 import { API_HOST } from '../../consts/endpoints'
 import styles from './page.module.css'
 import getManualToc from '../../utils/getManualToc'
@@ -125,9 +123,7 @@ function GetPage({
     )
 }
 
-export async function getServerSideProps({ params: { pageUrl }, res }) {
-    setCacheHeaders(res)
-
+export async function getServerSideProps({ params: { pageUrl } }) {
     const tree = await getTree()
     const children = tree?.children
     const manualPath = pageUrl
