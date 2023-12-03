@@ -34,7 +34,6 @@ function GetPage({
     })
 
     const [nextPageIndex, setNexPageIndex] = useState(null)
-    const [anchorLinks, setAnchorLinks] = useState([])
     const [isOpen, setIsOpen] = useState(isDesktop)
 
     const getColumnItem = (columnItem) => {
@@ -84,14 +83,12 @@ function GetPage({
         }
     }, [manualToc, pageUrl])
 
-    useEffect(() => {
-        if (pageList.length === 0) {
-            return
-        }
-        const anchorLinksForSet = pageList.map(getColumnItem)
+    let anchorLinks = []
 
-        setAnchorLinks(anchorLinksForSet.filter((l) => l?.id >= 0))
-    }, [pageList])
+    if (pageList.length > 0) {
+        anchorLinks = pageList.map(getColumnItem)
+        anchorLinks = anchorLinks.filter((l) => l?.id >= 0)
+    }
 
     return (
         <>
