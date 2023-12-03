@@ -44,7 +44,7 @@ function GuideImage({ notionType }) {
                 slides={[{ src: srcUrl }]}
                 {...lightboxOptions}
             />
-            <Image onClick={() => setOpen(true)} className={cn} src={srcUrl} fill />
+            <Image onClick={() => setOpen(true)} className={cn} src={srcUrl} fill alt="" />
         </>
     )
 

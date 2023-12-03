@@ -85,7 +85,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     href={{
                         pathname: '/[[...pageUrl]]',
                         query: { pageUrl: [currentPageUrl[0], url] },
-                        as: `${currentPageUrl.join('/')}/${url}`,
                     }}
                     style={{
                         color: colorScheme.title,

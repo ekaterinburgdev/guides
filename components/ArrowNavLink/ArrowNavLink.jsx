@@ -15,7 +15,6 @@ export function ArrowNavLink({
     tableOfContentArr,
     pageUrl,
     catalogIndex,
-    children,
     color,
     textDecoration,
 }) {
@@ -32,14 +31,6 @@ export function ArrowNavLink({
         const nextCatalogIndex = catalogIndex + 1
         if (Number.isNaN(nextCatalogIndex)) {
             return nextCatalogIndex - 1
-        }
-        if (nextCatalogIndex >= children.length) {
-            title = 'Назад к руководствам'
-            href = { pathname: '/' }
-        } else {
-            const nextCatalog = getCatalogOptions(children[nextCatalogIndex])
-            title = nextCatalog.title
-            href.query.pageUrl = [nextCatalog.url]
         }
     }
 
