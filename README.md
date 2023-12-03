@@ -2,7 +2,7 @@
 
 📗 Ekaterinburg Design Guides
 
-**[guides.ekaterinburg.io](https://guides.ekaterinburg.io)**
+**[guides.ekaterinburg.city](https://guides.ekaterinburg.city)**
 
 ## Development
 
