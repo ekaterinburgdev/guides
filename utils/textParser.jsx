@@ -39,12 +39,16 @@ export const getTextContent = (item, useTypograf = false) =>
             return
         }
 
-        const isLink = par?.text?.link?.url;
-        const textFragmentHtml = { dangerouslySetInnerHTML: { __html: textContent.replace('\n') } }
+        const isLink = par?.text?.link?.url
+        const textFragmentHtml = {
+            dangerouslySetInnerHTML: { __html: textContent.replace('\n', '<br />') },
+        }
 
-        return isLink
-            ? <a href={url} target="_blank" className={styles.link} {...textFragmentHtml} />
-            : <span style={{ ...stylePar }} {...textFragmentHtml} />
+        return isLink ? (
+            <a href={url} target="_blank" className={styles.link} {...textFragmentHtml} />
+        ) : (
+            <span style={{ ...stylePar }} {...textFragmentHtml} />
+        )
     })
 
 export const getListItem = (columnItem) => {
