@@ -1,6 +1,6 @@
 export function getNotionColor(colorKey) {
     if (!colorKey) {
-        return 'inherit'
+        return null
     }
 
     return {
@@ -9,6 +9,6 @@ export function getNotionColor(colorKey) {
         red: 'rgb(212, 76, 71)',
         green: 'rgb(68, 131, 97)',
         gray: 'rgb(120, 119, 116)',
-        default: 'inherit',
+        default: null,
     }[colorKey]
 }

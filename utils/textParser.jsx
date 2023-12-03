@@ -24,9 +24,7 @@ export const getTextContent = (item, useTypograf = false) =>
 
         const stylePar = {
             fontWeight: par?.annotations?.bold ? '500' : '300',
-            color: par?.annotations?.color
-                ? getNotionColor(par?.annotations?.color) ?? par?.annotations?.color
-                : 'black',
+            color: getNotionColor(par?.annotations?.color),
             fontStyle: par?.annotations?.italic ? 'italic' : 'normal',
             // eslint-disable-next-line no-nested-ternary
             textDecoration: par?.annotations?.underline
