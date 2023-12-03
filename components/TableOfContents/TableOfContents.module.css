@@ -1,12 +1,29 @@
-.linkToAllManuals {
-    box-shadow: none;
-    padding: 10px 20px 10px 20px;
-    border-radius: 16px;
+.linkMainpage {
+    position: relative;
     display: inline-block;
+    box-shadow: none;
+    margin-top: 12px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+    padding-top: 4px;
+    padding-left: 17px;
     width: 100%;
     color: #14283C;
+    font-size: 14px;
+    transition: .15s ease;
     text-decoration: none;
-    transition: 0.2s;
+}
+
+.linkMainpage:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+}
+
+.linkMainpage::before {
+    content: '←';
+    position: absolute;
+    left: 0;
 }
 
 .link {
@@ -14,17 +31,6 @@
     display: flex;
     flex-direction: column;
     margin-top: 12px;
-}
-
-.titleContainer {
-    top: -8px;
-    display: inline-flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    padding-top: 4px;
-    text-decoration: none;
-    z-index: 4;
-    padding-left: 4px;
 }
 
 .hidden {
@@ -45,27 +51,17 @@
     display: none;
 }
 
-.linkToAllManuals:hover,
-.linkToAllManuals:focus-visible {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    color: #14283C;
-    background-color: #fff;
-    text-decoration: none;
-}
-
 .catalogTitle {
     line-height: 1.2;
     font-size: 24px;
     font-weight: 500;
     transition: 0.2s;
-    padding-top: 0px;
     margin-top: 6px;
-    flex: 1;
-    padding-left: 13px;
-    padding-bottom: 6px;
-    margin-bottom: 6px;
+    padding: 0 16px;
+    margin-bottom: 8px;
+    text-decoration: none;
     text-underline-offset: 6px;
-    text-decoration-thickness: 4px;
+    text-decoration-thickness: 2px;
 }
 
 .catalogTitle:hover,
@@ -256,20 +252,12 @@ html:has(.open) {
 }
 
 @media screen and (min-width: 768px) {
-    .titleContainer {
-        padding-top: 16px;
-    }
-
-    .catalogTitle {
-        margin-top: 12px;
+    .linkMainpage {
+        margin-top: 24px;
     }
 }
 
 @media screen and (min-width: 991px) {
-    .titleContainer {
-        top: 0;
-    }
-
     .tableOfContents {
         border-radius: 17px;
     }
