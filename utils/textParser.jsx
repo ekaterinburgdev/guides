@@ -41,7 +41,7 @@ export const getTextContent = (item, useTypograf = false) =>
 
         const isLink = par?.text?.link?.url
         const textFragmentHtml = {
-            dangerouslySetInnerHTML: { __html: textContent.replace('\n', '<br />') },
+            dangerouslySetInnerHTML: { __html: textContent.replaceAll('\n', '<br>') },
         }
 
         return isLink ? (
