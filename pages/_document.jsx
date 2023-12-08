@@ -1,7 +1,5 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Html, Head, Main, NextScript } from 'next/document'
-
-import { ThemeContext } from './_app'
 
 export default function Document() {
     const ogTitle = 'Городские руководства Екатеринбурга'

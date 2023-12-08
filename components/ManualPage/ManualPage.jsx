@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useMemo } from 'react'
+import React, { Fragment, useContext } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
@@ -21,7 +21,6 @@ import GuideImage from '../NotionTypes/GuideImage/GuideImage'
 import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { Callout } from '../NotionTypes/Callout/Callout'
-import { ThemeContext } from '../../pages/_app'
 import { Iframe } from '../NotionTypes/Iframe/Iframe'
 
 function ManualPage({
