@@ -22,8 +22,8 @@ function GetPage({
     pageName,
     pageList,
     pageImage,
+    pagePdfUrl,
     colorMap,
-    pdfUrlsMap,
     manualToc,
 }) {
     const router = useRouter()
@@ -91,12 +91,7 @@ function GetPage({
 
     return (
         <>
-            <PageContext.Provider
-                value={{
-                    colorMap,
-                    pdfUrlsMap,
-                }}
-            >
+            <PageContext.Provider value={{ colorMap }}>
                 <HamburgerMenu state={isOpen} changeState={setIsOpen} colorMap={colorMap} />
                 <TocStateContext.Provider value={{ isOpen, setIsOpen }}>
                     <TableOfContents
@@ -115,7 +110,7 @@ function GetPage({
                         pageUrl={pageUrl}
                         pageImage={pageImage}
                     />
-                    <PageToolbar />
+                    <PageToolbar pagePdfUrl={pagePdfUrl} />
                 </TocStateContext.Provider>
             </PageContext.Provider>
         </>
@@ -159,18 +154,12 @@ export async function getServerSideProps({ params: { pageUrl } }) {
         }
     })
 
-    const pdfUrlsMap = children.map((children) => {
-        return {
-            pdfUrl: children?.properties?.pdfUrl?.url ?? null,
-            url: children?.properties?.pageUrl?.url ?? null,
-        }
-    })
-
     const catalogPage = await getPage(catalogPathname)
     const catalogIndex = children.findIndex((catalog) => catalog.id === catalogPage.id)
     const catalogTitle = catalogPage.content.title
     const pageIndex = page?.node_properties?.properties?.order?.number
     const pageImage = page?.node_properties?.cover
+    const pagePdfUrl = children[catalogIndex]?.properties?.pdfUrl?.url
 
     return {
         props: {
@@ -180,8 +169,8 @@ export async function getServerSideProps({ params: { pageUrl } }) {
             pageName,
             pageList,
             pageImage,
+            pagePdfUrl,
             colorMap,
-            pdfUrlsMap,
             manualToc,
         },
     }
