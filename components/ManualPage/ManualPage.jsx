@@ -25,8 +25,9 @@ import { ThemeContext } from '../../pages/_app'
 import { Iframe } from '../NotionTypes/Iframe/Iframe'
 
 function ManualPage({
-    pageList,
+    pageIndex,
     pageName,
+    pageList,
     tableOfContentArr,
     pageUrl,
     nextPageIndex,
@@ -45,9 +46,6 @@ function ManualPage({
             colorScheme.bgLight.color[1]
         )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
     )
-
-    // TODO: Remove after remove numbers from headings
-    const pageNumber = pageName.replace(/\. .*/, '')
 
     const getLine = (columnList) => {
         if (!columnList.children.length) {
@@ -129,7 +127,7 @@ function ManualPage({
         <div className={styles.templateColumn}>
             <style
                 dangerouslySetInnerHTML={{
-                    __html: `body { counter-reset: page-chapter ${pageNumber} }`,
+                    __html: `body { counter-reset: page-chapter ${pageIndex} }`,
                 }}
             />
 
