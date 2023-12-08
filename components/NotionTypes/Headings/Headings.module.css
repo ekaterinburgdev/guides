@@ -19,7 +19,7 @@
 .heading2 a:before,
 .heading3 a:before {
     position: absolute;
-    top: .27em;
+    top: .31em;
     font-size: .73em;
     right: calc(100% + 4px);
     opacity: .4;
@@ -38,6 +38,7 @@
     font-size: 20px;
     margin-top: .9em;
     margin-bottom: .4em;
+    margin-left: -.04em;
 }
 
 .heading1 a:before {
@@ -55,6 +56,7 @@
     font-size: 18px;
     margin-top: .5em;
     margin-bottom: .5em;
+    margin-left: -.02em;
 }
 
 @media (min-width: 991px) {
