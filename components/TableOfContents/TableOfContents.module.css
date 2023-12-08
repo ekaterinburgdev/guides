@@ -1,29 +1,40 @@
 .linkMainpage {
     position: relative;
     display: inline-block;
+    align-self: flex-start;
     box-shadow: none;
     margin-top: 12px;
-    margin-bottom: 16px;
     border-radius: 16px;
     padding-top: 4px;
     padding-left: 17px;
-    width: 100%;
     color: #14283C;
     font-size: 14px;
+    font-weight: 500;
     transition: .15s ease;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    opacity: .55;
+    transition: .15s ease;
 }
 
 .linkMainpage:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 1px;
+    opacity: .8;
+    text-decoration-color: currentColor;
 }
 
-.linkMainpage::before {
-    content: '←';
+.linkMainpage:hover::after {
+    opacity: .375;
+}
+
+.linkMainpage::after {
+    content: '/';
     position: absolute;
-    left: 0;
+    top: 4px;
+    right: -12px;
+    opacity: .6;
 }
 
 .link {
