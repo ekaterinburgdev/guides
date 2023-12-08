@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, Fragment, useState } from 'react'
+import React, { useEffect, useContext, Fragment } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
@@ -12,7 +12,6 @@ import styles from './TableOfContents.module.css'
 import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
 import { CommonLinks } from '../CommonLinks/CommonLinks'
 import getManualColorScheme from '../../utils/getManualColorScheme'
-import { ThemeContext } from '../../pages/_app'
 
 function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) {
     const isDesktop = useMediaQuery({
@@ -74,7 +73,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     useEffect(() => {
         const styleVisible = document.querySelector('.visible')?.style
         styleVisible?.setProperty('border-color', colorScheme.bgDark)
-    }, [anchorLinks])
+    }, [anchorLinks, colorScheme.bgDark])
 
     // TODO: Сделать для большой вложенности...
     const tableOfContentsLink = ({ url, order, title }) => (

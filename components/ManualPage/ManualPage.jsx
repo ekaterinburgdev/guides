@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useMemo } from 'react'
+import React, { Fragment, useContext } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import rgbaToRgb from 'rgba-to-rgb'
@@ -21,7 +21,6 @@ import GuideImage from '../NotionTypes/GuideImage/GuideImage'
 import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { Callout } from '../NotionTypes/Callout/Callout'
-import { ThemeContext } from '../../pages/_app'
 import { Iframe } from '../NotionTypes/Iframe/Iframe'
 
 function ManualPage({
@@ -37,7 +36,7 @@ function ManualPage({
     const { asPath } = useRouter()
     const colorContext = useContext(PageContext)
     const { colorMap } = colorContext
-    const color = useMemo(() => colorMap.filter((item) => asPath.includes(item.url))[0]?.color)
+    const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const colorScheme = getManualColorScheme(color)
     const arrowColor = rgbaToRgb(
         'rgb(255, 255, 255)',

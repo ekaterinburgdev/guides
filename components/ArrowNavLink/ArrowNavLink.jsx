@@ -5,11 +5,6 @@ import tp from '../../utils/typograf/typograf.config'
 
 import styles from './arrow.module.css'
 
-const getCatalogOptions = (catalog) => ({
-    url: catalog.properties.pageUrl.url,
-    title: catalog.properties.Name.title[0].plain_text,
-})
-
 export function ArrowNavLink({
     nextPageIndex,
     tableOfContentArr,
