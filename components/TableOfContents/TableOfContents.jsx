@@ -78,7 +78,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     }, [anchorLinks])
 
     // TODO: Сделать для большой вложенности...
-    const tableOfContentsLink = ({ url, title }) => (
+    const tableOfContentsLink = ({ url, order, title }) => (
         <Fragment key={url}>
             <li className={styles.link}>
                 <Link
@@ -106,6 +106,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     })}
                     onClick={() => setIsOpen(!isOpen)}
                 >
+                    <span className={styles.linkNumber}>{order}.&nbsp;</span>
                     {tpForAsideMenu.execute(title)}
                 </Link>
                 {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (

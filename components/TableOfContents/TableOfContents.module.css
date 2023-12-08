@@ -123,6 +123,7 @@ html:has(.open) {
 }
 
 .tableOfContentsLink {
+    display: flex;
     font-weight: 300;
     box-shadow: none;
     color: #14283C;

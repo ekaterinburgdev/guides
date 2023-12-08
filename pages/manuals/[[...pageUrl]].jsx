@@ -19,6 +19,7 @@ export const TocStateContext = createContext(null)
 function GetPage({
     catalogTitle,
     catalogIndex,
+    pageIndex,
     pageName,
     pageList,
     pageImage,
@@ -108,8 +109,9 @@ function GetPage({
                         catalogTitle={catalogTitle}
                     />
                     <ManualPage
-                        pageList={pageList}
+                        pageIndex={pageIndex}
                         pageName={pageName}
+                        pageList={pageList}
                         tableOfContentArr={manualToc}
                         nextPageIndex={nextPageIndex}
                         catalogIndex={catalogIndex}
@@ -177,13 +179,14 @@ export async function getServerSideProps({ params: { pageUrl } }) {
     const catalogPage = await getPageByUrl(catalogPathname)
     const catalogIndex = children.findIndex((catalog) => catalog.id === catalogPage.id)
     const catalogTitle = catalogPage.content.title
+    const pageIndex = page?.node_properties?.properties?.order?.number
     const pageImage = page?.node_properties?.cover
 
     return {
         props: {
-            catalogPage,
             catalogTitle,
             catalogIndex,
+            pageIndex,
             pageName,
             pageList,
             pageImage,
