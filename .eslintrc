@@ -1,11 +1,4 @@
 {
-    "extends": ["plugin:prettier/recommended", "plugin:@next/next/recommended"],
-    "plugins": ["prettier", "react"],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "sourceType": "module",
-        "ecmaVersion": 2020
-    }
+    "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+    "plugins": ["prettier", "react"]
 }
