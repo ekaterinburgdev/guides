@@ -9,7 +9,7 @@ export async function getTree() {
 }
 
 /** @returns { Promise<import('./apiPage').Page> } */
-export async function getPageByUrl(path) {
+export async function getPage(path) {
     const url = new URL(`${API_HOST}/api/content/root/${path}`)
     const resp = await fetch(url)
 

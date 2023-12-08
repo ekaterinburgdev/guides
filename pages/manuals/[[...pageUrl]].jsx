@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive'
 
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
-import { getTree, getPageByUrl } from '../../api/apiPage'
+import { getTree, getPage } from '../../api/apiPage'
 import tp from '../../utils/typograf/typograf.config'
 import styles from './page.module.css'
 import getManualToc from '../../utils/getManualToc'
@@ -148,7 +148,7 @@ export async function getServerSideProps({ params: { pageUrl } }) {
         }
     }
 
-    const page = await getPageByUrl(pageUrl.join('/'))
+    const page = await getPage(pageUrl.join('/'))
     const pageList = page.children
     const pageName = page.content.title
 
@@ -166,7 +166,7 @@ export async function getServerSideProps({ params: { pageUrl } }) {
         }
     })
 
-    const catalogPage = await getPageByUrl(catalogPathname)
+    const catalogPage = await getPage(catalogPathname)
     const catalogIndex = children.findIndex((catalog) => catalog.id === catalogPage.id)
     const catalogTitle = catalogPage.content.title
     const pageIndex = page?.node_properties?.properties?.order?.number
