@@ -3,15 +3,12 @@ import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
 import { useMediaQuery } from 'react-responsive'
-import { useRouter } from 'next/router'
-import rgbaToRgb from 'rgba-to-rgb'
 import scrollIntoView from 'scroll-into-view-if-needed'
 
-import { PageContext, TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
+import { TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
 import styles from './TableOfContents.module.css'
 import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
 import { CommonLinks } from '../CommonLinks/CommonLinks'
-import getManualColorScheme from '../../utils/getManualColorScheme'
 
 function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) {
     const isDesktop = useMediaQuery({
@@ -32,17 +29,6 @@ function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) 
 
 function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle }) {
     const { isOpen, setIsOpen } = useContext(TocStateContext)
-    const colorContext = useContext(PageContext)
-    const { colorMap } = colorContext
-    const { asPath } = useRouter()
-    const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
-    const colorScheme = getManualColorScheme(color)
-    const asideColor = rgbaToRgb(
-        'rgb(255, 255, 255)',
-        `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
-            colorScheme.bgLight.color[1]
-        )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
-    )
 
     useEffect(() => {
         const arrayWithAnchorElements = [...document.querySelectorAll('h1[id], h2[id], h3[id]')]
@@ -70,11 +56,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
         arrayWithAnchorElements.forEach((section) => observer.observe(section))
     }, [anchorLinks])
 
-    useEffect(() => {
-        const styleVisible = document.querySelector('.visible')?.style
-        styleVisible?.setProperty('border-color', colorScheme.bgDark)
-    }, [anchorLinks, colorScheme.bgDark])
-
     // TODO: Сделать для большой вложенности...
     const tableOfContentsLink = ({ url, order, title }) => (
         <Fragment key={url}>
@@ -83,21 +64,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     href={{
                         pathname: '/[[...pageUrl]]',
                         query: { pageUrl: [currentPageUrl[0], url] },
-                    }}
-                    style={{
-                        color: colorScheme.title,
-                        backgroundColor:
-                            currentPageUrl[1] && currentPageUrl[1] === url
-                                ? colorScheme.bgLight
-                                : '',
-                        borderBottomLeftRadius:
-                            currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0
-                                ? 0
-                                : '8px',
-                        borderBottomRightRadius:
-                            currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0
-                                ? 0
-                                : '8px',
                     }}
                     className={cn(styles.tableOfContentsLink, {
                         [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
@@ -108,17 +74,13 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     {tpForAsideMenu.execute(title)}
                 </Link>
                 {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
-                    <div style={{ color: colorScheme.title }} className={styles.separator} />
+                    <div className={styles.separator} />
                 )}
             </li>
             {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
-                <ul
-                    style={{ backgroundColor: colorScheme.bgLight }}
-                    className={styles.innerlinkContainerList}
-                >
+                <ul className={styles.innerlinkContainerList}>
                     {anchorLinks.map((anchor) => (
                         <li
-                            style={{ color: colorScheme.title }}
                             className={cn(styles.innerlinkContainerListItem, {
                                 [styles.innerlinkContainerListItem2Level]:
                                     anchor.type === undefined,
@@ -127,13 +89,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                             })}
                             key={anchor.id}
                         >
-                            <InnerLink
-                                color={colorScheme.title}
-                                anchor={anchor}
-                                baseState={isOpen}
-                                setState={setIsOpen}
-                                textDecorationColor={colorScheme.textDecoration}
-                            />
+                            <InnerLink anchor={anchor} baseState={isOpen} setState={setIsOpen} />
                         </li>
                     ))}
                 </ul>
@@ -151,15 +107,8 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                 <title>{catalogTitle}</title>
             </Head>
             <aside className={styles.TableOfContents__aside}>
-                <nav className={navClassName} style={{ backgroundColor: asideColor }}>
-                    <Link
-                        href="/"
-                        className={styles.linkMainpage}
-                        style={{
-                            color: colorScheme.title,
-                            textDecorationColor: colorScheme.bgDark,
-                        }}
-                    >
+                <nav className={navClassName}>
+                    <Link href="/" className={styles.linkMainpage}>
                         Все руководства
                     </Link>
                     <Link
@@ -168,22 +117,17 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                             query: { pageUrl: [currentPageUrl[0]] },
                         }}
                         className={styles.catalogTitle}
-                        style={{
-                            color: colorScheme.title,
-                            textDecorationColor: colorScheme.bgDark,
-                        }}
                     >
                         {tpForAsideMenu.execute(catalogTitle)}
                     </Link>
 
                     <ul className={styles.linkContainerList}>
-                        {currentPageUrl &&
-                            tableOfContentArr.map((obj) => tableOfContentsLink(obj, colorScheme))}
+                        {currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}
                     </ul>
                 </nav>
             </aside>
 
-            <CommonLinks open={isOpen} color={colorScheme.title} bgColor={colorScheme.bgLight} />
+            <CommonLinks open={isOpen} />
         </>
     )
 }

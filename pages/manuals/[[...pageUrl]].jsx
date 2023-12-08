@@ -16,14 +16,14 @@ export const PageContext = createContext(null)
 export const TocStateContext = createContext(null)
 
 function GetPage({
-    catalogTitle,
     catalogIndex,
+    catalogTitle,
+    catalogColor,
     pageIndex,
     pageName,
     pageList,
     pageImage,
     pagePdfUrl,
-    colorMap,
     manualToc,
 }) {
     const router = useRouter()
@@ -91,28 +91,26 @@ function GetPage({
 
     return (
         <>
-            <PageContext.Provider value={{ colorMap }}>
-                <HamburgerMenu state={isOpen} changeState={setIsOpen} colorMap={colorMap} />
-                <TocStateContext.Provider value={{ isOpen, setIsOpen }}>
-                    <TableOfContents
-                        tableOfContentArr={manualToc}
-                        currentPageUrl={pageUrl}
-                        anchorLinks={anchorLinks}
-                        catalogTitle={catalogTitle}
-                    />
-                    <ManualPage
-                        pageIndex={pageIndex}
-                        pageName={pageName}
-                        pageList={pageList}
-                        tableOfContentArr={manualToc}
-                        nextPageIndex={nextPageIndex}
-                        catalogIndex={catalogIndex}
-                        pageUrl={pageUrl}
-                        pageImage={pageImage}
-                    />
-                    <PageToolbar pagePdfUrl={pagePdfUrl} />
-                </TocStateContext.Provider>
-            </PageContext.Provider>
+            <HamburgerMenu state={isOpen} changeState={setIsOpen} />
+            <TocStateContext.Provider value={{ isOpen, setIsOpen }}>
+                <TableOfContents
+                    tableOfContentArr={manualToc}
+                    currentPageUrl={pageUrl}
+                    anchorLinks={anchorLinks}
+                    catalogTitle={catalogTitle}
+                />
+                <ManualPage
+                    pageIndex={pageIndex}
+                    pageName={pageName}
+                    pageList={pageList}
+                    tableOfContentArr={manualToc}
+                    nextPageIndex={nextPageIndex}
+                    catalogIndex={catalogIndex}
+                    pageUrl={pageUrl}
+                    pageImage={pageImage}
+                />
+                <PageToolbar pagePdfUrl={pagePdfUrl} />
+            </TocStateContext.Provider>
         </>
     )
 }
@@ -144,33 +142,27 @@ export async function getServerSideProps({ params: { pageUrl } }) {
     }
 
     const page = await getPage(pageUrl.join('/'))
-    const pageList = page.children
-    const pageName = page.content.title
-
-    const colorMap = children.map((children) => {
-        return {
-            color: children?.properties?.color?.rich_text[0]?.plain_text ?? null,
-            url: children?.properties?.pageUrl?.url ?? null,
-        }
-    })
 
     const catalogPage = await getPage(catalogPathname)
     const catalogIndex = children.findIndex((catalog) => catalog.id === catalogPage.id)
     const catalogTitle = catalogPage.content.title
+    const catalogColor = children[catalogIndex]?.properties?.color?.rich_text[0]?.plain_text
     const pageIndex = page?.node_properties?.properties?.order?.number
+    const pageName = page.content.title
+    const pageList = page.children
     const pageImage = page?.node_properties?.cover
     const pagePdfUrl = children[catalogIndex]?.properties?.pdfUrl?.url
 
     return {
         props: {
-            catalogTitle,
             catalogIndex,
+            catalogTitle,
+            catalogColor,
             pageIndex,
             pageName,
             pageList,
             pageImage,
             pagePdfUrl,
-            colorMap,
             manualToc,
         },
     }

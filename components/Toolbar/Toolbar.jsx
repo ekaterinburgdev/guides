@@ -14,7 +14,7 @@ const debounce = (func, timeout = 300) => {
     }
 }
 
-export const Toolbar = ({ toolbarColor = '#f5f8fb', colorTitle = '#1A1C1F', pdfUrl, isMain }) => {
+export const Toolbar = ({ pdfUrl, isMain }) => {
     const [isOpenSidePage, setIsOpenSidePage] = useState(false)
     const [isLoadingSuggestion, setIsLoadingSuggestion] = useState(false)
     const [currentQuery, setCurrentQuery] = useState('')
@@ -76,7 +76,6 @@ export const Toolbar = ({ toolbarColor = '#f5f8fb', colorTitle = '#1A1C1F', pdfU
             <section
                 ref={toolbarRef}
                 style={{
-                    backgroundColor: toolbarColor,
                     borderRadius: isMain ? (isOpenSidePage ? '200px' : '50%') : '',
                     aspectRatio: isMain ? (!isOpenSidePage ? '1 / 1' : '') : '',
                 }}
@@ -93,13 +92,9 @@ export const Toolbar = ({ toolbarColor = '#f5f8fb', colorTitle = '#1A1C1F', pdfU
                                     fill="transparent"
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
-                                    <path d="M52 53H18" stroke={colorTitle} strokeWidth="6" />
-                                    <path d="M35 12V45" stroke={colorTitle} strokeWidth="6" />
-                                    <path
-                                        d="M50 31L35 46L20 31"
-                                        stroke={colorTitle}
-                                        strokeWidth="6"
-                                    />
+                                    <path d="M52 53H18" strokeWidth="6" />
+                                    <path d="M35 12V45" strokeWidth="6" />
+                                    <path d="M50 31L35 46L20 31" strokeWidth="6" />
                                 </svg>
                             </a>
                         )}
@@ -116,18 +111,8 @@ export const Toolbar = ({ toolbarColor = '#f5f8fb', colorTitle = '#1A1C1F', pdfU
                                 fill="transparent"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <circle
-                                    cx="30.501"
-                                    cy="30.4995"
-                                    r="14.5"
-                                    stroke={colorTitle}
-                                    strokeWidth="6"
-                                />
-                                <path
-                                    d="M40.001 39.4995L54.501 53.9995"
-                                    stroke={colorTitle}
-                                    strokeWidth="6"
-                                />
+                                <circle cx="30.501" cy="30.4995" r="14.5" strokeWidth="6" />
+                                <path d="M40.001 39.4995L54.501 53.9995" strokeWidth="6" />
                             </svg>
                         </button>
                     </div>
@@ -141,25 +126,11 @@ export const Toolbar = ({ toolbarColor = '#f5f8fb', colorTitle = '#1A1C1F', pdfU
                             xmlns="http://www.w3.org/2000/svg"
                             className={styles.Toolbar__searchIcon}
                         >
-                            <circle
-                                cx="30.501"
-                                cy="30.4995"
-                                r="14.5"
-                                stroke={colorTitle}
-                                strokeWidth="6"
-                            />
-                            <path
-                                d="M40.001 39.4995L54.501 53.9995"
-                                stroke={colorTitle}
-                                strokeWidth="6"
-                            />
+                            <circle cx="30.501" cy="30.4995" r="14.5" strokeWidth="6" />
+                            <path d="M40.001 39.4995L54.501 53.9995" strokeWidth="6" />
                         </svg>
                         <div className={styles.customInput}>
                             <input
-                                style={{
-                                    color: colorTitle,
-                                    backgroundColor: toolbarColor,
-                                }}
                                 type="text"
                                 className={styles.Toolbar__input}
                                 placeholder="Например, скамья"
@@ -179,16 +150,8 @@ export const Toolbar = ({ toolbarColor = '#f5f8fb', colorTitle = '#1A1C1F', pdfU
                                     fill="transparent"
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
-                                    <path
-                                        d="M18 18L51.9995 51.9995"
-                                        stroke={colorTitle}
-                                        strokeWidth="6"
-                                    />
-                                    <path
-                                        d="M52 18L18.0005 51.9995"
-                                        stroke={colorTitle}
-                                        strokeWidth="6"
-                                    />
+                                    <path d="M18 18L51.9995 51.9995" strokeWidth="6" />
+                                    <path d="M52 18L18.0005 51.9995" strokeWidth="6" />
                                 </svg>
                             </button>
                         </div>
