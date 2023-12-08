@@ -24,7 +24,6 @@ function GetPage({
     pageList,
     pageImage,
     colorMap,
-    iconMap,
     pdfUrlsMap,
     manualToc,
 }) {
@@ -96,7 +95,6 @@ function GetPage({
             <PageContext.Provider
                 value={{
                     colorMap,
-                    iconMap,
                     pdfUrlsMap,
                 }}
             >
@@ -162,13 +160,6 @@ export async function getServerSideProps({ params: { pageUrl } }) {
         }
     })
 
-    const iconMap = children.map((children) => {
-        return {
-            imageUrl: `${API_HOST}/static/${children?.properties?.previewImage[0]}` ?? null,
-            url: children?.properties?.pageUrl?.url ?? null,
-        }
-    })
-
     const pdfUrlsMap = children.map((children) => {
         return {
             pdfUrl: children?.properties?.pdfUrl?.url ?? null,
@@ -191,7 +182,6 @@ export async function getServerSideProps({ params: { pageUrl } }) {
             pageList,
             pageImage,
             colorMap,
-            iconMap,
             pdfUrlsMap,
             manualToc,
         },
