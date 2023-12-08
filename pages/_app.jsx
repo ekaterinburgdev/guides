@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext } from 'react'
 import Head from 'next/head'
 import { isetSansFont } from '../utils/font'
 
@@ -7,22 +7,7 @@ import 'ekb/style.css'
 
 export const ThemeContext = createContext(null)
 
-export const useDark = () => {
-    const [dark, setDark] = useState('')
-    useEffect(() => {
-        window
-            .matchMedia('(prefers-color-scheme: dark)')
-            .addEventListener('change', (e) => e.matches && setDark(true))
-        window
-            .matchMedia('(prefers-color-scheme: light)')
-            .addEventListener('change', (e) => e.matches && setDark(false))
-    }, [])
-    return dark
-}
-
 function MyApp({ Component, pageProps }) {
-    const isDark = useDark()
-
     return (
         <>
             <Head>
@@ -30,9 +15,7 @@ function MyApp({ Component, pageProps }) {
                 <title>Городские руководства</title>
             </Head>
             <main className={isetSansFont.className}>
-                <ThemeContext.Provider value={isDark}>
-                    <Component {...pageProps} />
-                </ThemeContext.Provider>
+                <Component {...pageProps} />
             </main>
         </>
     )

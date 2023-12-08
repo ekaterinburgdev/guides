@@ -38,9 +38,8 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     const { asPath } = useRouter()
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const colorScheme = getManualColorScheme(color)
-    const isDark = useContext(ThemeContext)
     const asideColor = rgbaToRgb(
-        isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+        'rgb(255, 255, 255)',
         `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
             colorScheme.bgLight.color[1]
         )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
