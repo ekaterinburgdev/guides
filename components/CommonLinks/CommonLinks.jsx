@@ -6,18 +6,17 @@ import { ThemeContext } from '../../pages/_app'
 import { TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
 
 export function CommonLinks({ color, bgColor, mainPage }) {
-    const isDark = useContext(ThemeContext)
     const { asPath } = useRouter()
     let isOpen = false
     if (asPath !== '/') {
         isOpen = useContext(TocStateContext).isOpen
     }
     const currentBgColor = bgColor ?? 'rgba(255, 255, 255, 1)'
-    const mainPageColor = isDark ? '#1A1C1F' : '#f5f8fb'
+    const mainPageColor = '#f5f8fb'
     const commonColor = mainPage
         ? mainPageColor
         : rgbaToRgb(
-              isDark ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+              'rgb(255, 255, 255)',
               `rgba(${Math.trunc(currentBgColor.color[0])}, ${Math.trunc(
                   currentBgColor.color[1]
               )}, ${Math.trunc(currentBgColor.color[2])}, ${currentBgColor.valpha})`
