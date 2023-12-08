@@ -59,7 +59,9 @@
 
 .pageName {
     position: relative;
-    margin: 1em auto .7em;
+    margin-top: 1em;
+    margin-bottom: .7em;
+    margin-left: -.04em;
     color: #1e2841;
     font-size: 28px;
     font-weight: 500;
@@ -69,7 +71,7 @@
 .pageName:before {
     content: counter(page-chapter) ". ";
     position: absolute;
-    top: .27em;
+    top: .3em;
     right: calc(100% + 10px);
     opacity: .4;
     font-size: .73em;
