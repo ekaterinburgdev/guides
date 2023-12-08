@@ -37,7 +37,7 @@ function ManualPage({
     const { asPath } = useRouter()
     const colorContext = useContext(PageContext)
     const { colorMap } = colorContext
-    const color = useMemo(() => colorMap.filter((item) => asPath.includes(item.url))[0]?.color)
+    const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
     const colorScheme = getManualColorScheme(color)
     const arrowColor = rgbaToRgb(
         'rgb(255, 255, 255)',

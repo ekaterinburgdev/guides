@@ -74,7 +74,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
     useEffect(() => {
         const styleVisible = document.querySelector('.visible')?.style
         styleVisible?.setProperty('border-color', colorScheme.bgDark)
-    }, [anchorLinks])
+    }, [anchorLinks, colorScheme.bgDark])
 
     // TODO: Сделать для большой вложенности...
     const tableOfContentsLink = ({ url, order, title }) => (

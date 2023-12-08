@@ -21,6 +21,7 @@ export const Toolbar = ({ toolbarColor = '#f5f8fb', colorTitle = '#1A1C1F', pdfU
     const searchInputRef = useRef(null)
     const [guideSuggestions, setGuideSuggestions] = useState([])
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const handleOnChange = useCallback(
         debounce(async (e) => {
             const textInputValue = e.target.value
@@ -57,7 +58,7 @@ export const Toolbar = ({ toolbarColor = '#f5f8fb', colorTitle = '#1A1C1F', pdfU
             return () => {
                 document.removeEventListener('mousedown', handleClickOutside)
             }
-        }, [ref])
+        }, [ignoreRef, ref])
     }
 
     const rootEl = useRef(null)
