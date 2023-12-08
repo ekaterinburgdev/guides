@@ -6,13 +6,11 @@ import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
 import getManualColorScheme from '../../utils/getManualColorScheme'
 import { Toolbar } from './Toolbar.jsx'
 
-export const PageToolbar = ({ isMain } = { isMain: false }) => {
+export const PageToolbar = ({ isMain, pagePdfUrl } = { isMain: false }) => {
     const { asPath } = useRouter()
     const colorContext = useContext(PageContext)
-    const { colorMap, pdfUrlsMap } = colorContext
+    const { colorMap } = colorContext
     const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
-    const currentUrl = pdfUrlsMap.filter((item) => asPath.includes(item.url))[0]
-    const pdfUrl = currentUrl?.pdfUrl ?? ''
     const colorScheme = getManualColorScheme(color)
     const toolbarColor = rgbaToRgb(
         'rgb(255, 255, 255)',
@@ -25,7 +23,11 @@ export const PageToolbar = ({ isMain } = { isMain: false }) => {
 
     return (
         <>
-            <Toolbar toolbarColor={toolbarColor} colorTitle={colorScheme.title} pdfUrl={pdfUrl} />
+            <Toolbar
+                toolbarColor={toolbarColor}
+                colorTitle={colorScheme.title}
+                pdfUrl={pagePdfUrl}
+            />
         </>
     )
 }
