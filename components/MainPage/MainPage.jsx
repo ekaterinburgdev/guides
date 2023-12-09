@@ -5,7 +5,7 @@ import ManualPreview from '../ManualPreview/ManualPreview'
 
 import mainPageLogo from './MainPageLogo.svg'
 import styles from './MainPage.module.css'
-import { CommonLinks } from '../CommonLinks/CommonLinks'
+import { Ecosystem } from '../Ecosystem/Ecosystem'
 import { MainPageToolbar } from '../Toolbar/MainPageToolbar'
 
 export default function MainPage({ pageTitle, manualsPreview }) {
@@ -26,7 +26,7 @@ export default function MainPage({ pageTitle, manualsPreview }) {
                         />
                     ))}
                 </section>
-                <CommonLinks mainPage={true} />
+                <Ecosystem mainPage={true} />
                 <MainPageToolbar />
             </main>
         </>
