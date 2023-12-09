@@ -20,7 +20,6 @@ import { Callout } from '../NotionTypes/Callout/Callout'
 import { Iframe } from '../NotionTypes/Iframe/Iframe'
 
 function ManualPage({
-    pageIndex,
     pageName,
     pageList,
     tableOfContentArr,
@@ -107,12 +106,6 @@ function ManualPage({
 
     return (
         <div className={styles.templateColumn}>
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: `body { counter-reset: page-chapter ${pageIndex} }`,
-                }}
-            />
-
             <div className={styles.column}>
                 {pageImage && (
                     <div className={styles.previewImageContainer}>

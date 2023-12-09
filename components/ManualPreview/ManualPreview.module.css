@@ -32,7 +32,7 @@
     height: 100%;
     transform-origin: left bottom;
     transition: transform .15s ease-in;
-    padding: .8em 1em;
+    padding: .8em 1em .8em;
     border-radius: .4em;
     background: white;
 }

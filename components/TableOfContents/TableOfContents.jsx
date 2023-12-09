@@ -8,7 +8,7 @@ import scrollIntoView from 'scroll-into-view-if-needed'
 import { TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
 import styles from './TableOfContents.module.css'
 import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
-import { CommonLinks } from '../CommonLinks/CommonLinks'
+import { Ecosystem } from '../Ecosystem/Ecosystem'
 
 function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) {
     const isDesktop = useMediaQuery({
@@ -74,7 +74,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     {tpForAsideMenu.execute(title)}
                 </Link>
                 {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
-                    <div className={styles.separator} />
+                    <hr className={styles.separator} />
                 )}
             </li>
             {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
@@ -127,7 +127,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                 </nav>
             </aside>
 
-            <CommonLinks open={isOpen} />
+            <Ecosystem open={isOpen} />
         </>
     )
 }

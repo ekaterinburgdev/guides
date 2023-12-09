@@ -1,16 +1,17 @@
 import React, { useEffect, useState, createContext } from 'react'
 import { useRouter } from 'next/router'
 import { useMediaQuery } from 'react-responsive'
-
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
 import { getTree, getPage } from '../../api/apiPage'
 import tp from '../../utils/typograf/typograf.config'
-import styles from './page.module.css'
 import getManualToc from '../../utils/getManualToc'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
-import { PageToolbar } from '../../components/Toolbar/PageToolbar.jsx'
+import { PageToolbar } from '../../components/Toolbar/PageToolbar'
 import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu'
+import { getHSL } from '../../utils/getHSL'
+
+import styles from './page.module.css'
 
 export const PageContext = createContext(null)
 export const TocStateContext = createContext(null)
@@ -89,28 +90,39 @@ function GetPage({
         anchorLinks = anchorLinks.filter((l) => l?.id >= 0)
     }
 
+    const { h, s, l } = getHSL(catalogColor)
     return (
         <>
-            <HamburgerMenu state={isOpen} changeState={setIsOpen} />
-            <TocStateContext.Provider value={{ isOpen, setIsOpen }}>
-                <TableOfContents
-                    tableOfContentArr={manualToc}
-                    currentPageUrl={pageUrl}
-                    anchorLinks={anchorLinks}
-                    catalogTitle={catalogTitle}
-                />
-                <ManualPage
-                    pageIndex={pageIndex}
-                    pageName={pageName}
-                    pageList={pageList}
-                    tableOfContentArr={manualToc}
-                    nextPageIndex={nextPageIndex}
-                    catalogIndex={catalogIndex}
-                    pageUrl={pageUrl}
-                    pageImage={pageImage}
-                />
-                <PageToolbar pagePdfUrl={pagePdfUrl} />
-            </TocStateContext.Provider>
+            <div
+                style={{
+                    '--guide-color': `hsl(${h} ${s} ${l})`,
+                    '--guide-color-hsl': `${h} ${s} ${l}`,
+                    '--guide-color-h': h,
+                    '--guide-color-s': s,
+                    '--guide-color-l': l,
+                    'counter-reset': `page-chapter ${pageIndex}`,
+                }}
+            >
+                <HamburgerMenu state={isOpen} changeState={setIsOpen} />
+                <TocStateContext.Provider value={{ isOpen, setIsOpen }}>
+                    <TableOfContents
+                        tableOfContentArr={manualToc}
+                        currentPageUrl={pageUrl}
+                        anchorLinks={anchorLinks}
+                        catalogTitle={catalogTitle}
+                    />
+                    <ManualPage
+                        pageName={pageName}
+                        pageList={pageList}
+                        tableOfContentArr={manualToc}
+                        nextPageIndex={nextPageIndex}
+                        catalogIndex={catalogIndex}
+                        pageUrl={pageUrl}
+                        pageImage={pageImage}
+                    />
+                    <PageToolbar pagePdfUrl={pagePdfUrl} />
+                </TocStateContext.Provider>
+            </div>
         </>
     )
 }
