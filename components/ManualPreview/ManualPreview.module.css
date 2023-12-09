@@ -1,17 +1,5 @@
 .manual {
-    --manual-color: var(--guides-color);
-
-    --manual-bg-inside: hsl(var(--guides-color-hsl) / 30%);
-
-    --manual-bg-outisde: hsl(
-        var(--guides-color-h)
-        var(--guides-color-s)
-        calc(var(--guides-color-l) + 20%)
-        / 10%
-    );
-
     position: relative;
-    overflow: visible;
     width: 90vw;
     display: block;
     cursor: pointer;
@@ -21,7 +9,7 @@
     text-decoration: none;
     font-weight: 500;
     font-size: clamp(18px, 5vw, 21px);
-    background: var(--manual-bg-inside);
+    background: var(--bg-dark);
 }
 
 .manual:focus-visible {
@@ -45,7 +33,7 @@
     transition: transform .15s ease-in;
     padding: .8em 1em .8em;
     border-radius: .4em;
-    color: var(--manual-color);
+    color: var(--text);
     background: white;
 }
 
@@ -58,7 +46,7 @@
     pointer-events: none;
     border-radius: inherit;
     background-size: contain;
-    background-color: var(--manual-bg-outisde);
+    background-color: var(--bg-light);
 }
 
 .manualIcon {

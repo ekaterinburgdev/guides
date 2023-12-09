@@ -10,13 +10,12 @@ import styles from './TableOfContents.module.css'
 import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
 import { Ecosystem } from '../Ecosystem/Ecosystem'
 
-function InnerLink({ anchor, baseState, setState, color, textDecorationColor }) {
+function InnerLink({ anchor, baseState, setState }) {
     const isDesktop = useMediaQuery({
         query: '(min-width: 991px)',
     })
     return (
         <a
-            style={{ color, textDecorationColor }}
             className={cn(styles.innerTableOfContentsLink)}
             key={anchor.title}
             href={`#${anchor.id}`}

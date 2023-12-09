@@ -1,7 +1,7 @@
 import React, { useEffect, useState, createContext } from 'react'
 import { useRouter } from 'next/router'
 import { useMediaQuery } from 'react-responsive'
-import { getHSLColorCSSVars } from '../../utils/getCSSVarColorHSL'
+import { getCSSVarsColors } from '../../utils/getCSSVarsColors'
 import { getTree, getPage } from '../../api/apiPage'
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
@@ -94,7 +94,7 @@ function GetPage({
         <>
             <div
                 style={{
-                    ...getHSLColorCSSVars(catalogColor),
+                    ...getCSSVarsColors(catalogColor),
                     counterReset: `page-chapter ${pageIndex}`,
                 }}
             >

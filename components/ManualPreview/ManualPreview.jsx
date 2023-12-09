@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
 
-import { getHSLColorCSSVars } from '../../utils/getCSSVarColorHSL'
+import { getCSSVarsColors } from '../../utils/getCSSVarsColors'
 
 import styles from './ManualPreview.module.css'
 
@@ -14,7 +14,7 @@ function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate,
                 query: { pageUrl: [pageUrl] },
             }}
             className={styles.manual}
-            style={{ ...getHSLColorCSSVars(color) }}
+            style={{ ...getCSSVarsColors(color) }}
         >
             <div className={styles.manualInner}>
                 <div

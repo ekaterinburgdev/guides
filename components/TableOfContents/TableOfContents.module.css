@@ -1,24 +1,4 @@
 .tableOfContents {
-    --toc-text: var(--guides-color);
-
-    --toc-text-underline: hsl(var(--guides-color-hsl) / 30%);
-
-    --toc-separator: hsl(var(--guides-color-hsl) / 25%);
-    
-    --toc-background: hsl(
-        var(--guides-color-h)
-        var(--guides-color-s)
-        calc(var(--guides-color-l) + 10%)
-        / 10%
-    );
-
-    --toc-background-active: hsl(
-        var(--guides-color-h)
-        var(--guides-color-s)
-        calc(var(--guides-color-l) + 20%)
-        / 10%
-    );
-    
     text-align: left;
     padding: 8px;
     display: none;
@@ -41,12 +21,12 @@
     border-radius: 16px;
     padding-top: 4px;
     padding-left: 17px;
-    color: var(--toc-text);
+    color: var(--text);
     font-size: 14px;
     font-weight: 500;
     transition: .15s ease;
     text-decoration: underline;
-    text-decoration-color: var(--toc-text-underline);
+    text-decoration-color: var(--underline);
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
     text-transform: uppercase;
@@ -105,7 +85,7 @@
     margin-top: 6px;
     padding: 0 16px;
     margin-bottom: 8px;
-    color: var(--toc-text);
+    color: var(--text);
     text-decoration: none;
     text-decoration-color: transparent;
     text-underline-offset: 6px;
@@ -115,7 +95,7 @@
 .catalogTitle:hover,
 .catalogTitle:focus-visible {
     text-decoration: underline;
-    text-decoration-color: var(--toc-text-underline);
+    text-decoration-color: var(--underline);
 }
 
 .TableOfContents__divider {
@@ -147,7 +127,7 @@ html:has(.open) {
 .tableOfContentsLink {
     display: flex;
     font-weight: 300;
-    color: var(--toc-text);
+    color: var(--text);
     text-decoration: none;
     padding: 12px 16px 12px 16px;
     font-size: 16px;
@@ -186,8 +166,8 @@ html:has(.open) {
     width: 0;
     height: calc(100% + 8px);
     transform: translateY(-50%);
-    border-right: 2px solid var(--toc-text);
-    border-left: 1px solid var(--toc-text);
+    border-right: 2px solid var(--text);
+    border-left: 1px solid var(--text);
     opacity: 0;
 }
 
@@ -233,7 +213,7 @@ html:has(.open) {
 
 .innerTableOfContentsLink {
     display: flex;
-    color: var(--toc-text);
+    color: var(--text);
     text-decoration: none;
     border-radius: 8px;
     transition: .15s ease;
@@ -252,11 +232,11 @@ html:has(.open) {
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 4px;
-    text-decoration-color: var(--toc-text-underline);
+    text-decoration-color: var(--underline);
 }
 
 .innerlinkContainerList {
-    background-color: var(--toc-background-active);
+    background-color: var(--bg-light);
     padding-bottom: 0.5rem;
     padding-left: 0.6rem;
     padding-right: 0.6rem;
@@ -270,17 +250,17 @@ html:has(.open) {
 .active {
     text-decoration: none;
     font-weight: 400;
-    background-color: var(--toc-background-active);
+    background-color: var(--bg-light);
 }
 
 .active:hover {
-    background-color: var(--toc-background-active);
+    background-color: var(--bg-light);
 }
 
 .separator {
     margin: 0;
     border: 0;
-    border-top: 1px solid var(--toc-separator);
+    border-top: 1px solid var(--underline);
 }
 
 .TableOfContents__aside {
@@ -305,7 +285,7 @@ html:has(.open) {
         position: fixed;
         height: calc(100vh - 100px);
         width: var(--sidebar-width);
-        background-color: var(--toc-background);
+        background-color: var(--bg-light);
         overflow: auto;
         scrollbar-width: none;
         padding: 0px 11px 11px 9px;

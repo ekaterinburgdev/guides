@@ -1,12 +1,6 @@
 .Ecosystem {
-    --guides-ecosystem-width: calc(var(--sidebar-width) - 88px);
-    
-    --guides-ecosystem-color: hsl(
-        calc(var(--guides-color-h) + 5deg)
-        calc(var(--guides-color-s) + 15%)
-        var(--guides-color-l)
-        / 13%
-    );
+    --ecosystem-width: calc(var(--sidebar-width) - 88px);
+    --ecosystem-color: var(--bg-light, #f5f8fb);
 }
 
 .Ecosystem [class^="_toggle__activeproject"] {
