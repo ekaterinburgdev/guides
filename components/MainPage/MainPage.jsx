@@ -26,7 +26,7 @@ export default function MainPage({ pageTitle, manualsPreview }) {
                         />
                     ))}
                 </section>
-                <Ecosystem mainPage={true} />
+                <Ecosystem mainPage />
                 <MainPageToolbar />
             </main>
         </>
