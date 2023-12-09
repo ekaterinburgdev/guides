@@ -2,9 +2,11 @@ import React from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
 
+import { getHSLColorCSSVars } from '../../utils/getCSSVarColorHSL'
+
 import styles from './ManualPreview.module.css'
 
-function ManualPreview({ title, subtitle, pageUrl, status, publishedDate, pattern }) {
+function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate, pattern }) {
     return (
         <Link
             href={{
@@ -12,6 +14,7 @@ function ManualPreview({ title, subtitle, pageUrl, status, publishedDate, patter
                 query: { pageUrl: [pageUrl] },
             }}
             className={styles.manual}
+            style={{ ...getHSLColorCSSVars(color) }}
         >
             <div className={styles.manualInner}>
                 <div
