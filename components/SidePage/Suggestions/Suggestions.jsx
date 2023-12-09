@@ -72,6 +72,7 @@ function getGuides({ items, currentUrl }) {
 }
 
 export const Suggestions = ({ items, query, isLoading }) => {
+    console.log(items);
     const { asPath } = useRouter()
     const currentUrl = asPath.split('/').filter(Boolean).at(0)
     const guides = getGuides({ items, currentUrl })
