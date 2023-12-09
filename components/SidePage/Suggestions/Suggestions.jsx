@@ -37,11 +37,11 @@ const SectionSuggestion = ({ section }) => {
 }
 
 const GuideSuggestion = ({ guide }) => {
-    const { title, icon, sections } = guide
+    const { title, cover, sections } = guide
     return (
         <article className={styles.GuideSuggestion}>
             <div className={styles.imageContainer}>
-                <Image className={styles.image} fill src={`${API_HOST}/static/${icon}`} alt="" />
+                <Image className={styles.image} fill src={`${API_HOST}/static/${cover}`} alt="" />
                 <h3 className={styles.GuideSuggestionTitle}>{title}</h3>
             </div>
             {sections?.map((section, i) => (
@@ -59,10 +59,11 @@ function getGuides({ items, currentUrl }) {
     })
     return items.reduce((acc, item) => {
         const title = item?.properties.properties?.Name?.title[0]?.plain_text
+        const cover = item?.properties.properties?.previewPattern?.at(0)
         const sections = item?.sectionSuggestions.sort((a, b) =>
             collator.compare(a.sectionName, b.sectionName)
         )
-        const guideSuggestion = { title, sections }
+        const guideSuggestion = { title, cover, sections }
         const url = item?.properties?.properties?.pageUrl?.url
         if (url !== currentUrl) {
             return [...acc, guideSuggestion]
@@ -72,7 +73,6 @@ function getGuides({ items, currentUrl }) {
 }
 
 export const Suggestions = ({ items, query, isLoading }) => {
-    console.log(items);
     const { asPath } = useRouter()
     const currentUrl = asPath.split('/').filter(Boolean).at(0)
     const guides = getGuides({ items, currentUrl })
