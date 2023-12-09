@@ -1,35 +1,35 @@
 .tableOfContents {
     --toc-text: hsl(
-        var(--guide-color-h)
-        var(--guide-color-s)
-        calc(var(--guide-color-l) - 5%)
+        var(--guides-color-h)
+        var(--guides-color-s)
+        calc(var(--guides-color-l) - 5%)
     );
 
     --toc-text-underline: hsl(
-        var(--guide-color-h)
-        var(--guide-color-s)
-        calc(var(--guide-color-l) - 5%)
+        var(--guides-color-h)
+        var(--guides-color-s)
+        calc(var(--guides-color-l) - 5%)
         / 45%
     );
 
     --toc-separator: hsl(
-        var(--guide-color-h)
-        var(--guide-color-s)
-        calc(var(--guide-color-l) - 5%)
+        var(--guides-color-h)
+        var(--guides-color-s)
+        calc(var(--guides-color-l) - 5%)
         / 25%
     );
 
     --toc-background: hsl(
-        calc(var(--guide-color-h) + 5deg)
-        calc(var(--guide-color-s) + 15%)
-        var(--guide-color-l)
+        calc(var(--guides-color-h) + 5deg)
+        calc(var(--guides-color-s) + 15%)
+        var(--guides-color-l)
         / 13%
     );
     
     --toc-background-active:  hsl(
-        var(--guide-color-h)
-        calc(var(--guide-color-s) + 25%)
-        calc(var(--guide-color-l) - 5%)
+        var(--guides-color-h)
+        calc(var(--guides-color-s) + 25%)
+        calc(var(--guides-color-l) - 5%)
         / 10%
     );
     

@@ -1,5 +1,6 @@
 import React from 'react'
 import { ProjectsPanel, PROJECT_GUIDES, PRODUCTION_PROJECTS, Theme } from 'ekb'
+import { DEFAULT_COLOR } from '../../consts/defaultColor'
 
 import styles from './Ecosystem.module.css'
 
@@ -11,8 +12,8 @@ export function Ecosystem() {
                 activeProjectId={PROJECT_GUIDES.id}
                 theme={Theme.LIGHT}
                 toggleStyle={{
-                    backgroundColor: 'var(--guide-ecosystem-color)',
-                    width: 'var(--guide-ecosystem-width)',
+                    backgroundColor: `var(--guides-ecosystem-color, ${DEFAULT_COLOR})`,
+                    width: 'var(--guides-ecosystem-width)',
                 }}
                 style={{
                     left: '8px',
