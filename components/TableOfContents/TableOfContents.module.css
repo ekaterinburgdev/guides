@@ -1,36 +1,29 @@
 .tableOfContents {
-    --toc-text: hsl(
-        var(--guides-color-h)
-        var(--guides-color-s)
-        calc(var(--guides-color-l) - 5%)
-    );
+    --toc-text: var(--guides-color);
 
-    --toc-text-underline: hsl(
-        var(--guides-color-h)
-        var(--guides-color-s)
-        calc(var(--guides-color-l) - 5%)
-        / 45%
-    );
+    --toc-text-underline: hsl(var(--guides-color-hsl) / 30%);
 
-    --toc-separator: hsl(
-        var(--guides-color-h)
-        var(--guides-color-s)
-        calc(var(--guides-color-l) - 5%)
-        / 25%
-    );
-
-    --toc-background: hsl(
-        calc(var(--guides-color-h) + 5deg)
-        calc(var(--guides-color-s) + 15%)
-        var(--guides-color-l)
-        / 13%
-    );
+    --toc-separator: hsl(var(--guides-color-hsl) / 25%);
     
-    --toc-background-active:  hsl(
+    --toc-background: hsl(
         var(--guides-color-h)
-        calc(var(--guides-color-s) + 25%)
-        calc(var(--guides-color-l) - 5%)
+        var(--guides-color-s)
+        calc(var(--guides-color-l) + 20%)
+        / 15%
+    );
+
+    --toc-background-hover: hsl(
+        var(--guides-color-h)
+        var(--guides-color-s)
+        calc(var(--guides-color-l) + 20%)
         / 10%
+    );
+
+    --toc-background-active: hsl(
+        var(--guides-color-h)
+        var(--guides-color-s)
+        calc(var(--guides-color-l) + 20%)
+        / 15%
     );
     
     text-align: left;
@@ -51,7 +44,6 @@
     position: relative;
     display: inline-block;
     align-self: flex-start;
-    box-shadow: none;
     margin-top: 12px;
     border-radius: 16px;
     padding-top: 4px;
@@ -162,13 +154,12 @@ html:has(.open) {
 .tableOfContentsLink {
     display: flex;
     font-weight: 300;
-    box-shadow: none;
     color: var(--toc-text);
     text-decoration: none;
-    transition: 0.2s;
     padding: 12px 16px 12px 16px;
     font-size: 16px;
     border-radius: 8px;
+    transition: .15s ease;
 }
 
 .tableOfContentsLink:not(:only-child) {
@@ -176,11 +167,14 @@ html:has(.open) {
     border-bottom-right-radius: 0;
 }
 
-.tableOfContentsLink:hover,
-.tableOfContentsLink:focus-visible {
-    box-shadow: none !important;
-    background-color: #ffffff;
-    text-decoration: none;
+@media (hover: hover) {
+    .tableOfContentsLink:hover {
+        background-color: var(--toc-background-hover);
+    }
+}
+
+.tableOfContentsLink:active {
+    background-color: var(--toc-background-active);
 }
 
 .innerlinkContainerListItem {
@@ -281,14 +275,12 @@ html:has(.open) {
 }
 
 .active {
-    box-shadow: none;
     text-decoration: none;
     font-weight: 400;
     background-color: var(--toc-background-active);
 }
 
 .active:hover {
-    box-shadow: none !important;
     background-color: var(--toc-background-active);
 }
 
