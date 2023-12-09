@@ -79,7 +79,7 @@ export const Toolbar = ({ pdfUrl, isMain }) => {
                     borderRadius: isMain ? (isOpenSidePage ? '200px' : '50%') : '',
                     aspectRatio: isMain ? (!isOpenSidePage ? '1 / 1' : '') : '',
                 }}
-                className={styles.Toolbar__container}
+                className={styles.Toolbar}
             >
                 {!isOpenSidePage ? (
                     <div>
