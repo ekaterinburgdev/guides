@@ -8,14 +8,7 @@
     --toc-background: hsl(
         var(--guides-color-h)
         var(--guides-color-s)
-        calc(var(--guides-color-l) + 20%)
-        / 15%
-    );
-
-    --toc-background-hover: hsl(
-        var(--guides-color-h)
-        var(--guides-color-s)
-        calc(var(--guides-color-l) + 20%)
+        calc(var(--guides-color-l) + 10%)
         / 10%
     );
 
@@ -23,7 +16,7 @@
         var(--guides-color-h)
         var(--guides-color-s)
         calc(var(--guides-color-l) + 20%)
-        / 15%
+        / 10%
     );
     
     text-align: left;
@@ -169,12 +162,12 @@ html:has(.open) {
 
 @media (hover: hover) {
     .tableOfContentsLink:hover {
-        background-color: var(--toc-background-hover);
+        background-color: rgba(255, 255, 255, .7);
     }
 }
 
 .tableOfContentsLink:active {
-    background-color: var(--toc-background-active);
+    background-color: white;
 }
 
 .innerlinkContainerListItem {
