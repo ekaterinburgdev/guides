@@ -1,9 +1,12 @@
 .link {
-    color: rgb(31, 71, 148);
-    text-decoration: none;
+    color: var(--guide-color);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: .3em;
+    text-decoration-color: hsl(var(--guide-color-hsl) / 30%);
+    transition: .15s ease;
 }
 
 .link:hover {
-    transition: .2s ease-in-out all;
-    box-shadow: 0 1.5px rgba(31, 71, 148, 0.3);
+    text-decoration-color: currentColor
 }
