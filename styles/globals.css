@@ -1,21 +1,14 @@
 @import 'normalize.css';
+@import 'variables.css';
 @import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 
-:root {
-    --sidebar-width: 310px;
-    --sidebar-spacer: 80px;
+* {
+    box-sizing: border-box;
 }
 
-@media screen and (min-width: 1200px) {
-    :root {
-        --sidebar-width: 350px;
-    }
-}
-
-@media screen and (min-width: 1441px) {
-    :root {
-        --sidebar-width: 400px;
-    }
+::placeholder {
+    color: inherit;
+    opacity: 0.5;
 }
 
 html {
@@ -30,43 +23,19 @@ html {
     }
 }
 
-@media screen and (min-width: 991px) {
-    :root {
-        --sidebar-spacer: 100px;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    :root {
-        --sidebar-spacer: 64px;
-    }
-}
-
 body {
-    max-width: 100%;
-    font-size: 1rem;
-    font-weight: 300;
     overflow-x: hidden;
 }
 
-* {
-    box-sizing: border-box;
+a {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: .3em;
+    text-decoration-color: var(--underline);
+    transition: .15s ease;
 }
 
-::placeholder {
-    color: inherit;
-    opacity: 0.5;
-}
-
-@media screen and (prefers-color-scheme: light) {
-    html,
-    body {
-        background-color: #fff;
-        color: black;
-    }
-
-    ::selection {
-        background: #ffc800;
-        color: black;
-    }
+a:hover {
+    text-decoration-color: currentColor;
 }
