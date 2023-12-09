@@ -28,10 +28,12 @@ export function hexToHSL(hex) {
 
     h /= 6
 
+    const round = (val) => Math.round(val * 10) / 10
+
     return {
-        h: `${Math.round(360 * h)}deg`,
-        s: `${Math.round(s * 100)}%`,
-        l: `${Math.round(l * 100)}%`,
+        h: `${round(360 * h)}deg`,
+        s: `${round(s * 100)}%`,
+        l: `${round(l * 100)}%`,
     }
 }
 
