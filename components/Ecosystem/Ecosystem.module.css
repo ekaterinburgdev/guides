@@ -12,3 +12,7 @@
 .Ecosystem [class^="_toggle__activeproject"] {
     background: none;
 }
+
+.Ecosystem [class^="_toggle__control"] {
+    background: none;
+}
