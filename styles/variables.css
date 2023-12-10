@@ -33,12 +33,6 @@
 
 @media screen and (min-width: 1200px) {
     :root {
-        --sidebar-spacer: 64px;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    :root {
         --sidebar-width: 350px;
     }
 }
