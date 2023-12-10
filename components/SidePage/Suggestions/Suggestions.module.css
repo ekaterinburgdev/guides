@@ -41,7 +41,7 @@
 .GuideSuggestion {
     padding: 24px;
     border-radius: 16px;
-    background: var(--bg-light);
+    background: var(--color-bg-light);
 }
 
 .GuideSuggestionTitle {
@@ -82,7 +82,7 @@
     margin-bottom: 8px;
     padding: 16px;
     border-radius: 8px;
-    background: var(--bg-dark);
+    background: var(--color-bg-dark);
     font-weight: 300;
     transition: .15s ease;
 }

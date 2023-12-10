@@ -1,4 +1,4 @@
 .Ecosystem {
     --ecosystem-width: calc(var(--sidebar-width) - 88px);
-    --ecosystem-color: var(--bg-light);
+    --ecosystem-color: var(--color-bg-light);
 }

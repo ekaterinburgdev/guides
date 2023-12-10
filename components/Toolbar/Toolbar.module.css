@@ -9,7 +9,7 @@
     border-radius: 200px;
     z-index: 3;
     overflow: hidden;
-    background: var(--bg-light);
+    background: var(--color-bg-light);
 }
 
 .Toolbar__input {

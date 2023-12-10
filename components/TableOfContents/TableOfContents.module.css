@@ -11,7 +11,7 @@
     z-index: 12;
     overflow: auto;
     scrollbar-width: none;
-    background-color: var(--bg-light);
+    background-color: var(--color-bg-light);
 }
 
 .linkMainpage {
@@ -27,7 +27,7 @@
     font-weight: 500;
     transition: .15s ease;
     text-decoration: underline;
-    text-decoration-color: var(--underline);
+    text-decoration-color: var(--color-underline);
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
     text-transform: uppercase;
@@ -96,7 +96,7 @@
 .catalogTitle:hover,
 .catalogTitle:focus-visible {
     text-decoration: underline;
-    text-decoration-color: var(--underline);
+    text-decoration-color: var(--color-underline);
 }
 
 .TableOfContents__divider {
@@ -233,7 +233,7 @@ html:has(.open) {
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 4px;
-    text-decoration-color: var(--underline);
+    text-decoration-color: var(--color-underline);
 }
 
 .innerlinkContainerList {
@@ -252,7 +252,7 @@ html:has(.open) {
 .innerlinkContainerList {
     text-decoration: none;
     font-weight: 400;
-    background-color: var(--bg-dark);
+    background-color: var(--color-bg-dark);
 }
 
 .separator {

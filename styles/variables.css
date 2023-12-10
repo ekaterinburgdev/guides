@@ -1,25 +1,35 @@
 :root {
+    /* Default color */
     --color-h: 220deg;
     --color-s: 57%;
     --color-l: 38%;
     --color-hsl: var(--color-h) var(--color-s) var(--color-l);
     --color: hsl(var(--color-hsl));
 
-    --bg-light: hsl(
+    /* Text colors */
+    --color-text-blue: rgb(51, 126, 169);
+    --color-text-yellow: rgb(203, 145, 47);
+    --color-text-red: rgb(212, 76, 71);
+    --color-text-green: rgb(68, 131, 97);
+    --color-text-gray: rgb(120, 119, 116);
+
+    /* Common colors */
+    --color-underline: hsl(var(--color-hsl) / 35%);
+
+    --color-bg-light: hsl(
         var(--color-h)
         var(--color-s)
         min(calc(var(--color-l) + 62%), 97%)
     );
 
-    --bg-dark: hsl(
+    --color-bg-dark: hsl(
         var(--color-h)
         var(--color-s)
         calc(var(--color-l) + 10%)
         / 10%
     );
 
-
-    --underline: hsl(var(--color-hsl) / 35%);
+    /* Controls settings */
     --sidebar-width: 310px;
     --sidebar-spacer: 80px;
 }
