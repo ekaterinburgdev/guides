@@ -78,6 +78,7 @@
 }
 
 .manualSubtitle {
+    position: relative;
     font-size: 3vw;
     line-height: 1.25;
     font-weight: 300;
@@ -109,9 +110,9 @@
     font-weight: 300;
     bottom: 10px;
     right: 12px;
-    opacity: .6;
     padding: 2px 4px 2px 4px;
     border-radius: 100px;
+    background-color: var(--bg-light);
 }
 
 @media screen and (min-width: 768px) {

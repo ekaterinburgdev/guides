@@ -12,8 +12,8 @@ export function getCSSVarsColors(color) {
 
         // Colors presets
         '--text': `hsl(${h} ${s} ${l})`,
-        '--underline': `hsl(${h} ${s} ${l} / 30%)`,
-        '--bg-light': `hsl(${h} ${s} calc(${l} + 10%) / 10%)`,
+        '--underline': `hsl(${h} ${s} ${l} / 35%)`,
+        '--bg-light': `hsl(${h} ${s} min(calc(${l} + 62%), 97%))`,
         '--bg-dark': `hsl(${h} ${s} ${l} / 30%)`,
     }
 }

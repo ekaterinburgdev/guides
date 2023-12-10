@@ -1,12 +1,4 @@
 .Ecosystem {
     --ecosystem-width: calc(var(--sidebar-width) - 88px);
-    --ecosystem-color: var(--bg-light, #f5f8fb);
-}
-
-.Ecosystem [class^="_toggle__activeproject"] {
-    background: none;
-}
-
-.Ecosystem [class^="_toggle__control"] {
-    background: none;
+    --ecosystem-color: var(--bg-light);
 }

@@ -4,14 +4,16 @@ import Image from 'next/image'
 import ManualPreview from '../ManualPreview/ManualPreview'
 
 import mainPageLogo from './MainPageLogo.svg'
-import styles from './MainPage.module.css'
 import { Ecosystem } from '../Ecosystem/Ecosystem'
 import { MainPageToolbar } from '../Toolbar/MainPageToolbar'
+import { getCSSVarsColors } from '../../utils/getCSSVarsColors'
+
+import styles from './MainPage.module.css'
 
 export default function MainPage({ pageTitle, manualsPreview }) {
     return (
         <>
-            <main className={styles.mainPage}>
+            <main className={styles.mainPage} style={{ ...getCSSVarsColors('#2a5099') }}>
                 <h1 className={styles.mainPageTitle}>
                     <div className={styles.mainPageLogo}>
                         <Image src={mainPageLogo} fill alt="" />
