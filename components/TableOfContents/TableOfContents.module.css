@@ -256,9 +256,11 @@ html:has(.open) {
 }
 
 .separator {
+    height: 1px;
     margin: 0;
     border: 0;
-    border-top: 1px solid hsl(var(--color-hsl) / 20%);
+    background: var(--color);
+    opacity: .2;
 }
 
 .TableOfContents__aside {
