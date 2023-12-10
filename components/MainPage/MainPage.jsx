@@ -6,14 +6,13 @@ import ManualPreview from '../ManualPreview/ManualPreview'
 import mainPageLogo from './MainPageLogo.svg'
 import { Ecosystem } from '../Ecosystem/Ecosystem'
 import { MainPageToolbar } from '../Toolbar/MainPageToolbar'
-import { getCSSVarsColors } from '../../utils/getCSSVarsColors'
 
 import styles from './MainPage.module.css'
 
 export default function MainPage({ pageTitle, manualsPreview }) {
     return (
         <>
-            <main className={styles.mainPage} style={{ ...getCSSVarsColors('#2a5099') }}>
+            <main className={styles.mainPage}>
                 <h1 className={styles.mainPageTitle}>
                     <div className={styles.mainPageLogo}>
                         <Image src={mainPageLogo} fill alt="" />

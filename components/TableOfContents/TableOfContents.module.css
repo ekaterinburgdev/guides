@@ -22,7 +22,7 @@
     border-radius: 16px;
     padding-top: 4px;
     padding-left: 17px;
-    color: var(--text);
+    color: var(--color);
     font-size: 14px;
     font-weight: 500;
     transition: .15s ease;
@@ -86,7 +86,7 @@
     margin-top: 6px;
     padding: 0 16px;
     margin-bottom: 8px;
-    color: var(--text);
+    color: var(--color);
     text-decoration: none;
     text-decoration-color: transparent;
     text-underline-offset: 6px;
@@ -128,7 +128,7 @@ html:has(.open) {
 .tableOfContentsLink {
     display: flex;
     font-weight: 300;
-    color: var(--text);
+    color: var(--color);
     text-decoration: none;
     padding: 12px 16px 12px 16px;
     font-size: 16px;
@@ -167,8 +167,8 @@ html:has(.open) {
     width: 0;
     height: calc(100% + 8px);
     transform: translateY(-50%);
-    border-right: 2px solid var(--text);
-    border-left: 1px solid var(--text);
+    border-right: 2px solid var(--color);
+    border-left: 1px solid var(--color);
     opacity: 0;
 }
 
@@ -214,7 +214,7 @@ html:has(.open) {
 
 .innerTableOfContentsLink {
     display: flex;
-    color: var(--text);
+    color: var(--color);
     text-decoration: none;
     border-radius: 8px;
     transition: .15s ease;
@@ -252,7 +252,7 @@ html:has(.open) {
 .innerlinkContainerList {
     text-decoration: none;
     font-weight: 400;
-    background-color: hsl(var(--color-h) var(--color-s) calc(var(--color-l) + 10%) / 10%);
+    background-color: var(--bg-dark);
 }
 
 .separator {

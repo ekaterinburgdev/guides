@@ -1,7 +1,29 @@
 :root {
+    --color-h: 220deg;
+    --color-s: 57%;
+    --color-l: 38%;
+    --color-hsl: var(--color-h) var(--color-s) var(--color-l);
+    --color: hsl(var(--color-hsl));
+
+    --bg-light: hsl(
+        var(--color-h)
+        var(--color-s)
+        min(calc(var(--color-l) + 62%), 97%)
+    );
+
+    --bg-dark: hsl(
+        var(--color-h)
+        var(--color-s)
+        calc(var(--color-l) + 10%)
+        / 10%
+    );
+
+
+    --underline: hsl(var(--color-hsl) / 35%);
     --sidebar-width: 310px;
     --sidebar-spacer: 80px;
 }
+
 
 @media screen and (min-width: 991px) {
     :root {

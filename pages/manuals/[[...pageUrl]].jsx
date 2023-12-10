@@ -1,7 +1,6 @@
 import React, { useEffect, useState, createContext } from 'react'
 import { useRouter } from 'next/router'
 import { useMediaQuery } from 'react-responsive'
-import { getCSSVarsColors } from '../../utils/getCSSVarsColors'
 import { getTree, getPage } from '../../api/apiPage'
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
@@ -12,6 +11,7 @@ import { PageToolbar } from '../../components/Toolbar/PageToolbar'
 import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu'
 
 import styles from './page.module.css'
+import { CSSVarsColors } from '../../components/CSSVarsColors/CSSVarsColors'
 
 export const PageContext = createContext(null)
 export const TocStateContext = createContext(null)
@@ -92,12 +92,8 @@ function GetPage({
 
     return (
         <>
-            <div
-                style={{
-                    ...getCSSVarsColors(catalogColor),
-                    counterReset: `page-chapter ${pageIndex}`,
-                }}
-            >
+            <CSSVarsColors color={catalogColor} />
+            <div style={{ counterReset: `page-chapter ${pageIndex}` }}>
                 <HamburgerMenu state={isOpen} changeState={setIsOpen} />
                 <TocStateContext.Provider value={{ isOpen, setIsOpen }}>
                     <TableOfContents

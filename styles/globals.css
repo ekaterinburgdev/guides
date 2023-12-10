@@ -23,7 +23,7 @@ body {
 }
 
 a {
-    color: var(--text);
+    color: var(--color);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: .3em;

@@ -6,7 +6,7 @@
     font-weight: 400;
     font-size: clamp(14px,1.8vw,18px);
     transition: .3s;
-    color: var(--text);
+    color: var(--color);
     z-index: 11;
 }
 

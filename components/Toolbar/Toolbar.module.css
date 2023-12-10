@@ -19,11 +19,11 @@
     font-size: 20px;
     width: 180px;
     background-color: transparent;
-    color: var(--text);
+    color: var(--color);
 }
 
 .Toolbar__input::placeholder {
-    color: var(--text);
+    color: var(--color);
     opacity: 0.5;
 }
 
@@ -84,7 +84,7 @@
 /* Repaint icons */
 .Toolbar path,
 .Toolbar circle {
-    stroke: var(--text);
+    stroke: var(--color);
 }
 
 @media print {
