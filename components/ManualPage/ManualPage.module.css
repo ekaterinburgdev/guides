@@ -98,6 +98,7 @@ br + .Manual__image__container {
 .Manual__image__container > img {
     position: static;
     border-radius: 4px;
+    cursor: zoom-in;
 }
 
 .Manual__image__container:hover {
