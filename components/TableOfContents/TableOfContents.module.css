@@ -1,4 +1,6 @@
 .tableOfContents {
+    --color-underline-hover: hsl(var(--color-hsl) / 30%);
+    
     position: fixed;
     text-align: left;
     padding: 8px;
@@ -26,7 +28,6 @@
     font-size: 14px;
     font-weight: 500;
     transition: .15s ease;
-    text-decoration: underline;
     text-underline-offset: 4px;
     text-transform: uppercase;
     letter-spacing: .1em;
@@ -36,7 +37,6 @@
 
 .linkMainpage:hover {
     opacity: .8;
-    text-decoration-color: currentColor;
 }
 
 .linkMainpage:hover::after {
@@ -85,15 +85,9 @@
     padding: 0 16px;
     margin-bottom: 8px;
     color: var(--color);
-    text-decoration: none;
     text-decoration-color: transparent;
     text-underline-offset: 5.5px;
     text-decoration-thickness: 2px;
-}
-
-.catalogTitle:hover,
-.catalogTitle:focus-visible {
-    text-decoration: underline;
 }
 
 .TableOfContents__divider {

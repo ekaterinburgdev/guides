@@ -2,7 +2,6 @@
     color: var(--color);
     text-decoration: underline;
     text-decoration-color: var(--color);
-    -webkit-text-decoration-color: var(--color);
     transform: .15s ease;
 }
 

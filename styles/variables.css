@@ -16,7 +16,7 @@
     /* Common colors */
     --color-underline: hsl(var(--color-hsl) / 20%);
 
-    --color-underline-hover: hsl(var(--color-hsl) / 20%);
+    --color-underline-hover: hsl(var(--color-hsl) / 75%);
 
     --color-bg-light: hsl(
         var(--color-h)
