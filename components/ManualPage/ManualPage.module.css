@@ -94,11 +94,6 @@
     position: relative;
     width: 100%;
     text-align: center;
-    margin-top: 1vw;
-}
-
-.Manual__image__container + .Manual__image__container {
-    margin-top: 0.1vw;
 }
 
 br + .Manual__image__container {
