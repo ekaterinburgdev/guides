@@ -7,7 +7,7 @@ export function getCSSVarsColors(color) {
         '--color-h': h,
         '--color-s': s,
         '--color-l': l,
-        '--color-hsl': `var(--color-h) var(--color-s) var(--color-l)`,
+        '--color-hsl': `var(--color-h) 45% 45%`,
         '--color': `hsl(var(--color-hsl))`,
     }
 }

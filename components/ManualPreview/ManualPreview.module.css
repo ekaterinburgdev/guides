@@ -3,6 +3,7 @@
     --manual-bg-cover: hsl(var(--color-h) var(--color-s) min(calc(var(--color-l) + 62%), 97%));
     --manual-bg-back: hsl(var(--color-hsl) / 30%);
 
+
     position: relative;
     width: 90vw;
     display: block;
