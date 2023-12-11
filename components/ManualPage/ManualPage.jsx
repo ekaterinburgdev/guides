@@ -34,7 +34,7 @@ function ManualPage({
         }
 
         return (
-            <article className={`row gx-2 ${styles.Template__item}`}>
+            <article className={`row gx-2 gy-1 ${styles.Template__item}`}>
                 {columnList.children.map((cols, i) => (
                     <div className={`col-sm ${styles.Template__column}`} key={`${cols.id}${i}`}>
                         {cols.children.map((col, i) => (
