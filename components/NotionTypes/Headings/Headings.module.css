@@ -36,7 +36,7 @@
     counter-reset: page-subsection 0;
     counter-increment: page-section;
     font-size: 20px;
-    margin-top: .9em;
+    margin-top: 1.5em;
     margin-bottom: .4em;
     margin-left: -.04em;
 }
@@ -47,21 +47,21 @@
 
 @media (min-width: 991px) {
     .heading1 {
-        font-size: clamp(28px, 10vw, 38px);
+        font-size: clamp(28px, 10vw, 34px);
     }
 }
 
 .heading2 {
     counter-increment: page-subsection;
     font-size: 18px;
-    margin-top: .5em;
+    margin-top: 1.5em;
     margin-bottom: .5em;
     margin-left: -.02em;
 }
 
 @media (min-width: 991px) {
     .heading2 {
-        font-size: clamp(28px, 10vw, 32px);
+        font-size: clamp(24px, 10vw, 28px);
     }
 }
 
@@ -71,13 +71,13 @@
 
 .heading3 {
     font-size: 16px;
-    margin-top: 1em;
+    margin-top: 1.5em;
     margin-bottom: 0.3em;
 }
 
 @media (min-width: 991px) {
     .heading3 {
-        font-size: clamp(22px, 6vw, 24px);
+        font-size: clamp(18px, 1.75vw, 22px);
     }
 }
 
