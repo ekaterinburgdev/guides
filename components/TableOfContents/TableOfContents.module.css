@@ -27,8 +27,6 @@
     font-weight: 500;
     transition: .15s ease;
     text-decoration: underline;
-    text-decoration-color: var(--color-underline);
-    text-decoration-thickness: 1px;
     text-underline-offset: 4px;
     text-transform: uppercase;
     letter-spacing: .1em;
@@ -89,14 +87,13 @@
     color: var(--color);
     text-decoration: none;
     text-decoration-color: transparent;
-    text-underline-offset: 6px;
+    text-underline-offset: 5.5px;
     text-decoration-thickness: 2px;
 }
 
 .catalogTitle:hover,
 .catalogTitle:focus-visible {
     text-decoration: underline;
-    text-decoration-color: var(--color-underline);
 }
 
 .TableOfContents__divider {
@@ -231,9 +228,7 @@ html:has(.open) {
 
 .innerTableOfContentsLink:hover span {
     text-decoration: underline;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 4px;
-    text-decoration-color: var(--color-underline);
+    text-decoration-color: hsl(var(--color-hsl) / 30%);
 }
 
 .innerlinkContainerList {

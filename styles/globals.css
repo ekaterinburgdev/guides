@@ -33,5 +33,5 @@ a {
 }
 
 a:hover {
-    text-decoration-color: currentColor;
+    text-decoration-color: var(--color-underline-hover);
 }

@@ -1,8 +1,6 @@
 .link {
     color: var(--color);
     text-decoration: underline;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 4px;
     text-decoration-color: var(--color);
     -webkit-text-decoration-color: var(--color);
     transform: .15s ease;
