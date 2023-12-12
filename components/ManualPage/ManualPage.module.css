@@ -2,13 +2,12 @@
     margin-top: 0;
 }
 
-/* TODO: Move .row rule to a separate file */
-.Template__item:global(.row) {
-    margin: 0 auto;
-}
-
 .Template__column p {
     line-height: 1.3;
+}
+
+.Template__column p:first-child {
+    margin-top: 0;
 }
 
 .templateColumn {
@@ -93,12 +92,7 @@
 .Manual__image__container {
     position: relative;
     width: 100%;
-    text-align: center;
-    margin-top: 1vw;
-}
-
-.Manual__image__container + .Manual__image__container {
-    margin-top: 0.1vw;
+    text-align: left;
 }
 
 br + .Manual__image__container {
@@ -107,6 +101,8 @@ br + .Manual__image__container {
 
 .Manual__image__container > img {
     position: static;
+    border-radius: 4px;
+    cursor: zoom-in;
 }
 
 .Manual__image__container:hover {
@@ -114,7 +110,9 @@ br + .Manual__image__container {
 }
 
 .Manual__image_description {
-    color: #6c757d;
+    display: inline-block;
+    opacity: .4;
+    margin-top: .25em;
 }
 
 .Manual__image_svg {

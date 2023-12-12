@@ -1,6 +1,5 @@
 .arrowNavLink {
     box-shadow: none;
-    text-decoration: none;
     margin: 0 0 76px;
     border-radius: 2rem;
     font-weight: 400;
@@ -21,9 +20,6 @@
 
 .arrowNavLink:hover .arrowNavLinkNextText {
     text-decoration: underline;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 4px;
-    
 }
 
 @media print {
