@@ -1,22 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
-import rgbaToRgb from 'rgba-to-rgb'
 
-import getManualColorScheme from '../../utils/getManualColorScheme'
+import { getCSSVarsColors } from '../../utils/getCSSVarsColors'
 
 import styles from './ManualPreview.module.css'
 
 function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate, pattern }) {
-    const colorScheme = getManualColorScheme(color)
-
-    const timeBgColor = rgbaToRgb(
-        'rgb(255, 255, 255)',
-        `rgba(${Math.trunc(colorScheme.manual[0])}, ${Math.trunc(
-            colorScheme.manual[1]
-        )}, ${Math.trunc(colorScheme.manual[2])}, ${colorScheme.manual})`
-    )
-
     return (
         <Link
             href={{
@@ -24,15 +14,12 @@ function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate,
                 query: { pageUrl: [pageUrl] },
             }}
             className={styles.manual}
-            style={{ background: colorScheme.bgDark }}
+            style={{ ...getCSSVarsColors(color) }}
         >
-            <div className={styles.manualInner} style={{ color: colorScheme.title }}>
+            <div className={styles.manualInner}>
                 <div
                     className={styles.manualBackground}
-                    style={{
-                        backgroundColor: colorScheme.manual,
-                        backgroundImage: pattern && `url(${pattern})`,
-                    }}
+                    style={{ backgroundImage: pattern && `url(${pattern})` }}
                 />
                 {title && <div className={styles.manualTitle}>{title}</div>}
                 {subtitle && <div className={styles.manualSubtitle}>{subtitle}</div>}
@@ -49,10 +36,7 @@ function ManualPreview({ title, subtitle, pageUrl, color, status, publishedDate,
                 )}
 
                 {publishedDate && (
-                    <time
-                        style={{ backgroundColor: timeBgColor, opacity: 1 }}
-                        className={styles.manualDate}
-                    >
+                    <time className={styles.manualDate}>
                         {new Date(publishedDate).toLocaleDateString('ru')}
                     </time>
                 )}

@@ -1,11 +1,11 @@
 .link {
-    display: inline;
-    color: #14283C !important;
-    text-decoration: none !important;
-    border: none !important;
-    transition: all;
-    transition-duration: 0.2s;
-    box-shadow: 0 3px 0 0 #14283C;
+    color: var(--color);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--color);
+    -webkit-text-decoration-color: var(--color);
+    transform: .15s ease;
 }
 
 .link:hover {

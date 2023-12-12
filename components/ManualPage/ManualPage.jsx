@@ -1,7 +1,5 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment } from 'react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
-import rgbaToRgb from 'rgba-to-rgb'
 
 import styles from './ManualPage.module.css'
 import tp from '../../utils/typograf/typograf.config'
@@ -18,13 +16,10 @@ import VideoPlayer from '../NotionTypes/VideoPlayer/VideoPlayer'
 import Code from '../NotionTypes/Text/Code/Code'
 import { API_HOST } from '../../consts/endpoints'
 import GuideImage from '../NotionTypes/GuideImage/GuideImage'
-import { PageContext } from '../../pages/manuals/[[...pageUrl]]'
-import getManualColorScheme from '../../utils/getManualColorScheme'
 import { Callout } from '../NotionTypes/Callout/Callout'
 import { Iframe } from '../NotionTypes/Iframe/Iframe'
 
 function ManualPage({
-    pageIndex,
     pageName,
     pageList,
     tableOfContentArr,
@@ -33,18 +28,6 @@ function ManualPage({
     catalogIndex,
     pageImage,
 }) {
-    const { asPath } = useRouter()
-    const colorContext = useContext(PageContext)
-    const { colorMap } = colorContext
-    const color = colorMap.filter((item) => asPath.includes(item.url))[0]?.color
-    const colorScheme = getManualColorScheme(color)
-    const arrowColor = rgbaToRgb(
-        'rgb(255, 255, 255)',
-        `rgba(${Math.trunc(colorScheme.bgLight.color[0])}, ${Math.trunc(
-            colorScheme.bgLight.color[1]
-        )}, ${Math.trunc(colorScheme.bgLight.color[2])}, ${colorScheme.bgLight.valpha})`
-    )
-
     const getLine = (columnList) => {
         if (!columnList.children.length) {
             return
@@ -123,12 +106,6 @@ function ManualPage({
 
     return (
         <div className={styles.templateColumn}>
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: `body { counter-reset: page-chapter ${pageIndex} }`,
-                }}
-            />
-
             <div className={styles.column}>
                 {pageImage && (
                     <div className={styles.previewImageContainer}>
@@ -149,13 +126,10 @@ function ManualPage({
                     <nav className={styles.footNav}>
                         {Number.isInteger(nextPageIndex) && (
                             <ArrowNavLink
-                                backgroundColor={arrowColor}
                                 nextPageIndex={nextPageIndex}
                                 tableOfContentArr={tableOfContentArr}
                                 catalogIndex={catalogIndex}
                                 pageUrl={pageUrl}
-                                color={color}
-                                textDecoration={colorScheme.textDecoration}
                             />
                         )}
                     </nav>

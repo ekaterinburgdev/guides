@@ -4,8 +4,6 @@ import { getNotionColor } from './colors'
 
 import tp from './typograf/typograf.config'
 
-import styles from './text.module.css'
-
 export const getHeaderContent = (item) =>
     item.content.text.map((par) => {
         const textContent = tp.execute(par?.text?.content)
@@ -45,7 +43,7 @@ export const getTextContent = (item, useTypograf = false) =>
         }
 
         return isLink ? (
-            <a href={url} target="_blank" className={styles.link} {...textFragmentHtml} />
+            <a href={url} target="_blank" {...textFragmentHtml} />
         ) : (
             <span style={{ ...stylePar }} {...textFragmentHtml} />
         )

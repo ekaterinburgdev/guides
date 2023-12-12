@@ -5,14 +5,7 @@ import tp from '../../utils/typograf/typograf.config'
 
 import styles from './arrow.module.css'
 
-export function ArrowNavLink({
-    nextPageIndex,
-    tableOfContentArr,
-    pageUrl,
-    catalogIndex,
-    color,
-    textDecoration,
-}) {
+export function ArrowNavLink({ nextPageIndex, tableOfContentArr, pageUrl, catalogIndex }) {
     let href = {
         pathname: '/[[...pageUrl]]',
         query: { pageUrl: [] },
@@ -30,17 +23,12 @@ export function ArrowNavLink({
     }
 
     return (
-        <Link style={{ color }} className={cn(styles.arrowNavLink)} href={href}>
+        <Link className={cn(styles.arrowNavLink)} href={href}>
             <span className={cn(styles.arrowNavLinkNext)}>Далее</span>
 
             <br />
 
-            <span
-                className={cn(styles.arrowNavLinkNextText)}
-                style={{ textDecorationColor: textDecoration }}
-            >
-                {tp.execute(title)}
-            </span>
+            <span className={cn(styles.arrowNavLinkNextText)}>{tp.execute(title)}</span>
         </Link>
     )
 }

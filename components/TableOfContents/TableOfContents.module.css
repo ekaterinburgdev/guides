@@ -1,17 +1,33 @@
+.tableOfContents {
+    position: fixed;
+    text-align: left;
+    padding: 8px;
+    display: none;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: 12;
+    overflow: auto;
+    scrollbar-width: none;
+    background-color: var(--color-bg-light);
+}
+
 .linkMainpage {
     position: relative;
     display: inline-block;
     align-self: flex-start;
-    box-shadow: none;
     margin-top: 12px;
     border-radius: 16px;
     padding-top: 4px;
     padding-left: 17px;
-    color: #14283C;
+    color: var(--color);
     font-size: 14px;
     font-weight: 500;
     transition: .15s ease;
     text-decoration: underline;
+    text-decoration-color: var(--color-underline);
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
     text-transform: uppercase;
@@ -70,7 +86,9 @@
     margin-top: 6px;
     padding: 0 16px;
     margin-bottom: 8px;
+    color: var(--color);
     text-decoration: none;
+    text-decoration-color: transparent;
     text-underline-offset: 6px;
     text-decoration-thickness: 2px;
 }
@@ -78,6 +96,7 @@
 .catalogTitle:hover,
 .catalogTitle:focus-visible {
     text-decoration: underline;
+    text-decoration-color: var(--color-underline);
 }
 
 .TableOfContents__divider {
@@ -97,22 +116,6 @@
     object-position: left center;
 }
 
-.tableOfContents {
-    text-align: left;
-    padding: 8px;
-    display: none;
-    width: 100%;
-    height: 100vh;
-    background-color: #eff0f1;
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin: 0;
-    z-index: 12;
-    overflow: auto;
-    scrollbar-width: none;
-}
-
 html:has(.open) {
     overflow-y: hidden;
 }
@@ -125,21 +128,27 @@ html:has(.open) {
 .tableOfContentsLink {
     display: flex;
     font-weight: 300;
-    box-shadow: none;
-    color: #14283C;
+    color: var(--color);
     text-decoration: none;
-    border-radius: 8px;
-    transition: 0.2s;
     padding: 12px 16px 12px 16px;
     font-size: 16px;
+    border-radius: 8px;
+    transition: .15s ease;
 }
 
-.tableOfContentsLink:hover,
-.tableOfContentsLink:focus-visible {
-    box-shadow: none !important;
-    background-color: #ffffff;
-    color: #112233;
-    text-decoration: none;
+.tableOfContentsLink:not(:only-child) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+@media (hover: hover) {
+    .tableOfContentsLink:hover {
+        background-color: rgba(255, 255, 255, .7);
+    }
+}
+
+.tableOfContentsLink:active {
+    background-color: white;
 }
 
 .innerlinkContainerListItem {
@@ -158,8 +167,8 @@ html:has(.open) {
     width: 0;
     height: calc(100% + 8px);
     transform: translateY(-50%);
-    border-right: 2px solid;
-    border-left: 1px solid;
+    border-right: 2px solid var(--color);
+    border-left: 1px solid var(--color);
     opacity: 0;
 }
 
@@ -205,7 +214,7 @@ html:has(.open) {
 
 .innerTableOfContentsLink {
     display: flex;
-    color: #14283C;
+    color: var(--color);
     text-decoration: none;
     border-radius: 8px;
     transition: .15s ease;
@@ -224,16 +233,13 @@ html:has(.open) {
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 4px;
-    text-decoration-color: inherit;
+    text-decoration-color: var(--color-underline);
 }
 
 .innerlinkContainerList {
-    background-color: #ffffff;
     padding-bottom: 0.5rem;
     padding-left: 0.6rem;
     padding-right: 0.6rem;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     display: flex;
@@ -241,22 +247,20 @@ html:has(.open) {
     list-style: none;
 }
 
-.active {
-    box-shadow: none;
+.active,
+.active:hover,
+.innerlinkContainerList {
     text-decoration: none;
     font-weight: 400;
-    border-radius: 8px;
-}
-
-.active:hover {
-    box-shadow: none !important;
+    background-color: var(--color-bg-dark);
 }
 
 .separator {
-    border-bottom: 1px solid;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    opacity: 0.2;
+    height: 1px;
+    margin: 0;
+    border: 0;
+    background: var(--color);
+    opacity: .2;
 }
 
 .TableOfContents__aside {
@@ -281,7 +285,6 @@ html:has(.open) {
         position: fixed;
         height: calc(100vh - 100px);
         width: var(--sidebar-width);
-        background-color: #1231;
         overflow: auto;
         scrollbar-width: none;
         padding: 0px 11px 11px 9px;

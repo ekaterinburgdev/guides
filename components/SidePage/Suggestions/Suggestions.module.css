@@ -8,6 +8,7 @@
     gap: 8px;
     margin-right: 8px;
     border-radius: 16px;
+    color: var(--color);
 }
 
 .SuggestionsContainer::-webkit-scrollbar {
@@ -38,9 +39,9 @@
 }
 
 .GuideSuggestion {
-    border-bottom: 1px solid rgb(155, 170, 195, 0.15);
     padding: 24px;
     border-radius: 16px;
+    background: var(--color-bg-light);
 }
 
 .GuideSuggestionTitle {
@@ -70,26 +71,30 @@
 
 .SuggestItemTarget {
     font-weight: 500;
-    color: #14283c;
 }
 
 .SuggestItemLink {
-    text-decoration: none;
-    color: #14283c;
     font-size: 16px;
+    text-decoration:none;
 }
 
 .SuggestItemListItem {
     margin-bottom: 8px;
     padding: 16px;
     border-radius: 8px;
+    background: var(--color-bg-dark);
+    font-weight: 300;
+    transition: .15s ease;
 }
 
-.SuggestItemListItem:hover > .SuggestItemLink {
-    text-decoration: underline;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 3px;
-    text-decoration-color: rgba(20, 40, 60, 0.4);
+@media (hover: hover) {
+    .SuggestItemListItem:hover {
+        background-color: rgba(255, 255, 255, .75);
+    }
+}
+
+.SuggestItemListItem:active {
+    background-color: white;
 }
 
 .SuggestItemSuggestionText {

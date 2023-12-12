@@ -1,7 +1,10 @@
 .manual {
+    --manual-text: var(--color);
+    --manual-bg-cover: hsl(var(--color-h) var(--color-s) min(calc(var(--color-l) + 62%), 97%));
+    --manual-bg-back: hsl(var(--color-hsl) / 30%);
+
+
     position: relative;
-    background: white;
-    overflow: visible;
     width: 90vw;
     display: block;
     cursor: pointer;
@@ -11,6 +14,7 @@
     text-decoration: none;
     font-weight: 500;
     font-size: clamp(18px, 5vw, 21px);
+    background: var(--manual-bg-back);
 }
 
 .manual:focus-visible {
@@ -32,8 +36,9 @@
     height: 100%;
     transform-origin: left bottom;
     transition: transform .15s ease-in;
-    padding: .8em 1em;
+    padding: .8em 1em .8em;
     border-radius: .4em;
+    color: var(--manual-text);
     background: white;
 }
 
@@ -46,6 +51,7 @@
     pointer-events: none;
     border-radius: inherit;
     background-size: contain;
+    background-color: var(--manual-bg-cover);
 }
 
 .manualIcon {
@@ -77,6 +83,7 @@
 }
 
 .manualSubtitle {
+    position: relative;
     font-size: 3vw;
     line-height: 1.25;
     font-weight: 300;
@@ -108,9 +115,9 @@
     font-weight: 300;
     bottom: 10px;
     right: 12px;
-    opacity: .6;
     padding: 2px 4px 2px 4px;
     border-radius: 100px;
+    background-color: var(--manual-bg-cover);
 }
 
 @media screen and (min-width: 768px) {
@@ -121,7 +128,7 @@
     .manualTitle {
         font-size: 2.5vw;
     }
-    
+
     .manualSubtitle {
         font-size: 1.4vw;
     }
@@ -135,7 +142,7 @@
     .manualTitle {
         font-size: 1.4vw;
     }
-    
+
     .manualSubtitle {
         font-size: 0.8vw;
     }

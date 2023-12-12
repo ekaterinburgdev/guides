@@ -1,4 +1,4 @@
-.Toolbar__container {
+.Toolbar {
     height: 76px;
     position: fixed;
     bottom: 8px;
@@ -9,6 +9,7 @@
     border-radius: 200px;
     z-index: 3;
     overflow: hidden;
+    background: var(--color-bg-light);
 }
 
 .Toolbar__input {
@@ -17,6 +18,13 @@
     flex: 1;
     font-size: 20px;
     width: 180px;
+    background-color: transparent;
+    color: var(--color);
+}
+
+.Toolbar__input::placeholder {
+    color: var(--color);
+    opacity: 0.5;
 }
 
 .customInput {
@@ -71,6 +79,12 @@
 
 .hidden {
     visibility: hidden;
+}
+
+/* Repaint icons */
+.Toolbar path,
+.Toolbar circle {
+    stroke: var(--color);
 }
 
 @media print {

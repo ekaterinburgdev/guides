@@ -4,11 +4,11 @@ export function getNotionColor(colorKey) {
     }
 
     return {
-        blue: 'rgb(51, 126, 169)',
-        yellow: 'rgb(203, 145, 47)',
-        red: 'rgb(212, 76, 71)',
-        green: 'rgb(68, 131, 97)',
-        gray: 'rgb(120, 119, 116)',
+        blue: 'var(--color-text-blue)',
+        yellow: 'var(--color-text-yellow)',
+        red: 'var(--color-text-red)',
+        green: 'var(--color-text-green)',
+        gray: 'var(--color-text-gray)',
         default: null,
     }[colorKey]
 }
