@@ -8,8 +8,9 @@ import getManualToc from '../../utils/getManualToc'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 import { Toolbar } from '../../components/Toolbar/Toolbar'
 
-import styles from './page.module.css'
 import { CSSVarsColors } from '../../components/CSSVarsColors/CSSVarsColors'
+
+import styles from './page.module.css'
 
 export const PageContext = createContext(null)
 export const TocStateContext = createContext(null)
