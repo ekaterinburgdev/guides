@@ -8,8 +8,12 @@ import Github from './github.svg'
 
 export function ProjectLinks() {
     return (
-        <div className={styles.ProjectLinks}>
-            <a href="https://github.com/ekaterinburgdev/guides" target="_blank">
+        <div className={cn(styles.ProjectLinks)}>
+            <a
+                className={cn(styles.ProjectLinks__button, styles.ProjectLinks__button_about)}
+                href="https://github.com/ekaterinburgdev/guides"
+                target="_blank"
+            >
                 <Github />
             </a>
             <a
