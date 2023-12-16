@@ -1,11 +1,12 @@
 import React from 'react'
-
 import Image from 'next/image'
+
 import ManualPreview from '../ManualPreview/ManualPreview'
 
-import mainPageLogo from './MainPageLogo.svg'
 import { Ecosystem } from '../Ecosystem/Ecosystem'
-import { MainPageToolbar } from '../Toolbar/MainPageToolbar'
+import { Toolbar } from '../Toolbar/Toolbar'
+
+import mainPageLogo from './logo.svg?url'
 
 import styles from './MainPage.module.css'
 
@@ -27,8 +28,8 @@ export default function MainPage({ pageTitle, manualsPreview }) {
                         />
                     ))}
                 </section>
-                <Ecosystem mainPage />
-                <MainPageToolbar />
+                <Ecosystem />
+                <Toolbar />
             </main>
         </>
     )
