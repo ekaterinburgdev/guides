@@ -1,27 +1,37 @@
 .ProjectLinks {
     position: fixed;
-    top: 8px;
-    right: 8px;
-    display: flex;
+    top: 2px;
+    right: 2px;
+    display: none;
     gap: 8px;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, .9);
 }
 
 .ProjectLinks__button {
     display: inline-flex;
     align-items: center;
-    color: black;
-    text-decoration: none;
-    font-size: 18px;
     padding: 8px 12px;
-    font-weight: 400;
     border-radius: 160px;
+    color: black;
+    font-weight: 400;
+    font-size: 18px;
+    text-decoration: none;
 }
 
 .ProjectLinks__button_about {
-    color: white;
     background: black;
+    color: white;
 }
 
 .ProjectLinks__button_feedback {
     background: #ffd400;
+}
+
+@media screen and (min-width: 991px) {
+    .ProjectLinks {
+        display: flex;
+    }
 }

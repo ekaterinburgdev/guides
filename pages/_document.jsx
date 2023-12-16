@@ -1,6 +1,5 @@
 import React from 'react'
 import { Html, Head, Main, NextScript } from 'next/document'
-import { ProjectLinks } from '../components/ProjectLinks/ProjectLinks'
 
 export default function Document() {
     const ogTitle = 'Городские руководства Екатеринбурга'
