@@ -5,7 +5,6 @@ import { API_HOST } from '../../consts/endpoints'
 
 import Close from './close.svg'
 import Download from './download.svg'
-import Github from './github.svg'
 import Menu from './menu.svg'
 import Search from './search.svg'
 
