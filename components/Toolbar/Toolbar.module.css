@@ -7,8 +7,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    height: 76px;
-    padding: 0 16px;
+    padding: 8px 10px;
     border-radius: 64px;
     background: var(--color-bg-light);
     color: var(--color);
@@ -37,8 +36,8 @@
 }
 
 .Toolbar__item {
-    padding: 0;
     padding: 4px;
+    margin: 0 -2px;
     border: 0;
     border-radius: 50%;
     background: transparent;
@@ -60,10 +59,6 @@
 .Toolbar__item:active {
     background: hsl(var(--color-hsl) / 90%);
     color: white;
-}
-
-.Toolbar__item:last-child {
-    margin: 0;
 }
 
 .Toolbar__item:focus-visible svg {
