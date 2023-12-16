@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 
 import { API_HOST } from '../../../consts/endpoints'
 import styles from './Suggestions.module.css'
+import { getCSSVarsColors } from '../../../utils/getCSSVarsColors'
 
 const SuggestItem = ({ suggest }) => {
     const {
@@ -37,9 +38,9 @@ const SectionSuggestion = ({ section }) => {
 }
 
 const GuideSuggestion = ({ guide }) => {
-    const { title, cover, sections } = guide
+    const { title, cover, sections, color } = guide
     return (
-        <article className={styles.GuideSuggestion}>
+        <article className={styles.GuideSuggestion} style={{ ...getCSSVarsColors(color) }}>
             <div className={styles.imageContainer}>
                 <Image className={styles.image} fill src={`${API_HOST}/static/${cover}`} alt="" />
                 <h3 className={styles.GuideSuggestionTitle}>{title}</h3>
@@ -60,10 +61,11 @@ function getGuides({ items, currentUrl }) {
     return items.reduce((acc, item) => {
         const title = item?.properties.properties?.Name?.title[0]?.plain_text
         const cover = item?.properties.properties?.previewPattern?.at(0)
+        const color = item?.properties.properties?.color?.rich_text[0]?.plain_text
         const sections = item?.sectionSuggestions.sort((a, b) =>
             collator.compare(a.sectionName, b.sectionName)
         )
-        const guideSuggestion = { title, cover, sections }
+        const guideSuggestion = { title, cover, sections, color }
         const url = item?.properties?.properties?.pageUrl?.url
         if (url !== currentUrl) {
             return [...acc, guideSuggestion]

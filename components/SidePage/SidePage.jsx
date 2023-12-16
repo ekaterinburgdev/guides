@@ -11,7 +11,7 @@ export const SidePage = ({ isClose, items, isLoading = false, query = '' }) => {
     })
 
     return (
-        <section id="SidePage" className={sidePageClassNames}>
+        <section className={sidePageClassNames}>
             <Suggestions items={items} query={query} isLoading={isLoading} />
             {isLoading && <Loader />}
         </section>
