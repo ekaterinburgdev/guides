@@ -5,9 +5,7 @@
 
 .ManualTitle__mainpage {
     position: relative;
-    display: inline-block;
     align-self: flex-start;
-    margin-top: 12px;
     border-radius: 16px;
     padding-top: 4px;
     color: var(--color);
@@ -48,10 +46,4 @@
     text-decoration-color: transparent;
     text-underline-offset: 5.5px;
     text-decoration-thickness: 2px;
-}
-
-@media screen and (min-width: 768px) {
-    .ManualTitle {
-        margin-top: 24px;
-    }
 }

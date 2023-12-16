@@ -22,6 +22,11 @@
     margin: 0 auto;
 }
 
+.manualName {
+    margin-left: -24px;
+    margin-top: 20px;
+}
+
 @media screen and (min-width: 991px) {
     .templateColumn {
         margin-bottom: 0;
