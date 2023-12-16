@@ -59,15 +59,6 @@ export const Toolbar = ({ pdf, menuActive, menuOnClick }) => {
             <div className={styles.Toolbar}>
                 {!isOpenSidePage ? (
                     <>
-                        {menuActive !== undefined && (
-                            <button
-                                className={cn(styles.Toolbar__item, styles.Toolbar__item_menu)}
-                                onClick={() => menuOnClick(!menuActive)}
-                            >
-                                {menuActive ? <Close /> : <Menu />}
-                            </button>
-                        )}
-
                         {pdf && (
                             <a
                                 className={styles.Toolbar__item}
@@ -84,6 +75,15 @@ export const Toolbar = ({ pdf, menuActive, menuOnClick }) => {
                         >
                             <Search />
                         </button>
+
+                        {menuActive !== undefined && (
+                            <button
+                                className={cn(styles.Toolbar__item, styles.Toolbar__item_menu)}
+                                onClick={() => menuOnClick(!menuActive)}
+                            >
+                                {menuActive ? <Close /> : <Menu />}
+                            </button>
+                        )}
                     </>
                 ) : (
                     <>
