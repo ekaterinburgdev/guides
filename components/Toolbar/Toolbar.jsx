@@ -56,7 +56,7 @@ export const Toolbar = ({ pdf, menuActive, menuOnClick }) => {
 
     return (
         <>
-            <div ref={toolbarRef} className={styles.Toolbar}>
+            <div className={styles.Toolbar}>
                 {!isOpenSidePage ? (
                     <>
                         {menuActive !== undefined && (
