@@ -13,6 +13,7 @@ export function Ecosystem() {
                 toggleStyle={{
                     backgroundColor: `var(--ecosystem-color)`,
                     width: 'var(--ecosystem-width)',
+                    '--projects-panel-text-color': 'var(--color)',
                 }}
                 style={{
                     left: '8px',

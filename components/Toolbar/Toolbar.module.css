@@ -57,6 +57,7 @@
 
 .Toolbar__item:active {
     background: hsl(var(--color-hsl) / 90%);
+    color: white;
 }
 
 .Toolbar__item:last-child {
