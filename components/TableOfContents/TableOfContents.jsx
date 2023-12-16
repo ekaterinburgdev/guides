@@ -2,7 +2,6 @@ import React, { useEffect, useContext, Fragment } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
-import { useMediaQuery } from 'react-responsive'
 import scrollIntoView from 'scroll-into-view-if-needed'
 
 import { TocStateContext } from '../../pages/manuals/[[...pageUrl]]'

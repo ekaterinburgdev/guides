@@ -1,6 +1,5 @@
 import React, { useEffect, useState, createContext } from 'react'
 import { useRouter } from 'next/router'
-import { useMediaQuery } from 'react-responsive'
 import { getTree, getPage } from '../../api/apiPage'
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
