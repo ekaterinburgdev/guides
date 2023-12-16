@@ -41,7 +41,7 @@
 .GuideSuggestion {
     padding: 24px;
     border-radius: 16px;
-    background: var(--color-bg-light);
+    background: hsl(var(--color-h) 72% 97%);
 }
 
 .GuideSuggestionTitle {
@@ -54,6 +54,7 @@
 }
 
 .SectionSuggestion {
+    color: var(--color);
     border-radius: 16px;
     margin-bottom: 12px;
 }
@@ -82,7 +83,7 @@
     margin-bottom: 8px;
     padding: 16px;
     border-radius: 8px;
-    background: var(--color-bg-dark);
+    background: hsl(var(--color-h) 75% 93%);
     font-weight: 300;
     transition: .15s ease;
 }
