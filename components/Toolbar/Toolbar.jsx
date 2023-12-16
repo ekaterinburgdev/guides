@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
-
 import cn from 'classnames'
-
-import styles from './Toolbar.module.css'
 import { SidePage } from '../SidePage/SidePage'
 import { API_HOST } from '../../consts/endpoints'
 
@@ -11,6 +8,8 @@ import Download from './download.svg'
 import Github from './github.svg'
 import Menu from './menu.svg'
 import Search from './search.svg'
+
+import styles from './Toolbar.module.css'
 
 const debounce = (func, timeout = 300) => {
     let timer
@@ -49,29 +48,6 @@ export const Toolbar = ({ pdf, menuActive, menuOnClick }) => {
         }),
         [guideSuggestions]
     )
-
-    const useOutsideAlerter = (ref, ignoreRef) => {
-        useEffect(() => {
-            function handleClickOutside(event) {
-                if (
-                    ref.current &&
-                    !ref.current.contains(event.target) &&
-                    !ignoreRef?.current?.contains(event.target)
-                ) {
-                    setIsOpenSidePage(false)
-                }
-            }
-
-            document.addEventListener('mousedown', handleClickOutside)
-            return () => {
-                document.removeEventListener('mousedown', handleClickOutside)
-            }
-        }, [ignoreRef, ref])
-    }
-
-    const rootEl = useRef(null)
-    const toolbarRef = useRef(null)
-    useOutsideAlerter(rootEl, toolbarRef)
 
     useEffect(() => {
         if (isOpenSidePage) {
@@ -133,14 +109,12 @@ export const Toolbar = ({ pdf, menuActive, menuOnClick }) => {
                     </>
                 )}
             </div>
-            <React.Fragment ref={rootEl}>
-                <SidePage
-                    items={guideSuggestions}
-                    isClose={!isOpenSidePage}
-                    isLoading={isLoadingSuggestion}
-                    query={currentQuery}
-                />
-            </React.Fragment>
+            <SidePage
+                items={guideSuggestions}
+                isClose={!isOpenSidePage}
+                isLoading={isLoadingSuggestion}
+                query={currentQuery}
+            />
         </>
     )
 }
