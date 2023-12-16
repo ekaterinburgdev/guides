@@ -48,8 +48,6 @@
     transition: .15s ease;
 }
 
-
-.Toolbar__item_active,
 .Toolbar__item:hover {
     background: hsl(var(--color-hsl) / 70%);
     color: white;

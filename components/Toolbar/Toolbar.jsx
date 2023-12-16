@@ -100,7 +100,7 @@ export const Toolbar = ({ pdf, menuActive, menuOnClick }) => {
 
                             <button
                                 onClick={() => setIsOpenSidePage(false)}
-                                className={cn(styles.Toolbar__item, styles.Toolbar__item_active)}
+                                className={cn(styles.Toolbar__item)}
                             >
                                 <Close />
                             </button>
