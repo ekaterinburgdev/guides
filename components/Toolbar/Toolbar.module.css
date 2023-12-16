@@ -12,6 +12,8 @@
     border-radius: 64px;
     background: var(--color-bg-light);
     color: var(--color);
+    transform: scale(.8);
+    transform-origin: 100% 100%;
 }
 
 .Toolbar__input {
@@ -70,6 +72,12 @@
 
 .hidden {
     visibility: hidden;
+}
+
+@media screen and (min-width: 601px) {
+    .Toolbar {
+        transform: scale(1);
+    }
 }
 
 @media print {
