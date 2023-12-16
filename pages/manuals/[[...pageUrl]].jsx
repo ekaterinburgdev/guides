@@ -8,7 +8,6 @@ import tp from '../../utils/typograf/typograf.config'
 import getManualToc from '../../utils/getManualToc'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 import { Toolbar } from '../../components/Toolbar/Toolbar'
-import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu'
 
 import styles from './page.module.css'
 import { CSSVarsColors } from '../../components/CSSVarsColors/CSSVarsColors'
@@ -94,7 +93,6 @@ function GetPage({
         <>
             <CSSVarsColors color={catalogColor} />
             <div style={{ counterReset: `page-chapter ${pageIndex}` }}>
-                <HamburgerMenu state={isOpen} changeState={setIsOpen} />
                 <TocStateContext.Provider value={{ isOpen, setIsOpen }}>
                     <TableOfContents
                         tableOfContentArr={manualToc}
