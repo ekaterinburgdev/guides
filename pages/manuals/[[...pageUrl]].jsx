@@ -103,9 +103,11 @@ function GetPage({
                     <ManualPage
                         pageName={pageName}
                         pageList={pageList}
+                        currentPageUrl={pageUrl}
                         tableOfContentArr={manualToc}
                         nextPageIndex={nextPageIndex}
                         catalogIndex={catalogIndex}
+                        catalogTitle={catalogTitle}
                         pageUrl={pageUrl}
                         pageImage={pageImage}
                     />

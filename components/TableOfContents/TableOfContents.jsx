@@ -9,6 +9,7 @@ import { TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
 import styles from './TableOfContents.module.css'
 import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
 import { Ecosystem } from '../Ecosystem/Ecosystem'
+import { ManualTitle } from '../ManualTitle/ManualTitle'
 
 function InnerLink({ anchor, baseState, setState }) {
     const isDesktop = useMediaQuery({
@@ -107,18 +108,9 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
             </Head>
             <aside className={styles.TableOfContents__aside}>
                 <nav className={navClassName}>
-                    <Link href="/" className={styles.linkMainpage}>
-                        Все руководства
-                    </Link>
-                    <Link
-                        href={{
-                            pathname: '/[[...pageUrl]]',
-                            query: { pageUrl: [currentPageUrl[0]] },
-                        }}
-                        className={styles.catalogTitle}
-                    >
-                        {tpForAsideMenu.execute(catalogTitle)}
-                    </Link>
+                    <div className={cn(styles.tableOfContents__title)}>
+                        <ManualTitle pageUrl={currentPageUrl[0]} title={catalogTitle} />
+                    </div>
 
                     <ul className={styles.linkContainerList}>
                         {currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}

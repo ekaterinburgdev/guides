@@ -77,6 +77,10 @@
 }
 
 @media (min-width: 991px) {
+    .manualName {
+        display: none;
+    }
+
     .pageName {
         font-size: clamp(48px, 6vw, 56px);
     }
