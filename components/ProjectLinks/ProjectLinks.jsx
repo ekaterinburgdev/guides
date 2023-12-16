@@ -13,6 +13,7 @@ export function ProjectLinks() {
                 className={cn(styles.ProjectLinks__button, styles.ProjectLinks__button_about)}
                 href="https://github.com/ekaterinburgdev/guides"
                 target="_blank"
+                aria-label="Код проекта на GitHub"
             >
                 <Github />
             </a>
