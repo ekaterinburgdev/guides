@@ -1,0 +1,27 @@
+.ProjectLinks {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 8px;
+}
+
+.ProjectLinks__button {
+    display: inline-flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    font-weight: 400;
+    border-radius: 160px;
+}
+
+.ProjectLinks__button_about {
+    color: white;
+    background: black;
+}
+
+.ProjectLinks__button_feedback {
+    background: #ffd400;
+}

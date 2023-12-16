@@ -1,5 +1,6 @@
 @import 'normalize.css';
 @import 'variables.css';
+@import 'tally-widget.css';
 @import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 
 * {

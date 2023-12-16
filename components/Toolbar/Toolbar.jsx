@@ -69,6 +69,7 @@ export const Toolbar = ({ pdf, menuActive, menuOnClick }) => {
                                 <Download />
                             </a>
                         )}
+
                         <button
                             className={styles.Toolbar__item}
                             onClick={() => setIsOpenSidePage(true)}
