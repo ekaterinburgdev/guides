@@ -12,15 +12,12 @@ import { Ecosystem } from '../Ecosystem/Ecosystem'
 import { ManualTitle } from '../ManualTitle/ManualTitle'
 
 function InnerLink({ anchor, baseState, setState }) {
-    const isDesktop = useMediaQuery({
-        query: '(min-width: 991px)',
-    })
     return (
         <a
             className={cn(styles.innerTableOfContentsLink)}
             key={anchor.title}
             href={`#${anchor.id}`}
-            onClick={() => !isDesktop && setState(!baseState)}
+            onClick={() => setState(!baseState)}
         >
             <span>{tpForAsideMenu.execute(anchor.title[0])}</span>
         </a>

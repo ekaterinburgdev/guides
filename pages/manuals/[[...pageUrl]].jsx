@@ -28,12 +28,9 @@ function GetPage({
 }) {
     const router = useRouter()
     const { pageUrl } = router.query
-    const isDesktop = useMediaQuery({
-        query: '(min-width: 991px)',
-    })
 
     const [nextPageIndex, setNexPageIndex] = useState(null)
-    const [isOpen, setIsOpen] = useState(isDesktop)
+    const [isOpen, setIsOpen] = useState(false)
 
     const getColumnItem = (columnItem) => {
         const getLine = (columnList) => {
@@ -111,7 +108,7 @@ function GetPage({
                         pageUrl={pageUrl}
                         pageImage={pageImage}
                     />
-                    <Toolbar pdf={pagePdfUrl} />
+                    <Toolbar pdf={pagePdfUrl} menuActive={isOpen} menuOnClick={setIsOpen} />
                 </TocStateContext.Provider>
             </div>
         </>

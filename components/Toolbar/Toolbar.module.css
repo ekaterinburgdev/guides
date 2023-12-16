@@ -2,7 +2,7 @@
     position: fixed;
     right: 8px;
     bottom: 8px;
-    z-index: 4;
+    z-index: 12;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,11 +80,12 @@
     }
 }
 
-@media print {
-    .Toolbar__container {
+@media screen and (min-width: 991px) {
+    .Toolbar__item_menu {
         display: none;
     }
 }
+
 @media screen and (min-width: 1500px) {
     .Toolbar__input {
         width: 250px;
@@ -96,5 +97,11 @@
     .Toolbar__input {
         width: 344px;
         font-size: 22px;
+    }
+}
+
+@media print {
+    .Toolbar__container {
+        display: none;
     }
 }

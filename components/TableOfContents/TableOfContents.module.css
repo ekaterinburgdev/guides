@@ -16,39 +16,8 @@
     background-color: var(--color-bg-light);
 }
 
-.linkMainpage {
-    position: relative;
-    display: inline-block;
-    align-self: flex-start;
-    margin-top: 12px;
-    border-radius: 16px;
-    padding-top: 4px;
-    padding-left: 17px;
-    color: var(--color);
-    font-size: 14px;
-    font-weight: 500;
-    transition: .15s ease;
-    text-underline-offset: 4px;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    opacity: .55;
-    transition: .15s ease;
-}
-
-.linkMainpage:hover {
-    opacity: .8;
-}
-
-.linkMainpage:hover::after {
-    opacity: .375;
-}
-
-.linkMainpage::after {
-    content: '/';
-    position: absolute;
-    top: 4px;
-    right: -12px;
-    opacity: .6;
+.tableOfContents__title {
+    padding: 0 16px;
 }
 
 .link {
@@ -74,20 +43,6 @@
 
 .linkContainerList::-webkit-scrollbar {
     display: none;
-}
-
-.catalogTitle {
-    line-height: 1.2;
-    font-size: 24px;
-    font-weight: 500;
-    transition: 0.2s;
-    margin-top: 6px;
-    padding: 0 16px;
-    margin-bottom: 8px;
-    color: var(--color);
-    text-decoration-color: transparent;
-    text-underline-offset: 5.5px;
-    text-decoration-thickness: 2px;
 }
 
 .TableOfContents__divider {
@@ -256,18 +211,9 @@ html:has(.open) {
     display: flex;
 }
 
-@media screen and (min-width: 768px) {
-    .linkMainpage {
-        margin-top: 24px;
-    }
-}
-
 @media screen and (min-width: 991px) {
     .tableOfContents {
         border-radius: 17px;
-    }
-
-    .tableOfContents {
         margin: 8px;
         display: flex;
         flex-direction: column;
@@ -277,6 +223,10 @@ html:has(.open) {
         overflow: auto;
         scrollbar-width: none;
         padding: 0px 11px 11px 9px;
+    }
+
+    .tableOfContents__title {
+        display: block;
     }
 }
 
