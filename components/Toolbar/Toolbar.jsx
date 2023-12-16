@@ -1,8 +1,16 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 
+import cn from 'classnames'
+
 import styles from './Toolbar.module.css'
 import { SidePage } from '../SidePage/SidePage'
 import { API_HOST } from '../../consts/endpoints'
+
+import Close from './close.svg'
+import Download from './download.svg'
+import Github from './github.svg'
+import Menu from './menu.svg'
+import Search from './search.svg'
 
 const debounce = (func, timeout = 300) => {
     let timer
@@ -14,7 +22,7 @@ const debounce = (func, timeout = 300) => {
     }
 }
 
-export const Toolbar = ({ pdfUrl, isMain }) => {
+export const Toolbar = ({ pdf }) => {
     const [isOpenSidePage, setIsOpenSidePage] = useState(false)
     const [isLoadingSuggestion, setIsLoadingSuggestion] = useState(false)
     const [currentQuery, setCurrentQuery] = useState('')
@@ -73,62 +81,29 @@ export const Toolbar = ({ pdfUrl, isMain }) => {
 
     return (
         <>
-            <section
-                ref={toolbarRef}
-                style={{
-                    borderRadius: isMain ? (isOpenSidePage ? '200px' : '50%') : '',
-                    aspectRatio: isMain ? (!isOpenSidePage ? '1 / 1' : '') : '',
-                }}
-                className={styles.Toolbar}
-            >
+            <div ref={toolbarRef} className={styles.Toolbar}>
                 {!isOpenSidePage ? (
-                    <div>
-                        {pdfUrl && (
-                            <a className={styles.Toolbar__button} href={pdfUrl} target="_blank">
-                                <svg
-                                    width="40"
-                                    height="40"
-                                    viewBox="0 0 70 70"
-                                    fill="transparent"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path d="M52 53H18" strokeWidth="6" />
-                                    <path d="M35 12V45" strokeWidth="6" />
-                                    <path d="M50 31L35 46L20 31" strokeWidth="6" />
-                                </svg>
+                    <>
+                        {pdf && (
+                            <a
+                                className={styles.Toolbar__item}
+                                href={pdf}
+                                target="_blank"
+                                aria-label="Скачать .pdf"
+                            >
+                                <Download />
                             </a>
                         )}
                         <button
-                            className={styles.Toolbar__button}
-                            onClick={() => {
-                                setIsOpenSidePage((prev) => !prev)
-                            }}
+                            className={styles.Toolbar__item}
+                            onClick={() => setIsOpenSidePage(true)}
                         >
-                            <svg
-                                width="40"
-                                height="40"
-                                viewBox="0 0 70 70"
-                                fill="transparent"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <circle cx="30.501" cy="30.4995" r="14.5" strokeWidth="6" />
-                                <path d="M40.001 39.4995L54.501 53.9995" strokeWidth="6" />
-                            </svg>
+                            <Search />
                         </button>
-                    </div>
+                    </>
                 ) : (
                     <>
-                        <svg
-                            width="40"
-                            height="40"
-                            viewBox="0 0 70 70"
-                            fill="transparent"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className={styles.Toolbar__searchIcon}
-                        >
-                            <circle cx="30.501" cy="30.4995" r="14.5" strokeWidth="6" />
-                            <path d="M40.001 39.4995L54.501 53.9995" strokeWidth="6" />
-                        </svg>
+                        <Search />
                         <div className={styles.customInput}>
                             <input
                                 type="text"
@@ -140,32 +115,23 @@ export const Toolbar = ({ pdfUrl, isMain }) => {
                             />
 
                             <button
-                                onClick={() => setIsOpenSidePage(!isOpenSidePage)}
-                                className={styles.Toolbar__closeButton}
+                                onClick={() => setIsOpenSidePage(false)}
+                                className={cn(styles.Toolbar__item, styles.Toolbar__item_active)}
                             >
-                                <svg
-                                    width="40"
-                                    height="40"
-                                    viewBox="0 0 70 70"
-                                    fill="transparent"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path d="M18 18L51.9995 51.9995" strokeWidth="6" />
-                                    <path d="M52 18L18.0005 51.9995" strokeWidth="6" />
-                                </svg>
+                                <Close />
                             </button>
                         </div>
                     </>
                 )}
-            </section>
-            <div ref={rootEl}>
+            </div>
+            <React.Fragment ref={rootEl}>
                 <SidePage
                     items={guideSuggestions}
                     isClose={!isOpenSidePage}
                     isLoading={isLoadingSuggestion}
                     query={currentQuery}
                 />
-            </div>
+            </React.Fragment>
         </>
     )
 }
