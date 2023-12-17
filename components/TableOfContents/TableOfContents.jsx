@@ -2,24 +2,21 @@ import React, { useEffect, useContext, Fragment } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import cn from 'classnames'
-import { useMediaQuery } from 'react-responsive'
 import scrollIntoView from 'scroll-into-view-if-needed'
 
 import { TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
 import styles from './TableOfContents.module.css'
 import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
 import { Ecosystem } from '../Ecosystem/Ecosystem'
+import { ManualTitle } from '../ManualTitle/ManualTitle'
 
 function InnerLink({ anchor, baseState, setState }) {
-    const isDesktop = useMediaQuery({
-        query: '(min-width: 991px)',
-    })
     return (
         <a
             className={cn(styles.innerTableOfContentsLink)}
             key={anchor.title}
             href={`#${anchor.id}`}
-            onClick={() => !isDesktop && setState(!baseState)}
+            onClick={() => setState(!baseState)}
         >
             <span>{tpForAsideMenu.execute(anchor.title[0])}</span>
         </a>
@@ -107,18 +104,9 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
             </Head>
             <aside className={styles.TableOfContents__aside}>
                 <nav className={navClassName}>
-                    <Link href="/" className={styles.linkMainpage}>
-                        Все руководства
-                    </Link>
-                    <Link
-                        href={{
-                            pathname: '/[[...pageUrl]]',
-                            query: { pageUrl: [currentPageUrl[0]] },
-                        }}
-                        className={styles.catalogTitle}
-                    >
-                        {tpForAsideMenu.execute(catalogTitle)}
-                    </Link>
+                    <div className={cn(styles.tableOfContents__title)}>
+                        <ManualTitle pageUrl={currentPageUrl[0]} title={catalogTitle} />
+                    </div>
 
                     <ul className={styles.linkContainerList}>
                         {currentPageUrl && tableOfContentArr.map((obj) => tableOfContentsLink(obj))}

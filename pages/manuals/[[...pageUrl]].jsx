@@ -1,17 +1,16 @@
 import React, { useEffect, useState, createContext } from 'react'
 import { useRouter } from 'next/router'
-import { useMediaQuery } from 'react-responsive'
 import { getTree, getPage } from '../../api/apiPage'
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
 import tp from '../../utils/typograf/typograf.config'
 import getManualToc from '../../utils/getManualToc'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
-import { PageToolbar } from '../../components/Toolbar/PageToolbar'
-import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu'
+import { Toolbar } from '../../components/Toolbar/Toolbar'
+
+import { CSSVarsColors } from '../../components/CSSVarsColors/CSSVarsColors'
 
 import styles from './page.module.css'
-import { CSSVarsColors } from '../../components/CSSVarsColors/CSSVarsColors'
 
 export const PageContext = createContext(null)
 export const TocStateContext = createContext(null)
@@ -29,12 +28,9 @@ function GetPage({
 }) {
     const router = useRouter()
     const { pageUrl } = router.query
-    const isDesktop = useMediaQuery({
-        query: '(min-width: 991px)',
-    })
 
     const [nextPageIndex, setNexPageIndex] = useState(null)
-    const [isOpen, setIsOpen] = useState(isDesktop)
+    const [isOpen, setIsOpen] = useState(false)
 
     const getColumnItem = (columnItem) => {
         const getLine = (columnList) => {
@@ -94,7 +90,6 @@ function GetPage({
         <>
             <CSSVarsColors color={catalogColor} />
             <div style={{ counterReset: `page-chapter ${pageIndex}` }}>
-                <HamburgerMenu state={isOpen} changeState={setIsOpen} />
                 <TocStateContext.Provider value={{ isOpen, setIsOpen }}>
                     <TableOfContents
                         tableOfContentArr={manualToc}
@@ -105,13 +100,15 @@ function GetPage({
                     <ManualPage
                         pageName={pageName}
                         pageList={pageList}
+                        currentPageUrl={pageUrl}
                         tableOfContentArr={manualToc}
                         nextPageIndex={nextPageIndex}
                         catalogIndex={catalogIndex}
+                        catalogTitle={catalogTitle}
                         pageUrl={pageUrl}
                         pageImage={pageImage}
                     />
-                    <PageToolbar pagePdfUrl={pagePdfUrl} />
+                    <Toolbar pdf={pagePdfUrl} menuActive={isOpen} menuOnClick={setIsOpen} />
                 </TocStateContext.Provider>
             </div>
         </>

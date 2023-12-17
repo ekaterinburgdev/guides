@@ -7,10 +7,6 @@
     overflow: auto;
 }
 
-.SidePage__close {
-    visibility: hidden;
-}
-
 @media screen and (min-width: 1500px) {
     .SidePage__container {
         width: max(410px, var(--sidebar-width));

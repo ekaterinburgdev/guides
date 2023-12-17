@@ -1,0 +1,49 @@
+.ManualTitle {
+    display: flex;
+    flex-direction: column;
+}
+
+.ManualTitle__mainpage {
+    position: relative;
+    align-self: flex-start;
+    border-radius: 16px;
+    padding-top: 4px;
+    color: var(--color);
+    font-size: 14px;
+    font-weight: 500;
+    transition: .15s ease;
+    text-underline-offset: 4px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    opacity: .55;
+    transition: .15s ease;
+}
+
+.ManualTitle__mainpage:hover {
+    opacity: .8;
+}
+
+.ManualTitle__mainpage:hover::after {
+    opacity: .375;
+}
+
+.ManualTitle__mainpage::after {
+    content: '/';
+    position: absolute;
+    top: 4px;
+    right: -12px;
+    opacity: .6;
+}
+
+.ManualTitle__caption {
+    line-height: 1.2;
+    font-size: 24px;
+    font-weight: 500;
+    transition: 0.2s;
+    margin-top: 6px;
+    margin-bottom: 8px;
+    color: var(--color);
+    text-decoration-color: transparent;
+    text-underline-offset: 5.5px;
+    text-decoration-thickness: 2px;
+}

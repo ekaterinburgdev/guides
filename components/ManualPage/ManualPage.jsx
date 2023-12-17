@@ -18,6 +18,7 @@ import { API_HOST } from '../../consts/endpoints'
 import GuideImage from '../NotionTypes/GuideImage/GuideImage'
 import { Callout } from '../NotionTypes/Callout/Callout'
 import { Iframe } from '../NotionTypes/Iframe/Iframe'
+import { ManualTitle } from '../ManualTitle/ManualTitle'
 
 function ManualPage({
     pageName,
@@ -26,6 +27,8 @@ function ManualPage({
     pageUrl,
     nextPageIndex,
     catalogIndex,
+    catalogTitle,
+    currentPageUrl,
     pageImage,
 }) {
     const getLine = (columnList) => {
@@ -118,6 +121,9 @@ function ManualPage({
                         />
                     </div>
                 )}
+                <div className={styles.manualName}>
+                    <ManualTitle title={catalogTitle} pageUrl={currentPageUrl[0]} />
+                </div>
                 <h1 className={styles.pageName}>{tp.execute(pageName)}</h1>
                 {pageList.map((cl) => (
                     <Fragment key={cl.id}>{getColumnItem(cl)}</Fragment>

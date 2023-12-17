@@ -1,25 +1,26 @@
 .Toolbar {
-    height: 76px;
     position: fixed;
-    bottom: 8px;
     right: 8px;
+    bottom: 8px;
+    z-index: 12;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 200px;
-    z-index: 3;
     overflow: hidden;
+    padding: 8px 10px;
+    border-radius: 64px;
     background: var(--color-bg-light);
+    color: var(--color);
+    transform-origin: 100% 100%;
 }
 
 .Toolbar__input {
-    outline: 0;
-    border: 0;
     flex: 1;
-    font-size: 20px;
-    width: 180px;
+    border: 0;
     background-color: transparent;
     color: var(--color);
+    outline: 0;
+    font-size: 20px;
 }
 
 .Toolbar__input::placeholder {
@@ -33,47 +34,31 @@
     align-items: center;
 }
 
-.Toolbar__searchIcon {
-    margin: 1.5em 0.25em 1.5em 1.25em;
-}
-
-.Toolbar__button {
-    display: inline-block;
+.Toolbar__item {
+    padding: 4px;
+    margin: 0 -2px;
+    border: 0;
+    border-radius: 50%;
     background: transparent;
-    border: 0;
-    outline-width: 0;
+    color: var(--color);
     outline: none;
-    padding: 1.5em;
-    margin: 0 -2.25em 0 0;
-    cursor: pointer;
-    transition: 0.15s ease filter;
-}
-
-.Toolbar__button:last-child {
-    margin: 0;
-}
-
-.Toolbar__button:hover {
-    filter: brightness(0.5);
-}
-
-.Toolbar__button:focus-visible svg {
-    box-shadow: inset 0 0 0 2px black;
-}
-
-.Toolbar__closeButton {
-    border: 0;
     outline-width: 0;
+    font-size: 0;
     cursor: pointer;
-    background-color: inherit;
-    padding: 1.5em;
+    transition: .15s ease;
 }
 
-.Toolbar__closeButton:hover {
-    filter: brightness(0.5);
+.Toolbar__item:hover {
+    background: hsl(var(--color-hsl) / 70%);
+    color: white;
 }
 
-.Toolbar__closeButton:focus-visible svg {
+.Toolbar__item:active {
+    background: hsl(var(--color-hsl) / 90%);
+    color: white;
+}
+
+.Toolbar__item:focus-visible svg {
     box-shadow: inset 0 0 0 2px black;
 }
 
@@ -81,27 +66,34 @@
     visibility: hidden;
 }
 
-/* Repaint icons */
-.Toolbar path,
-.Toolbar circle {
-    stroke: var(--color);
+@media screen and (min-width: 601px) {
+    .Toolbar {
+        transform: scale(1);
+    }
 }
 
-@media print {
-    .Toolbar__container {
+@media screen and (min-width: 991px) {
+    .Toolbar__item_menu {
         display: none;
     }
 }
+
 @media screen and (min-width: 1500px) {
     .Toolbar__input {
-        font-size: 22px;
         width: 250px;
+        font-size: 22px;
     }
 }
 
 @media screen and (min-width: 1900px) {
     .Toolbar__input {
-        font-size: 22px;
         width: 344px;
+        font-size: 22px;
+    }
+}
+
+@media print {
+    .Toolbar__container {
+        display: none;
     }
 }
