@@ -31,7 +31,6 @@ export default function MainPage({ pageTitle, manualsPreview }) {
                 </section>
 
                 <Ecosystem />
-                <Toolbar />
                 <ProjectLinks />
             </main>
         </>

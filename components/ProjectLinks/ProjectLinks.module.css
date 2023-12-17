@@ -1,7 +1,7 @@
 .ProjectLinks {
     position: fixed;
-    top: 2px;
     right: 2px;
+    bottom: 2px;
     display: none;
     gap: 8px;
     padding: 6px;

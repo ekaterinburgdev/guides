@@ -110,7 +110,6 @@ function GetPage({
                         pageImage={pageImage}
                     />
                     <Toolbar pdf={pagePdfUrl} menuActive={isOpen} menuOnClick={setIsOpen} />
-                    <ProjectLinks />
                 </TocStateContext.Provider>
             </div>
         </>
