@@ -1,7 +1,7 @@
 .ul {
     margin: 1.5vw auto;
     padding-left: 30px;
-    font-size: clamp(14px, 1.8vw, 18px);
+    font-size: 14px;
     line-height: 1.4;
     color: #1e2841;
     opacity: .9;
@@ -22,4 +22,10 @@
 
 h3 + .ul {
     margin-top: .5vw;
+}
+
+@media screen and (min-width: 991px) {
+    .ul {
+        font-size: clamp(14px, 1.8vw, 18px);
+    }
 }

@@ -1,7 +1,7 @@
 .ol {
     margin: 1.5vw auto;
     padding-left: 30px;
-    font-size: clamp(14px, 1.8vw, 18px);
+    font-size: 14px;
     line-height: 1.4;
     color: #1e2841;
     opacity: 0.9;
@@ -20,4 +20,10 @@
     width: 1.5em;
     margin-left: -1.5em;
     opacity: 0.5;
+}
+
+@media screen and (min-width: 991px) {
+    .ol {
+        font-size: clamp(14px, 1.8vw, 18px);
+    }
 }
