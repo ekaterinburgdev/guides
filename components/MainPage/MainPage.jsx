@@ -9,6 +9,7 @@ import { Toolbar } from '../Toolbar/Toolbar'
 import mainPageLogo from './logo.svg?url'
 
 import styles from './MainPage.module.css'
+import { ProjectLinks } from '../ProjectLinks/ProjectLinks'
 
 export default function MainPage({ pageTitle, manualsPreview }) {
     return (
@@ -28,8 +29,9 @@ export default function MainPage({ pageTitle, manualsPreview }) {
                         />
                     ))}
                 </section>
+
                 <Ecosystem />
-                <Toolbar />
+                <ProjectLinks />
             </main>
         </>
     )
