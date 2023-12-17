@@ -1,0 +1,6 @@
+@media print {
+    body {
+        margin: 0 .6cm 0 .6cm;
+        padding: 3mm 0
+    }
+}
