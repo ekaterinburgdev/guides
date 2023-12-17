@@ -34,13 +34,13 @@
     }
 }
 
-@media (min-width: 400px) {
+@media screen and (min-width: 400px) {
     .templateColumn {
         padding-right: 24px;
     }
 }
 
-@media (min-width: 991px) {
+@media screen and (min-width: 991px) {
     .templateColumn {
         padding-left: calc(var(--sidebar-width) + var(--sidebar-spacer));
         padding-right: 16px;
