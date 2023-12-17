@@ -1,3 +1,9 @@
 @page {
     margin: 2cm;
 }
+
+@media print {
+    body {
+        color: black;
+    }
+}

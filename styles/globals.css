@@ -23,6 +23,7 @@ html {
 body {
     overflow-x: hidden;
     font-weight: 300;
+    color: var(--color-text);
 }
 
 a {

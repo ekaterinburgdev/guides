@@ -7,11 +7,12 @@
     --color: hsl(var(--color-hsl));
 
     /* Text colors */
-    --color-text-blue: rgb(51, 126, 169);
-    --color-text-yellow: rgb(203, 145, 47);
-    --color-text-red: rgb(212, 76, 71);
-    --color-text-green: rgb(68, 131, 97);
-    --color-text-gray: rgb(120, 119, 116);
+    --color-text: #1e2841;
+    --color-text-blue: #337ea9;
+    --color-text-yellow: #cb912f;
+    --color-text-red: #d44c47;
+    --color-text-green: #448361;
+    --color-text-gray: #787774;
 
     /* Common colors */
     --color-underline: hsl(var(--color-hsl) / 20%);
