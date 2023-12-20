@@ -7,7 +7,7 @@ export default function TeamPerson(person) {
     const { link } = person
     return link ? (
         <a
-            className={cn('TeamPerson', 'TeamPerson_link')}
+            className={cn(styles.TeamPerson, styles.TeamPerson__link)}
             href={link}
             target="_blank"
             rel="noopener noreferrer nofollow"
@@ -15,7 +15,7 @@ export default function TeamPerson(person) {
             <TeamPersonInner {...person} />
         </a>
     ) : (
-        <div className={cn('TeamPerson')}>
+        <div className={cn(styles.TeamPerson)}>
             <TeamPersonInner {...person} />
         </div>
     )

@@ -7,7 +7,11 @@
     text-decoration: none;
 }
 
-.TeamPerson_link .TeamPerson__name span {
+.TeamPerson__link {
+    text-decoration: none;
+}
+
+.TeamPerson__link .TeamPerson__name span {
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-color: var(--color-underline);
@@ -15,12 +19,12 @@
 }
 
 
-.TeamPerson_link:hover .TeamPerson__name span {
+.TeamPerson__link:hover .TeamPerson__name span {
     display: inline;
     text-decoration-color: var(--color-underline-hover);
 }
 
-.TeamPerson_link .TeamPerson__name {
+.TeamPerson__link .TeamPerson__name {
     margin-bottom: 0.45em;
 }
 
