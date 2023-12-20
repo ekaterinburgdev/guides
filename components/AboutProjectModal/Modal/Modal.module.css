@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     border: 0;
+    background: transparent;
     color: var(--color-text);
     animation: .2s ease-in-out fadeIn;
 }
@@ -14,9 +15,42 @@
     background: rgba(12, 27, 39, .2);
 }
 
-.ModalTitle {
-    margin: 0;
-    padding: 32px 24px 8px;
+.ModalInner {
+    background: white;
+}
+
+/* Scrollbar FF */
+@supports (scrollbar-width: thin) {
+    .ModalInner {
+        overflow-y: auto;
+        padding-right: 8px;
+        scrollbar-color: #949494 transparent;
+        scrollbar-width: thin;
+    }
+}
+
+/* Scrollbar Safari, Chrome */
+@supports not (scrollbar-width: thin) {
+    .ModalInner {
+        overflow-y: scroll;
+        padding-right: 0;
+    }
+
+    .ModalInner::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .ModalInner::-webkit-scrollbar-thumb {
+        border-radius: 16px;
+    }
+
+    .ModalInner:hover::-webkit-scrollbar-thumb {
+        background: #949494;
+    }
+
+    .ModalInner::-webkit-scrollbar-thumb:active {
+        background: #737373;
+    }
 }
 
 .ModalContent {
@@ -27,12 +61,14 @@
 
 .ModalContent h2 {
     margin: 32px 0;
+    font-weight: 500;
     font-size: 48px;
     line-height: 1.08;
 }
 
 .ModalContent h3 {
-    margin: 32px 0 24px;
+    margin: 32px 0 16px;
+    font-weight: 500;
     font-size: 32px;
     line-height: 1.125;
 }
@@ -78,22 +114,21 @@
         width: 100%;
         max-width: 642px;
         min-height: auto;
-        max-height: calc(100vh - 112px);
         margin: 60px auto;
-        border-radius: 16px;
     }
 
     .ModalInner {
         overflow: auto;
         max-height: inherit;
+        border-radius: 16px;
     }
 
     .ModalTitle {
         padding: 40px 48px 8px;
     }
-    
+
     .ModalContent {
-        padding: 28px 40px;
+        padding: 28px 36px 28px 40px;
     }
 }
 
