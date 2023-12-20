@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getNotionColor } from './colors'
+import { getNotionColor } from './getNotionColor'
 
 import t from './typograf'
 
