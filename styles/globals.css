@@ -20,6 +20,12 @@ html {
     }
 }
 
+/* Remove scrollbar when modal open */
+html:has(dialog[open]) {
+    overflow-y: hidden;
+    scrollbar-gutter: stable;
+}
+
 body {
     overflow-x: hidden;
     font-weight: 300;

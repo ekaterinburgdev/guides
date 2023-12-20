@@ -7,9 +7,9 @@ import logo from './logo.svg?url'
 
 import styles from './Logo.module.css'
 
-export function Logo() {
+export function Logo({ small }) {
     return (
-        <div className={cn(styles.Logo)}>
+        <div className={cn(styles.Logo, { [styles.Logo_small]: small })}>
             <Image className={styles.LogoImage} src={logo} alt="" />
             <span className={styles.LogoCaption}>
                 Руководства

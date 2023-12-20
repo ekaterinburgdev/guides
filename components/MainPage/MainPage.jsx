@@ -1,12 +1,15 @@
-import React from 'react'
-import { Logo } from '../Logo/Logo'
+import React, { useState } from 'react'
 import ManualPreview from '../ManualPreview/ManualPreview'
 import { ProjectLinks } from '../ProjectLinks/ProjectLinks'
+import { AboutProjectModal } from '../AboutProjectModal/AboutProjectModal'
 import { Ecosystem } from '../Ecosystem/Ecosystem'
+import { Logo } from '../Logo/Logo'
 
 import styles from './MainPage.module.css'
 
 export default function MainPage({ manualsPreview }) {
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
     return (
         <>
             <main className={styles.mainPage}>
@@ -23,7 +26,8 @@ export default function MainPage({ manualsPreview }) {
                 </section>
 
                 <Ecosystem />
-                <ProjectLinks />
+                <ProjectLinks onClickAboutProjects={() => setIsModalOpen(true)} />
+                <AboutProjectModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
             </main>
         </>
     )

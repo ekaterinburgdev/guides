@@ -1,0 +1,86 @@
+.TeamPerson {
+    margin: 0;
+    padding: 0;
+}
+
+.TeamPerson {
+    text-decoration: none;
+}
+
+.TeamPerson__link {
+    text-decoration: none;
+}
+
+.TeamPerson__link .TeamPerson__name span {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--color-underline);
+    transition: .15s ease box-shadow;
+}
+
+
+.TeamPerson__link:hover .TeamPerson__name span {
+    display: inline;
+    text-decoration-color: var(--color-underline-hover);
+}
+
+.TeamPerson__link .TeamPerson__name {
+    margin-bottom: 0.45em;
+}
+
+.TeamPerson__inner {
+    margin: 0;
+    padding: 0;
+    transition: .15s ease transform;
+    transform: scale(1) translateZ(0);
+}
+
+.TeamPerson:hover .TeamPerson__inner {
+    transform: scale(1.11) translateZ(0);
+    transform-origin: center;
+}
+
+.TeamPerson__photo {
+    position: relative;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.TeamPerson__photo::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+}
+
+.TeamPerson__photo img {
+    position: absolute;
+    object-fit: cover;
+    object-position: center top;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.TeamPerson__name,
+.TeamPerson__caption {
+    font-size: clamp(14px, 1vw, 16px);
+    line-height: 1.2;
+}
+
+.TeamPerson__name {
+    margin-top: .4em;
+    margin-bottom: .2em;
+    transition: .15s ease color;
+}
+
+.TeamPerson__role {
+    color: #757575;
+    line-height: 1.2;
+}
+
+.TeamPerson__role::first-letter {
+    text-transform: lowercase;
+}

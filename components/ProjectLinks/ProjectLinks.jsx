@@ -5,7 +5,7 @@ import Github from './github.svg'
 
 import styles from './ProjectLinks.module.css'
 
-export function ProjectLinks() {
+export function ProjectLinks({ onClickAboutProjects }) {
     return (
         <div className={cn(styles.ProjectLinks)}>
             <a
@@ -16,6 +16,7 @@ export function ProjectLinks() {
             >
                 <Github />
             </a>
+            <Button onClick={onClickAboutProjects}>О проекте</Button>
             <Button
                 type="secondary"
                 link="https://tally.so#tally-open=w5ZYXd&tally-width=650&tally-overlay=1&tally-emoji-animation=none"

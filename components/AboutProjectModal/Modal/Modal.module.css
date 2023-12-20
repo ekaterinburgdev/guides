@@ -1,0 +1,145 @@
+.Modal {
+    width: 100%;
+    max-width: none;
+    min-height: 100%;
+    max-height: calc(100vh - 120px);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    animation: .2s ease-in-out fadeIn;
+}
+
+.Modal::backdrop {
+    background: rgba(12, 27, 39, .2);
+}
+
+.ModalInner {
+    background: white;
+}
+
+/* Scrollbar FF */
+@supports (scrollbar-width: thin) {
+    .ModalInner {
+        overflow-y: auto;
+        padding-right: 8px;
+        scrollbar-color: #949494 transparent;
+        scrollbar-width: thin;
+    }
+}
+
+/* Scrollbar Safari, Chrome */
+@supports not (scrollbar-width: thin) {
+    .ModalInner {
+        overflow-y: scroll;
+        padding-right: 0;
+    }
+
+    .ModalInner::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .ModalInner::-webkit-scrollbar-thumb {
+        border-radius: 16px;
+    }
+
+    .ModalInner:hover::-webkit-scrollbar-thumb {
+        background: #949494;
+    }
+
+    .ModalInner::-webkit-scrollbar-thumb:active {
+        background: #737373;
+    }
+}
+
+.ModalContent {
+    padding: 24px;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.ModalContent h2 {
+    margin: 32px 0;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 1.08;
+}
+
+.ModalContent h3 {
+    margin: 32px 0 16px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.125;
+}
+
+.ModalContent a svg {
+    vertical-align: -0.2em;
+    margin-right: 0.25em;
+    margin-left: 0.2em;
+}
+
+.ModalClose {
+    position: sticky;
+    top: 0;
+    float: right;
+    padding: 22px;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: .15s ease;
+}
+
+@media (hover) {
+    .ModalClose:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+        color: rgba(0, 0, 0, 0.75);
+    }
+}
+
+.ModalClose:active {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: rgba(0, 0, 0, 1);
+}
+
+.ModalClose svg {
+    width: 18px;
+    height: 18px;
+}
+
+@media screen and (min-width: 991px) {
+    .Modal {
+        width: 100%;
+        max-width: 642px;
+        min-height: auto;
+        margin: 60px auto;
+    }
+
+    .ModalInner {
+        overflow: auto;
+        max-height: inherit;
+        border-radius: 16px;
+    }
+
+    .ModalTitle {
+        padding: 40px 48px 8px;
+    }
+
+    .ModalContent {
+        padding: 28px 36px 28px 40px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-24px) translateZ(0);
+    }
+
+    top {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
