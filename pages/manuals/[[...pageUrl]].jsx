@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { getTree, getPage } from '../../api/apiPage'
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 import ManualPage from '../../components/ManualPage/ManualPage'
-import tp from '../../utils/typograf/typograf.config'
+import t from '../../utils/typograf'
 import getManualToc from '../../utils/getManualToc'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 import { Toolbar } from '../../components/Toolbar/Toolbar'
@@ -43,7 +43,7 @@ function GetPage({
 
         const getTextContent = (item) =>
             item.content.text.map((par) => {
-                const textContent = tp.execute(par?.text?.content)
+                const textContent = t(par?.text?.content)
                 if (!textContent) {
                     return
                 }

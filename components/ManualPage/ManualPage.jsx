@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react'
+import t from '../../utils/typograf'
 import Image from 'next/image'
-
-import styles from './ManualPage.module.css'
-import tp from '../../utils/typograf/typograf.config'
 import { H1, H2, H3 } from '../NotionTypes/Headings/Headings'
 import Bookmark from '../NotionTypes/Bookmark/Bookmark'
 import UnorderedList from '../NotionTypes/Lists/Unordered/Unordered'
@@ -19,6 +17,8 @@ import GuideImage from '../NotionTypes/GuideImage/GuideImage'
 import { Callout } from '../NotionTypes/Callout/Callout'
 import { Iframe } from '../NotionTypes/Iframe/Iframe'
 import { ManualTitle } from '../ManualTitle/ManualTitle'
+
+import styles from './ManualPage.module.css'
 
 function ManualPage({
     pageName,
@@ -124,7 +124,7 @@ function ManualPage({
                 <div className={styles.manualName}>
                     <ManualTitle title={catalogTitle} pageUrl={currentPageUrl[0]} />
                 </div>
-                <h1 className={styles.pageName}>{tp.execute(pageName)}</h1>
+                <h1 className={styles.pageName}>{t(pageName)}</h1>
                 {pageList.map((cl) => (
                     <Fragment key={cl.id}>{getColumnItem(cl)}</Fragment>
                 ))}

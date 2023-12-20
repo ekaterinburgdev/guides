@@ -1,7 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
-import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
-
+import { tUI } from '../../utils/typograf'
 import Link from 'next/link'
 
 import styles from './ManualTitle.module.css'
@@ -19,7 +18,7 @@ export function ManualTitle({ title, pageUrl }) {
                 }}
                 className={cn(styles.ManualTitle__caption)}
             >
-                {tpForAsideMenu.execute(title)}
+                {tUI(title)}
             </Link>
         </div>
     )

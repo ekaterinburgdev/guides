@@ -1,14 +1,14 @@
 import React, { useEffect, useContext, Fragment } from 'react'
+import cn from 'classnames'
 import Link from 'next/link'
 import Head from 'next/head'
-import cn from 'classnames'
+import { tUI } from '../../utils/typograf'
 import scrollIntoView from 'scroll-into-view-if-needed'
-
 import { TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
-import styles from './TableOfContents.module.css'
-import { tpForAsideMenu } from '../../utils/typograf/typograf.config'
 import { Ecosystem } from '../Ecosystem/Ecosystem'
 import { ManualTitle } from '../ManualTitle/ManualTitle'
+
+import styles from './TableOfContents.module.css'
 
 function InnerLink({ anchor, baseState, setState }) {
     return (
@@ -18,7 +18,7 @@ function InnerLink({ anchor, baseState, setState }) {
             href={`#${anchor.id}`}
             onClick={() => setState(!baseState)}
         >
-            <span>{tpForAsideMenu.execute(anchor.title[0])}</span>
+            <span>{tUI(anchor.title[0])}</span>
         </a>
     )
 }
@@ -67,7 +67,7 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     <span className={styles.linkNumber}>{order}.&nbsp;</span>
-                    {tpForAsideMenu.execute(title)}
+                    {tUI(title)}
                 </Link>
                 {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
                     <hr className={styles.separator} />
