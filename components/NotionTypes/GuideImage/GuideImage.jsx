@@ -3,10 +3,9 @@ import Image from 'next/image'
 import classNames from 'classnames'
 import Lightbox from 'yet-another-react-lightbox'
 import { API_HOST } from '../../../consts/endpoints'
-import { lightboxOptions } from '../../../consts/lightboxOptions'
-
-import 'yet-another-react-lightbox/styles.css'
+import { lightboxOptions } from './lightboxOptions'
 import styles from '../../ManualPage/ManualPage.module.css'
+import 'yet-another-react-lightbox/styles.css'
 
 function GuideImage({ notionType }) {
     const cn = classNames(styles.Manual__image, {
