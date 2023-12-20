@@ -1,5 +1,4 @@
-import tp from './typograf/typograf.config'
-
+import t from './typograf'
 import { MANUALS_HIDDEN } from '../consts/manuals'
 import { API_HOST } from '../consts/endpoints'
 
@@ -27,8 +26,8 @@ function parseManualsPreview(tree) {
             } = manualData.properties
 
             return {
-                title: tp.execute(Name?.title[0]?.text?.content || ''),
-                subtitle: tp.execute(subtitle?.rich_text[0]?.plain_text || ''),
+                title: t(Name?.title[0]?.text?.content || ''),
+                subtitle: t(subtitle?.rich_text[0]?.plain_text || ''),
                 pageUrl: pageUrl?.url || null,
                 color: color?.rich_text[0]?.plain_text || null,
                 status: status?.select?.name || null,

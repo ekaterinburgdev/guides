@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
-import tp from '../../utils/typograf/typograf.config'
+import t from '../../utils/typograf'
 
 import styles from './arrow.module.css'
 
@@ -28,7 +28,7 @@ export function ArrowNavLink({ nextPageIndex, tableOfContentArr, pageUrl, catalo
 
             <br />
 
-            <span className={cn(styles.arrowNavLinkNextText)}>{tp.execute(title)}</span>
+            <span className={cn(styles.arrowNavLinkNextText)}>{t(title)}</span>
         </Link>
     )
 }

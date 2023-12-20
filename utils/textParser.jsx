@@ -2,11 +2,11 @@ import React from 'react'
 
 import { getNotionColor } from './colors'
 
-import tp from './typograf/typograf.config'
+import t from './typograf'
 
 export const getHeaderContent = (item) =>
     item.content.text.map((par) => {
-        const textContent = tp.execute(par?.text?.content)
+        const textContent = t(par?.text?.content)
 
         if (!textContent) {
             return
@@ -17,7 +17,7 @@ export const getHeaderContent = (item) =>
 
 export const getTextContent = (item, useTypograf = false) =>
     item.content.text.map((par) => {
-        const textContent = useTypograf ? tp.execute(par?.text?.content) : par?.text?.content
+        const textContent = useTypograf ? t(par?.text?.content) : par?.text?.content
         const url = par?.text?.link?.url ?? null
 
         const stylePar = {
