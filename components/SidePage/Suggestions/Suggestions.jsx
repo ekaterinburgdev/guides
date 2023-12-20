@@ -1,9 +1,7 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { API_HOST } from '../../../consts/endpoints'
 import styles from './Suggestions.module.css'
 import { getCSSVarsColors } from '../../../utils/getCSSVarsColors'
 
