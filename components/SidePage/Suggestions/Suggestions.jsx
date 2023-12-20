@@ -38,11 +38,10 @@ const SectionSuggestion = ({ section }) => {
 }
 
 const GuideSuggestion = ({ guide }) => {
-    const { title, cover, sections, color } = guide
+    const { title, sections, color } = guide
     return (
         <article className={styles.GuideSuggestion} style={{ ...getCSSVarsColors(color) }}>
             <div className={styles.imageContainer}>
-                <Image className={styles.image} fill src={`${API_HOST}/static/${cover}`} alt="" />
                 <h3 className={styles.GuideSuggestionTitle}>{title}</h3>
             </div>
             {sections?.map((section, i) => (
@@ -60,12 +59,11 @@ function getGuides({ items, currentUrl }) {
     })
     return items.reduce((acc, item) => {
         const title = item?.properties.properties?.Name?.title[0]?.plain_text
-        const cover = item?.properties.properties?.previewPattern?.at(0)
         const color = item?.properties.properties?.color?.rich_text[0]?.plain_text
         const sections = item?.sectionSuggestions.sort((a, b) =>
             collator.compare(a.sectionName, b.sectionName)
         )
-        const guideSuggestion = { title, cover, sections, color }
+        const guideSuggestion = { title, sections, color }
         const url = item?.properties?.properties?.pageUrl?.url
         if (url !== currentUrl) {
             return [...acc, guideSuggestion]

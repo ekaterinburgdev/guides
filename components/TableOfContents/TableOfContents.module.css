@@ -219,7 +219,7 @@ html:has(.open) {
         display: flex;
         flex-direction: column;
         position: fixed;
-        height: calc(100vh - 100px);
+        height: calc(100vh - 84px);
         width: var(--sidebar-width);
         overflow: auto;
         scrollbar-width: none;
