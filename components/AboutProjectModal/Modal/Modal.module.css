@@ -10,12 +10,6 @@
     animation: .2s ease-in-out fadeIn;
 }
 
-html:has(.Modal[open]),
-body:has(.Modal[open]) {
-    overflow: auto;
-    height: 100%;
-}
-
 .Modal::backdrop {
     background: rgba(12, 27, 39, .2);
 }
@@ -83,7 +77,6 @@ body:has(.Modal[open]) {
     .Modal {
         width: 100%;
         max-width: 647px;
-        min-height: auto;
         max-height: calc(100vh - 112px);
         margin: 60px auto;
         border-radius: 16px;
