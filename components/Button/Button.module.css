@@ -1,0 +1,46 @@
+.Button {
+    display: inline-block;
+    border: 0;
+    border-radius: 40px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.33;
+    text-decoration: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.Button_type-primary {
+    background: black;
+    color: white;
+}
+
+.Button_type-secondary {
+    background: #ffd400;
+    color: black;
+}
+
+.Button_type-secondary:hover {
+    background: #e1bb00;
+}
+
+.Button_size-small {
+    padding: 8px 12px;
+}
+
+.Button_size-large {
+    padding: 12px 32px;
+}
+
+@media screen and (min-width: 768px) {
+    .Button {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .Button {
+        font-size: 18px;
+    }
+}

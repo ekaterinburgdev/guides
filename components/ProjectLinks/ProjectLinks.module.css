@@ -2,54 +2,38 @@
     position: fixed;
     right: 2px;
     bottom: 2px;
-    display: none;
-    gap: 8px;
-    padding: 6px;
-    border-radius: 24px;
-    background: rgba(255, 255, 255, .9);
-}
-
-.ProjectLinks__button {
-    display: inline-flex;
+    display: flex;
+    gap: 4px;
     align-items: center;
-    padding: 8px 12px;
-    border-radius: 160px;
+    padding: 6px;
+}
+
+.ProjectLinks__github {
+    display: none;
     color: black;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.33;
-    text-decoration: none;
-    transition: .15s ease;
 }
 
-.ProjectLinks__button_about {
-    color: black;
-    padding: 0;
+.ProjectLinks__github svg {
+    vertical-align: middle;
+    height: 100%;
 }
 
-.ProjectLinks__button_about:hover {
-    color: #646464;
+.ProjectLinks__github:hover {
+    color: #3e3e3e;
 }
 
-.ProjectLinks__button_about:active {
-    color: #a1a1a1;
+.ProjectLinks__github:active {
+    color: #535353;
 }
 
-.ProjectLinks__button_feedback {
-    background: #ffd400;
+@media screen and (min-width: 350px) {
+    .ProjectLinks__github {
+        display: block;
+    }
 }
 
-.ProjectLinks__button_feedback:hover {
-    background: #3e3e3e;
-    color: white;
-}
-
-.ProjectLinks__button_feedback:active {
-    background: black;
-}
-
-@media screen and (min-width: 991px) {
+@media screen and (min-width: 768px) {
     .ProjectLinks {
-        display: flex;
+        gap: 8px;
     }
 }
