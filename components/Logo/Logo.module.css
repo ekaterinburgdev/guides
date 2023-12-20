@@ -19,3 +19,15 @@
 .LogoCaption {
     margin-bottom: 0.05em;
 }
+
+.Logo_small {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.1;
+}
+
+.Logo_small .LogoImage {
+    width: 60px;
+    height: 60px;
+    margin-right: 12px;
+}

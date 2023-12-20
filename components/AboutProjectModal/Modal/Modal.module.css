@@ -1,0 +1,116 @@
+.Modal {
+    width: 100%;
+    max-width: none;
+    min-height: 100%;
+    max-height: calc(100vh - 120px);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: var(--color-text);
+    animation: .2s ease-in-out fadeIn;
+}
+
+html:has(.Modal[open]),
+body:has(.Modal[open]) {
+    overflow: auto;
+    height: 100%;
+}
+
+.Modal::backdrop {
+    background: rgba(12, 27, 39, .2);
+}
+
+.ModalTitle {
+    margin: 0;
+    padding: 32px 24px 8px;
+}
+
+.ModalContent {
+    padding: 24px;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.ModalContent h2 {
+    margin: 32px 0;
+    font-size: 48px;
+    line-height: 1.08;
+}
+
+.ModalContent h3 {
+    margin: 32px 0 24px;
+    font-size: 32px;
+    line-height: 1.125;
+}
+
+.ModalContent a svg {
+    vertical-align: -0.2em;
+    margin-right: 0.25em;
+    margin-left: 0.2em;
+}
+
+.ModalClose {
+    position: sticky;
+    top: 0;
+    float: right;
+    padding: 22px;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: .15s ease;
+}
+
+@media (hover) {
+    .ModalClose:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+        color: rgba(0, 0, 0, 0.75);
+    }
+}
+
+.ModalClose:active {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: rgba(0, 0, 0, 1);
+}
+
+.ModalClose svg {
+    width: 18px;
+    height: 18px;
+}
+
+@media screen and (min-width: 991px) {
+    .Modal {
+        width: 100%;
+        max-width: 647px;
+        min-height: auto;
+        max-height: calc(100vh - 112px);
+        margin: 60px auto;
+        border-radius: 16px;
+    }
+
+    .ModalInner {
+        overflow: auto;
+        max-height: inherit;
+    }
+
+    .ModalTitle {
+        padding: 40px 48px 8px;
+    }
+    
+    .ModalContent {
+        padding: 28px 40px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-24px) translateZ(0);
+    }
+
+    top {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
