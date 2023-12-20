@@ -1,6 +1,7 @@
 @import 'normalize.css';
 @import 'variables.css';
 @import 'tally-widget.css';
+@import 'print.css';
 @import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 
 * {
@@ -22,6 +23,7 @@ html {
 body {
     overflow-x: hidden;
     font-weight: 300;
+    color: var(--color-text);
 }
 
 a {

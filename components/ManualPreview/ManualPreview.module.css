@@ -120,7 +120,18 @@
     background-color: var(--manual-bg-cover);
 }
 
-@media screen and (min-width: 768px) {
+@media print {
+    .manual {
+        break-inside: avoid;
+    }
+
+    .manualBackground {
+        /* Prevent image hiding */
+        color-adjust: exact;
+    }
+}
+
+@media print, screen and (min-width: 768px) {
     .manual {
         width: calc(100% / 2 - 2vw);
     }

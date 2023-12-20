@@ -47,3 +47,14 @@
     text-underline-offset: 5.5px;
     text-decoration-thickness: 2px;
 }
+
+@media print {
+    .ManualTitle__mainpage {
+        display: none;
+    }
+
+    .ManualTitle__caption {
+        font-size: 40px;
+        color: inherit;
+    }
+}

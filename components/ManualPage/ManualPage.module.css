@@ -27,6 +27,12 @@
     margin-top: 20px;
 }
 
+@media print {
+    .manualName {
+        margin-left: 0;
+    }
+}
+
 @media screen and (min-width: 991px) {
     .templateColumn {
         margin-bottom: 0;
@@ -34,13 +40,13 @@
     }
 }
 
-@media (min-width: 400px) {
+@media screen and (min-width: 400px) {
     .templateColumn {
         padding-right: 24px;
     }
 }
 
-@media (min-width: 991px) {
+@media screen and (min-width: 991px) {
     .templateColumn {
         padding-left: calc(var(--sidebar-width) + var(--sidebar-spacer));
         padding-right: 16px;
@@ -66,7 +72,6 @@
     margin-top: 1em;
     margin-bottom: .7em;
     margin-left: -.04em;
-    color: #1e2841;
     font-size: 28px;
     font-weight: 500;
     line-height: .95;
