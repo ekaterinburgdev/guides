@@ -5,22 +5,9 @@
 }
 
 .mainPageTitle {
-    display: flex;
     font-size: 8vw;
-    line-height: 1;
-    margin-top: 0.15em;
-    color: #000;
-    font-weight: 500;
-    align-items: center;
-    margin-bottom: 4vw;
-}
-
-.mainPageLogo {
-    position: relative;
-    flex-shrink: 0;
-    width: 18vw;
-    height: 18vw;
-    margin-right: 2vw;
+    margin: 0;
+    padding: 0;
 }
 
 .mainPageManuals {
@@ -28,10 +15,6 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 4vw;
-}
-
-.mainPageText {
-    margin-bottom: 0.4vw;
 }
 
 @media screen and (min-width: 991px) {

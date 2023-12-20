@@ -1,0 +1,21 @@
+.Logo {
+    display: flex;
+    align-items: center;
+    margin-top: 0.15em;
+    margin-bottom: 0.5em;
+    color: #000;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.LogoImage {
+    position: relative;
+    flex-shrink: 0;
+    width: 2.25em;
+    height: 2.25em;
+    margin-right: 0.25em;
+}
+
+.LogoCaption {
+    margin-bottom: 0.05em;
+}

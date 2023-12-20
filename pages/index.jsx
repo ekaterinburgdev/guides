@@ -3,8 +3,8 @@ import { getTree } from '../api/apiPage'
 import parseManualsPreview from '../utils/manualsPreviewParser'
 import MainPage from '../components/MainPage/MainPage'
 
-export default function Home({ pageTitle, manualsPreview }) {
-    return <MainPage pageTitle={pageTitle} manualsPreview={manualsPreview} />
+export default function Home({ manualsPreview }) {
+    return <MainPage manualsPreview={manualsPreview} />
 }
 
 export async function getServerSideProps() {
@@ -12,7 +12,6 @@ export async function getServerSideProps() {
 
     return {
         props: {
-            pageTitle: tree?.properties?.child_page?.title,
             manualsPreview: parseManualsPreview(tree),
         },
     }
