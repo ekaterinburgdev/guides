@@ -1,8 +1,8 @@
 import React from 'react'
 import { Logo } from '../Logo/Logo'
 import ManualPreview from '../ManualPreview/ManualPreview'
-import { Ecosystem } from '../Ecosystem/Ecosystem'
 import { ProjectLinks } from '../ProjectLinks/ProjectLinks'
+import { Ecosystem } from '../Ecosystem/Ecosystem'
 
 import styles from './MainPage.module.css'
 
