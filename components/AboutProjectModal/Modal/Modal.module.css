@@ -76,7 +76,7 @@
 @media screen and (min-width: 991px) {
     .Modal {
         width: 100%;
-        max-width: 647px;
+        max-width: 642px;
         min-height: auto;
         max-height: calc(100vh - 112px);
         margin: 60px auto;
