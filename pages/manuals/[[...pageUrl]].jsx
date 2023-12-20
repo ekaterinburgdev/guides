@@ -9,7 +9,6 @@ import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 import { Toolbar } from '../../components/Toolbar/Toolbar'
 
 import { CSSVarsColors } from '../../components/CSSVarsColors/CSSVarsColors'
-import { ProjectLinks } from '../../components/ProjectLinks/ProjectLinks'
 
 import styles from './page.module.css'
 
