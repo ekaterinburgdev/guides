@@ -9,12 +9,6 @@
 
 @media screen and (min-width: 1500px) {
     .SidePage__container {
-        width: max(410px, var(--sidebar-width));
-    }
-}
-
-@media screen and (min-width: 1900px) {
-    .SidePage__container {
-        width: 502px;
+        width: var(--sidebar-width);
     }
 }
