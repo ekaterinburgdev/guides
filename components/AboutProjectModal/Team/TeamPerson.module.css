@@ -1,13 +1,13 @@
-.team-person {
+.TeamPerson {
     margin: 0;
     padding: 0;
 }
 
-.team-person {
+.TeamPerson {
     text-decoration: none;
 }
 
-.team-person_link .team-person__name span {
+.TeamPerson_link .TeamPerson__name span {
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-color: var(--color-underline);
@@ -15,35 +15,35 @@
 }
 
 
-.team-person_link:hover .team-person__name span {
+.TeamPerson_link:hover .TeamPerson__name span {
     display: inline;
     text-decoration-color: var(--color-underline-hover);
 }
 
-.team-person_link .team-person__name {
+.TeamPerson_link .TeamPerson__name {
     margin-bottom: 0.45em;
 }
 
-.team-person__inner {
+.TeamPerson__inner {
     margin: 0;
     padding: 0;
     transition: .15s ease transform;
     transform: scale(1) translateZ(0);
 }
 
-.team-person:hover .team-person__inner {
+.TeamPerson:hover .TeamPerson__inner {
     transform: scale(1.11) translateZ(0);
     transform-origin: center;
 }
 
-.team-person__photo {
+.TeamPerson__photo {
     position: relative;
     width: 100%;
     border-radius: 50%;
     box-shadow: 0 0 0 2px #414141;
 }
 
-.team-person__photo::after {
+.TeamPerson__photo::after {
     content: "";
     display: block;
     width: 100%;
@@ -51,7 +51,7 @@
     padding-bottom: 100%;
 }
 
-.team-person__photo img {
+.TeamPerson__photo img {
     position: absolute;
     object-fit: cover;
     object-position: center top;
@@ -61,23 +61,23 @@
     pointer-events: none;
 }
 
-.team-person__name,
-.team-person__caption {
+.TeamPerson__name,
+.TeamPerson__caption {
     font-size: clamp(14px, 1vw, 16px);
     line-height: 1.2;
 }
 
-.team-person__name {
+.TeamPerson__name {
     margin-top: .4em;
     margin-bottom: .2em;
     transition: .15s ease color;
 }
 
-.team-person__role {
+.TeamPerson__role {
     color: #757575;
     line-height: 1.2;
 }
 
-.team-person__role::first-letter {
+.TeamPerson__role::first-letter {
     text-transform: lowercase;
 }

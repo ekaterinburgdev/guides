@@ -1,4 +1,4 @@
-.team-grid {
+.Team {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;
@@ -9,82 +9,82 @@
     column-gap: 5%;
 }
 
-.team-grid__item {
+.Team__item {
     position: relative;
     margin: 0;
     padding-bottom: 40px;
 }
 
-.team-grid__item:nth-child(3n-1) {
+.Team__item:nth-child(3n-1) {
     transform: translate(0, 50%);
 }
 
-.team-grid__item:nth-child(3n-1):nth-last-child(-n+3) {
+.Team__item:nth-child(3n-1):nth-last-child(-n+3) {
     /* Add bottom margin to latest */
     margin-bottom: 100px;
 }
 
-.team-grid__link {
+.Team__link {
     text-decoration: none;
 }
 
 @media screen and (width >=560px) {
-    .team-grid {
+    .Team {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media screen and (width >=768px) {
-    .team-grid {
+    .Team {
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .team-grid__item {
+    .Team__item {
         padding-bottom: 30%;
     }
 
-        .team-grid__item:nth-child(n) {
+        .Team__item:nth-child(n) {
             margin: 0;
             transform: none;
         }
 
-        .team-grid__item:nth-child(2n) {
+        .Team__item:nth-child(2n) {
             transform: translate(0, 50%);
         }
 }
 
 @media screen and (width >=991px) {
-    .team-grid__item {
+    .Team__item {
         padding-bottom: 30%;
     }
 }
 
 @media screen and (width >=1200px) {
-    .team-grid {
+    .Team {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         justify-content: space-between;
         align-items: start;
     }
 
-    .team-grid__item {
+    .Team__item {
         position: relative;
         margin: 0;
         padding-bottom: 60%;
         transform: none;
     }
 
-        .team-grid__item:nth-child(n) {
+        .Team__item:nth-child(n) {
             transform: none;
         }
 
-        .team-grid__item:nth-child(2n) {
+        .Team__item:nth-child(2n) {
             transform: translate(0, 50%);
         }
 }
 
 @media screen and (width >=1440px) {
-    .team-grid__item {
+    .Team__item {
         padding-bottom: 40%;
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal } from './Modal/Modal'
-import { TeamGrid } from './Team/TeamGrid'
+import { Team } from './Team/Team'
 import { Logo } from '../Logo/Logo'
 import { Button } from '../Button/Button'
 
@@ -64,7 +64,7 @@ export function AboutProjectModal({ open, onClose: handleClose }) {
                 к&nbsp;нам!
             </p>
 
-            <TeamGrid />
+            <Team />
 
             <footer>
                 <center>

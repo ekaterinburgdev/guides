@@ -1,20 +1,37 @@
 import React from 'react'
-import classNames from 'classnames/bind'
+import cn from 'classnames'
+import Image from 'next/image'
 import styles from './TeamPerson.module.css'
 
-const cx = classNames.bind(styles)
+export default function TeamPerson(person) {
+    const { link } = person
+    return link ? (
+        <a
+            className={cn('TeamPerson', 'TeamPerson_link')}
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+        >
+            <TeamPersonInner {...person} />
+        </a>
+    ) : (
+        <div className={cn('TeamPerson')}>
+            <TeamPersonInner {...person} />
+        </div>
+    )
+}
 
-function Person({ name, role, photo }) {
+function TeamPersonInner({ name, role, photo }) {
     return (
-        <figure className={cx('team-person__inner')}>
+        <figure className={cn(styles.TeamPerson__inner)}>
             {photo.length > 0 && (
-                <div className={cx('team-person__photo')}>
-                    <img src={photo} width={300} height={300} alt="" loading="lazy" />
+                <div className={cn(styles.TeamPerson__photo)}>
+                    <Image src={photo} width={300} height={300} loading="lazy" alt="" />
                 </div>
             )}
-            <figcaption className={cx('team-person__caption')}>
+            <figcaption className={cn(styles.TeamPerson__caption)}>
                 {name && (
-                    <div className={cx('team-person__name')}>
+                    <div className={cn(styles.TeamPerson__name)}>
                         {/* eslint-disable-next-line react/no-danger */}
                         <span dangerouslySetInnerHTML={{ __html: name }} />
                     </div>
@@ -23,32 +40,10 @@ function Person({ name, role, photo }) {
                 {role && (
                     <div
                         dangerouslySetInnerHTML={{ __html: role }}
-                        className={cx('team-person__role')}
+                        className={cn(styles.TeamPerson__role)}
                     />
                 )}
             </figcaption>
         </figure>
-    )
-}
-
-export default function TeamPerson(person) {
-    const { link } = person
-    if (link) {
-        return (
-            <a
-                className={cx('team-person', 'team-person_link')}
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-            >
-                <Person {...person} />
-            </a>
-        )
-    }
-
-    return (
-        <div className={cx('team-person')}>
-            <Person {...person} />
-        </div>
     )
 }
