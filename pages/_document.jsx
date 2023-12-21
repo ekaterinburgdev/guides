@@ -3,7 +3,8 @@ import { SITE_HOST } from '../consts/endpoints'
 import { Html, Head, Main, NextScript } from 'next/document'
 
 const siteTitle = 'Руководства Екатеринбурга'
-const siteDescription = 'Делаем онлайн-платформу для официальных городских руководств и стандартов'
+const siteDescription =
+    'Единая база официальных стандартов Екатеринбурга по развитию городской среды.'
 const ogImage = '/og-preview.jpg'
 
 export default function Document() {
