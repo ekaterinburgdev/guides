@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 import Head from 'next/head'
-import { isetSansFont } from '../utils/font'
+import { IsetSans } from '../styles/fonts/IsetSans'
 
 import '../styles/globals.css'
 import 'ekb/style.css'
@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
                 <title>Городские руководства</title>
             </Head>
 
-            <main className={isetSansFont.className}>
+            <main className={IsetSans.className}>
                 <Component {...pageProps} />
             </main>
         </>
