@@ -43,7 +43,9 @@
     color: var(--color);
     font-size: 0;
     cursor: pointer;
-    transition: 0.15s ease color, 0.15s ease background-color;
+    transition:
+        0.15s ease color,
+        0.15s ease background-color;
 }
 
 .Toolbar__item:hover {

@@ -246,7 +246,7 @@ html:has(.open) {
         scrollbar-width: none;
         padding: 0px 11px 11px 9px;
     }
-    
+
     html:has(.open) {
         overflow: auto;
     }
