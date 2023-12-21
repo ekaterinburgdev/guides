@@ -9,6 +9,7 @@
     white-space: nowrap;
     cursor: pointer;
     transition: all 0.15s ease;
+    text-decoration: none;
 }
 
 .Button_type-primary {
