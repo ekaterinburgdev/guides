@@ -1,10 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-
-import { getTextContent } from '../../../utils/textParser'
-
+import { getTextContent } from '../../../utils/getNotionContentItems'
+import { getNotionColor } from '../../../utils/getNotionColor'
 import styles from './Callout.module.css'
-import { getNotionColor } from '../../../utils/colors'
 
 export const Callout = ({ columnItem }) => {
     const iconUrl = columnItem?.content?.icon?.external?.url

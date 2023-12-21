@@ -1,8 +1,6 @@
 import React from 'react'
-
-import { getNotionColor } from './colors'
-
 import t from './typograf'
+import { getNotionColor } from './getNotionColor'
 
 export const getHeaderContent = (item) =>
     item.content.text.map((par) => {
