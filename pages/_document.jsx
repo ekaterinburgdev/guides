@@ -1,16 +1,28 @@
 import React from 'react'
+import { SITE_HOST } from '../consts/endpoints'
 import { Html, Head, Main, NextScript } from 'next/document'
 
-export default function Document() {
-    const ogTitle = 'Городские руководства Екатеринбурга'
-    const ogDescription =
-        'Делаем онлайн-платформу для официальных городских руководств и стандартов'
+const siteTitle = 'Городские руководства Екатеринбурга'
+const siteDescription = 'Делаем онлайн-платформу для официальных городских руководств и стандартов'
 
+export default function Document() {
     return (
         <Html lang="ru">
             <Head>
-                <meta name="og:description" content={ogDescription} />
-                <meta property="og:title" content={ogTitle} />
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="description" content={siteDescription} />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={SITE_HOST} />
+                <meta property="og:title" content={siteTitle} />
+                <meta property="og:description" content={siteDescription} />
+                <meta property="og:image" content="/og-preview.jpg" />
+
+                <link rel="icon" href="/favicon.ico" sizes="any" />
+                <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+                <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+                <link rel="manifest" href="/site.webmanifest" />
             </Head>
             <body>
                 <Main />
