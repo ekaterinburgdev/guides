@@ -12,7 +12,9 @@
     font-size: 14px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    transition: 0.15s ease text-underline, 0.15s ease color;
+    transition:
+        0.15s ease text-underline,
+        0.15s ease color;
     text-underline-offset: 4px;
 }
 
