@@ -8,9 +8,9 @@
 
 ## About
 
-We are creating a unified knowledge base about Ekaterinburg that is easy to learn, develop, and enhance. Instead of the long formatting of cumbersome PDF files, standards authors write them in a user-friendly web interface, saving readers time on searching and downloading files.
+We are creating a unified knowledge base about Ekaterinburg that is easy to learn, develop, and enhance. Instead of the lengthy formatting of cumbersome PDF files, standards authors write them in a user-friendly web interface, saving readers time on searching and downloading files.
 
-For the first version of the guides, projects workis with [Notion](https://www.notion.so/) as CMS. Notion is a user-friendly editor with various features and [public API](https://developers.notion.com/).
+For the first version of the guides, we are using [Notion](https://www.notion.so/) as our CMS. Notion is a user-friendly editor with various features and [public API](https://developers.notion.com/).
 
 <img src="https://github.com/ekaterinburgdev/guides/assets/22644149/0e370dbd-37d0-4a4d-a91c-98d299f4f919" width="75%" alt="" />
 
