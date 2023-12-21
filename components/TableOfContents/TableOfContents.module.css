@@ -86,6 +86,7 @@ html:has(.open) {
 .tableOfContentsLink:not(:only-child) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    border-bottom: 1px solid hsl(var(--color-hsl) / 20%);
 }
 
 @media (hover: hover) {
@@ -192,20 +193,38 @@ html:has(.open) {
     list-style: none;
 }
 
+.active {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.active::before,
+.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+.active::before {
+    background: var(--color-bg-light);
+}
+
+.active::after {
+    background-color: var(--color-bg-dark);
+}
+
 .active,
 .active:hover,
 .innerlinkContainerList {
     text-decoration: none;
     font-weight: 400;
     background-color: var(--color-bg-dark);
-}
-
-.separator {
-    height: 1px;
-    margin: 0;
-    border: 0;
-    background: var(--color);
-    opacity: 0.2;
 }
 
 .TableOfContents__aside {
