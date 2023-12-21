@@ -1,7 +1,5 @@
 import React from 'react'
-
-import { getHeaderContent } from '../../../utils/textParser'
-
+import { getHeaderContent } from '../../../utils/getNotionContentItems'
 import styles from './Headings.module.css'
 
 export function H1({ columnItem }) {
