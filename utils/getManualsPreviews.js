@@ -2,7 +2,7 @@ import t from './typograf'
 import { MANUALS_HIDDEN } from '../consts/manuals'
 import { API_HOST } from '../consts/endpoints'
 
-function parseManualsPreview(tree) {
+function getManualsPreviews(tree) {
     // TODO Remove hard-code after back-end feature https://github.com/ekaterinburgdev/guides-api/issues/10
     const manualsVisible = tree.children.filter((manual) => {
         return !MANUALS_HIDDEN.includes(manual?.properties?.pageUrl?.url)
@@ -39,4 +39,4 @@ function parseManualsPreview(tree) {
         })
 }
 
-export default parseManualsPreview
+export default getManualsPreviews

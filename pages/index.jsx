@@ -1,6 +1,6 @@
 import React from 'react'
 import { getTree } from '../api/apiPage'
-import parseManualsPreview from '../utils/manualsPreviewParser'
+import getManualsPreviews from '../utils/getManualsPreviews'
 import MainPage from '../components/MainPage/MainPage'
 
 export default function Home({ manualsPreview }) {
@@ -12,7 +12,7 @@ export async function getServerSideProps() {
 
     return {
         props: {
-            manualsPreview: parseManualsPreview(tree),
+            manualsPreview: getManualsPreviews(tree),
         },
     }
 }
