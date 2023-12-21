@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-import { getTextContent } from '../../../utils/getNotionContentItems'
-import { getNotionColor } from '../../../utils/getNotionColor'
+import { getTextContent } from '../../../lib/getNotionContentItems'
+import { getNotionColor } from '../../../lib/getNotionContentColor'
 import styles from './Callout.module.css'
 
 export const Callout = ({ columnItem }) => {
