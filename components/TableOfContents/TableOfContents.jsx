@@ -72,27 +72,29 @@ function TableOfContents({
                     <span className={styles.linkNumber}>{order}.&nbsp;</span>
                     {tUI(title)}
                 </Link>
+
                 {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
-                    <hr className={styles.separator} />
+                    <ul className={styles.innerlinkContainerList}>
+                        {anchorLinks.map((anchor) => (
+                            <li
+                                className={cn(styles.innerlinkContainerListItem, {
+                                    [styles.innerlinkContainerListItem2Level]:
+                                        anchor.type === undefined,
+                                    [styles.innerlinkContainerListItem3Level]:
+                                        anchor.type === 'heading_2',
+                                })}
+                                key={anchor.id}
+                            >
+                                <InnerLink
+                                    anchor={anchor}
+                                    baseState={isOpen}
+                                    setState={setIsOpen}
+                                />
+                            </li>
+                        ))}
+                    </ul>
                 )}
             </li>
-            {currentPageUrl[1] && currentPageUrl[1] === url && anchorLinks.length > 0 && (
-                <ul className={styles.innerlinkContainerList}>
-                    {anchorLinks.map((anchor) => (
-                        <li
-                            className={cn(styles.innerlinkContainerListItem, {
-                                [styles.innerlinkContainerListItem2Level]:
-                                    anchor.type === undefined,
-                                [styles.innerlinkContainerListItem3Level]:
-                                    anchor.type === 'heading_2',
-                            })}
-                            key={anchor.id}
-                        >
-                            <InnerLink anchor={anchor} baseState={isOpen} setState={setIsOpen} />
-                        </li>
-                    ))}
-                </ul>
-            )}
         </Fragment>
     )
 
