@@ -3,6 +3,12 @@
     --ecosystem-color: var(--color-bg-light);
 }
 
+.Ecosystem a:focus-visible,
+.Ecosystem button:focus-visible {
+    outline: 2px solid black;
+    outline-offset: 4px;
+}
+
 @media print {
     .Ecosystem {
         display: none;

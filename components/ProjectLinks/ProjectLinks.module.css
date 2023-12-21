@@ -11,6 +11,8 @@
 .ProjectLinks__github {
     display: none;
     color: black;
+    outline-offset: 3px;
+    border-radius: 50%;
 }
 
 .ProjectLinks__github svg {

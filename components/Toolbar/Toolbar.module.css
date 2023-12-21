@@ -35,17 +35,18 @@
 }
 
 .Toolbar__item {
-    padding: 4px;
     margin: 0 -2px;
+    padding: 4px;
     border: 0;
     border-radius: 50%;
     background: transparent;
     color: var(--color);
-    outline: none;
-    outline-width: 0;
+    outline-offset: 5px;
     font-size: 0;
     cursor: pointer;
-    transition: 0.15s ease;
+    transition:
+        0.15s ease color,
+        0.15s ease background-color;
 }
 
 .Toolbar__item:hover {
@@ -56,10 +57,6 @@
 .Toolbar__item:active {
     background: hsl(var(--color-hsl) / 90%);
     color: white;
-}
-
-.Toolbar__item:focus-visible svg {
-    box-shadow: inset 0 0 0 2px black;
 }
 
 .hidden {

@@ -10,6 +10,7 @@
     cursor: pointer;
     transition: all 0.15s ease;
     text-decoration: none;
+    outline-offset: 3px;
 }
 
 .Button_type-primary {
