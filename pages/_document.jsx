@@ -2,7 +2,7 @@ import React from 'react'
 import { SITE_HOST } from '../consts/endpoints'
 import { Html, Head, Main, NextScript } from 'next/document'
 
-const siteTitle = 'Городские руководства Екатеринбурга'
+const siteTitle = 'Руководства Екатеринбурга'
 const siteDescription = 'Делаем онлайн-платформу для официальных городских руководств и стандартов'
 const ogImage = '/og-preview.jpg'
 
