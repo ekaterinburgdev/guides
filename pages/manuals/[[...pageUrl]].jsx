@@ -1,12 +1,13 @@
 import React, { useEffect, useState, createContext } from 'react'
-import { CSSVarsColors } from '../../components/CSSVarsColors/CSSVarsColors'
-import { loadTree, loadPage } from '../../lib/loadManual'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
-import { Toolbar } from '../../components/Toolbar/Toolbar'
+import { loadTree, loadPage } from '../../lib/loadManual'
 import { useRouter } from 'next/router'
 import getManualToc from '../../lib/getManualToc'
-import ManualPage from '../../components/ManualPage/ManualPage'
 import t from '../../utils/typograf'
+import setCacheHeaders from '../../utils/setCacheHeaders'
+import { CSSVarsColors } from '../../components/CSSVarsColors/CSSVarsColors'
+import { ManualPage } from '../../components/ManualPage/ManualPage'
+import { Toolbar } from '../../components/Toolbar/Toolbar'
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 
 import styles from './page.module.css'
@@ -114,7 +115,9 @@ function GetPage({
     )
 }
 
-export async function getServerSideProps({ params: { pageUrl } }) {
+export async function getServerSideProps({ params: { pageUrl }, res }) {
+    setCacheHeaders(res)
+
     const tree = await loadTree()
     const children = tree?.children
     const manualPath = pageUrl

@@ -20,7 +20,7 @@ import { ManualTitle } from '../ManualTitle/ManualTitle'
 
 import styles from './ManualPage.module.css'
 
-function ManualPage({
+export function ManualPage({
     pageName,
     pageList,
     tableOfContentArr,
@@ -144,5 +144,3 @@ function ManualPage({
         </div>
     )
 }
-
-export default ManualPage
