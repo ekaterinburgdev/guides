@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import Head from 'next/head'
+import React, { useEffect, useState, createContext } from 'react'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 import { loadTree, loadPage } from '../../lib/loadManual'
 import { useRouter } from 'next/router'
@@ -12,6 +11,9 @@ import { Toolbar } from '../../components/Toolbar/Toolbar'
 import TableOfContents from '../../components/TableOfContents/TableOfContents'
 
 import styles from './page.module.css'
+
+export const PageContext = createContext(null)
+export const TocStateContext = createContext(null)
 
 function GetPage({
     catalogIndex,
@@ -84,36 +86,30 @@ function GetPage({
         anchorLinks = anchorLinks.filter((l) => l?.id >= 0)
     }
 
-    const pageTitle = `${pageName} | ${catalogTitle}`
-
     return (
         <>
-            <Head>
-                <title>{pageTitle}</title>
-                <meta name="theme-color" content={catalogColor} />
-            </Head>
             <CSSVarsColors color={catalogColor} />
             <div style={{ counterReset: `page-chapter ${pageIndex}` }}>
-                <TableOfContents
-                    tableOfContentArr={manualToc}
-                    currentPageUrl={pageUrl}
-                    anchorLinks={anchorLinks}
-                    catalogTitle={catalogTitle}
-                    isOpen={isOpen}
-                    setIsOpen={setIsOpen}
-                />
-                <ManualPage
-                    pageName={pageName}
-                    pageList={pageList}
-                    currentPageUrl={pageUrl}
-                    tableOfContentArr={manualToc}
-                    nextPageIndex={nextPageIndex}
-                    catalogIndex={catalogIndex}
-                    catalogTitle={catalogTitle}
-                    pageUrl={pageUrl}
-                    pageImage={pageImage}
-                />
-                <Toolbar pdf={pagePdfUrl} menuActive={isOpen} menuOnClick={setIsOpen} />
+                <TocStateContext.Provider value={{ isOpen, setIsOpen }}>
+                    <TableOfContents
+                        tableOfContentArr={manualToc}
+                        currentPageUrl={pageUrl}
+                        anchorLinks={anchorLinks}
+                        catalogTitle={catalogTitle}
+                    />
+                    <ManualPage
+                        pageName={pageName}
+                        pageList={pageList}
+                        currentPageUrl={pageUrl}
+                        tableOfContentArr={manualToc}
+                        nextPageIndex={nextPageIndex}
+                        catalogIndex={catalogIndex}
+                        catalogTitle={catalogTitle}
+                        pageUrl={pageUrl}
+                        pageImage={pageImage}
+                    />
+                    <Toolbar pdf={pagePdfUrl} menuActive={isOpen} menuOnClick={setIsOpen} />
+                </TocStateContext.Provider>
             </div>
         </>
     )
