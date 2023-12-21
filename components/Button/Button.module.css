@@ -18,12 +18,24 @@
     color: white;
 }
 
+.Button_type-primary:hover {
+    background: #3e3e3e;
+}
+
+.Button_type-primary:active {
+    background: #535353;
+}
+
 .Button_type-secondary {
     background: #ffd400;
     color: black;
 }
 
 .Button_type-secondary:hover {
+    background: #efc700;
+}
+
+.Button_type-secondary:active {
     background: #e1bb00;
 }
 

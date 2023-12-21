@@ -64,8 +64,15 @@
     object-position: left center;
 }
 
-.manual:hover .manualInner {
-    transform: matrix(1, -0.125, 0, 1, 0, 0) scaleX(0.95);
+@media (hover: hover) {
+    .manual:hover .manualInner {
+        transform: matrix(1, -0.125, 0, 1, 0, 0) scaleX(0.95) translateZ(0);
+    }
+}
+
+.manual:active .manualInner {
+    transform: matrix(1, -0.145, 0, 1, 0, 0) scaleX(0.935) translateZ(0);
+    transition: transform 0.125s ease;
 }
 
 .manualTitle {
