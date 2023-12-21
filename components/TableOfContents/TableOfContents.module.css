@@ -38,6 +38,7 @@
     margin-left: 2px;
     margin-top: 0;
     margin-bottom: 0;
+    padding-bottom: 80px;
     overflow: auto;
     border-radius: 8px;
 }
@@ -68,8 +69,8 @@ html:has(.open) {
 }
 
 .open {
-    display: flex !important;
-    flex-direction: column !important;
+    display: flex;
+    flex-direction: column;
 }
 
 .tableOfContentsLink {
@@ -244,8 +245,16 @@ html:has(.open) {
         scrollbar-width: none;
         padding: 0px 11px 11px 9px;
     }
+    
+    html:has(.open) {
+        overflow: auto;
+    }
 
     .tableOfContents__title {
         margin-top: 24px;
+    }
+
+    .linkContainerList {
+        padding-bottom: 0;
     }
 }
