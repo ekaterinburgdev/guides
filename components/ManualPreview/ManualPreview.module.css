@@ -33,12 +33,13 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    transform-origin: left bottom;
-    transition: transform 0.15s ease-in;
-    padding: 0.8em 1em 0.8em;
+    padding: 0.8em 2.5em 0.8em 1em;
     border-radius: 0.4em;
-    color: var(--manual-text);
     background: white;
+    color: var(--manual-text);
+    text-wrap: balance;
+    transition: transform 0.15s ease-in;
+    transform-origin: left bottom;
 }
 
 .manualBackground {
