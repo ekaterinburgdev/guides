@@ -67,7 +67,6 @@ function TableOfContents({
                     className={cn(styles.tableOfContentsLink, {
                         [styles.active]: currentPageUrl[1] && currentPageUrl[1] === url,
                     })}
-                    onClick={() => setIsOpen(!isOpen)}
                 >
                     <span className={styles.linkNumber}>{order}.&nbsp;</span>
                     {tUI(title)}
