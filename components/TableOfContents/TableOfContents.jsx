@@ -8,13 +8,13 @@ import { ManualTitle } from '../ManualTitle/ManualTitle'
 
 import styles from './TableOfContents.module.css'
 
-function InnerLink({ anchor, baseState, setState }) {
+function InnerLink({ anchor, setIsOpen }) {
     return (
         <a
             className={cn(styles.innerTableOfContentsLink)}
             key={anchor.title}
             href={`#${anchor.id}`}
-            onClick={() => setState(!baseState)}
+            onClick={() => setIsOpen(false)}
         >
             <span>{tUI(anchor.title[0])}</span>
         </a>
@@ -87,7 +87,7 @@ function TableOfContents({
                                 <InnerLink
                                     anchor={anchor}
                                     baseState={isOpen}
-                                    setState={setIsOpen}
+                                    setIsOpen={setIsOpen}
                                 />
                             </li>
                         ))}
