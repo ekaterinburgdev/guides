@@ -12,6 +12,7 @@ function MyApp({ Component, pageProps }) {
         <>
             <Head>
                 <title>Руководства Екатеринбурга</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
 
             <main className={IsetSans.className}>

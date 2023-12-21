@@ -1,4 +1,5 @@
 import React, { useEffect, useState, createContext } from 'react'
+import Head from 'next/head'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 import { loadTree, loadPage } from '../../lib/loadManual'
 import { useRouter } from 'next/router'
@@ -88,6 +89,12 @@ function GetPage({
 
     return (
         <>
+            <Head>
+                <title>
+                    {pageName} | {catalogTitle}
+                </title>
+                <meta name="theme-color" content={catalogColor} />
+            </Head>
             <CSSVarsColors color={catalogColor} />
             <div style={{ counterReset: `page-chapter ${pageIndex}` }}>
                 <TocStateContext.Provider value={{ isOpen, setIsOpen }}>

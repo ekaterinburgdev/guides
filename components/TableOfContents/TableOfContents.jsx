@@ -1,7 +1,6 @@
 import React, { useEffect, useContext, Fragment } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
-import Head from 'next/head'
 import { tUI } from '../../utils/typograf'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import { TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
@@ -99,9 +98,6 @@ function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, 
 
     return (
         <>
-            <Head>
-                <title>{catalogTitle}</title>
-            </Head>
             <aside className={styles.TableOfContents__aside}>
                 <nav className={navClassName}>
                     <div className={cn(styles.tableOfContents__title)}>
