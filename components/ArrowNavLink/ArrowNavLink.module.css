@@ -3,18 +3,18 @@
     margin: 0 0 76px;
     border-radius: 2rem;
     font-weight: 400;
-    font-size: clamp(14px,1.8vw,18px);
-    transition: .3s;
+    font-size: clamp(14px, 1.8vw, 18px);
+    transition: 0.3s;
     color: var(--color);
 }
 
 .ArrowNavLinkNext {
     display: inline-block;
-    margin-bottom: .45em;
-    font-size: .8em;
+    margin-bottom: 0.45em;
+    font-size: 0.8em;
     opacity: 0.5;
     text-transform: uppercase;
-    letter-spacing: .1em;
+    letter-spacing: 0.1em;
 }
 
 .ArrowNavLink:hover .ArrowNavLinkNextText {

@@ -1,56 +1,56 @@
 [
-  {
-    "name": "Владислав Аткишкин",
-    "photo": "https://ekaterinburg.design/notion-static/b8d5faf3-013f-479f-8e15-38be16118240__photo_2022-01-12_02.58.49.jpeg",
-    "link": null,
-    "role": "Frontend-разработчик"
-  },
-  {
-    "name": "Даниил Гильмутдинов",
-    "photo": "https://ekaterinburg.design/notion-static/6cf97684-ab63-4a47-bacf-f2b22ae8a57e__dg.jpg",
-    "link": null,
-    "role": "Backend-разработчик"
-  },
-  {
-    "name": "Олег Донцов",
-    "photo": "https://ekaterinburg.design/notion-static/ea3e5fbd-7aec-462c-b211-3d547fed004d__12002389_1120366781319128_5299809331049827439_o.jpg",
-    "link": null,
-    "role": "Frontend-разработчик"
-  },
-  {
-    "name": "Александр Кряжев",
-    "photo": "https://ekaterinburg.design/notion-static/190cf62a-7104-46e1-9e85-14cd36cf2378__kryaazh.jpg",
-    "link": null,
-    "role": "Веб-дизайнер"
-  },
-  {
-    "name": "Паша Омелёхин",
-    "photo": "https://ekaterinburg.design/notion-static/4b85d8b3-8836-4bc0-9e87-9925955b956e__IMG_3288-crop-color.jpg",
-    "link": "https://t.me/omelekhin/",
-    "role": "Руководитель и куратор"
-  },
-  {
-    "name": "Анжелика Салдина",
-    "photo": "https://ekaterinburg.design/notion-static/3ab603c5-59c9-4907-ad1c-107e59331b74__as.jpg",
-    "link": null,
-    "role": "Frontend-разработчик"
-  },
-  {
-    "name": "Евгений Рогачев",
-    "photo": "https://ekaterinburg.design/notion-static/7ae71a0f-a060-49f4-875b-8461a6eb72bd__photo_2022-01-10_15.12.59.jpeg",
-    "link": null,
-    "role": "Backend-разработчик"
-  },
-  {
-    "name": "Лев Трифонов",
-    "photo": "https://ekaterinburg.design/notion-static/c61be1b3-e0c1-4366-9a6b-b2c94fc11509__IMG_4242.jpg",
-    "link": null,
-    "role": "Frontend-разработчик"
-  },
-  {
-    "name": "Александр Чабин",
-    "photo": "https://ekaterinburg.design/notion-static/ea7be7fa-b064-48fa-b25e-0ce29a35ad87__IMG_155467telegram2.jpg",
-    "link": "https://github.com/sashachabin",
-    "role": "Frontend-разработчик"
-  }
+    {
+        "name": "Владислав Аткишкин",
+        "photo": "https://ekaterinburg.design/notion-static/b8d5faf3-013f-479f-8e15-38be16118240__photo_2022-01-12_02.58.49.jpeg",
+        "link": null,
+        "role": "Frontend-разработчик"
+    },
+    {
+        "name": "Даниил Гильмутдинов",
+        "photo": "https://ekaterinburg.design/notion-static/6cf97684-ab63-4a47-bacf-f2b22ae8a57e__dg.jpg",
+        "link": null,
+        "role": "Backend-разработчик"
+    },
+    {
+        "name": "Олег Донцов",
+        "photo": "https://ekaterinburg.design/notion-static/ea3e5fbd-7aec-462c-b211-3d547fed004d__12002389_1120366781319128_5299809331049827439_o.jpg",
+        "link": null,
+        "role": "Frontend-разработчик"
+    },
+    {
+        "name": "Александр Кряжев",
+        "photo": "https://ekaterinburg.design/notion-static/190cf62a-7104-46e1-9e85-14cd36cf2378__kryaazh.jpg",
+        "link": null,
+        "role": "Веб-дизайнер"
+    },
+    {
+        "name": "Паша Омелёхин",
+        "photo": "https://ekaterinburg.design/notion-static/4b85d8b3-8836-4bc0-9e87-9925955b956e__IMG_3288-crop-color.jpg",
+        "link": "https://t.me/omelekhin/",
+        "role": "Руководитель и куратор"
+    },
+    {
+        "name": "Анжелика Салдина",
+        "photo": "https://ekaterinburg.design/notion-static/3ab603c5-59c9-4907-ad1c-107e59331b74__as.jpg",
+        "link": null,
+        "role": "Frontend-разработчик"
+    },
+    {
+        "name": "Евгений Рогачев",
+        "photo": "https://ekaterinburg.design/notion-static/7ae71a0f-a060-49f4-875b-8461a6eb72bd__photo_2022-01-10_15.12.59.jpeg",
+        "link": null,
+        "role": "Backend-разработчик"
+    },
+    {
+        "name": "Лев Трифонов",
+        "photo": "https://ekaterinburg.design/notion-static/c61be1b3-e0c1-4366-9a6b-b2c94fc11509__IMG_4242.jpg",
+        "link": null,
+        "role": "Frontend-разработчик"
+    },
+    {
+        "name": "Александр Чабин",
+        "photo": "https://ekaterinburg.design/notion-static/ea7be7fa-b064-48fa-b25e-0ce29a35ad87__IMG_155467telegram2.jpg",
+        "link": "https://github.com/sashachabin",
+        "role": "Frontend-разработчик"
+    }
 ]

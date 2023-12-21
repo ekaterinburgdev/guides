@@ -11,20 +11,20 @@
     color: var(--color);
     font-size: 14px;
     font-weight: 500;
-    transition: .15s ease;
+    transition: 0.15s ease;
     text-underline-offset: 4px;
     text-transform: uppercase;
-    letter-spacing: .1em;
-    opacity: .55;
-    transition: .15s ease;
+    letter-spacing: 0.1em;
+    opacity: 0.55;
+    transition: 0.15s ease;
 }
 
 .ManualTitle__mainpage:hover {
-    opacity: .8;
+    opacity: 0.8;
 }
 
 .ManualTitle__mainpage:hover::after {
-    opacity: .375;
+    opacity: 0.375;
 }
 
 .ManualTitle__mainpage::after {
@@ -32,7 +32,7 @@
     position: absolute;
     top: 4px;
     right: -12px;
-    opacity: .6;
+    opacity: 0.6;
 }
 
 .ManualTitle__caption {

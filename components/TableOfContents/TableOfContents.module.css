@@ -1,6 +1,6 @@
 .tableOfContents {
     --color-underline-hover: hsl(var(--color-hsl) / 30%);
-    
+
     position: fixed;
     text-align: left;
     padding: 8px;
@@ -80,7 +80,7 @@ html:has(.open) {
     padding: 12px 16px 12px 16px;
     font-size: 16px;
     border-radius: 8px;
-    transition: .15s ease;
+    transition: 0.15s ease;
 }
 
 .tableOfContentsLink:not(:only-child) {
@@ -90,7 +90,7 @@ html:has(.open) {
 
 @media (hover: hover) {
     .tableOfContentsLink:hover {
-        background-color: rgba(255, 255, 255, .7);
+        background-color: rgba(255, 255, 255, 0.7);
     }
 }
 
@@ -121,7 +121,7 @@ html:has(.open) {
 
 .visible::after {
     opacity: 1;
-    transition: opacity .15s ease;
+    transition: opacity 0.15s ease;
 }
 
 .visible + .visible::after {
@@ -138,7 +138,7 @@ html:has(.open) {
 }
 
 .innerlinkContainerListItem2Level .innerTableOfContentsLink::before {
-    content: counter(page-chapter) "." counter(page-section) ". ";
+    content: counter(page-chapter) '.' counter(page-section) '. ';
 }
 
 .innerlinkContainerListItem3Level + .innerlinkContainerListItem2Level {
@@ -152,11 +152,11 @@ html:has(.open) {
 
 .innerlinkContainerListItem3Level .innerTableOfContentsLink {
     counter-increment: page-subsection;
-    opacity: .8;
+    opacity: 0.8;
 }
 
 .innerlinkContainerListItem3Level .innerTableOfContentsLink::before {
-    content: counter(page-chapter) "." counter(page-section) "." counter(page-subsection) ". ";
+    content: counter(page-chapter) '.' counter(page-section) '.' counter(page-subsection) '. ';
 }
 
 .innerTableOfContentsLink {
@@ -164,7 +164,7 @@ html:has(.open) {
     color: var(--color);
     text-decoration: none;
     border-radius: 8px;
-    transition: .15s ease;
+    transition: 0.15s ease;
     padding: 0 8px;
     position: relative;
     font-size: 14px;
@@ -205,7 +205,7 @@ html:has(.open) {
     margin: 0;
     border: 0;
     background: var(--color);
-    opacity: .2;
+    opacity: 0.2;
 }
 
 .TableOfContents__aside {
@@ -230,4 +230,3 @@ html:has(.open) {
         margin-top: 24px;
     }
 }
-

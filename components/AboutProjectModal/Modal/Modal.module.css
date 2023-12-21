@@ -8,11 +8,11 @@
     border: 0;
     background: transparent;
     color: var(--color-text);
-    animation: .2s ease-in-out fadeIn;
+    animation: 0.2s ease-in-out fadeIn;
 }
 
 .Modal::backdrop {
-    background: rgba(12, 27, 39, .2);
+    background: rgba(12, 27, 39, 0.2);
 }
 
 .ModalInner {
@@ -89,7 +89,7 @@
     background: none;
     color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
-    transition: .15s ease;
+    transition: 0.15s ease;
 }
 
 @media (hover) {

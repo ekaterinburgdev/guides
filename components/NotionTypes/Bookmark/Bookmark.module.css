@@ -2,9 +2,9 @@
     color: var(--color);
     text-decoration: underline;
     text-decoration-color: var(--color);
-    transform: .15s ease;
+    transform: 0.15s ease;
 }
 
 .Bookmark:hover {
-    color: #E63223 !important;
+    color: #e63223 !important;
 }

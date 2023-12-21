@@ -52,7 +52,9 @@
     border-color: #00b4ff;
     transform-origin: 52% 50%;
     animation: spin3 10s linear infinite;
-    box-shadow: 0 0 10vh 0 rgba(0, 180, 0, 0.7), 0 0 10vh 0 rgba(0, 255, 0, 0.5) inset;
+    box-shadow:
+        0 0 10vh 0 rgba(0, 180, 0, 0.7),
+        0 0 10vh 0 rgba(0, 255, 0, 0.5) inset;
 }
 
 .circles:hover {
@@ -73,7 +75,9 @@
 
 .circles:hover .circle.third {
     border-width: 5.25vmin;
-    box-shadow: 0 0 10vh 0 rgba(0, 180, 0, 0.8), 0 0 10vh 0 rgba(0, 255, 0, 0.6) inset;
+    box-shadow:
+        0 0 10vh 0 rgba(0, 180, 0, 0.8),
+        0 0 10vh 0 rgba(0, 255, 0, 0.6) inset;
 }
 
 .circles:active {
@@ -96,7 +100,9 @@
 
 .circles:active .circle.third {
     border-width: 25vmin;
-    box-shadow: 0 0 10vh 0 #00b400, 0 0 10vh 0 rgba(0, 255, 0, 0.6) inset;
+    box-shadow:
+        0 0 10vh 0 #00b400,
+        0 0 10vh 0 rgba(0, 255, 0, 0.6) inset;
 }
 
 @keyframes spin1 {

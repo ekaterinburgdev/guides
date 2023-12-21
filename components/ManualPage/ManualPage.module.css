@@ -70,20 +70,20 @@
 .pageName {
     position: relative;
     margin-top: 1em;
-    margin-bottom: .7em;
-    margin-left: -.04em;
+    margin-bottom: 0.7em;
+    margin-left: -0.04em;
     font-size: 28px;
     font-weight: 500;
-    line-height: .95;
+    line-height: 0.95;
 }
 
 .pageName:before {
-    content: counter(page-chapter) ". ";
+    content: counter(page-chapter) '. ';
     position: absolute;
-    top: .3em;
+    top: 0.3em;
     right: calc(100% + 10px);
-    opacity: .4;
-    font-size: .73em;
+    opacity: 0.4;
+    font-size: 0.73em;
 }
 
 @media (min-width: 991px) {
@@ -125,8 +125,8 @@ br + .Manual__image__container {
 
 .Manual__image_description {
     display: inline-block;
-    opacity: .4;
-    margin-top: .25em;
+    opacity: 0.4;
+    margin-top: 0.25em;
 }
 
 .Manual__image_svg {

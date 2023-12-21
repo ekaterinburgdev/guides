@@ -18,17 +18,17 @@
 .heading2 a:before,
 .heading3 a:before {
     position: absolute;
-    top: .31em;
-    font-size: .73em;
+    top: 0.31em;
+    font-size: 0.73em;
     right: calc(100% + 4px);
-    opacity: .4;
-    transition: .15s ease opacity;
+    opacity: 0.4;
+    transition: 0.15s ease opacity;
 }
 
 .heading1:hover a:before,
 .heading2:hover a:before,
 .heading3:hover a:before {
-    opacity: .6;
+    opacity: 0.6;
 }
 
 .heading1 {
@@ -36,12 +36,12 @@
     counter-increment: page-section;
     font-size: 20px;
     margin-top: 1.5em;
-    margin-bottom: .4em;
-    margin-left: -.04em;
+    margin-bottom: 0.4em;
+    margin-left: -0.04em;
 }
 
 .heading1 a:before {
-    content: counter(page-chapter) "." counter(page-section) ". ";
+    content: counter(page-chapter) '.' counter(page-section) '. ';
 }
 
 @media (min-width: 991px) {
@@ -54,8 +54,8 @@
     counter-increment: page-subsection;
     font-size: 18px;
     margin-top: 1.5em;
-    margin-bottom: .5em;
-    margin-left: -.02em;
+    margin-bottom: 0.5em;
+    margin-left: -0.02em;
 }
 
 @media (min-width: 991px) {
@@ -65,7 +65,7 @@
 }
 
 .heading2 a:before {
-    content: counter(page-chapter) "." counter(page-section) "." counter(page-subsection) ". ";
+    content: counter(page-chapter) '.' counter(page-section) '.' counter(page-subsection) '. ';
 }
 
 .heading3 {

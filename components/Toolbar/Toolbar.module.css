@@ -45,7 +45,7 @@
     outline-width: 0;
     font-size: 0;
     cursor: pointer;
-    transition: .15s ease;
+    transition: 0.15s ease;
 }
 
 .Toolbar__item:hover {

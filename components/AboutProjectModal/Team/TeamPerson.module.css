@@ -15,9 +15,8 @@
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-color: var(--color-underline);
-    transition: .15s ease box-shadow;
+    transition: 0.15s ease box-shadow;
 }
-
 
 .TeamPerson__link:hover .TeamPerson__name span {
     display: inline;
@@ -31,7 +30,7 @@
 .TeamPerson__inner {
     margin: 0;
     padding: 0;
-    transition: .15s ease transform;
+    transition: 0.15s ease transform;
     transform: scale(1) translateZ(0);
 }
 
@@ -47,7 +46,7 @@
 }
 
 .TeamPerson__photo::after {
-    content: "";
+    content: '';
     display: block;
     width: 100%;
     height: 0;
@@ -71,9 +70,9 @@
 }
 
 .TeamPerson__name {
-    margin-top: .4em;
-    margin-bottom: .2em;
-    transition: .15s ease color;
+    margin-top: 0.4em;
+    margin-bottom: 0.2em;
+    transition: 0.15s ease color;
 }
 
 .TeamPerson__role {

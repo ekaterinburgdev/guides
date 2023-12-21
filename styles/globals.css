@@ -36,9 +36,9 @@ a {
     color: var(--color);
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    text-underline-offset: .3em;
+    text-underline-offset: 0.3em;
     text-decoration-color: var(--color-underline);
-    transition: .15s ease;
+    transition: 0.15s ease;
 }
 
 a:hover {
