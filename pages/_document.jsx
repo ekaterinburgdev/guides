@@ -4,6 +4,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 const siteTitle = 'Городские руководства Екатеринбурга'
 const siteDescription = 'Делаем онлайн-платформу для официальных городских руководств и стандартов'
+const ogImage = '/og-preview.jpg'
 
 export default function Document() {
     return (
@@ -17,7 +18,13 @@ export default function Document() {
                 <meta property="og:url" content={SITE_HOST} />
                 <meta property="og:title" content={siteTitle} />
                 <meta property="og:description" content={siteDescription} />
-                <meta property="og:image" content="/og-preview.jpg" />
+                <meta property="og:image" content={ogImage} />
+
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content={SITE_HOST} />
+                <meta property="twitter:title" content={siteTitle} />
+                <meta property="twitter:description" content={siteDescription} />
+                <meta property="twitter:image" content={ogImage} />
 
                 <link rel="icon" href="/favicon.ico" sizes="any" />
                 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
