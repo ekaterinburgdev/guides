@@ -1,11 +1,8 @@
-import { createContext } from 'react'
 import Head from 'next/head'
 import { IsetSans } from '../styles/fonts/IsetSans'
 
 import '../styles/globals.css'
 import 'ekb/style.css'
-
-export const ThemeContext = createContext(null)
 
 function MyApp({ Component, pageProps }) {
     return (

@@ -1,9 +1,8 @@
-import React, { useEffect, useContext, Fragment } from 'react'
+import React, { useEffect, Fragment } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import { tUI } from '../../utils/typograf'
 import scrollIntoView from 'scroll-into-view-if-needed'
-import { TocStateContext } from '../../pages/manuals/[[...pageUrl]]'
 import { Ecosystem } from '../Ecosystem/Ecosystem'
 import { ManualTitle } from '../ManualTitle/ManualTitle'
 
@@ -22,9 +21,14 @@ function InnerLink({ anchor, baseState, setState }) {
     )
 }
 
-function TableOfContents({ tableOfContentArr, currentPageUrl = [], anchorLinks, catalogTitle }) {
-    const { isOpen, setIsOpen } = useContext(TocStateContext)
-
+function TableOfContents({
+    tableOfContentArr,
+    currentPageUrl = [],
+    anchorLinks,
+    catalogTitle,
+    isOpen,
+    setIsOpen,
+}) {
     useEffect(() => {
         const arrayWithAnchorElements = [...document.querySelectorAll('h1[id], h2[id], h3[id]')]
 
