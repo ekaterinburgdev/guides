@@ -5,7 +5,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 const siteTitle = 'Руководства Екатеринбурга'
 const siteDescription =
     'Единая база официальных стандартов Екатеринбурга по развитию городской среды.'
-const ogImage = '/og-preview.jpg'
+const ogImage = `${SITE_HOST}/og-preview.jpg`
 
 export default function Document() {
     return (
