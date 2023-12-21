@@ -6,7 +6,6 @@
 .ManualTitle__mainpage {
     position: relative;
     align-self: flex-start;
-    border-radius: 16px;
     padding-top: 4px;
     color: var(--color);
     font-size: 14px;
@@ -33,6 +32,7 @@
     top: 4px;
     right: -12px;
     opacity: 0.6;
+    outline: none;
 }
 
 .ManualTitle__caption {

@@ -82,6 +82,7 @@ html:has(.open) {
     font-size: 16px;
     border-radius: 8px;
     transition: 0.15s ease;
+    outline-offset: -1px;
 }
 
 .tableOfContentsLink:not(:only-child) {
