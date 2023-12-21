@@ -84,12 +84,12 @@ function GetPage({
         anchorLinks = anchorLinks.filter((l) => l?.id >= 0)
     }
 
+    const pageTitle = `${pageName} | ${catalogTitle}`
+
     return (
         <>
             <Head>
-                <title>
-                    {pageName} | {catalogTitle}
-                </title>
+                <title>{pageTitle}</title>
                 <meta name="theme-color" content={catalogColor} />
             </Head>
             <CSSVarsColors color={catalogColor} />
