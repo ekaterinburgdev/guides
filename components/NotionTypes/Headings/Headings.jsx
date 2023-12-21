@@ -1,5 +1,5 @@
 import React from 'react'
-import { getHeaderContent } from '../../../utils/getNotionContentItems'
+import { getHeaderContent } from '../../../lib/getNotionContentItems'
 import styles from './Headings.module.css'
 
 export function H1({ columnItem }) {

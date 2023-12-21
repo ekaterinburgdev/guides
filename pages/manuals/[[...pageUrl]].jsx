@@ -1,14 +1,13 @@
 import React, { useEffect, useState, createContext } from 'react'
-import { useRouter } from 'next/router'
-import { getTree, getPage } from '../../api/apiPage'
-import TableOfContents from '../../components/TableOfContents/TableOfContents'
-import ManualPage from '../../components/ManualPage/ManualPage'
-import t from '../../utils/typograf'
-import getManualToc from '../../utils/getManualToc'
+import { CSSVarsColors } from '../../components/CSSVarsColors/CSSVarsColors'
+import { loadTree, loadPage } from '../../lib/loadManual'
 import { MANUAL_INDEX_PAGE } from '../../consts/manuals'
 import { Toolbar } from '../../components/Toolbar/Toolbar'
-
-import { CSSVarsColors } from '../../components/CSSVarsColors/CSSVarsColors'
+import { useRouter } from 'next/router'
+import getManualToc from '../../lib/getManualToc'
+import ManualPage from '../../components/ManualPage/ManualPage'
+import t from '../../utils/typograf'
+import TableOfContents from '../../components/TableOfContents/TableOfContents'
 
 import styles from './page.module.css'
 
@@ -116,7 +115,7 @@ function GetPage({
 }
 
 export async function getServerSideProps({ params: { pageUrl } }) {
-    const tree = await getTree()
+    const tree = await loadTree()
     const children = tree?.children
     const manualPath = pageUrl
     const catalogPathname = pageUrl[0]
@@ -141,9 +140,9 @@ export async function getServerSideProps({ params: { pageUrl } }) {
         }
     }
 
-    const page = await getPage(pageUrl.join('/'))
+    const page = await loadPage(pageUrl.join('/'))
 
-    const catalogPage = await getPage(catalogPathname)
+    const catalogPage = await loadPage(catalogPathname)
     const catalogIndex = children.findIndex((catalog) => catalog.id === catalogPage.id)
     const catalogTitle = catalogPage.content.title
     const catalogColor = children[catalogIndex]?.properties?.color?.rich_text[0]?.plain_text

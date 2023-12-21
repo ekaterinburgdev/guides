@@ -1,5 +1,5 @@
 import React from 'react'
-import { getTextContent } from '../../../../utils/getNotionContentItems'
+import { getTextContent } from '../../../../lib/getNotionContentItems'
 import styles from './ordered.module.css'
 
 export function OrderedList({ columnItem }) {
