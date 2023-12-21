@@ -1,6 +1,6 @@
 import React from 'react'
 import { getTextContent } from '../../../../lib/getNotionContentItems'
-import styles from './paragraph.module.css'
+import styles from './Paragraph.module.css'
 
 function Paragraph({ columnItem }) {
     const textContent = getTextContent(columnItem, true)

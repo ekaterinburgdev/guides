@@ -1,6 +1,6 @@
 import React from 'react'
 import { getTextContent } from '../../../../lib/getNotionContentItems'
-import styles from './unordered.module.css'
+import styles from './Unordered.module.css'
 
 function UnorderedList({ columnItem }) {
     return (

@@ -1,10 +1,10 @@
-.link {
+.Bookmark {
     color: var(--color);
     text-decoration: underline;
     text-decoration-color: var(--color);
     transform: .15s ease;
 }
 
-.link:hover {
+.Bookmark:hover {
     color: #E63223 !important;
 }

@@ -1,4 +1,4 @@
-.arrowNavLink {
+.ArrowNavLink {
     box-shadow: none;
     margin: 0 0 76px;
     border-radius: 2rem;
@@ -8,7 +8,7 @@
     color: var(--color);
 }
 
-.arrowNavLinkNext {
+.ArrowNavLinkNext {
     display: inline-block;
     margin-bottom: .45em;
     font-size: .8em;
@@ -17,12 +17,12 @@
     letter-spacing: .1em;
 }
 
-.arrowNavLink:hover .arrowNavLinkNextText {
+.ArrowNavLink:hover .ArrowNavLinkNextText {
     text-decoration: underline;
 }
 
 @media print {
-    .arrowNavLink {
+    .ArrowNavLink {
         display: none;
     }
 }

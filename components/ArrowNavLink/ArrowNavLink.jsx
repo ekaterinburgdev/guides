@@ -3,7 +3,7 @@ import Link from 'next/link'
 import cn from 'classnames'
 import t from '../../utils/typograf'
 
-import styles from './arrow.module.css'
+import styles from './ArrowNavLink.module.css'
 
 export function ArrowNavLink({ nextPageIndex, tableOfContentArr, pageUrl, catalogIndex }) {
     let href = {
@@ -23,12 +23,12 @@ export function ArrowNavLink({ nextPageIndex, tableOfContentArr, pageUrl, catalo
     }
 
     return (
-        <Link className={cn(styles.arrowNavLink)} href={href}>
-            <span className={cn(styles.arrowNavLinkNext)}>Далее</span>
+        <Link className={cn(styles.ArrowNavLink)} href={href}>
+            <span className={cn(styles.ArrowNavLinkNext)}>Далее</span>
 
             <br />
 
-            <span className={cn(styles.arrowNavLinkNextText)}>{t(title)}</span>
+            <span className={cn(styles.ArrowNavLinkNextText)}>{t(title)}</span>
         </Link>
     )
 }
