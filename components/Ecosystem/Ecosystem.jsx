@@ -7,7 +7,7 @@ export function Ecosystem() {
     return (
         <div className={styles.Ecosystem}>
             <ProjectsPanel
-                projects={[PROJECT_GUIDES, ...PRODUCTION_PROJECTS]}
+                projects={PRODUCTION_PROJECTS}
                 activeProjectId={PROJECT_GUIDES.id}
                 theme={Theme.LIGHT}
                 toggleStyle={{
