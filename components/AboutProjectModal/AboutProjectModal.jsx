@@ -71,7 +71,7 @@ export function AboutProjectModal({ open, onClose: handleClose }) {
                     <Button
                         size="large"
                         type="secondary"
-                        link="https://tally.so#tally-open=wL9Vd1&tally-width=650&tally-overlay=1&tally-emoji-animation=none"
+                        link="mailto:mail@ekaterinburg.design"
                         onClick={handleClose}
                     >
                         Стать частью команды или помочь проекту

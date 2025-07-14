@@ -19,7 +19,7 @@ export function ProjectLinks({ onClickAboutProjects }) {
             <Button onClick={onClickAboutProjects}>О проекте</Button>
             <Button
                 type="secondary"
-                link="https://tally.so#tally-open=w5ZYXd&tally-width=650&tally-overlay=1&tally-emoji-animation=none"
+                link="mailto:mail@ekaterinburg.design"
             >
                 Фидбек
             </Button>
