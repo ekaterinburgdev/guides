@@ -17,10 +17,7 @@ export function ProjectLinks({ onClickAboutProjects }) {
                 <Github />
             </a>
             <Button onClick={onClickAboutProjects}>О проекте</Button>
-            <Button
-                type="secondary"
-                link="mailto:mail@ekaterinburg.design"
-            >
+            <Button type="secondary" link="mailto:mail@ekaterinburg.design">
                 Фидбек
             </Button>
         </div>

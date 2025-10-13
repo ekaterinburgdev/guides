@@ -16,11 +16,11 @@ For the first version of the guides, we are using [Notion](https://www.notion.so
 
 ## Features
 
--   [x] Works with Notion databases in [guides-api](https://github.com/ekaterinburgdev/guides-api)
--   [x] UI components for Notion content editor
--   [x] Print pages (Ctrl+P)
--   [ ] Search
--   [ ] PDF generating
+- [x] Works with Notion databases in [guides-api](https://github.com/ekaterinburgdev/guides-api)
+- [x] UI components for Notion content editor
+- [x] Print pages (Ctrl+P)
+- [ ] Search
+- [ ] PDF generating
 
 ## Development
 
