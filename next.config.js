@@ -30,10 +30,6 @@ const nextConfig = {
     async rewrites() {
         return [
             {
-                source: '/:pageUrl',
-                destination: '/:pageUrl/_index',
-            },
-            {
                 source: '/:pageUrl*',
                 destination: '/manuals/:pageUrl*',
             }
