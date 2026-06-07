@@ -1,5 +1,3 @@
-import { NEXT_PUBLIC_IMAGE_DOMAIN } from './consts/endpoints.js';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     webpack(config) {
@@ -26,9 +24,9 @@ const nextConfig = {
         return config
     },
     images: {
-        domains: [NEXT_PUBLIC_IMAGE_DOMAIN],
         unoptimized: true,
     },
+    output: 'export',
     async rewrites() {
         return [
             {

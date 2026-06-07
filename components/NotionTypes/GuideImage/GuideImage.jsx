@@ -13,7 +13,7 @@ function GuideImage({ notionType }) {
     })
 
     const [open, setOpen] = useState(false)
-    const srcUrl = `${API_HOST}/static/${notionType.content.image_name}`
+    const srcUrl = `${API_HOST}/${notionType.content.file.url}`
 
     const image = (
         <>
@@ -47,7 +47,7 @@ function GuideImage({ notionType }) {
         </>
     )
 
-    if (notionType.content.image_data.caption.length === 0) {
+    if (notionType.content.image_data?.caption.length === 0) {
         return <div className={styles.Manual__image__container}>{image}</div>
     }
 
@@ -55,7 +55,7 @@ function GuideImage({ notionType }) {
         <div className={styles.Manual__image__container}>
             {image}
             <span className={styles.Manual__image_description}>
-                {notionType.content.image_data.caption[0].plain_text}
+                {notionType.content.image_data?.caption[0].plain_text}
             </span>
         </div>
     )

@@ -72,10 +72,10 @@ export function ManualPage({
             case 'bookmark':
                 return <Bookmark columnItem={notionType} />
 
-            case 'bulleted_list':
+            case 'bulleted_list_folder':
                 return <UnorderedList columnItem={notionType} />
 
-            case 'numbered_list':
+            case 'numbered_list_folder':
                 return <OrderedList columnItem={notionType} />
 
             case 'table':
@@ -114,7 +114,7 @@ export function ManualPage({
                     <div className={styles.previewImageContainer}>
                         <Image
                             className={styles.previewImage}
-                            src={`${API_HOST}/static/${pageImage}`}
+                            src={`${API_HOST}/assets/${pageImage}`}
                             fill
                             priority
                             alt=""
