@@ -25,25 +25,25 @@
 		"bootstrap": "^5.3.8",
 		"classnames": "^2.5.1",
 		"ekb": "1.2.0-rc.2",
-		"next": "^14.2.33",
+		"next": "^14.2.35",
 		"normalize.css": "^8.0.1",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"rgba-to-rgb": "^1.0.2",
 		"scroll-into-view-if-needed": "^3.1.0",
-		"typograf": "^7.6.0",
-		"yet-another-react-lightbox": "^3.25.0"
+		"typograf": "^7.7.0",
+		"yet-another-react-lightbox": "^3.32.0"
 	},
 	"devDependencies": {
-		"@next/eslint-plugin-next": "^14.2.33",
+		"@next/eslint-plugin-next": "^14.2.35",
 		"@svgr/webpack": "^8.1.0",
 		"eslint": "^8.57.1",
-		"eslint-config-next": "^14.2.33",
+		"eslint-config-next": "^14.2.35",
 		"eslint-config-prettier": "^9.1.2",
-		"eslint-plugin-prettier": "^5.5.4",
+		"eslint-plugin-prettier": "^5.5.6",
 		"eslint-plugin-react": "^7.37.5",
 		"husky": "^9.1.7",
 		"lint-staged": "^15.5.2",
-		"prettier": "^3.6.2"
+		"prettier": "^3.8.3"
 	}
 }
