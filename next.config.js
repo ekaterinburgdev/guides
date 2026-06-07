@@ -27,14 +27,6 @@ const nextConfig = {
         unoptimized: true,
     },
     output: 'export',
-    async rewrites() {
-        return [
-            {
-                source: '/:pageUrl*',
-                destination: '/manuals/:pageUrl*',
-            }
-        ]
-    },
 }
 
 export default nextConfig;
