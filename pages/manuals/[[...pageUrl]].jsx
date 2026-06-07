@@ -5,7 +5,6 @@ import { loadTree, loadPage } from '../../lib/loadManual'
 import { useRouter } from 'next/router'
 import getManualToc from '../../lib/getManualToc'
 import t from '../../utils/typograf'
-import setCacheHeaders from '../../utils/setCacheHeaders'
 import { CSSVarsColors } from '../../components/CSSVarsColors/CSSVarsColors'
 import { ManualPage } from '../../components/ManualPage/ManualPage'
 import { Toolbar } from '../../components/Toolbar/Toolbar'
@@ -40,7 +39,7 @@ function GetPage({
         }
 
         const getTextContent = (item) =>
-            item.content.text.map((par) => {
+            item.content?.rich_text?.map((par) => {
                 const textContent = t(par?.text?.content)
                 if (!textContent) {
                     return
@@ -119,9 +118,33 @@ function GetPage({
     )
 }
 
-export async function getServerSideProps({ params: { pageUrl }, res }) {
-    setCacheHeaders(res)
+export async function getStaticPaths() {
+    const tree = await loadTree()
+    const getAllPaths = (nodes, parentPath = []) => {
+        let paths = []
+        for (const node of nodes) {
+            const slug = node.properties?.pageUrl?.url
+            if (!slug) {
+                continue
+            }
+            const currentPath = [...parentPath, slug]
+            paths.push({ params: { pageUrl: currentPath } })
+            if (node.children && node.children.length > 0) {
+                paths = [...paths, ...getAllPaths(node.children, currentPath)]
+            }
+        }
+        return paths
+    }
 
+    const paths = getAllPaths(tree.children || [])
+
+    return {
+        paths,
+        fallback: false,
+    }
+}
+
+export async function getStaticProps({ params: { pageUrl } }) {
     const tree = await loadTree()
     const children = tree?.children
     const manualPath = pageUrl
@@ -151,10 +174,10 @@ export async function getServerSideProps({ params: { pageUrl }, res }) {
 
     const catalogPage = await loadPage(catalogPathname)
     const catalogIndex = children.findIndex((catalog) => catalog.id === catalogPage.id)
-    const catalogTitle = catalogPage.content.title
+    const catalogTitle = catalogPage.content?.title
     const catalogColor = children[catalogIndex]?.properties?.color?.rich_text[0]?.plain_text
     const pageIndex = page?.node_properties?.properties?.order?.number
-    const pageName = page.content.title
+    const pageName = page.content?.title
     const pageList = page.children
     const pageImage = page?.node_properties?.cover
     const pagePdfUrl = children[catalogIndex]?.properties?.pdfUrl?.url
