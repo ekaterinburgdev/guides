@@ -13,6 +13,7 @@ import TableOfContents from '../components/TableOfContents/TableOfContents'
 import styles from './page.module.css'
 
 function GetPage({
+    redirectUrl,
     catalogIndex,
     catalogTitle,
     catalogColor,
@@ -25,6 +26,12 @@ function GetPage({
 }) {
     const router = useRouter()
     const { pageUrl } = router.query
+
+    useEffect(() => {
+        if (redirectUrl) {
+            router.replace(redirectUrl)
+        }
+    }, [redirectUrl, router])
 
     const [nextPageIndex, setNexPageIndex] = useState(null)
     const [isOpen, setIsOpen] = useState(false)
@@ -64,21 +71,25 @@ function GetPage({
     }
 
     useEffect(() => {
-        if (manualToc.length === 0 || !pageUrl) {
+        if (manualToc?.length === 0 || !pageUrl) {
             return
         }
 
         const curPageUrl = pageUrl.length > 1 ? pageUrl[pageUrl.length - 1] : undefined
 
-        const curPageIndex = manualToc.findIndex((el) => el.url === curPageUrl)
-        if (curPageIndex + 1 < manualToc.length) {
+        const curPageIndex = manualToc?.findIndex((el) => el.url === curPageUrl)
+        if (curPageIndex + 1 < manualToc?.length) {
             setNexPageIndex(curPageIndex + 1)
         }
     }, [manualToc, pageUrl])
 
+    if (redirectUrl) {
+        return null
+    }
+
     let anchorLinks = []
 
-    if (pageList.length > 0) {
+    if (pageList?.length > 0) {
         anchorLinks = pageList.map(getColumnItem)
         anchorLinks = anchorLinks.filter((l) => l?.id >= 0)
     }
@@ -157,15 +168,14 @@ export async function getStaticProps({ params: { pageUrl } }) {
         }
     }
 
-    const isCatalogIndexPage = manualPath.includes(MANUAL_INDEX_PAGE)
+    const isCatalogRoot = manualPath.length === 1
     const hasCatalogIndexPage = manualToc.some((x) => x.url === MANUAL_INDEX_PAGE)
 
-    if (isCatalogIndexPage && !hasCatalogIndexPage) {
+    if (isCatalogRoot && !hasCatalogIndexPage) {
         const firstTocPage = manualToc[0].url
         return {
-            redirect: {
-                destination: `/${catalogPathname}/${firstTocPage}`,
-                permanent: false,
+            props: {
+                redirectUrl: `/${catalogPathname}/${firstTocPage}`,
             },
         }
     }
